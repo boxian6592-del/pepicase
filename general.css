@@ -15,6 +15,7 @@ body
 header
 {
     margin-bottom: 50px;
+    width: 100%;
 }
 
 .banner
@@ -25,8 +26,7 @@ header
 
 footer
 {
-    margin-top: 50px;
-    height: 593px;
+    margin-top: 100px;
     width: 100%;
     background-color: #FFE57A;
 }
