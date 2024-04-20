@@ -1,0 +1,32 @@
+body
+{
+    margin:0;
+    padding: 0;
+    font-family: Lexend;
+}
+
+.sales
+{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+header
+{
+    margin-bottom: 50px;
+}
+
+.banner
+{
+    width: 100%;
+    height:auto;
+}
+
+footer
+{
+    margin-top: 50px;
+    height: 593px;
+    width: 100%;
+    background-color: #FFE57A;
+}
