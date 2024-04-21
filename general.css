@@ -1,8 +1,14 @@
+.lexend {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+
 body
 {
     margin:0;
     padding: 0;
-    font-family: Lexend;
 }
 
 .sales
@@ -29,4 +35,11 @@ footer
     margin-top: 100px;
     width: 100%;
     background-color: #FFE57A;
+}
+
+.bottom-nav a
+{
+    margin-right: 75px;
+    text-decoration: none;
+    color: white;
 }
