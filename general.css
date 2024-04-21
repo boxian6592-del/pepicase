@@ -3,7 +3,15 @@
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-  }
+}
+
+.lexend-deca {
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
 
 body
 {
@@ -15,7 +23,6 @@ body
 {
     background-color: black;
     color: white;
-    text-align: center;
 }
 
 header
