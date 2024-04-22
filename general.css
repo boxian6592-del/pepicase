@@ -43,7 +43,21 @@ footer
     width: 100%;
     background-color: #FFE57A;
 }
-
+.row
+{
+    display: flex;
+}
+.column 
+{
+    flex: 1;
+}
+.title {
+    color: #844700;
+}
+.footer-links a {
+    color: #171717;
+    text-decoration: none;
+}
 .bottom-nav a
 {
     margin-right: 75px;
