@@ -50,9 +50,11 @@ footer
 .column 
 {
     flex: 1;
+    margin-left: 120px;
 }
 .title {
     color: #844700;
+    margin-top: 80px;
 }
 .footer-links a {
     color: #171717;
