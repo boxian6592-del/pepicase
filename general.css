@@ -51,6 +51,7 @@ footer
 {
     flex: 1;
     margin-left: 120px;
+    border: 2px solid black;
 }
 .title {
     color: #844700;
