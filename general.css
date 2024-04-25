@@ -25,11 +25,52 @@ body
     color: white;
 }
 
+.container{
+    max-width: 960px;
+    margin: 0;
+}
+
 header
 {
     margin-bottom: 50px;
     width: 100%;
 }
+
+.header .top_header{
+    padding-top: 10px;
+}
+
+
+.header .bottom_header{
+    padding-bottom: 10px;
+}
+
+.header .top_header nav{
+    display: flex;
+    /* justify-content: space-between;
+    justify-items: center; */
+
+}
+
+#main_menu{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-items: center;
+    justify-content: center;
+}
+
+#main_menu .sub_menu{
+    list-style: none;
+}
+
+#main_menu li a{
+    text-decoration: none;
+    padding: 0px 30px;
+
+}
+
 
 .banner
 {
