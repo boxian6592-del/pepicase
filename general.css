@@ -107,29 +107,47 @@ header
 }
 
 
-footer
-{
+.footer {
     margin-top: 100px;
     width: 100%;
     background-color: #FFE57A;
-}
-.row
-{
+  }
+  
+.footer .rows {
     display: flex;
 }
-.column 
-{
-    flex: 1;
-    margin-left: 120px;
-    border: 2px solid black;
+.footer .column:nth-child(1) {
+    margin-top: 76px;
+    margin-left: 162px;
+    width: 328px;
+    font-size: 20px;
+}
+.footer .column:nth-child(2) {
+    margin-top: 76px;
+    margin-left: 61px;
+    width: 218px;
+    font-size: 20px;
+}
+.footer .column:nth-child(3) {
+    margin-top: 76px;
+    margin-left: 184px;
+    width: 347px;
+    font-size: 20px;
 }
 .title {
     color: #844700;
-    margin-top: 80px;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: bold;
 }
 .footer-links a {
     color: #171717;
     text-decoration: none;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }
 .bottom-nav a
 {
