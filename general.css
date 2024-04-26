@@ -25,10 +25,10 @@ body
     color: white;
 }
 
-/* .container{
+.container{
     max-width: 960px;
     margin: 0;
-} */
+}
 
 header
 {
@@ -47,6 +47,10 @@ header
 }
 .logo_right{
     margin-right:50px;
+}
+
+#search{
+    margin-left:120px;
 }
 
 
