@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>pepicase</title>
-        <link rel="stylesheet" href="general.css">
+        <link rel="stylesheet" href="/pepicase/header-footer.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
@@ -20,18 +20,18 @@
                 <div class="top_header">
                     <nav class="d-flex justify-content-between">
                         <a href="" id="search">
-                            <img src="pics/Search.png" alt="">
+                            <img src="pepicase/pics/Search.png" alt="">
                         </a>
                         <h2 class="name">pepicase</h2>
                         <div class="logo_right">
                             <a href="" style="margin-right:20px;">
-                                <img src="pics/Vector (1).png" alt="">
+                                <img src="/pepicase/pics/Vector (1).png" alt="">
                             </a>
                             <a href="" style="margin-right: 20px;">
-                                <img src="pics/Cart.png" alt="">
+                                <img src="/pepicase/pics/Cart.png" alt="">
                             </a>
                             <a href="">
-                                <img src="pics/Frame.png" alt="">
+                                <img src="/pepicase/pics/Frame.png" alt="">
                             </a>
                         </div>
                     </nav>
@@ -70,7 +70,7 @@
             </div>
         </header>
 
-        <img class = "banner" src="pics/banner.png" alt="banner">
+        <img class = "banner" src="/pepicase/pics/banner.png" alt="banner">
 
     <footer class="footer">
         <div class = "main-content">
@@ -98,18 +98,18 @@
                 <div class = "column">
                     <p class="title">Address</p>
                     <div class="footer-a">
-                        <a href=""><img src="pics/location.svg" alt="location-icon"></a><br>
-                        <a href=""><img src="pics/sms.svg" alt="sms-icon"></a><br>
-                        <a href=""><img src="pics/call.svg" alt="call-icon"></a>
+                        <a href=""><img src="/pepicase/pics/location.svg" alt="location-icon"></a><br>
+                        <a href=""><img src="/pepicase/pics/sms.svg" alt="sms-icon"></a><br>
+                        <a href=""><img src="/pepicase/pics/call.svg" alt="call-icon"></a>
                     </div>
                 </div>
             </div>
         </div>
 
             <div class ="icons d-flex justify-content-center align-items-center" style = "height: 250px; padding-bottom: 30px;">
-                <a href=""><img src="pics/Facebook Icon.png" class = "img-rounded" alt="facebook-icon" style ="margin-right: 40px;"></a>
-                <a href=""><img src="pics/Group 1.png" class = "img-rounded" alt="facebook-icon"></a>
-                <a href=""><img src="pics/x.png" class = "img-rounded" alt="facebook-icon" style ="margin-left: 40px;"></a>
+                <a href=""><img src="/pepicase/pics/Facebook Icon.png" class = "img-rounded" alt="facebook-icon" style ="margin-right: 40px;"></a>
+                <a href=""><img src="/pepicase/pics/Group 1.png" class = "img-rounded" alt="facebook-icon"></a>
+                <a href=""><img src="/pepicase/pics/x.png" class = "img-rounded" alt="facebook-icon" style ="margin-left: 40px;"></a>
             </div>
 
             <div class = "bottom-nav lexend" style = "margin-left: 45px; padding-bottom: 20px; font-size: 20px;">

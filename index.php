@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>pepicase</title>
-        <link rel="stylesheet" href="general.css">
+        <link rel="stylesheet" href="header-footer.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
@@ -22,7 +22,7 @@
                         <a href="" id="search">
                             <img src="pics/Search.png" alt="">
                         </a>
-                        <h2 class="name">pepicase</h2>
+                        <h2 class="name"><a href="/pepicase/index.php" style = "color:inherit; text-decoration:none;">pepicase</a></h2>
                         <div class="logo_right">
                             <a href="" style="margin-right:20px;">
                                 <img src="pics/Vector (1).png" alt="">
@@ -63,14 +63,14 @@
                                 </ul>
                             </li>
 
-                            <li><a href="">About Us</a></li>
+                            <li><a href="/pepicase/about_us/about-us.php">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
 
-        <img class = "banner" src="pics/banner.png" alt="banner">
+        <img class = "banner" src="pics/banner.png" alt="banner" style = "width: 100%; height:auto;">
 
     <footer class="footer">
         <div class = "main-content">
