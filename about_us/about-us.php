@@ -24,13 +24,13 @@
                         </a>
                         <h2 class="name">pepicase</h2>
                         <div class="logo_right">
-                            <a href="" style="margin-right:20px;">
+                            <a href="" style="margin-right:20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/pics/Vector (1).png" alt="">
                             </a>
-                            <a href="" style="margin-right: 20px;">
+                            <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/pics/Cart.png" alt="">
                             </a>
-                            <a href="">
+                            <a href="" style="text-decoration: none; color:white;">
                                 <img src="/pepicase/pics/Frame.png" alt="">
                             </a>
                         </div>
@@ -70,7 +70,9 @@
             </div>
         </header>
 
-        <img class = "banner" src="/pepicase/pics/banner.png" alt="banner">
+        <div class = "lexend d-flex justify-content-center" style = "font-size:30px;">
+            ABOUT US
+        </div>
 
     <footer class="footer">
         <div class = "main-content">

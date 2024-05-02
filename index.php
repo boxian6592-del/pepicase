@@ -24,10 +24,10 @@
                         </a>
                         <h2 class="name"><a href="/pepicase/index.php" style = "color:inherit; text-decoration:none;">pepicase</a></h2>
                         <div class="logo_right">
-                            <a href="" style="margin-right:20px;">
+                            <a href="" style="margin-right:20px; text-decoration: none; color:white;">
                                 <img src="pics/Vector (1).png" alt="">
                             </a>
-                            <a href="" style="margin-right: 20px;">
+                            <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
                                 <img src="pics/Cart.png" alt="">
                             </a>
                             <a href="">
