@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/fonts.css">
-
+        <link rel="stylesheet" href="/pepicase/product/product.css">
 
 
     </head>
@@ -98,8 +98,37 @@
                     <img style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;"src="/pepicase/pics/favorite_icon.svg" alt="favorite">
                 </div>
                 
-                    <div id="pricing" class="lexend-tera" style="font-size:20px;">$ 9.99 USD</div>
+                    <div id="pricing" class="lexend-tera" style="font-size:25px;"></div>
+                    <div style="font-size:18px; color:gray;">Model</div>
 
+                    <div>
+                        <button class = "sizing">iPhone 11</button>
+                        <button class = "sizing">iPhone 11 Pro</button>
+                        <button class = "sizing">iPhone 11 Pro Max</button>
+                    </div>
+
+                    <div>
+                        <button class = "sizing">iPhone 12</button>
+                        <button class = "sizing">iPhone 12 Pro</button>
+                        <button class = "sizing">iPhone 12 Pro Max</button>
+                    </div>
+
+                    <div>
+                        <button class = "sizing">iPhone 13</button>
+                        <button class = "sizing">iPhone 13 Pro</button>
+                        <button class = "sizing">iPhone 13 Pro Max</button>
+                    </div>
+
+                    <div>
+                        <button class = "sizing">iPhone 14</button>
+                        <button class = "sizing">iPhone 14 Plus</button>
+                        <button class = "sizing">iPhone 14 Pro</button>
+                        <button class = "sizing">iPhone 14 Pro Max</button>
+                    </div>
+
+                    <div>
+                        <button class= "lexend d-flex align-items-center justify-content-center"style = "width: 350px; height: 50px; background-color:black; color:white; border-radius:20px;">Add to Cart</button>
+                    </div>
             </div>
             
 
@@ -179,7 +208,7 @@
             </div>
 
         </footer>
-        <script src = "/pepicase/product/get_info.js"></script>
+        <script src = "/pepicase/product/product.js"></script>
     </body>
 </html>
     <!--Đã có đính Boostrap cho CSS ở trên!
