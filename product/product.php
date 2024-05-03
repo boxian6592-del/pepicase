@@ -10,6 +10,19 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <style>
+            .lexend-tera 
+            {
+                font-family: "Lexend Tera", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+            }
+        </style>
+
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
@@ -33,7 +46,7 @@
                             <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/pics/Cart.png" alt="">
                             </a>
-                            <a href="" style="text-decoration: none; color:white;">
+                            <a href="">
                                 <img src="/pepicase/pics/Frame.png" alt="">
                             </a>
                         </div>
@@ -66,36 +79,46 @@
                                 </ul>
                             </li>
 
-                            <li><a href="">About Us</a></li>
+                            <li><a href="/pepicase/about_us/about-us.php">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
 
-        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">ABOUT US</div>
-        <div class="d-flex justify-content-center" style = "width:100vw;">
-            <hr style="width: 1133px; height:3px;">
+        
+
+
+
+        <div class = "lexend-tera d-flex justify-content-center align-items-center" style = "height:200px;background-color:#FFFAE3; font-size:40px;">
+            COLLECTION BANNER
         </div>
-        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">Welcome to PEPICASE</div>
-        <br>
-        <div class ="lexend-light d-flex justify-content-center">
-            <p style = "width: 1133px; height: fit-content; font-size:22px;">
-            At Pepicase, we understand that your mobile phone is not just a device, it's a part of your identity. That's why we offer a wide range of stylish and durable phone cases  that not only protect your device but also reflect your unique style and personality.
-            <br><br>
-            Our collection includes cases for iPhone. From slim designs and unique, sleek designs to sturdy cases, we have something to suit every need and preference.
-            <br><br>
-            We take pride in offering products that are not only fashionable but also functional. Our cases are made from high-quality materials that provide superior protection against scratches, drops, and other everyday wear and tear. We also offer a range of designs, including transparent, matte, glossy, and printed cases, to suit your preferences.
-            <br><br>
-            At Pepicase, we are committed to providing excellent customer service. Our team of experts is always ready to assist you with any questions or concerns you may have. We also offer free shipping and easy returns, so you can shop with confidence.
-            <br><br>
-            We are passionate about delivering the best products and services to our customers. Whether you're looking for a simple phone case, we have got you covered. Browse our collection today and find the perfect accessory for your mobile phone!
-         </p>
+        <div style ="height: 750px; border:2px solid black;">
+            
         </div>
-        <br>
-        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">
-        <a href=""><button style = "background-color:yellow;">HAVE A LOOK AT OUR PRODUCTS</button></a>
-        </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <footer class="footer">
@@ -148,7 +171,7 @@
             </div>
 
         </footer>
-        <script src = "general.js"></script>
+        <script src = "/pepicase/general.js"></script>
     </body>
 </html>
     <!--Đã có đính Boostrap cho CSS ở trên!
