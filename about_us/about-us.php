@@ -7,6 +7,12 @@
         <link rel="stylesheet" href="/pepicase/header-footer.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
@@ -20,9 +26,9 @@
                 <div class="top_header">
                     <nav class="d-flex justify-content-between">
                         <a href="" id="search">
-                            <img src="pepicase/pics/Search.png" alt="">
+                            <img src="/pepicase/pics/Search.png" alt="">
                         </a>
-                        <h2 class="name">pepicase</h2>
+                        <h2 class="name"><a href="/pepicase/index.php" style = "color:inherit; text-decoration:none;">pepicase</a></h2>
                         <div class="logo_right">
                             <a href="" style="margin-right:20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/pics/Vector (1).png" alt="">
@@ -70,9 +76,29 @@
             </div>
         </header>
 
-        <div class = "lexend d-flex justify-content-center" style = "font-size:30px;">
+        <div class = "lexend d-flex justify-content-center;" style = "font-size:30px;">
             ABOUT US
         </div>
+        <div></div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <hr style="width: 1133px;">
+        </div>
+        <div class ="lexend-light d-flex justify-content-center">
+            <p style = "width: 1133px; height: 845px; font-size:25px;">
+            At Pepicase, we understand that your mobile phone is not just a device, it's a part of your identity. That's why we offer a wide range of stylish and durable phone cases  that not only protect your device but also reflect your unique style and personality.
+            <br><br>
+            Our collection includes cases for iPhone. From slim designs and unique, sleek designs to sturdy cases, we have something to suit every need and preference.
+            <br><br>
+            We take pride in offering products that are not only fashionable but also functional. Our cases are made from high-quality materials that provide superior protection against scratches, drops, and other everyday wear and tear. We also offer a range of designs, including transparent, matte, glossy, and printed cases, to suit your preferences.
+            <br><br>
+            At Pepicase, we are committed to providing excellent customer service. Our team of experts is always ready to assist you with any questions or concerns you may have. We also offer free shipping and easy returns, so you can shop with confidence.
+            <br><br>
+            We are passionate about delivering the best products and services to our customers. Whether you're looking for a simple phone case, we have got you covered. Browse our collection today and find the perfect accessory for your mobile phone!
+         </p>
+        </div>
+
+
 
     <footer class="footer">
         <div class = "main-content">
