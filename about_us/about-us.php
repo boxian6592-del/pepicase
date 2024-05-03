@@ -76,16 +76,14 @@
             </div>
         </header>
 
-        <div class = "lexend d-flex justify-content-center;" style = "font-size:30px;">
-            ABOUT US
+        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">ABOUT US</div>
+        <div class="d-flex justify-content-center" style = "width:100vw;">
+            <hr style="width: 1133px; height:3px;">
         </div>
-        <div></div>
+        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">Welcome to PEPICASE</div>
         <br>
-        <div class="d-flex justify-content-center">
-            <hr style="width: 1133px;">
-        </div>
         <div class ="lexend-light d-flex justify-content-center">
-            <p style = "width: 1133px; height: 845px; font-size:25px;">
+            <p style = "width: 1133px; height: fit-content; font-size:22px;">
             At Pepicase, we understand that your mobile phone is not just a device, it's a part of your identity. That's why we offer a wide range of stylish and durable phone cases  that not only protect your device but also reflect your unique style and personality.
             <br><br>
             Our collection includes cases for iPhone. From slim designs and unique, sleek designs to sturdy cases, we have something to suit every need and preference.
@@ -97,7 +95,10 @@
             We are passionate about delivering the best products and services to our customers. Whether you're looking for a simple phone case, we have got you covered. Browse our collection today and find the perfect accessory for your mobile phone!
          </p>
         </div>
-
+        <br>
+        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">
+        <a href=""><button style = "background-color:yellow;">HAVE A LOOK AT OUR PRODUCTS</button></a>
+        </div>
 
 
     <footer class="footer">
