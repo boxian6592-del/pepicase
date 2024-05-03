@@ -12,16 +12,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-        <style>
-            .lexend-tera 
-            {
-                font-family: "Lexend Tera", sans-serif;
-                font-optical-sizing: auto;
-                font-weight: 400;
-                font-style: normal;
-            }
-        </style>
+        <link rel="stylesheet" href="/pepicase/fonts.css">
+
+
 
     </head>
     <body>
@@ -85,16 +78,31 @@
                 </div>
             </div>
         </header>
-
+            
         
 
 
 
         <div class = "lexend-tera d-flex justify-content-center align-items-center" style = "height:200px;background-color:#FFFAE3; font-size:40px;">
-            COLLECTION BANNER
+            COLLECTION BANNER (with product-testing )
         </div>
-        <div style ="height: 750px; border:2px solid black;">
+        <div class="d-flex" style ="height: 750px;">
+
+            <div id = "image-box" class ="d-flex justify-content-center align-items-center" style = "margin-left: 145px; margin-top: 55px; width:495px; 
+            height:495px; background-color:#D9D9D9; border-radius: 10px;"></div>
+
+            <div style=" margin-top:55px; margin-left:125px; height:650px; width:650px; border:2px solid black;">
+
+                <div class="d-flex" style="height:fit-content; border:2px solid black;">
+                    <div id ="product_name" class="lexend" style = "line-height:44px; height:88px; width:fit-content;max-width:550px; font-size: 36px;"></div>
+                    <img style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;"src="/pepicase/pics/favorite_icon.svg" alt="favorite">
+                </div>
+                
+                    <div id="pricing" class="lexend-tera" style="font-size:20px;">$ 9.99 USD</div>
+
+            </div>
             
+
         </div>
 
         
@@ -171,7 +179,7 @@
             </div>
 
         </footer>
-        <script src = "/pepicase/general.js"></script>
+        <script src = "/pepicase/product/get_info.js"></script>
     </body>
 </html>
     <!--Đã có đính Boostrap cho CSS ở trên!
