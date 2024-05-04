@@ -1,16 +1,20 @@
 var img_pathing = "/pepicase/product-pics/testing.svg";
-var case_name = "My Melody_Milkshake Lmao";
-var price = "200000"
+var case_name = "My Melody_Milkshake";
+var price = "9.99"
 document.getElementById("image-box").innerHTML = 
 `<img src="${img_pathing}" alt="product" style = "height:398px; width:auto;"></img>`;
 document.getElementById("product_name").innerHTML =
 `<b>${case_name}</b>`;
-document.getElementById("pricing").innerText = price + " VNĐ";
+document.getElementById("pricing").innerText = "$ " + price + " USD";
 
+var quantity = 1;
+var total;
 
 var current_sizing = 0, previous_sizing, finalized_size;
 document.addEventListener("DOMContentLoaded", function()
 {
+    total = quantity * price;
+    document.getElementById("add_to_cart_button").innerText += "Add to Cart - $" + total + " USD";
     var sizingArr = document.getElementsByClassName("sizing");
     for(i = 0; i < sizingArr.length; i++)
         {
@@ -38,4 +42,34 @@ document.addEventListener("DOMContentLoaded", function()
                 }
             })
         }
+    document.getElementById("curr_quantity").innerText = quantity.toString();
+
+    
+
 })
+
+function favorite()
+{
+    var fav_icon = document.getElementById("favorite");      
+    if(fav_icon.src === "http://localhost/pepicase/pics/favorite_icon.svg")
+        fav_icon.src = "http://localhost/pepicase/pics/favorite_icon_shaded.svg";
+    else
+        fav_icon.src = "http://localhost/pepicase/pics/favorite_icon.svg";
+}
+
+function add()
+{
+    quantity++;
+    document.getElementById("curr_quantity").innerText = quantity;
+    total = price * quantity;
+    document.getElementById("add_to_cart_button").innerText = "Add to Cart - $" + (price * quantity) + " USD";
+}
+
+function minus()
+{
+    quantity--;
+    document.getElementById("curr_quantity").innerText = quantity;
+    total = price * quantity;
+    document.getElementById("add_to_cart_button").innerText = "Add to Cart - $" + (price * quantity) + " USD";
+}
+

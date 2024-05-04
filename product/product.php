@@ -86,16 +86,16 @@
         <div class = "lexend-tera d-flex justify-content-center align-items-center" style = "height:200px;background-color:#FFFAE3; font-size:40px;">
             COLLECTION BANNER (with product-testing )
         </div>
-        <div class="d-flex" style ="height: 750px;">
+        <div class="d-flex" style ="border:2px solid black; height: 675px;">
 
-            <div id = "image-box" class ="d-flex justify-content-center align-items-center" style = "margin-left: 145px; margin-top: 55px; width:495px; 
-            height:495px; background-color:#D9D9D9; border-radius: 10px;"></div>
+            <div id = "image-box" class ="shadow d-flex justify-content-center align-items-center" style = "margin-left: 145px; margin-top: 55px; width:495px; 
+            height:495px; background-color:#FFFAE3; border-radius: 10px;"></div>
 
-            <div style=" margin-top:55px; margin-left:125px; height:650px; width:650px; border:2px solid black;">
+            <div style=" margin-top:55px; margin-left:125px; height:575px; width:650px;">
 
-                <div class="d-flex" style="height:fit-content; border:2px solid black;">
+                <div class="d-flex" style="height:fit-content;">
                     <div id ="product_name" class="lexend" style = "line-height:44px; height:88px; width:fit-content;max-width:550px; font-size: 36px;"></div>
-                    <img style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;"src="/pepicase/pics/favorite_icon.svg" alt="favorite">
+                    <img id="favorite" onclick ="favorite()"  style=";margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;" src="/pepicase/pics/favorite_icon.svg" alt="favorite">
                 </div>
                 
                     <div id="pricing" class="lexend-tera" style="font-size:25px;"></div>
@@ -127,10 +127,26 @@
                     </div>
 
                     <div>
-                        <button class= "lexend d-flex align-items-center justify-content-center"style = "width: 350px; height: 50px; background-color:black; color:white; border-radius:20px;">Add to Cart</button>
+                        <button class = "sizing">iPhone 15</button>
+                        <button class = "sizing">iPhone 15 Plus</button>
+                        <button class = "sizing">iPhone 15 Pro</button>
+                        <button class = "sizing">iPhone 15 Pro Max</button>
                     </div>
+
+                    <div class="d-flex">
+                        <button id="add_to_cart_button" class= "lexend d-flex align-items-center justify-content-center" style = "width: 350px; height: 50px; background-color:black; color:white; border-radius:20px;"></button>
+                        <div id ="quantity" class ="d-flex" style = "border: 1px solid black; width:fit-content;margin-left:10px;">
+                            <button onclick="add()" id="plus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">+</button>
+                            <div id="curr_quantity" style ="width: 50px;"class= "lexend d-flex align-items-center justify-content-center"></div>
+                            <button onclick="minus()" id="minus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">-</button>
+                        </div>
+                    </div>
+
+                    <div style="font-size:15px; color:gray;">Free standard shipping</div>
             </div>
-            
+        </div>
+        <div class="lexend" style ="margin-left: 145px; font-size: 25px; height: fit-content;">CUSTOMER REVIEW</div>
+        <div style = "height:330px; border: 1px solid black; margin-top: 50px;">
 
         </div>
 
