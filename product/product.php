@@ -102,32 +102,35 @@
                         <button class = "sizing">iPhone 11</button>
                         <button class = "sizing">iPhone 11 Pro</button>
                         <button class = "sizing">iPhone 11 Pro Max</button>
+                        <button class = "sizing">iPhone XR</button>
                     </div>
 
                     <div>
                         <button class = "sizing">iPhone 12</button>
                         <button class = "sizing">iPhone 12 Pro</button>
                         <button class = "sizing">iPhone 12 Pro Max</button>
+                        <button class = "sizing">iPhone 12 Mini</button>
                     </div>
 
                     <div>
                         <button class = "sizing">iPhone 13</button>
                         <button class = "sizing">iPhone 13 Pro</button>
                         <button class = "sizing">iPhone 13 Pro Max</button>
+                        <button class = "sizing">iPhone 13 Mini</button>
                     </div>
 
                     <div>
                         <button class = "sizing">iPhone 14</button>
-                        <button class = "sizing">iPhone 14 Plus</button>
                         <button class = "sizing">iPhone 14 Pro</button>
                         <button class = "sizing">iPhone 14 Pro Max</button>
+                        <button class = "sizing">iPhone 14 Plus</button>
                     </div>
 
                     <div>
                         <button class = "sizing">iPhone 15</button>
-                        <button class = "sizing">iPhone 15 Plus</button>
                         <button class = "sizing">iPhone 15 Pro</button>
                         <button class = "sizing">iPhone 15 Pro Max</button>
+                        <button class = "sizing">iPhone 15 Plus</button>
                     </div>
 
                     <div class="d-flex">
@@ -146,15 +149,15 @@
             <div class="lexend" style = "height: fit-content; width: 1187px;">
                 <span style ="font-size: 25px;"><b>CUSTOMER REVIEWS</b></span> <br>
                 <span style ="font-size: 18px;">Rating</span> <br><br>
-                <img class = "review_star" data-value = 1 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
-                <img class = "review_star" data-value = 2 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
-                <img class = "review_star" data-value = 3 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
-                <img class = "review_star" data-value = 4 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
-                <img class = "review_star" data-value = 5 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
+                <img class = "review_star" data-value = 1 src="/pepicase/pics/review_star.svg" style ="height: 32px; width:30px;">
+                <img class = "review_star" data-value = 2 src="/pepicase/pics/review_star.svg" style ="height: 32px; width:30px;">
+                <img class = "review_star" data-value = 3 src="/pepicase/pics/review_star.svg" style ="height: 32px; width:30px;">
+                <img class = "review_star" data-value = 4 src="/pepicase/pics/review_star.svg" style ="height: 32px; width:30px;">
+                <img class = "review_star" data-value = 5 src="/pepicase/pics/review_star.svg" style ="height: 32px; width:30px;">
 
                 <br><br>
                 <span style ="font-size: 18px;">Your review</span> <br><br>
-                <input id="review_content" type="text" placeholder="Your thoughts about this item..." style = "margin:0; width:1186px; padding-bottom:50px; padding-left: 10px;">
+                <input id="review_content" type="text" placeholder="Your thoughts about this item..." style = "margin:0; width:1186px; padding-bottom:50px; padding-left: 10px; padding-top: 5px; border:1px solid grey ;border-radius: 2px;">
                 <button style = "float: right; margin-top:10px; background-color:black; color:white;"><span style="font-weight:300;">Post review</span></button>
             </div>
         </div>
