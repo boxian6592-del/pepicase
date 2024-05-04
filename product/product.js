@@ -44,17 +44,32 @@ document.addEventListener("DOMContentLoaded", function()
         }
     document.getElementById("curr_quantity").innerText = quantity.toString();
 
-    
-
+var starArr = document.getElementsByClassName("review_star");
+for(i = 0; i < starArr.length; i++)
+{
+    let i_pass_on = i;
+    starArr[i].addEventListener("click", function()
+    {
+        let index = starArr[i_pass_on].dataset.value;
+        for(let u = index - 1; u > -1; u--)
+            {
+                starArr[u].src = "http://localhost/pepicase/pics/review_star_shaded.svg";
+            }
+        for(let u = index; u < starArr.length; u++)
+            {
+                starArr[u].src = "http://localhost/pepicase/pics/review_star.svg";
+            }
+    })
+}
 })
 
 function favorite()
 {
     var fav_icon = document.getElementById("favorite");      
-    if(fav_icon.src === "http://localhost/pepicase/pics/favorite_icon.svg")
-        fav_icon.src = "http://localhost/pepicase/pics/favorite_icon_shaded.svg";
-    else
+    if(fav_icon.src === "http://localhost/pepicase/pics/favorite_icon_shaded.svg")
         fav_icon.src = "http://localhost/pepicase/pics/favorite_icon.svg";
+    else
+        fav_icon.src = "http://localhost/pepicase/pics/favorite_icon_shaded.svg";
 }
 
 function add()
@@ -72,4 +87,3 @@ function minus()
     total = price * quantity;
     document.getElementById("add_to_cart_button").innerText = "Add to Cart - $" + (price * quantity) + " USD";
 }
-

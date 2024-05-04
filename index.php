@@ -20,12 +20,12 @@
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
             <div style="padding-left:165px; padding-right:165px;" align = "center"><text>ALL PHONE CASES: Limited-time<br>40% Off</text></div>
             <div align = "center"><text>30 days free replacements<br>for quality issues.</text></div>
-            
         </div>
+
         <header>
             <div class="header">
                 <div class="top_header">
-                    <nav class="d-flex justify-content-between">
+                    <nav class="d-flex justify-content-between" >
                         <a href="" id="search">
                             <img src="/pepicase/pics/Search.png" alt="">
                         </a>
@@ -45,14 +45,14 @@
                 </div>
                 <div class="bottom_header">
                     <nav class="container">
-                        <ul id="main_menu">
+                        <ul id="main_menu" >
                             <li><a href="">New & Featured</a></li>
 
                             <li>
                                 <a href="/pepicase/product/product.php">Products</a>
                                 <span class="icon" style="color: blue; cursor: pointer;">></span>
                                 <ul class="sub_menu">
-                                    <li><a href="">Menu 2.1</a></li>
+                                    <li class="lexend"><a href="">Menu 2.1</a></li>
                                     <li><a href="">Menu 2.2</a></li>
                                     <li><a href="">Menu 2.3</a></li>
                                     <li><a href="">Menu 2.4</a></li>
@@ -76,40 +76,59 @@
                 </div>
             </div>
         </header>
+        
 
-        <img class = "banner" src="/pepicase/pics/banner.png" alt="banner" style = "width: 100%; height:auto;">
+
+
+        <img class = "banner" src="/pepicase/pics/pompurin_banner.svg" alt="banner" style = "width: 100%; height:auto;">
+
+
+
+        <div class = "lexend-deca d-flex justify-content-center" style ="height: 300px; font-size: 20px; background-color:#FEF3D8">
+                <div class= "d-flex flex-column align-items-center" style="width: fit-content; height: fit-content; margin-top: 75px;">
+                    <div>
+                        <img src = "/pepicase/pics/shipping_icon.svg" style ="height:68.75px; width:100px;">
+                    </div>
+                    <div style = "padding-bottom:10px;">
+                        <span><b>Fast shipping</b></span>
+                    </div>
+                    <div align="center">
+                        <span>Consistently delivers shipments <br> punctually with tracking.</span>
+                    </div>
+                </div>
+
+                <div class= "d-flex flex-column align-items-center" style="width: fit-content; height: fit-content; margin-top: 75px; margin-left: 100px; margin-right:100px;">
+                    <div>
+                        <img src = "/pepicase/pics/reply_icon.svg" style ="height:68.75px; width:100px;">
+                    </div>
+                    <div style = "padding-bottom:10px;">
+                        <span><b>Swift replies</b></span>
+                    </div>
+                    <div align="center">
+                        <span>Is usually quick to reply.</span>
+                    </div>
+                </div>
+
+                <div class= "d-flex flex-column align-items-center" style="width: fit-content; height: fit-content; margin-top: 75px;">
+                    <div>
+                        <img src = "/pepicase/pics/discount_icon.svg" style ="height:68.75px; width:100px;">
+                    </div>
+                    <div style = "padding-bottom:10px;">
+                        <span><b>Exclusive member discount</b></span>
+                    </div>
+                    <div align="center">
+                        <span>Take advantage of special offers, <br> just for you.</span>
+                    </div>
+                </div>
+            </div>
 
     <footer class="footer">
         <div class = "main-content">
-            <div class = "rows">
-                <div class = "column">
-                    <p class="title">Policy</p>
-                    <div class="footer-links">
-                        <a href="">Trading conditions</a><br>
-                        <a href="">Protect user information</a><br>
-                        <a href="">Secure customer transactions</a><br>
-                        <a href="">Product warranty policy</a><br>
-                        <a href="">Payment policies and regulations</a>
-                    </div>
-                </div>
-                <div class = "column">
-                    <p class="title">Customer Support</p>
-                    <div class="footer-links">
-                        <a href="">Shopping guide</a><br>
-                        <a href="">Electronic bill</a><br>
-                        <a href="">Shipping and delivery</a><br>
-                        <a href="">Payment methods</a><br>
-                        <a href="">Look up orders</a>
-                    </div> 
-                </div>
-                <div class = "column">
-                    <p class="title">Address</p>
-                    <div class="footer-a">
-                        <a href=""><img src="/pepicase/pics/location.svg" alt="location-icon"></a><br>
-                        <a href=""><img src="/pepicase/pics/sms.svg" alt="sms-icon"></a><br>
-                        <a href=""><img src="/pepicase/pics/call.svg" alt="call-icon"></a>
-                    </div>
-                </div>
+            <p class="title">Address</p>
+            <div class="footer-a">
+                <a href=""><img src="/pepicase/pics/location.svg" alt="location-icon"></a><br>
+                <a href=""><img src="/pepicase/pics/sms.svg" alt="sms-icon"></a><br>
+                <a href=""><img src="/pepicase/pics/call.svg" alt="call-icon"></a>
             </div>
         </div>
 

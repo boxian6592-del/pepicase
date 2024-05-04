@@ -78,15 +78,12 @@
                 </div>
             </div>
         </header>
-            
-        
-
 
 
         <div class = "lexend-tera d-flex justify-content-center align-items-center" style = "height:200px;background-color:#FFFAE3; font-size:40px;">
             COLLECTION BANNER (with product-testing )
         </div>
-        <div class="d-flex" style ="border:2px solid black; height: 675px;">
+        <div class="d-flex" style ="height: 675px;">
 
             <div id = "image-box" class ="shadow d-flex justify-content-center align-items-center" style = "margin-left: 145px; margin-top: 55px; width:495px; 
             height:495px; background-color:#FFFAE3; border-radius: 10px;"></div>
@@ -95,7 +92,7 @@
 
                 <div class="d-flex" style="height:fit-content;">
                     <div id ="product_name" class="lexend" style = "line-height:44px; height:88px; width:fit-content;max-width:550px; font-size: 36px;"></div>
-                    <img id="favorite" onclick ="favorite()"  style=";margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;" src="/pepicase/pics/favorite_icon.svg" alt="favorite">
+                    <img id="favorite" onclick ="favorite()" style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;" src="/pepicase/pics/favorite_icon.svg" alt="favorite">
                 </div>
                 
                     <div id="pricing" class="lexend-tera" style="font-size:25px;"></div>
@@ -145,16 +142,22 @@
                     <div style="font-size:15px; color:gray;">Free standard shipping</div>
             </div>
         </div>
-        <div class="lexend" style ="margin-left: 145px; font-size: 25px; height: fit-content;">CUSTOMER REVIEW</div>
-        <div style = "height:330px; border: 1px solid black; margin-top: 50px;">
+        <div class="d-flex justify-content-center" style ="height: 500px;">
+            <div class="lexend" style = "height: fit-content; width: 1187px;">
+                <span style ="font-size: 25px;"><b>CUSTOMER REVIEWS</b></span> <br>
+                <span style ="font-size: 18px;">Rating</span> <br><br>
+                <img class = "review_star" data-value = 1 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
+                <img class = "review_star" data-value = 2 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
+                <img class = "review_star" data-value = 3 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
+                <img class = "review_star" data-value = 4 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
+                <img class = "review_star" data-value = 5 src="/pepicase/pics/review_star.svg" style ="height: 30px; width:28px;">
 
+                <br><br>
+                <span style ="font-size: 18px;">Your review</span> <br><br>
+                <input id="review_content" type="text" placeholder="Your thoughts about this item..." style = "margin:0; width:1186px; padding-bottom:50px; padding-left: 10px;">
+                <button style = "float: right; margin-top:10px; background-color:black; color:white;"><span style="font-weight:300;">Post review</span></button>
+            </div>
         </div>
-
-        
-
-
-
-
 
 
 
