@@ -14,15 +14,41 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/fonts.css">
         <link rel="stylesheet" href="/pepicase/product/product.css">
-
-
     </head>
+    <?php 
+        $name = "";
+        $id = "";
+        $path = "";
+        $price = 0;
+        $conn = mysqli_connect("LAPTOP-R604O2UQ","baodang","lmao","testing");
+        if (mysqli_connect_errno()) {
+            echo "". mysqli_connect_error();
+            exit();
+        }
+        else
+        {
+            $sql = "SELECT * FROM product WHERE (product_id = '00001')";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_array($result);
+            }
+            $name = $row["product_name"];
+            $id = $row["product_id"];
+            $price = $row["price"];
+            $path = $row["pathing"];
+        }
+    ?>
+    <script>
+        var img_pathing = "<?php echo $path ?>";
+        var case_name = "<?php echo $name ?>";
+        var price = "<?php echo $price ?>"
+    </script>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
             <div style="padding-left:165px; padding-right:165px;" align = "center"><text>ALL PHONE CASES: Limited-time<br>40% Off</text></div>
             <div align = "center"><text>30 days free replacements<br>for quality issues.</text></div>
-            
+
         </div>
         <header>
             <div class="header">

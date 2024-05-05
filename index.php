@@ -16,6 +16,15 @@
 
     </head>
     <body>
+        <?php
+        $id1; $id2; $id3;
+        $conn = mysqli_connect("LAPTOP-R604O2UQ","baodang","lmao","testing");
+        if (mysqli_connect_errno()) {
+            echo "". mysqli_connect_error();
+            exit();
+        }
+
+        ?>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
             <div style="padding-left:165px; padding-right:165px;" align = "center"><text>ALL PHONE CASES: Limited-time<br>40% Off</text></div>
@@ -77,12 +86,66 @@
             </div>
         </header>
         
-
-
+        
+        
 
         <img class = "banner" src="/pepicase/pics/pompurin_banner.svg" alt="banner" style = "width: 100%; height:auto;">
 
+        <div class="lexend-deca" style = "font-size: 40px; font-weight; margin-left: 150px; margin-top:50px;"><b>OUR LATEST ARRIVALS</b></div>
+        <div class = "lexend d-flex justify-content-center align-items-center" style = "height:525px;">
 
+            <div class="d-flex flex-column" style ="width: 300px; height: 463px">
+                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
+                      <img src="/pepicase/product-pics/testing.svg" style = "width: 149px; height: 300px;">
+                </div>
+                <div align="center" style ="font-size:20px; font-weight: 200;">
+                    Pompompurin_Pudding iPhone <br> Case [111111]
+                </div>
+                <div align="center" style ="font-size:20px; font-weight: 200; color:#ACA7A7;">
+                    DESIGN FROM MOONGULAND
+                </div>
+                <div align="center" style ="font-size:25px; font-weight: 300;">
+                    $9.99 USD
+                </div>
+            </div>
+
+            <div class="d-flex flex-column" style ="width: 300px; height: 463px; margin-left:135px; margin-right:135px;">
+                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
+                      <img src="/pepicase/product-pics/testing.svg" style = "width: 149px; height: 300px;">
+                </div>
+                <div align="center" style ="font-size:20px; font-weight: 200;">
+                    Pompompurin_Pudding iPhone <br> Case [111111]
+                </div>
+                <div align="center" style ="font-size:20px; font-weight: 200; color:#ACA7A7;">
+                    DESIGN FROM MOONGULAND
+                </div>
+                <div align="center" style ="font-size:25px; font-weight: 300;">
+                    $9.99 USD
+                </div>
+            </div>
+
+            <div class="d-flex flex-column" style ="width: 300px; height: 463px">
+                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
+                      <img src="/pepicase/product-pics/testing.svg" style = "width: 149px; height: 300px;">
+                </div>
+                <div align="center" style ="font-size:20px; font-weight: 200;">
+                    Pompompurin_Pudding iPhone <br> Case [111111]
+                </div>
+                <div align="center" style ="font-size:20px; font-weight: 200; color:#ACA7A7;">
+                    DESIGN FROM MOONGULAND
+                </div>
+                <div align="center" style ="font-size:25px; font-weight: 300;">
+                    $9.99 USD
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center lexend" style = "margin-bottom:50px;">
+            <button style ="width: 150px; height: 50px; border-radius:20px; color:white; background-color:black;">VIEW ALL</button>
+        </div>
+
+        
 
         <div class = "lexend-deca d-flex justify-content-center" style ="height: 300px; font-size: 20px; background-color:#FEF3D8">
                 <div class= "d-flex flex-column align-items-center" style="width: fit-content; height: fit-content; margin-top: 75px;">
@@ -121,6 +184,46 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="lexend-deca" style = "font-size: 40px; font-weight; margin-left: 150px; margin-top:50px;"><b>OUR COLLECTIONS</b></div>
+        <div class = "lexend d-flex justify-content-center align-items-center" style = "height:525px;">
+
+            <div class="d-flex flex-column" style ="width: 300px; margin-top:150px;">
+                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#CFE0FC; border-radius:10px;">
+                      <img src="/pepicase/product-pics/testing.svg" style = "width: 149px; height: 300px;">
+                </div>
+                <div align="center" style ="font-size:25px; font-weight: 300;">
+                    <b>Cinamonroll</b>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column" style ="width: 300px; margin-left:135px; margin-right:135px;">
+                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
+                      <img src="/pepicase/product-pics/testing.svg" style = "width: 149px; height: 300px;">
+                </div>
+                <div align="center" style ="font-size:25px; font-weight: 300;">
+                    <strong>Pompompurin</strong><br>
+                    (NEWLY ARRIVED)
+                </div>
+            </div>
+
+            <div class="d-flex flex-column" style ="width: 300px; margin-top:150px;">
+                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FACAD3; border-radius:10px;">
+                      <img src="/pepicase/product-pics/testing.svg" style = "width: 149px; height: 300px;">
+                </div>
+                <div align="center" style ="font-size:25px; font-weight: 300;">
+                    <b>My Melody</b>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center lexend" style = "margin-bottom:50px;">
+            <button style ="width: 150px; height: 50px; border-radius:20px; color:white; background-color:black;">VIEW ALL</button>
+        </div>
+
 
     <footer class="footer">
         <div class = "main-content">

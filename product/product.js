@@ -1,6 +1,3 @@
-var img_pathing = "/pepicase/product-pics/testing.svg";
-var case_name = "My Melody_Milkshake";
-var price = "9.99"
 document.getElementById("image-box").innerHTML = 
 `<img src="${img_pathing}" alt="product" style = "height:398px; width:auto;"></img>`;
 document.getElementById("product_name").innerHTML =
@@ -9,6 +6,7 @@ document.getElementById("pricing").innerText = "$ " + price + " USD";
 
 var quantity = 1;
 var total;
+
 
 var current_sizing = 0, previous_sizing, finalized_size;
 document.addEventListener("DOMContentLoaded", function()
