@@ -16,15 +16,15 @@
 
     </head>
     <body>
-        <?php
-        $id1; $id2; $id3;
-        $conn = mysqli_connect("LAPTOP-R604O2UQ","baodang","lmao","testing");
-        if (mysqli_connect_errno()) {
-            echo "". mysqli_connect_error();
-            exit();
-        }
-
-        ?>
+        <!--
+            $id1; $id2; $id3;
+            $conn = mysqli_connect("LAPTOP-R604O2UQ","baodang","lmao","testing");
+            if (mysqli_connect_errno()) 
+            {
+                echo "". mysqli_connect_error();
+                exit();
+            }
+        -->
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
             <div style="padding-left:165px; padding-right:165px;" align = "center"><text>ALL PHONE CASES: Limited-time<br>40% Off</text></div>
