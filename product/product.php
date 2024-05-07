@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="/pepicase/fonts.css">
         <link rel="stylesheet" href="/pepicase/product/product.css">
     </head>
-    <?php 
+    <!--
         $name = "";
         $id = "";
         $path = "";
@@ -38,6 +38,7 @@
             $path = $row["pathing"];
         }
     ?>
+    -->
     <script>
         var img_pathing = "<?php echo $path ?>";
         var case_name = "<?php echo $name ?>";
