@@ -11,7 +11,7 @@ function printLmao(id, name, price, pathing)
 {
     var block = document.createElement("div");
     block.className = "lexend";
-    block.style ="width: 100%; height:fit-content; margin-left: 20vw;"
+    block.style ="width: 80%;height:fit-content; padding: 0; margin: 0;"
     block.innerHTML =
     `
     <div style = "font-size: 20px;">Date of order: 02, March, 2024</div>
@@ -20,7 +20,7 @@ function printLmao(id, name, price, pathing)
                 <img src="http://localhost${pathing}" style= "height: 80%; width:auto;">
             </div>
             <div style = "padding-left: 20px;">
-                <div style ="font-size: 20px;"><a src="http://localhost/pepicase/product/product.php"><b>${name}</b></a></div>
+            <a href="http://localhost/pepicase/product/product.php" style="color: black; text-decoration:none;"><div style ="font-size: 25px;"><b>${name}</b></div></a>
                 <div>
                     Model: ${id} <br>
                     Quantity: Probably 1
@@ -31,7 +31,7 @@ function printLmao(id, name, price, pathing)
             </div>
         </div>
         <div class="lexend" style = "font-size: 20px;">Date of receipt: 06, March, 2024</div>
-        <hr style ="height: 10px; margin-top:10px; width: 50w;">
+        <hr style ="height: 10px; margin-top:10px; width: 100%;">
     </div>
     `
     document.getElementById("page-body").appendChild(block);

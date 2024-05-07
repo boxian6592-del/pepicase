@@ -93,8 +93,9 @@
                 </div>
             </div>
         </header>
+
         
-        <div id ="page-body" class ="d-flex flex-column align-items-center">
+        <div id ="page-body" class ="d-flex flex-column align-items-center" style ="width: 100%;">
             <div class = "lexend-tera d-flex flex-column justify-content-center align-items-center" style = "height:275px; width:100%;background-color:#FFFAE3; font-size:40px; font-weight: 600;">
                 Purchases History
                 <button class="lexend" style ="height:50px; width:200px; font-size:20px; background-color:inherit; border-radius:20px; margin-top: 50px;"><b>SHOP ALL</b></button>
