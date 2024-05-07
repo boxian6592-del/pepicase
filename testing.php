@@ -1,37 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pepicase</title>
+        <link rel="stylesheet" href="/pepicase/header-footer.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/pepicase/fonts.css">
 </head>
 <body>
-<?php 
-        $name = "";
-        $id = "";
-        $pathing = "";
-        $price = 0;
-        $conn = mysqli_connect("LAPTOP-R604O2UQ","baodang","lmao","testing");
-        if (mysqli_connect_errno()) {
-            echo "". mysqli_connect_error();
-            exit();
-        }
-        else
-        {
-            $sql = "SELECT * FROM product WHERE (product_id = '00001')";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_array($result);
-            }
-            $name = $row["product_name"];
-            $id = $row["product_id"];
-            $price = $row["price"];
-            $path = $row["pathing"];
-        }
-        echo $name . "<br>";
-        echo $id . "<br>";
-        echo $price . "<br>";
-        echo $path;
-    ?>
+    <div>
+        
+    </div>
 </body>
 </html>
