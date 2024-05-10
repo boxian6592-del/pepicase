@@ -82,7 +82,7 @@
         <h2 class="text-center">Reset Password</h2>
         <hr>
         <div class="mb-3">
-            <label for="password" class="form-label text-center">Set your password</label>
+            <label for="password" class="form-label">Set your password</label>
             <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
         </div>
         <div class="d-grid gap-2">
