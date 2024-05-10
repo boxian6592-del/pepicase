@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend Deca:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Londrina Solid:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend Tera:wght@600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend Zetta:wght@200&display=swap"
+    />
+  </head>
+  <body>
+    <div class="wishlist">
+      <section class="frame-parent">
+        <div class="component-1-parent">
+          <div class="component-1">
+            <div class="frame-group">
+              <div class="deal-bar-wrapper">
+                <div class="deal-bar">
+                  <div class="free-shipping-worldwide-container">
+                    <p class="free-shipping-worldwide">
+                      Free Shipping worldwide for
+                    </p>
+                    <p class="orders-30-or">orders $30 or above</p>
+                  </div>
+                  <div class="all-phone-cases-container">
+                    <p class="all-phone-cases">ALL PHONE CASES: Limited-time</p>
+                    <p class="off">40% Off</p>
+                  </div>
+                  <div class="days-free-replacements-for-container">
+                    <p class="days-free-replacements">
+                      30 days free replacements
+                    </p>
+                    <p class="for-quality-issues">for quality issues.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="deal-bar-container">
+                <div class="deal-bar1">
+                  <div class="free-shipping-worldwide-container1">
+                    <p class="free-shipping-worldwide1">
+                      Free Shipping worldwide for
+                    </p>
+                    <p class="orders-30-or1">orders $30 or above</p>
+                  </div>
+                  <div class="all-phone-cases-container1">
+                    <p class="all-phone-cases1">
+                      ALL PHONE CASES: Limited-time
+                    </p>
+                    <p class="off1">40% Off</p>
+                  </div>
+                  <div class="days-free-replacements-for-container1">
+                    <p class="days-free-replacements1">
+                      30 days free replacements
+                    </p>
+                    <p class="for-quality-issues1">for quality issues.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <header class="pepicase-wrapper">
+              <div class="pepicase">
+                <div class="pepicase-child"></div>
+                <div class="search-wrapper">
+                  <img
+                    class="search-icon"
+                    loading="lazy"
+                    alt=""
+                    src="./public/search.svg"
+                  />
+                </div>
+                <div class="pepicase1">
+                  <h3 class="pepicase2">pepicase</h3>
+                </div>
+                <div class="cta-wrapper">
+                  <div class="cta">
+                    <img
+                      class="user-icon"
+                      loading="lazy"
+                      alt=""
+                      src="./public/user.svg"
+                    />
+
+                    <img
+                      class="cart-icon"
+                      loading="lazy"
+                      alt=""
+                      src="./public/cart.svg"
+                    />
+
+                    <img
+                      class="frame-icon"
+                      loading="lazy"
+                      alt=""
+                      src="./public/frame.svg"
+                    />
+                  </div>
+                </div>
+              </div>
+            </header>
+            <div class="navigation">
+              <div class="new-featured">New & Featured</div>
+              <div class="devices-parent">
+                <div class="devices">Devices</div>
+                <div class="frame-wrapper">
+                  <img class="frame-icon1" alt="" src="./public/frame-1.svg" />
+                </div>
+              </div>
+              <div class="collections-parent">
+                <div class="collections">Collections</div>
+                <div class="frame"></div>
+              </div>
+              <div class="about-us">About us</div>
+              <div class="me-parent">
+                <div class="me">Me</div>
+                <div class="frame-container">
+                  <img class="frame-icon2" alt="" src="./public/frame-2.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="banner">
+            <div class="rectangle-parent">
+              <div class="frame-child"></div>
+              <h2 class="title">Wishlist</h2>
+              <div class="secondary-wrapper">
+                <button class="secondary">
+                  <div class="button-outlined">
+                    <div class="base"></div>
+                    <div class="button-text">Shop All</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-wrapper">
+          <div class="product-card">
+            <div class="product-card-input">
+              <div class="product-image-parent">
+                <div class="product-image"></div>
+                <img
+                  class="sku-09-puddingdoglemonyellow-icon"
+                  loading="lazy"
+                  alt=""
+                  src="./public/sku09-puddingdoglemonyellow-pupileyeslens-967a749a764f4e2a8df95f4dfc7ca2e5-2--svg@2x.png"
+                />
+              </div>
+              <div class="product-title-parent">
+                <div class="product-title">
+                  Pompompurin_Flan iPhone Case [333333]
+                </div>
+                <div class="shape-wrapper">
+                  <img
+                    class="shape-icon"
+                    loading="lazy"
+                    alt=""
+                    src="./public/shape.svg"
+                  />
+                </div>
+              </div>
+              <div class="product-price">$9.99 USD</div>
+            </div>
+            <div class="product-card-input1">
+              <div class="product-price1">$9.99 USD</div>
+              <div class="product-image-group">
+                <div class="product-image1"></div>
+                <img
+                  class="pc456-1-svg"
+                  loading="lazy"
+                  alt=""
+                  src="./public/pc456-1--svg@2x.png"
+                />
+              </div>
+              <div class="product-title-group">
+                <div class="product-title1">
+                  Cinnamonroll_Ice cream iPhone Case [444444]
+                </div>
+                <div class="shape-container">
+                  <img class="shape-icon1" alt="" src="./public/shape-1.svg" />
+                </div>
+              </div>
+            </div>
+            <div class="product-card-input2">
+              <div class="product-price2">$9.99 USD</div>
+              <div class="product-image-container">
+                <div class="product-image2"></div>
+                <img
+                  class="pc456-2-svg"
+                  loading="lazy"
+                  alt=""
+                  src="./public/pc456-2--svg@2x.png"
+                />
+              </div>
+              <div class="product-title-container">
+                <div class="product-title2">
+                  My Melody_Milkshake iPhone Case [666666]
+                </div>
+                <div class="shape-frame">
+                  <img class="shape-icon2" alt="" src="./public/shape-2.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <img class="footer-child" alt="" src="./public/rectangle-4.svg" />
+
+        <div class="footer-inner">
+          <div class="frame-div">
+            <div class="address-wrapper">
+              <div class="address">
+                <img
+                  class="sms-icon"
+                  loading="lazy"
+                  alt=""
+                  src="./public/sms.svg"
+                />
+
+                <img
+                  class="location-icon"
+                  loading="lazy"
+                  alt=""
+                  src="./public/location.svg"
+                />
+
+                <img
+                  class="call-icon"
+                  loading="lazy"
+                  alt=""
+                  src="./public/call.svg"
+                />
+              </div>
+            </div>
+            <div class="social-media-icon">
+              <img
+                class="facebook-icon"
+                loading="lazy"
+                alt=""
+                src="./public/facebook-icon.svg"
+              />
+
+              <img
+                class="social-media-icon-child"
+                loading="lazy"
+                alt=""
+                src="./public/group-1.svg"
+              />
+
+              <img class="x-icon" loading="lazy" alt="" src="./public/x.svg" />
+            </div>
+          </div>
+        </div>
+        <div class="terms-of-use-parent">
+          <div class="terms-of-use">TERMS OF USE</div>
+          <div class="privacy-policy">PRIVACY POLICY</div>
+          <div class="prcollab">PR/COLLAB</div>
+          <div class="copyright-info">COPYRIGHT INFO</div>
+          <div class="faqs">FAQs</div>
+          <div class="help">HELP</div>
+        </div>
+      </footer>
+    </div>
