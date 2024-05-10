@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/fonts.css">
-        <link rel="stylesheet" href="resetpassword1.css">
+        <link rel="stylesheet" href="changepassword1.css">
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
@@ -79,15 +79,15 @@
         
 <div class="d-flex align-items-center justify-content-center">
     <form action="">
-        <h2 class="text-center">Reset Password</h2>
+        <h2 class="text-center">Change Password</h2>
         <hr>
         <div class="mb-3">
-            <label for="infor" class="form-label">Phone number / Email</label>
-            <input type="text" class="form-control" id="infor" name="infor" placeholder="0xxxxxxxxx/ ******@**" required>
+            <label for="infor" class="form-label">Enter Password</label>
+            <input type="text" class="form-control" id="infor" name="infor" placeholder="Enter the current password for verification ">
         </div>
-        <div class="d-grid gap-2">
-            <a href="/pepicase/resetpassword2.php" class="btn btn-primary">NEXT</a>
-            <a href="/pepicase/login.php">Cancel</a>
+        <div class="button">
+            <a href="/pepicase/changepassword2.php" class="btn btn-primary">CONFIRM</a>
+            <a href="/pepicase/resetpassword1.php" >Cancel</a>
         </div>
     </form>
 </div>
