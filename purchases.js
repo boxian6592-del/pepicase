@@ -11,7 +11,7 @@ function printLmao(id, name, price, pathing)
 {
     var block = document.createElement("div");
     block.className = "lexend";
-    block.style ="width: 80%;height:fit-content; padding: 0; margin: 0;"
+    block.style ="width: 80%;height:fit-content; padding: 0; margin: 0; margin-top: 5vh;"
     block.innerHTML =
     `
     <div style = "font-size: 20px;">Date of order: 02, March, 2024</div>

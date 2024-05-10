@@ -97,7 +97,7 @@
         </div>
         <br>
         <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">
-        <a href=""><button style = "background-color:yellow;">HAVE A LOOK AT OUR PRODUCTS</button></a>
+        <a href=""><button style = "background-color:yellow; border-radius: 10px;">HAVE A LOOK AT OUR PRODUCTS</button></a>
         </div>
 
 

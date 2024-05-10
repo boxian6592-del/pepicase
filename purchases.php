@@ -30,7 +30,7 @@
                     $new_row = [$row["product_id"], $row["product_name"], $row["price"], $row["pathing"]];
                     $array[] = $new_row;
                 }
-            }
+            } 
         }
     ?>
 
@@ -95,10 +95,10 @@
         </header>
 
         
-        <div id ="page-body" class ="d-flex flex-column align-items-center" style ="width: 100%;">
-            <div class = "lexend-tera d-flex flex-column justify-content-center align-items-center" style = "height:275px; width:100%;background-color:#FFFAE3; font-size:40px; font-weight: 600;">
+        <div id ="page-body" class ="container-fluid d-flex flex-column align-items-center" style = "margin: 0; padding: 0;">
+            <div class = "lexend-tera container-fluid d-flex flex-column justify-content-center align-items-center" style = "height:40vh; background-color:#FFFAE3; font-size:4.5vw; font-weight: 600;">
                 Purchases History
-                <button class="lexend" style ="height:50px; width:200px; font-size:20px; background-color:inherit; border-radius:20px; margin-top: 50px;"><b>SHOP ALL</b></button>
+                <button class="lexend" style ="height:10vh; width:18vw; font-size:20px; background-color:inherit; border-radius:20px; margin-top: 50px;"><b>SHOP ALL</b></button>
             </div>
         </div>
 

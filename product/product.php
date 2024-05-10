@@ -15,7 +15,8 @@
         <link rel="stylesheet" href="/pepicase/fonts.css">
         <link rel="stylesheet" href="/pepicase/product/product.css">
     </head>
-    <!--
+    <?php
+
         $name = "";
         $id = "";
         $path = "";
@@ -38,12 +39,13 @@
             $path = $row["pathing"];
         }
     ?>
-    -->
+    
     <script>
         var img_pathing = "<?php echo $path ?>";
         var case_name = "<?php echo $name ?>";
         var price = "<?php echo $price ?>"
     </script>
+
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
