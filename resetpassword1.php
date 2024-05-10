@@ -78,36 +78,21 @@
         </header>
         
         <div class="d-flex align-items-center justify-content-center">
-            <form action="">
-
-                <table>
-                    <tr>
-                        <td><h2>Reset Password</h2></td>
-                    </tr>
-                    <tr>
-                        <td><hr></td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <p>Phone number / Email</p>
-                        <input type="text" name="infor" placeholder="0xxxxxxxxx/ ******@**" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <a href="/pepicase/resetpassword2.php">
-                        <button type="button">NEXT</button>
-                        </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <a href="/pepicase/login.php">Cancel</a>
-                        </td>
-                    </tr>
-                    </table>
-            </form>
+    <form action="">
+        <h2 class="text-center">Reset Password</h2>
+        <hr>
+        <div class="mb-3">
+            <label for="infor" class="form-label">Phone number / Email</label>
+            <input type="text" class="form-control" id="infor" name="infor" placeholder="0xxxxxxxxx/ ******@**" required>
         </div>
+        <div class="d-grid gap-2">
+            <a href="/pepicase/resetpassword2.php" class="btn btn-primary">NEXT</a>
+            <a href="/pepicase/login.php">Cancel</a>
+        </div>
+    </form>
+</div>
+
+
         <footer class="footer">
         <div class = "main-content">
             <p class="title">Address</p>
