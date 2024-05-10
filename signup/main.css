@@ -25,7 +25,7 @@ header
     padding-top: 10px;
 }
 .name{
-    font-family:Comic Sans MS,cursive;
+    font-family: Londrina Solid;
     font-weight:bold;
     margin-left:30px;
     padding-bottom: 10px;
@@ -45,9 +45,6 @@ header
 
 .header .top_header nav{
     display: flex;
-    /* justify-content: space-between;
-    justify-items: center; */
-
 }
 
 #main_menu{
@@ -66,42 +63,96 @@ header
     font-family: Verdana;
 }
 
-/* dropdown menu */
-#main_menu .sub_menu{
-    list-style: none;
-    display: block;
-    padding: 0;
+/* form */
+:root{
+    --text-color: #1F3E97;
+    --margin-input-box: 0px;
+    --font-input-box: 'Lexend';
+}
+
+.title b{
+    color: var(--text-color);
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.input_box{
+    margin: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.input_box p{
+    color: var(--text-color);
+    margin: var(--margin-input-box);
+    font-family: var(--font-input-box);
+    line-height: 2;
+}
+
+/* password */
+.form_search{
+    display: flex;
+    margin: 0px;
+}
+.form_search input{
+    width: 100%;
+    outline: none;
+    border: 1px solid black;
+    border-right: none;
+}
+.eye{
+    border: 1px solid black;
+    background: white;
+    border-left: none;
     cursor: pointer;
 }
 
-#main_menu li:hover .sub_menu{
-    display: block;
-    max-height: fit-content;
+/* button sign up */
+.sign_up input{
+    background-color: #FFE57A; 
+    border-radius: 5px; 
+}
+.sign_up{
+    margin: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-family: var(--font-input-box);
+}
+
+/* thẻ hr + OR */
+.before{
+    width: 100%;
+}
+.last{
+    width: 100%;
 }
 
 
-
-.sub_menu{
-    line-height: 2.5;
-    overflow: hidden;
-    position: relative;
-    max-height: 0;
-    margin-left: 30px;
-    background-color: whitesmoke;
-    transition: 2s ease-out;
+/* Facebook + Google */
+.button {
+    display: inline-flex;
+    border:1px solid black;
+    margin: 10px;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-family: 'Lexend';
+}
+img{
+    width:20px;
+    height:20px;
+    margin-right: 15px;
 }
 
-.icon {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    cursor: pointer;
+/* check account */
+#check_account{
+    font-family: 'Lexend';
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.icon:hover {
-    transform: rotate(90deg);
-}
-
-
+/* footer */
 .footer {
     margin-top: 100px;
     width: 100%;
