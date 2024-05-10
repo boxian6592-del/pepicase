@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/fonts.css">
-        <link rel="stylesheet" href="resetpassword2,3.css">
+        <link rel="stylesheet" href="resetpassword2.css">
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
@@ -78,37 +78,21 @@
         </header>
         
         <div class="d-flex align-items-center justify-content-center">
-            <form action="">
-
-                <table>
-                    <tr>
-                        <td><h2>Reset Password</h2></td>
-                    </tr>
-                    <tr>
-                        <td><hr></td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <p>Enter Verification Code</p>
-                        <input type="text" name="infor" placeholder="123456" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <a href="/pepicase/resetpassword3.php">
-                        <button type="button">NEXT</button>
-                    </a>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <a href="/pepicase/resetpassword1.php">Cancel</a>
-                        </td>
-                    </tr>
-                    </table>
-            </form>
+    <form action="">
+        <h2 class="text-center">Reset Password</h2>
+        <hr>
+        <div class="mb-3">
+            <label for="infor" class="form-label">Enter Verification Code</label>
+            <input type="text" class="form-control" id="infor" name="infor" placeholder="123456" required>
         </div>
+        <div class="d-grid gap-2">
+            <a href="/pepicase/resetpassword3.php" class="btn btn-primary">NEXT</a>
+            <a href="/pepicase/resetpassword1.php" >Cancel</a>
+        </div>
+    </form>
+</div>
+
+
         <footer class="footer">
         <div class = "main-content">
             <p class="title">Address</p>

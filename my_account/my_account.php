@@ -13,13 +13,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/fonts.css">
+        <link rel="stylesheet" href="/pepicase/my_account/my_account.css">
     </head>
     <body>
-        <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
+    <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
             <div style="padding-left:165px; padding-right:165px;" align = "center"><text>ALL PHONE CASES: Limited-time<br>40% Off</text></div>
             <div align = "center"><text>30 days free replacements<br>for quality issues.</text></div>
-            
+
         </div>
         <header>
             <div class="header">
@@ -36,7 +37,7 @@
                             <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/pics/Cart.png" alt="">
                             </a>
-                            <a href="" style="text-decoration: none; color:white;">
+                            <a href="">
                                 <img src="/pepicase/pics/Frame.png" alt="">
                             </a>
                         </div>
@@ -69,39 +70,126 @@
                                 </ul>
                             </li>
 
-                            <li><a href="">About Us</a></li>
+                            <li><a href="/pepicase/about_us/about-us.php">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
 
-        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">ABOUT US</div>
-        <div class="d-flex justify-content-center" style = "width:100vw;">
-            <hr style="width: 1133px; height:3px;">
-        </div>
-        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">Welcome to PEPICASE</div>
-        <br>
-        <div class ="lexend-light d-flex justify-content-center">
-            <p style = "width: 1133px; height: fit-content; font-size:22px;">
-            At Pepicase, we understand that your mobile phone is not just a device, it's a part of your identity. That's why we offer a wide range of stylish and durable phone cases  that not only protect your device but also reflect your unique style and personality.
-            <br><br>
-            Our collection includes cases for iPhone. From slim designs and unique, sleek designs to sturdy cases, we have something to suit every need and preference.
-            <br><br>
-            We take pride in offering products that are not only fashionable but also functional. Our cases are made from high-quality materials that provide superior protection against scratches, drops, and other everyday wear and tear. We also offer a range of designs, including transparent, matte, glossy, and printed cases, to suit your preferences.
-            <br><br>
-            At Pepicase, we are committed to providing excellent customer service. Our team of experts is always ready to assist you with any questions or concerns you may have. We also offer free shipping and easy returns, so you can shop with confidence.
-            <br><br>
-            We are passionate about delivering the best products and services to our customers. Whether you're looking for a simple phone case, we have got you covered. Browse our collection today and find the perfect accessory for your mobile phone!
-         </p>
-        </div>
-        <br>
-        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">
-        <a href=""><button style = "background-color:yellow; border-radius: 10px;">HAVE A LOOK AT OUR PRODUCTS</button></a>
+<div class="container">
+    <div class="row" style="font-family:Lexend; line-height:auto; margin-left: 150px;">
+        <div class="col">
+            <div style="font-size:30px;">Credentials</div>
+            <p style="font-size:20px; margin-top:20px ;">Manage and protect your account</p>
+            <hr/>
+            <form style="font-size:20px; margin-left: 120px;">
+            <div class="row" style="margin-bottom: 20px">
+                <div class="col">
+                    <label>First name</label>
+                    <input id="firstname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px; height: 50px; "/>
+                </div>
+                <div class="col">
+                    <label for="lastname">Last name</label>
+                    <input id="lastname" class="form-control" type="text" placeholder="Abc"  style="font-size:20px; width: 300px; height: 50px;" />
+                </div>
+            </div>
+                <div class="form-group" style="margin-bottom: 20px">
+                    <label>Username</label>
+                    <input id="username" class="form-control" type="text" placeholder="Abc123" style="font-size:20px; width: 820px; height: 50px;"/>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px">
+                    <label>Email</label>
+                    <input id="email" class="form-control" type="email" placeholder="Xyz456@.***" style="font-size:20px; width: 820px; height: 50px;"/>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px">
+                    <label for="phone">Phone number</label>
+                    <input id="phone" class="form-control" type="tel" placeholder="0xxxxxxxxx" style="font-size:20px; width: 820px; height: 50px;"/>
+                </div>
+                <div class="form-group">
+            <div>
+                <label style ="margin-right: 80px; margin-bottom: 20px">Gender</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+            </div> 
         </div>
 
 
-    <footer class="footer">
+    <div class="form-group row" >
+        <label class="col-sm-2 col-form-label">Date of birth</label>
+        <div class="col-sm-6">
+            <div class="row" >
+                <div class="col">
+                    <select class="form-control" id="day" style="font-size:20px; height: 50px;">
+                        <?php for ($i = 1; $i <= 31; $i++) { ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-control" id="month" style="font-size:20px; height: 50px;">
+                        <?php 
+                        // Mảng chứa tên các tháng
+                        $months = array(
+                            1 => "January", 
+                            2 => "February", 
+                            3 => "March", 
+                            4 => "April", 
+                            5 => "May", 
+                            6 => "June", 
+                            7 => "July", 
+                            8 => "August", 
+                            9 => "September", 
+                            10 => "October", 
+                            11 => "November", 
+                            12 => "December"
+                        );
+                        ?>
+                        <?php foreach ($months as $key => $month) { ?>
+                        <option value="<?php echo $key; ?>"><?php echo $month; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-control" id="year" style="font-size:20px; height: 50px;">
+                        <?php 
+                            $current_year = date('Y');
+                            for ($i = $current_year; $i >= 1900; $i--) { ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+                <div class="form-group" style="margin-top: 20px">
+                    <label>My Address</label>
+                    <input id="address" class="form-control" type="text" placeholder="City, District, Ward" style="font-size:20px; width: 820px; height: 50px; " />
+                </div>
+            </form>
+            <hr/ style="margin-top: 40px;">
+            <div style="font-size:30px; color: #1F3E97;text-decoration-line: underline; ">Change Password</div>
+            <button class="save-button" style="background-color:#ffe57a; height:50px; width:150px; border-radius:5px; border:1px solid #000000; margin-top:30px; margin-left: 120px; font-size:20px;">SAVE</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+        <footer class="footer">
         <div class = "main-content">
             <div class = "rows">
                 <div class = "column">
@@ -151,10 +239,10 @@
             </div>
 
         </footer>
-        <script src = "general.js"></script>
+        <script src = "/pepicase/my_account/my_account.js"></script>
     </body>
 </html>
-    <!--Đã có đính Boostrap cho CSS ở trên!
-        Bootstrap dạng JS thì bỏ code này vào trong header hoặc trước </body>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->
+<!--Đã có đính Boostrap cho CSS ở trên!
+    Bootstrap dạng JS thì bỏ code này vào trong header hoặc trước </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->

@@ -13,33 +13,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/fonts.css">
+        <link rel="stylesheet" href="changepassword2.css">
     </head>
-
-    <?php 
-        $array = [];
-        $conn = mysqli_connect("LAPTOP-R604O2UQ","baodang","lmao","testing");
-        if (mysqli_connect_errno()) {
-            echo "". mysqli_connect_error();
-            exit();
-        }
-        else {
-            $sql = "SELECT * FROM product";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $new_row = [$row["product_id"], $row["product_name"], $row["price"], $row["pathing"]];
-                    $array[] = $new_row;
-                }
-            } 
-        }
-    ?>
-
-    <script>
-        var js_arr = '<?php echo json_encode($array) ?>'
-    </script>
-
     <body>
-    <header>
+        <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
+            <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
+            <div style="padding-left:165px; padding-right:165px;" align = "center"><text>ALL PHONE CASES: Limited-time<br>40% Off</text></div>
+            <div align = "center"><text>30 days free replacements<br>for quality issues.</text></div>
+        </div>
+
+        <header>
             <div class="header">
                 <div class="top_header">
                     <nav class="d-flex justify-content-between" >
@@ -93,20 +76,22 @@
                 </div>
             </div>
         </header>
-
         
-        <div id ="page-body" class ="container-fluid d-flex flex-column align-items-center" style = "margin: 0; padding: 0;">
-            <div class = "lexend-tera container-fluid d-flex flex-column justify-content-center align-items-center" style = "height:40vh; background-color:#FFFAE3; font-size:4.5vw; font-weight: 600;">
-                Purchases History
-                <button class="lexend" style ="height:10vh; width:18vw; font-size:20px; background-color:inherit; border-radius:20px; margin-top: 50px;"><b>SHOP ALL</b></button>
-            </div>
+<div class="d-flex align-items-center justify-content-center">
+    <form action="">
+        <h2 class="text-center">Change Password</h2>
+        <hr>
+        <div class="mb-3">
+            <label for="infor" class="form-label">New Password</label>
+            <input type="text" class="form-control" id="infor" name="infor" placeholder="Xyz456@">
+            <label for="infor" class="form-label">Confirm password</label>
+            <input type="text" class="form-control" id="infor" name="infor" placeholder="Xyz456@">
         </div>
-
-
-
-
-
-
+        <div class="">
+            <a href="/pepicase/index.php" class="btn btn-primary">CONFIRM</a>
+        </div>
+    </form>
+</div>
 
 
         <footer class="footer">
@@ -135,6 +120,8 @@
             </div>
 
         </footer>
-        <script src="/pepicase/purchases.js"></script>
+        <script src = "/pepicase/general.js"></script>
+
+
     </body>
- 
+</html>
