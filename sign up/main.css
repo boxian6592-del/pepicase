@@ -1,0 +1,159 @@
+body
+{
+    margin:0;
+    padding: 0;
+}
+
+.sales
+{
+    background-color: black;
+    color: white;
+}
+
+.container{
+    max-width: 960px;
+    margin: 0;
+}
+
+header
+{
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.header .top_header{
+    padding-top: 10px;
+}
+.name{
+    font-family:Comic Sans MS,cursive;
+    font-weight:bold;
+    margin-left:30px;
+    padding-bottom: 10px;
+}
+.logo_right{
+    margin-right:50px;
+}
+
+#search{
+    margin-left:120px;
+}
+
+
+.header .bottom_header{
+    padding-bottom: 10px;
+}
+
+.header .top_header nav{
+    display: flex;
+    /* justify-content: space-between;
+    justify-items: center; */
+
+}
+
+#main_menu{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-items: center;
+    justify-content: center;
+}
+
+#main_menu li a{
+    text-decoration: none;
+    padding: 0px 30px;
+    color: black;
+    font-family: Verdana;
+}
+
+/* dropdown menu */
+#main_menu .sub_menu{
+    list-style: none;
+    display: block;
+    padding: 0;
+    cursor: pointer;
+}
+
+#main_menu li:hover .sub_menu{
+    display: block;
+    max-height: fit-content;
+}
+
+
+
+.sub_menu{
+    line-height: 2.5;
+    overflow: hidden;
+    position: relative;
+    max-height: 0;
+    margin-left: 30px;
+    background-color: whitesmoke;
+    transition: 2s ease-out;
+}
+
+.icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.icon:hover {
+    transform: rotate(90deg);
+}
+
+
+.footer {
+    margin-top: 100px;
+    width: 100%;
+    background-color: #FFE57A;
+  }
+  
+.footer .rows {
+    display: flex;
+}
+.footer .column:nth-child(1) {
+    margin-top: 76px;
+    margin-left: 162px;
+    width: 328px;
+    font-size: 20px;
+}
+.footer .column:nth-child(2) {
+    margin-top: 76px;
+    margin-left: 61px;
+    width: 218px;
+    font-size: 20px;
+}
+.footer .column:nth-child(3) {
+    margin-top: 76px;
+    margin-left: 184px;
+    width: 347px;
+    font-size: 20px;
+}
+.title {
+    color: #844700;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: bold;
+}
+.footer-links a {
+    color: #171717;
+    text-decoration: none;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+.bottom-nav a
+{
+    margin-right: 75px;
+    text-decoration: none;
+    color: white;
+}
+
+.ship_rep_dis
+{
+    padding-top: 100px;
+    width: fit-content;
+    height: fit-content; 
+}
