@@ -22,6 +22,7 @@
             <div align = "center"><text>30 days free replacements<br>for quality issues.</text></div>
         </div>
 
+        <!-- header -->
         <header>
             <div class="header">
                 <div class="top_header">
@@ -59,63 +60,75 @@
             </div>
         </header>
 
+        <!-- body -->
         <div class="d-flex align-items-center justify-content-center">
             <form action="">
                 <h2 class="title" style="margin: 0px;"><b>SIGN UP</b></h2>
+                <form action="">
+                    <table>
+                        <tr>
+                            <td>
+                                <p><b>Email</b></p>
+                                <input type="email" name="Email" placeholder="Abc123@gmail.com" required>
+                            </td>
+                        </tr>
 
-                <div class="input_box">
-                    <p><b>Email</b></p>
-                    <input style="width: 100%" type="email" name="Email" placeholder="Abc123@gmail.com" required>
-                </div>
+                        <tr>
+                            <td>
+                                <p><b>Password</b></p>
+                                <div class="form_search">
+                                    <input type="password" name="Password" id="password_input" placeholder="Abc12345" required>
+                                    <button type="password" class="eye" id="toggle_password">
+                                        <a href="#"><img src="/pepicase/pics/Ellipse.svg" alt=""></a>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
 
-                <div class="input_box">
-                    <p><b>Password</b></p>
-                    <div class="form_search">
-                        <input type="password" name="Password" id="password_input" placeholder="Abc12345" required>
-                        <button type="password" class="eye" id="toggle_password">
-                            <img src="/pepicase/pics/Ellipse.svg" alt="">
-                        </button>
+                        <tr>
+                            <td>
+                                <p><b>Confirm password</b></p>
+                                <div class="form_search">
+                                    <input type="password" name="Confirm_password" id="confirm_password_input" placeholder="Abc12345" required>
+                                    <button type="password" class="eye" id="toggle_confirm_password">
+                                        <a href="#"><img src="/pepicase/pics/Ellipse.svg" alt=""></a>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <input style="width: 100%" type="button" name="Sign_up" value="SIGN UP" onclick="checkpassword()">
+                            </td>
+                        </tr>
+                    </table>    
+
+                    <div class="d-flex">
+                        <hr class="before">
+                        <text style="padding: 5px;">OR</text>
+                        <hr class="last">
                     </div>
-                </div>
 
-                <div class="input_box">
-                    <p><b>Confirm password</b></p>
-                    <div class="form_search">
-                        <input type="password" name="Confirm_password" id="confirm_password_input" placeholder="Abc12345" required>
-                        <button type="password" class="eye" id="toggle_confirm_password">
-                            <a href="#"><img src="/pepicase/pics/Ellipse.svg" alt=""></a>
-                        </button>
+                    <div class="d-flex justify-content-between">
+                        <a href="https://www.facebook.com/login">
+                            <button type="button" class="button">
+                                <img src="/pepicase/pics/Facebook_icon.svg" alt="Facebook">Facebook</button>
+                        </a>
+                        <a href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ec=GAlAFw&hl=en&service=mail&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S1107958247%3A1715339486806763&ddm=0">
+                            <button type="button" class="button">
+                                <img src="/pepicase/pics/Google_Icons-09-512.webp" alt="Google">Google</button>
+                        </a> 
                     </div>
-                </div>
-                
-                <div class="sign_up">
-                    <input style="width: 100%" type="button" name="Sign_up" value="SIGN UP" onclick="checkpassword()">
-                </div>
 
-                <div class="d-flex">
-                    <hr class="before">
-                    <text style="padding: 5px;">OR</text>
-                    <hr class="last">
-                </div>
-
-                <div class="d-flex justify-content-between">
-                    <a href="https://www.facebook.com/login">
-                        <button type="button" class="button">
-                            <img src="/pepicase/pics/Facebook_icon.svg" alt="Facebook">Facebook</button>
-                    </a>
-                    <a href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ec=GAlAFw&hl=en&service=mail&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S1107958247%3A1715339486806763&ddm=0">
-                        <button type="button" class="button">
-                            <img src="/pepicase/pics/Google_Icons-09-512.webp" alt="Google">Google</button>
-                    </a> 
-                </div>
-
-                <div class="d-flex" id="check_account">
-                    <p style="color: #A7A7A7; margin-right: 8px">Have an account?</p>
-                    <a style="color: #844700;" href="/pepicase/login.php">Login</a>
-                </div>
+                    <div class="d-flex" id="check_account">
+                        <p style="color: #A7A7A7; margin-right: 8px">Have an account?</p>
+                        <a style="color: #844700;" href="/pepicase/login.php">Login</a>
+                    </div>
             </form>
         </div>
 
+        <!-- footer -->
         <footer class="footer">
         <div class = "main-content">
             <div class = "rows">
