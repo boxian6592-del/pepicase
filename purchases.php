@@ -17,7 +17,7 @@
 
     <?php 
         $array = [];
-        $conn = mysqli_connect("LAPTOP-R604O2UQ","baodang","lmao","testing");
+        $conn = mysqli_connect("LAPTOP-R604O2U","baodang","lmao","pepicase");
         if (mysqli_connect_errno()) {
             echo "". mysqli_connect_error();
             exit();

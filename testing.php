@@ -35,6 +35,7 @@
                 name: inputName,
                 age: inputAge
             };
+            
             fetch("/pepicase/back-end/process-login.php",  
             {
                 method: 'POST',
