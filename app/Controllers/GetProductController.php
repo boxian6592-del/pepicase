@@ -13,7 +13,11 @@ class GetProductController extends BaseController
     public function get_with_id(int $id): string
     {
         $product = new Product($id);
-        return view('product', $product->getFullInfo());
+        if($product->check_if_found())
+        {
+            return view('product', $product->getFullInfo());
+        }
+        else return view('testing');
     }
 
     public function get_through_collections(): string

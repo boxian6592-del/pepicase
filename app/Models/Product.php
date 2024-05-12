@@ -12,13 +12,17 @@ class Product extends Model
     protected $price = null;
     protected $productID = null;
     protected $imgPath = null;
+
     public function __construct($id = null)
     {
         if($id != null)
         {
             $db = Database::connect();
             $result = $db->query("SELECT * FROM $this->table WHERE $this->primaryKey = ".$id)->getResult();
-            if (empty($result)) ;
+            if (empty($result))
+            {
+                $this->productID = "not_found";
+            }
             else
             {
                 $row = $result[0];
@@ -29,6 +33,13 @@ class Product extends Model
             }
         }
     }
+
+    public function check_if_found()
+    {
+        if ($this->productID == "not_found") return false;
+        else return true;
+    }
+
 
     public function getFullInfo()
     {

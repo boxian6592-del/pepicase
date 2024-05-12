@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>pepicase</title>
-        <link rel="stylesheet" href="/pepicase - new/signup/signup.css">
+        <link rel="stylesheet" href="/pepicase/public/css/signup_new.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/pepicase/fonts.css">
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="/pepicase/public/fonts.css">
+        <link rel="stylesheet" href="/pepicase/public/login.css">
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="margin: 0px; font-size: 15px;">
@@ -28,18 +28,18 @@
                 <div class="top_header">
                     <nav class="d-flex justify-content-between" >
                         <a href="" id="search">
-                            <img src="/pepicase/pics/Search.png" alt="">
+                            <img src="/pepicase/public/pics/Search.png" alt="">
                         </a>
-                        <h2 class="name"><a href="/pepicase/index.php" style = "color:inherit; text-decoration:none; font-family: 'Lexend'">pepicase</a></h2>
+                        <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Lexend'">pepicase</a></h2>
                         <div class="logo_right">
                             <a href="" style="margin-right:20px; text-decoration: none; color:white;">
-                                <img src="/pepicase/pics/Vector (1).png" alt="">
+                                <img src="/pepicase/public/pics/Vector (1).png" alt="">
                             </a>
                             <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
-                                <img src="/pepicase/pics/Cart.png" alt="">
+                                <img src="/pepicase/public/pics/Cart.png" alt="">
                             </a>
                             <a href="">
-                                <img src="/pepicase/pics/Frame.png" alt="">
+                                <img src="/pepicase/public/pics/Frame.png" alt="">
                             </a>
                         </div>
                     </nav>
@@ -49,11 +49,11 @@
                         <ul id="main_menu">
                             <li><a style="font-family: 'Lexend';" href="">New & Featured</a></li>
 
-                            <li><a style="font-family: 'Lexend';" href="/pepicase/product/product.php">Products</a></li>
+                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/product/">Products</a></li>
 
                             <li><a style="font-family: 'Lexend';" href="">Collections</a></li>
 
-                            <li><a style="font-family: 'Lexend';" href="/pepicase/about_us/about-us.php">About Us</a></li>
+                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/about-us/">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -83,7 +83,7 @@
                     <div class="input-group">
                         <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;">
                         <span style="background: white; cursor: pointer; border-left: none;" class="input-group-text">
-                            <img style="margin: 0px;" id="toggle_confirm_password" src="/pepicase/pics/Ellipse.svg" alt="">
+                            <img style="margin: 0px;" id="toggle_confirm_password" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
                     </div>
                 </div>
@@ -103,45 +103,50 @@
                 <div class="d-flex justify-content-between">
                     <a href="https://www.facebook.com/login">
                         <button type="button" class="button">
-                            <img style="width: 24px; height: 24px; margin-right: 5px" src="/pepicase/pics/Facebook_icon.svg" alt="facebook">
+                            <img style="width: 24px; height: 24px; margin-right: 5px" src="/pepicase/public/pics/Facebook_icon.svg" alt="facebook">
                         Facebook</button>                   
                     </a>
 
                     <a href="https://accounts.google.com/v3/signin/confirmidentifier?checkedDomains=youtube&ddm=0&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=vi-VN&ifkv=AaSxoQxF7iM5g2X5560Y9hKDGUHW_NKArdkEMVOy7FzmTEXCeEMDlN1nDxJ3wAzQcMkWNJrY6jIvBw&pstMsg=1&service=chromiumsync&dsh=S-1828235792%3A1715516019848185">
                         <button class="button" style="text-decoration: none;">
-                            <img style="width: 26px; height: 26px; margin-right: 5px" src="/pepicase/pics/Google_Icons-09-512.webp" alt="google">
+                            <img style="width: 26px; height: 26px; margin-right: 5px" src="/pepicase/public/pics/Google_Icons-09-512.webp" alt="google">
                         Google</button>
                     </a> 
                 </div>
 
                 <div class="d-flex justify-content-center" id="check_account">
                     <p style="color: #A7A7A7; margin-right: 8px">Have an account?</p>
-                    <a style="color: #844700;" href="/pepicase/login.php">Login</a>
+                    <a style="color: #844700;" href="/pepicase/public/">Login</a>
                 </div>
             </form>
         </div>
 
         <!-- footer -->
         <footer class="footer">
-            <div class ="icons d-flex justify-content-center align-items-center" style = "height: 250px; padding-bottom: 20px; padding-top: 10px">
-                <a href=""><img src="/pepicase/pics/location.svg" alt="location-icon"></a><br>
-                <a href=""><img src="/pepicase/pics/sms.svg" alt="sms-icon"></a><br>
-                <a href=""><img src="/pepicase/pics/call.svg" alt="call-icon"></a>
+        <div class = "main-content">
+            <p class="title">Address</p>
+            <div class="footer-a">
+                <a href=""><img src="/pepicase/public/pics/location.svg" alt="location-icon"></a><br>
+                <a href=""><img src="/pepicase/public/pics/sms.svg" alt="sms-icon"></a><br>
+                <a href=""><img src="/pepicase/public/pics/call.svg" alt="call-icon"></a>
+            </div>
+        </div>
 
-                <a href=""><img src="/pepicase/pics/Facebook Icon.png" class = "img-rounded" alt="facebook-icon" style ="margin-left: 100px;"></a>
-                <a href=""><img src="/pepicase/pics/Group 1.png" class = "img-rounded" alt="facebook-icon"></a>
-                <a href=""><img src="/pepicase/pics/x.png" class = "img-rounded" alt="facebook-icon"></a>
+            <div class ="icons d-flex justify-content-center align-items-center" style = "height: 250px; padding-bottom: 30px;">
+                <a href=""><img src="/pepicase/public/pics/Facebook Icon.png" class = "img-rounded" alt="facebook-icon" style ="margin-right: 40px;"></a>
+                <a href=""><img src="/pepicase/public/pics/Group 1.png" class = "img-rounded" alt="facebook-icon"></a>
+                <a href=""><img src="/pepicase/public/pics/x.png" class = "img-rounded" alt="facebook-icon" style ="margin-left: 40px;"></a>
             </div>
 
-            <div class = "bottom-nav lexend" style = "margin-left: 100px; padding-bottom: 20px; font-size: 20px;">
-                <a href=""><b>TERMS OF USE</b></a>
-                <a href=""><b>PRIVACY POLICY</b></a>
-                <a href=""><b>PR/COLLAB</b></a>
-                <a href=""><b>COPYRIGHT INFO</b></a>
-                <a href=""><b>FAQs</b></a>
-                <a href=""><b>HELP</b></a>
+            <div class = "bottom-nav lexend" style = "margin-left: 45px; padding-bottom: 20px; font-size: 20px;">
+                <a href="">TERMS OF USE</a>
+                <a href="">PRIVACY POLICY</a>
+                <a href="">PR/COLLAB</a>
+                <a href="">COPYRIGHT INFO</a>
+                <a href="">FAQs</a>
+                <a href="">HELP</a>
             </div>
-        </footer>      
+        </footer>
         <script>
             // nhấn vào con mắt sẽ hiện ra password
             document.getElementById('toggle_password').addEventListener('click', function() {
@@ -160,7 +165,6 @@
                     passwordInput.type = 'password';
                 }
             });
-                      
         </script>
 
         

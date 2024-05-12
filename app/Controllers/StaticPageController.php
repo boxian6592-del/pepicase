@@ -9,7 +9,7 @@ class StaticPageController extends BaseController
         return view('policy');
     }
     
-    public function AboutUs():string
+    public function AboutUs(): string
     {
         return view('about-us');
     }
