@@ -1,0 +1,113 @@
+CRITICAL - 2024-05-11 12:43:03 --> ErrorException: Undefined property: App\Controllers\GetProductController::$db
+[Method: GET, Route: product/3]
+in APPPATH\Controllers\GetProductController.php on line 14.
+ 1 APPPATH\Controllers\GetProductController.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\GetProductController::$db', 'C:\\xampp\\htdocs\\pepicase\\app\\Controllers\\GetProductController.php', 14)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-11 12:49:19 --> mysqli_sql_exception: Table 'pepicase.my_table' doesn't exist in C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM m...', 0)
+#1 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM m...')
+#2 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM m...')
+#3 C:\xampp\htdocs\pepicase\app\Controllers\GetProductController.php(14): CodeIgniter\Database\BaseConnection->query('SELECT * FROM m...')
+#4 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+#5 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+#6 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2024-05-11 12:49:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pepicase.my_table' doesn't exist
+[Method: GET, Route: product/3]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Controllers\GetProductController.php(14): CodeIgniter\Database\BaseConnection->query('SELECT * FROM my_table')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 12:49:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pepicase.my_table' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM my_table')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM my_table')
+ 3 APPPATH\Controllers\GetProductController.php(14): CodeIgniter\Database\BaseConnection->query('SELECT * FROM my_table')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 12:49:19 --> [Caused by] mysqli_sql_exception: Table 'pepicase.my_table' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM my_table', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM my_table')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM my_table')
+ 4 APPPATH\Controllers\GetProductController.php(14): CodeIgniter\Database\BaseConnection->query('SELECT * FROM my_table')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 12:49:54 --> ErrorException: Undefined array key "Name"
+[Method: GET, Route: product/3]
+in APPPATH\Controllers\GetProductController.php on line 19.
+ 1 APPPATH\Controllers\GetProductController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Name"', 'C:\\xampp\\htdocs\\pepicase\\app\\Controllers\\GetProductController.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 12:50:17 --> ErrorException: Undefined array key 1
+[Method: GET, Route: product/3]
+in APPPATH\Controllers\GetProductController.php on line 20.
+ 1 APPPATH\Controllers\GetProductController.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\xampp\\htdocs\\pepicase\\app\\Controllers\\GetProductController.php', 20)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 12:50:53 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: product/3]
+in APPPATH\Controllers\GetProductController.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 12:50:54 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: product/3]
+in APPPATH\Controllers\GetProductController.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 12:50:56 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: product/3]
+in APPPATH\Controllers\GetProductController.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-11 13:36:22 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: product/3]
+in APPPATH\Models\Product.php on line 26.
+ 1 APPPATH\Controllers\GetProductController.php(15): App\Models\Product->__construct(3)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\GetProductController->get_with_id(3)
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GetProductController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
