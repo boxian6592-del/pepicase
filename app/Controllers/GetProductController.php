@@ -17,7 +17,7 @@ class GetProductController extends BaseController
         {
             return view('product', $product->getFullInfo());
         }
-        else return view('testing');
+        else throw new \CodeIgniter\Exceptions\PageNotFoundException(view('errors/html/error_404'));
     }
 
     public function get_through_collections(): string

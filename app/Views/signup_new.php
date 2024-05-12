@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/public/fonts.css">
         <link rel="stylesheet" href="/pepicase/public/login.css">
+        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="margin: 0px; font-size: 15px;">
@@ -30,7 +31,7 @@
                         <a href="" id="search">
                             <img src="/pepicase/public/pics/Search.png" alt="">
                         </a>
-                        <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Lexend'">pepicase</a></h2>
+                        <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Londrina Solid'">pepicase</a></h2>
                         <div class="logo_right">
                             <a href="" style="margin-right:20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/public/pics/Vector (1).png" alt="">
@@ -51,7 +52,7 @@
 
                             <li><a style="font-family: 'Lexend';" href="/pepicase/public/product/">Products</a></li>
 
-                            <li><a style="font-family: 'Lexend';" href="">Collections</a></li>
+                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/collections">Collections</a></li>
 
                             <li><a style="font-family: 'Lexend';" href="/pepicase/public/about-us/">About Us</a></li>
                         </ul>

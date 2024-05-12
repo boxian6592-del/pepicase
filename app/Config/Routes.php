@@ -16,6 +16,5 @@ $routes->get('/login','LoginController::index');
 $routes->get('/signup','LoginController::signup');
 $routes->get('/resetPassword','LoginController::resetPassword');
 $routes->get('/testing','HomepageController::testing');
-
 $routes->post('/signup/(:string)/(:string)','SignUpController::send_signup_email/$1/$2');
 $routes->get('/signup/confirm/(:string)/(:string)','SignUpController::signup/$1/$2');

@@ -6,37 +6,32 @@ use Config\Database;
 
 class User extends Model
 {
-    protected $table = 'users';
+    protected $table = 'user';
     protected $primaryKey = 'id';
     protected $email = null;
     protected $password = null;
-    protected $remember_token = null;
+    protected $isAdmin = null;
 
+    public $id = null;
 
-    public function checkCreds($email, $password)
+    public function __construct($email, $password)
     {
         $db = Database::connect();
         $result = $db->query("SELECT * FROM $this->table WHERE EMAIL = $email")->getResult();
-        if (empty($result)) return false;
-        else if($result[0]->password != $password) return false;
-        else return true;
-    }
-    public function __construct($id = null)
-    {
-        if($id != null)
+        if (empty($result));
+        else
         {
-            $db = Database::connect();
-            $result = $db->query("SELECT * FROM $this->table WHERE $this->primaryKey = ".$id)->getResult();
-            if (empty($result)) ;
-            else
-            {
-                $row = $result[0];
-                $this->productID = $row->ID;
-                $this->price = $row->Price;
-                $this->name = $row->Name;
-                $this->imgPath = $row->Image;
-            }
+            $row = $result[0];
+            $this->id = $row->ID;
+            $this->email = $row->Email;
+            $this->password = $row->Password;
+            $this->isAdmin = $row->Is_Admim;
         }
     }
 
+    public function check_if_logged_in()
+    {
+        if (empty($this->id)) return false;
+        else return true;
+    }
 }

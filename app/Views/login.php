@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/public/css/fonts.css">
         <link rel="stylesheet" href="/pepicase/public/css/login.css">
-
+        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
@@ -30,7 +30,7 @@
                         <a href="" id="search">
                             <img src="/pepicase/public/pics/Search.png" alt="">
                         </a>
-                        <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none;">pepicase</a></h2>
+                        <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Londrina Solid'">pepicase</a></h2>
                         <div class="logo_right">
                             <a href="" style="margin-right:20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/public/pics/Vector (1).png" alt="">
@@ -46,39 +46,21 @@
                 </div>
                 <div class="bottom_header">
                     <nav class="container">
-                        <ul id="main_menu" >
-                            <li><a href="">New & Featured</a></li>
+                        <ul id="main_menu">
+                            <li><a style="font-family: 'Lexend';" href="">New & Featured</a></li>
 
-                            <li>
-                                <a href="/pepicase/public/product">Products</a>
-                                <span class="icon" style="color: blue; cursor: pointer;">></span>
-                                <ul class="sub_menu">
-                                    <li class="lexend"><a href="">Menu 2.1</a></li>
-                                    <li><a href="">Menu 2.2</a></li>
-                                    <li><a href="">Menu 2.3</a></li>
-                                    <li><a href="">Menu 2.4</a></li>
-                                </ul>
-                            </li>
+                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/product/">Products</a></li>
 
-                            <li>
-                                <a href="">Collections</a>
-                                <span class="icon" style="color: blue; cursor: pointer;">></span>
-                                <ul class="sub_menu">
-                                    <li><a href="">Menu 3.1</a></li>
-                                    <li><a href="">Menu 3.2</a></li>
-                                    <li><a href="">Menu 3.3</a></li>
-                                    <li><a href="">Menu 3.4</a></li>
-                                </ul>
-                            </li>
+                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/collections">Collections</a></li>
 
-                            <li><a href="/pepicase/public/about-us">About Us</a></li>
+                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/about-us/">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
         
-        <div class="lexend d-flex align-items-center justify-content-center">
+        <div class="lexend d-flex align-items-center justify-content-center" style ="height: 50vh;">
             <form action="">
                 <h2 class="text-center">LOGIN</h2>
                 <table>
@@ -124,6 +106,8 @@
                 </div>
             </form>
         </div>
+
+
         <footer class="footer">
         <div class = "main-content">
             <p class="title">Address</p>
