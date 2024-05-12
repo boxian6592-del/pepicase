@@ -8,4 +8,9 @@ class HomepageController extends BaseController
     {
         return view('index');
     }
+
+    public function testing(): string
+    {
+        return view('testing');
+    }
 }

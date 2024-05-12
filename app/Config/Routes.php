@@ -15,3 +15,4 @@ $routes->get('/collections','GetProductController::get_through_collections');
 $routes->get('/login','LoginController::index');
 $routes->get('/signup','LoginController::signup');
 $routes->get('/resetPassword','LoginController::resetPassword');
+$routes->get('/testing','HomepageController::testing');
