@@ -7,7 +7,7 @@ class GetProductController extends BaseController
 {
     public function index(): string
     {
-        return view('index');
+        return view('shop_page');
     }
 
     public function get_with_id(int $id): string

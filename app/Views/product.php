@@ -13,8 +13,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/pepicase/public/css/fonts.css">
-
+        <link rel="stylesheet" href="/pepicase/public/css/product.css">
     </head>
+    <script>
+        var price = <?=$price?>
+    </script>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
@@ -86,14 +89,14 @@
             <div id = "image-box" class ="shadow d-flex justify-content-center align-items-center" style = "margin-left: 145px; margin-top: 55px; width:495px; 
             height:495px; background-color:#FFFAE3; border-radius: 10px;"></div>
 
-            <div style=" margin-top:55px; margin-left:125px; height:575px; width:650px;">
+            <div style=" margin-top:55px; margin-left:100px; height:575px; width:675px;">
 
                 <div class="d-flex" style="height:fit-content;">
-                    <div id ="product_name" class="lexend" style = "line-height:44px; height:88px; width:fit-content;max-width:550px; font-size: 36px;"><?=$name?></div>
-                    <img id="favorite" onclick ="favorite()" style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;" src="/pepicase/pics/favorite_icon.svg" alt="favorite">
+                    <div id ="product_name" class="lexend" style = "line-height:44px; height:88px; width:fit-content;max-width:500px; font-size: 36px;"><?=$name?></div>
+                    <img id="favorite" onclick ="favorite()" style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;" src="/pepicase/public/pics/favorite_icon.svg" alt="favorite">
                 </div>
                 
-                    <div id="pricing" class="lexend-tera" style="font-size:25px;"><?=$price?></div>
+                    <div id="pricing" class="lexend-tera" style="font-size:25px;"><?=$price?>$</div>
                     <div style="font-size:18px; color:gray;">Model</div>
 
                     <div>

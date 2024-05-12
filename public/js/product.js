@@ -1,9 +1,3 @@
-document.getElementById("image-box").innerHTML = 
-`<img src="${img_pathing}" alt="product" style = "height:398px; width:auto;"></img>`;
-document.getElementById("product_name").innerHTML =
-`<b>${case_name}</b>`;
-document.getElementById("pricing").innerText = "$ " + price + " USD";
-
 var quantity = 1;
 var total;
 
@@ -51,11 +45,11 @@ for(i = 0; i < starArr.length; i++)
         let index = starArr[i_pass_on].dataset.value;
         for(let u = index - 1; u > -1; u--)
             {
-                starArr[u].src = "http://localhost/pepicase/pics/review_star_shaded.svg";
+                starArr[u].src = "http://localhost/pepicase/public/pics/review_star_shaded.svg";
             }
         for(let u = index; u < starArr.length; u++)
             {
-                starArr[u].src = "http://localhost/pepicase/pics/review_star.svg";
+                starArr[u].src = "http://localhost/pepicase/public/pics/review_star.svg";
             }
     })
 }
@@ -64,10 +58,10 @@ for(i = 0; i < starArr.length; i++)
 function favorite()
 {
     var fav_icon = document.getElementById("favorite");      
-    if(fav_icon.src === "http://localhost/pepicase/pics/favorite_icon_shaded.svg")
-        fav_icon.src = "http://localhost/pepicase/pics/favorite_icon.svg";
+    if(fav_icon.src === "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg")
+        fav_icon.src = "http://localhost/pepicase/public/pics/favorite_icon.svg";
     else
-        fav_icon.src = "http://localhost/pepicase/pics/favorite_icon_shaded.svg";
+        fav_icon.src = "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg";
 }
 
 function add()

@@ -12,8 +12,6 @@ class Product extends Model
     protected $price = null;
     protected $productID = null;
     protected $imgPath = null;
-
-
     public function __construct($id = null)
     {
         if($id != null)
