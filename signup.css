@@ -1,0 +1,115 @@
+body
+{
+    margin:0;
+    padding: 0;
+}
+
+.sales
+{
+    background-color: black;
+    color: white;
+}
+
+.container{
+    max-width: 960px;
+    margin: 0;
+}
+
+header
+{
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.header .top_header{
+    padding-top: 10px;
+}
+.name{
+    font-family: Londrina Solid;
+    font-weight:bold;
+    margin-left:30px;
+    padding-bottom: 10px;
+}
+.logo_right{
+    margin-right:50px;
+}
+
+#search{
+    margin-left:120px;
+}
+
+
+.header .bottom_header{
+    padding-bottom: 10px;
+}
+
+.header .top_header nav{
+    display: flex;
+}
+
+#main_menu{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-items: center;
+    justify-content: center;
+}
+
+#main_menu li a{
+    text-decoration: none;
+    padding: 0px 30px;
+    color: black;
+    font-family: Verdana;
+}
+
+/* body */
+:root{
+    --text-color: #1F3E97;
+    --font-input: 'Lexend';
+}
+.form-label{
+    margin: 0;
+    color: var(--text-color);
+    font-family: var(--font-input);
+    padding-right: 500px;
+}
+
+.btn-primary:hover {
+    background-color: #FFD54F;
+} 
+
+/* Facebook + Google */
+.button {
+    display: inline-flex;
+    border:1px solid black;
+    padding: 5px 20px;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-family: var(--font-input);
+}
+
+img{
+    margin-right: 20px;
+}
+
+/* check account */
+#check_account{
+    font-family: var(--font-input);
+    margin-top: 30px;
+} 
+
+
+/* footer */
+.footer {
+    margin-top: 100px;
+    width: 100%;
+    background-color: #FFE57A;
+}
+.bottom-nav a
+{
+    margin-right: 100px;
+    text-decoration: none;
+    color: #844700;
+}
