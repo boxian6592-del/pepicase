@@ -15,19 +15,6 @@ class User extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $allowedFields = ['email', 'password'];
-    protected $validationRules = [
-        'email' => 'required|valid_email',
-        'password' => 'required'
-    ];
-    protected $validationMessages = [
-        'email'=> [
-            'required'=> 'You need to enter an Email',
-            'valid_email' => 'This is not a valid email'
-        ],
-        'password'=> [
-            'required'=> 'Please enter a password',
-        ]
-    ];
 
     protected $skipValidation = false;
     protected $cleanValidationRules = true;

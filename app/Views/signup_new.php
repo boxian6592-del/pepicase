@@ -75,7 +75,7 @@
                     <label for="password" class="form-label"><b>Password</b></label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Abc12345" style="border-right: none;">
-                        <img style="margin: 0px; background: white; cursor: pointer; border-left: none;" class="input-group-text" id="toggle_password" src="/pepicase/pics/Ellipse.svg" alt="">
+                        <img style="margin: 0px; background: white; cursor: pointer; border-left: none;" class="input-group-text" id="toggle_password" src="/pepicase/public/pics/Ellipse.svg" alt="">
                     </div>
                 </div>
 

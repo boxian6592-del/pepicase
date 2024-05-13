@@ -61,7 +61,7 @@
         </header>
         
         <div class="lexend d-flex align-items-center justify-content-center" style ="height: 50vh;">
-            <form action="">
+            <form method = "post" action="/pepicase/public/login">
                 <h2 class="text-center">LOGIN</h2>
                 <table>
                     <tr>
@@ -80,18 +80,13 @@
                         </td>
                     </tr>
                     <?php
-                    if($status == "invalid")
+                    if(isset($validation))
                     {
-                        echo "<td>";
-                        if($validation->hasError('email')) {
-                            echo $validation->getError('email');
-                        }
-                        if ($validation->hasError('password')) {
-                            echo $validation->getError('password');
-                        }
+                        echo "<td style ='color: red;'>";
+                        echo $validation->listErrors();
                         echo "</td>";
                     }
-                    if($status == null)
+                    else
                     {
                         echo "<td>";
                         echo "Incorrect email or password!";
@@ -153,14 +148,4 @@
             </div>
         </footer>
     </body>
-    <script>
-        document.getElementsByClassName("login-button")[0].addEventListener("click", function(event)
-        {
-            event.preventDefault();
-            var email = document.getElementsByName("infor")[0].value;
-            var pass = document.getElementsByName("Password")[0].value;
-            alert(email);
-            alert(pass);
-        })
-    </script>
 </html>

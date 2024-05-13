@@ -10,24 +10,27 @@ class LoginController extends BaseController
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");
 
+        $rules = [
+            'email' => 'valid_email',
+        ];
+
+        $data = [
+            'validation' => '',
+        ];
+
         $user = new User($email, $password);
-        if($this->validate($user->getValidationRules()))
+        if($this->validate($rules))
         {
             if ($user->id != null) {
                 $session = \Config\Services::session();
                 $session->set("user_id", $user->id);
-                return redirect() -> to('/index');
+                return redirect() -> to('/');
             }
-            else 
-            {
-                $data = ['status' => $user->id];
-                return redirect()->to('login-failed')->with('status','failed');
-            }
+            else return view('login-failed');
         }
         else 
         {
-            $string = "invalid";
-            $data = ['status' => $string, 'validation' => $this->validator];
+            $data['validation'] = $this->validator;
             return view('login-failed', $data);
         }
     }
