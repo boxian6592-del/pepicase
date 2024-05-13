@@ -31,7 +31,7 @@
                         <a href="" id="search">
                             <img src="/pepicase/public/pics/Search.png" alt="">
                         </a>
-                        <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Londrina Solid'">pepicase</a></h2>
+                        <h2 class="name"><a href="/pepicase/public/" style = "margin-left: 60px; color:inherit; text-decoration:none; font-family: 'Londrina Solid'">pepicase</a></h2>
                         <div class="logo_right">
                             <a href="" style="margin-right:20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/public/pics/Vector (1).png" alt="">
@@ -64,7 +64,7 @@
         <!-- body -->
         <div class="d-flex align-items-center justify-content-center">
             <form method="post" action="">
-                <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Lexend';"><b>SIGN UP</b></h2>
+                <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Londrina Solid';"><b>SIGN UP</b></h2>
 
                 <div class="mb-3">
                     <label for="email" class="form-label"><b>Email</b></label>
