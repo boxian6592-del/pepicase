@@ -1,0 +1,314 @@
+CRITICAL - 2024-05-13 02:47:51 --> ErrorException: Undefined variable $status
+[Method: GET, Route: login]
+in APPPATH\Views\login.php on line 83.
+ 1 APPPATH\Views\login.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $status', 'C:\\xampp\\htdocs\\pepicase\\app\\Views\\login.php', 83)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\pepicase\\app\\Views\\login.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('login', [], true)
+ 5 APPPATH\Controllers\LoginController.php(37): view('login')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-13 03:38:37 --> mysqli_sql_exception: Unknown column 'lmao' in 'where clause' in C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM u...', 0)
+#1 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 C:\xampp\htdocs\pepicase\app\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\xampp\htdocs\pepicase\app\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+#5 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-05-13 03:38:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE EMAIL = lmao')
+ 2 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:38:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE EMAIL = lmao')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE EMAIL = lmao')
+ 3 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE EMAIL = lmao')
+ 4 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:38:37 --> [Caused by] mysqli_sql_exception: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM user WHERE EMAIL = lmao', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE EMAIL = lmao')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE EMAIL = lmao')
+ 4 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE EMAIL = lmao')
+ 5 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-13 03:40:42 --> mysqli_sql_exception: Unknown column 'lmao' in 'where clause' in C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM u...', 0)
+#1 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 C:\xampp\htdocs\pepicase\app\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\xampp\htdocs\pepicase\app\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+#5 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-05-13 03:40:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 2 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:40:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email = lmao')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email = lmao')
+ 3 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 4 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:40:42 --> [Caused by] mysqli_sql_exception: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM user WHERE email = lmao', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email = lmao')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email = lmao')
+ 4 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 5 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-13 03:43:03 --> mysqli_sql_exception: Unknown column 'lmao' in 'where clause' in C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM u...', 0)
+#1 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 C:\xampp\htdocs\pepicase\app\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\xampp\htdocs\pepicase\app\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+#5 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-05-13 03:43:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 2 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:43:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email = lmao')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email = lmao')
+ 3 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 4 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:43:03 --> [Caused by] mysqli_sql_exception: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM user WHERE email = lmao', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email = lmao')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email = lmao')
+ 4 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 5 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-13 03:43:06 --> mysqli_sql_exception: Unknown column 'lmao' in 'where clause' in C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM u...', 0)
+#1 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 C:\xampp\htdocs\pepicase\app\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\xampp\htdocs\pepicase\app\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+#5 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-05-13 03:43:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 2 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:43:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email = lmao')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email = lmao')
+ 3 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 4 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:43:06 --> [Caused by] mysqli_sql_exception: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM user WHERE email = lmao', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email = lmao')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email = lmao')
+ 4 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email = lmao')
+ 5 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-13 03:44:05 --> mysqli_sql_exception: Unknown column 'lmao' in 'where clause' in C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM u...', 0)
+#1 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 C:\xampp\htdocs\pepicase\app\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\xampp\htdocs\pepicase\app\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+#5 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-05-13 03:44:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE (email = lmao)')
+ 2 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:44:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE (email = lmao)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE (email = lmao)')
+ 3 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE (email = lmao)')
+ 4 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:44:05 --> [Caused by] mysqli_sql_exception: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM user WHERE (email = lmao)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE (email = lmao)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE (email = lmao)')
+ 4 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE (email = lmao)')
+ 5 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-13 03:46:15 --> mysqli_sql_exception: Unknown column 'lmao' in 'where clause' in C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM u...', 0)
+#1 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 C:\xampp\htdocs\pepicase\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 C:\xampp\htdocs\pepicase\app\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\xampp\htdocs\pepicase\app\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+#5 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-05-13 03:46:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email =lmao')
+ 2 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:46:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email =lmao')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email =lmao')
+ 3 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email =lmao')
+ 4 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-13 03:46:15 --> [Caused by] mysqli_sql_exception: Unknown column 'lmao' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT * FROM user WHERE email =lmao', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM user WHERE email =lmao')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM user WHERE email =lmao')
+ 4 APPPATH\Models\User.php(39): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email =lmao')
+ 5 APPPATH\Controllers\LoginController.php(13): App\Models\User->__construct('lmao', 'lmao')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

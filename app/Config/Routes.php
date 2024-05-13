@@ -13,6 +13,7 @@ $routes->get('/policy','StaticPageController::Policy');
 $routes->get('/terms-of-use','StaticPageController::TermsOfUse');
 $routes->get('/collections','GetProductController::get_through_collections');
 $routes->get('/login','LoginController::index');
+$routes->post('/login','LoginController::login');
 $routes->get('/signup','LoginController::signup');
 $routes->get('/resetPassword','LoginController::resetPassword');
 $routes->get('/testing','HomepageController::testing');

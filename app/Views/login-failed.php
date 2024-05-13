@@ -61,24 +61,43 @@
         </header>
         
         <div class="lexend d-flex align-items-center justify-content-center" style ="height: 50vh;">
-            <form method = "post" action="/pepicase/public/login">
+            <form action="">
                 <h2 class="text-center">LOGIN</h2>
                 <table>
                     <tr>
                         <td>
                             <p>Phone number/Email</p>
-                            <input style="margin-right:50px;" type ="text" name ="email" placeholder="Abc123@gmail.com" required>
+                            <input style="margin-right:50px;" type ="text" name ="infor" placeholder="09xxxxxxxx / Abc123@gmail.com" required>
                         </td>
                         <td>
                             <p>Password</p>
-                            <input type ="text" name ="password" placeholder="Abc123" style ="width: 100%;" required>
+                            <input type ="text" name ="Password" placeholder="Abc123" required>
                         </td>
                     </tr>
                     <tr>
                         <td align="center" colspan="2">
-                            <button class="login-button" type ="submit">LOGIN</button>
+                            <button class="login-button">LOGIN</button>
                         </td>
                     </tr>
+                    <?php
+                    if($status == "invalid")
+                    {
+                        echo "<td>";
+                        if($validation->hasError('email')) {
+                            echo $validation->getError('email');
+                        }
+                        if ($validation->hasError('password')) {
+                            echo $validation->getError('password');
+                        }
+                        echo "</td>";
+                    }
+                    if($status == null)
+                    {
+                        echo "<td>";
+                        echo "Incorrect email or password!";
+                        echo "</td>";
+                    }
+                    ?>
                     <tr >
                         <td>
                             <a style=" color: #1F3E97" href="/pepicase/public/resetPassword">Forgot your password?</a>
@@ -134,7 +153,7 @@
             </div>
         </footer>
     </body>
-    <!--<script>
+    <script>
         document.getElementsByClassName("login-button")[0].addEventListener("click", function(event)
         {
             event.preventDefault();
@@ -144,5 +163,4 @@
             alert(pass);
         })
     </script>
-    -->
 </html>
