@@ -63,29 +63,45 @@
 
         <!-- body -->
         <div class="d-flex align-items-center justify-content-center">
-            <form action="">
+            <form method="post" action="">
                 <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Lexend';"><b>SIGN UP</b></h2>
 
                 <div class="mb-3">
                     <label for="email" class="form-label"><b>Email</b></label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Abc123@gmail.com">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Abc123@gmail.com" oninput="check_email()">
+                    
+                    <div id="check_email">
+                        <span></span>
+                    </div>
                 </div>
-
+                
                 <div class="mb-3">
                     <label for="password" class="form-label"><b>Password</b></label>
+                    
                     <div class="input-group">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Abc12345" style="border-right: none;">
-                        <img style="margin: 0px; background: white; cursor: pointer; border-left: none;" class="input-group-text" id="toggle_password" src="/pepicase/public/pics/Ellipse.svg" alt="">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Abc12345" style="border-right: none;" oninput="check()">
+                        <span style="background: white; cursor: pointer; border-left: none;" class="input-group-text">
+                            <img style="margin: 0px;" id="toggle_password" src="/pepicase/public/pics/Ellipse.svg" alt="">
+                        </span>
+                    </div>
+
+                    <div id="check_password">
+                        <span style="color: red;">Mật khẩu phải bao gồm chữ in hoa, chữ viết thường và số</span>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="confirm_password" class="form-label"><b>Confirm password</b></label>
+                    
                     <div class="input-group">
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;">
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;" oninput="check_confirm_password()">
                         <span style="background: white; cursor: pointer; border-left: none;" class="input-group-text">
                             <img style="margin: 0px;" id="toggle_confirm_password" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
+                    </div>
+
+                    <div id="check_confirm_password">
+                        <span></span>
                     </div>
                 </div>
 
@@ -148,6 +164,22 @@
                 <a href="">HELP</a>
             </div>
         </footer>
+        <div class ="icons d-flex justify-content-center align-items-center" style = "height: 250px; padding-bottom: 30px;">
+                <a href=""><img src="/pepicase/public/pics/Facebook Icon.png" class = "img-rounded" alt="facebook-icon" style ="margin-right: 40px;"></a>
+                <a href=""><img src="/pepicase/public/pics/Group 1.png" class = "img-rounded" alt="facebook-icon"></a>
+                <a href=""><img src="/pepicase/public/pics/x.png" class = "img-rounded" alt="facebook-icon" style ="margin-left: 40px;"></a>
+            </div>
+
+            <div class = "bottom-nav lexend" style = "margin-left: 45px; padding-bottom: 20px; font-size: 20px;">
+                <a href="">TERMS OF USE</a>
+                <a href="">PRIVACY POLICY</a>
+                <a href="">PR/COLLAB</a>
+                <a href="">COPYRIGHT INFO</a>
+                <a href="">FAQs</a>
+                <a href="">HELP</a>
+            </div>
+        </footer>
+
         <script>
             // nhấn vào con mắt sẽ hiện ra password
             document.getElementById('toggle_password').addEventListener('click', function() {
@@ -166,42 +198,47 @@
                     passwordInput.type = 'password';
                 }
             });
+
+            // ràng buộc email đúng định dạng
+            function check_email() {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+
+                var emailAddress = "example@example.com"; // Thay đổi địa chỉ email tại đây
+                if (isValidEmail(emailAddress)) {
+                    console.log("Địa chỉ email hợp lệ.");
+                } else {
+                    console.log("Địa chỉ email không hợp lệ.");
+                }
+
+            }
+
+
+            // ràng buộc password có chữ in hoa, chữ thường, số
+            function check() {
+                var password = document.getElementById("password").value;
+                var confirm_password = document.getElementById("confirm_password").value;
+                var trigger_password = document.getElementById("check_password");
+                var trigger_confirm_password = document.getElementById("check_confirm_password");
+
+                // Kiểm tra mật khẩu
+if ((password.length >= 8) && (password.match(/[0-9]/)) && (password.match(/[A-Z]/)) && (password.match(/[a-z]/))) {
+                    trigger_password.style.color = "green";
+                    trigger_password.innerText = "Mật khẩu hợp lệ.";
+                } else {
+                    trigger_password.style.color = "red";
+                    trigger_password.innerText = "Mật khẩu không chính xác. Vui lòng nhập lại!";
+                }
+
+                /* Kiểm tra xác nhận mật khẩu
+                if (confirm_password === password) {
+                    trigger_confirm_password.style.color = "green";
+                    trigger_confirm_password.innerText = "Xác nhận mật khẩu hợp lệ.";
+                } else {
+                    trigger_confirm_password.style.color = "red";
+                    trigger_confirm_password.innerText = "Xác nhận mật khẩu không khớp. Vui lòng nhập lại!";
+                } */
+            }
         </script>
-
-        
-        <!-- <script>
-            // nhấn vào con mắt sẽ hiện ra password
-            document.getElementById('toggle_password').addEventListener('click', function() {
-                var passwordInput = document.getElementById('password_input');
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                } else {
-                    passwordInput.type = 'password';
-                }
-            }); 
-            document.getElementById('toggle_confirm_password').addEventListener('click', function() {
-                var passwordInput = document.getElementById('confirm_password_input');
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                } else {
-                    passwordInput.type = 'password';
-                }
-            });          
-
-            // check password
-            function checkpassword(){
-                var check_password = document.getElementById('password_input').value;
-                var check_confirm_password = document.getElementById('confirm_password_input').value;
-                if (check_password.length< 8) {
-                    alert ('Mật khẩu phải chứa ít nhất 8 kí tự.');
-                    return false;
-                }
-                if (check_password != check_confirm_password){
-                    alert ('Xác nhận mật khẩu không chính xác. Vui lòng nhập lại!');
-                    return false;
-                }
-            } 
-           
-        </script>   -->
     </body>
 </html>
