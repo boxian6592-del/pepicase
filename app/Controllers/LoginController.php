@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\CustomSession;
 use App\Models\User;
+use App\Models\Session;
+use CodeIgniter\Services;
 
 class LoginController extends BaseController
 {
@@ -22,8 +25,7 @@ class LoginController extends BaseController
         if($this->validate($rules))
         {
             if ($user->id != null) {
-                $session = \Config\Services::session();
-                $session->set("user_id", $user->id);
+                new CustomSession($user->id);
                 return redirect() -> to('/');
             }
             else return view('login-failed');
@@ -35,6 +37,14 @@ class LoginController extends BaseController
         }
     }
 
+    public function logout()
+    {
+        $current_session = new CustomSession(null);
+        $current_session->delete_session_cookie();
+        return redirect() -> to('/');
+    }
+
+
     public function index(): string
     {
         return view('login');
@@ -45,8 +55,15 @@ class LoginController extends BaseController
         return view('signup');
     }
 
+    public function createUser(string $email, string $password)
+    {
+        
+    }
+
     public function resetPassword():string
     {
         return view('resetpassword1');
     }
+
+
 }

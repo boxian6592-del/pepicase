@@ -39,7 +39,7 @@ class User extends Model
                 $this->id = $row->ID;
                 $this->email = $row->Email;
                 $this->password = $row->Password;
-                $this->isAdmin = $row->Is_Admim;
+                $this->isAdmin = $row->Is_Admin;
             }
         }
     }

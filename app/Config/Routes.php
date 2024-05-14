@@ -18,8 +18,14 @@ $routes->get('/collections','GetProductController::get_through_collections');
 $routes->get('/login','LoginController::index');
 $routes->post('/login','LoginController::login');
 
+$routes->get('/logout','LoginController::logout');
+
 $routes->get('/signup','LoginController::signup');
+$routes->get('/signup/(:string)/(:string)','LoginController::createUser');
+
 $routes->get('/resetPassword','LoginController::resetPassword');
+
 $routes->get('/testing','HomepageController::testing');
+
 $routes->post('/signup/(:string)/(:string)','SignUpController::send_signup_email/$1/$2');
 $routes->get('/signup/confirm/(:string)/(:string)','SignUpController::signup/$1/$2');

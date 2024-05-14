@@ -59,7 +59,15 @@
             </div>
         </header>
         
-        
+        <div>
+            <?php
+                if($id !== null)
+                {
+                    echo "".$id."";
+                    echo "<a href='/pepicase/public/logout'>Log out here</a>";
+                }
+            ?>
+        </div>
         
 
         <img class = "banner" src="/pepicase/public/pics/pompurin_banner.svg" alt="banner" style = "width: 100%; height:auto;">

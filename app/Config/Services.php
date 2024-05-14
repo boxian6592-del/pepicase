@@ -3,6 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseService;
+use CodeIgniter\Encryption\Encryption;
 
 /**
  * Services Configuration file.
@@ -30,3 +31,5 @@ class Services extends BaseService
      * }
      */
 }
+
+
