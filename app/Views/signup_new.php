@@ -3,7 +3,7 @@
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
         <div class="d-flex align-items-center justify-content-center">
-            <form method="post" action="">
+            <form method="post" action="/pepicase/public/signup/">
                 <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Londrina Solid';"><b>SIGN UP</b></h2>
 
                 <div class="mb-3">

@@ -29,9 +29,8 @@ $routes->get('/logout','LoginController::logout');
 //thao tác logout
 
 //thao tác đăng ký
-$routes->get('/signup','LoginController::signup');
-$routes->get('/signup/(:string)/(:string)','LoginController::createUser');
-$routes->post('/signup/(:string)/(:string)','SignUpController::send_signup_email/$1/$2');
+$routes->get('/signup','SignUpController::index');
+$routes->post('/signup','SignUpController::send_signup_email');
 $routes->get('/signup/confirm/(:string)/(:string)','SignUpController::signup/$1/$2');
 //thao tác đăng ký
 

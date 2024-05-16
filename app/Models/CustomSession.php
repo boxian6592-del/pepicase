@@ -48,7 +48,7 @@ class CustomSession
     public function isSessionSet()
     {
         $session = \Config\Services::session();
-        return $session->get('identifier') !== null;
+        return ($session->get('identifier') !== null);
     }
 
     public function get_id()

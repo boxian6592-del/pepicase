@@ -23,11 +23,8 @@ class User extends Model
     public function __construct($email, $password)
     {
         $db = Database::connect();
-        $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' ")->getResult();
-        if (empty($result))
-        {
-            $id = null;
-        }
+        $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' AND password = '$password' ")->getResult();
+        if (empty($result)) $id = null;
         else
         {
             $row = $result[0];
@@ -44,9 +41,16 @@ class User extends Model
         }
     }
 
-    public function check_if_logged_in()
+    public function check_if_authorized()
     {
         if (empty($this->id)) return false;
         else return true;
+    }
+
+    public function create($mail, $pass)
+    {
+        $db = Database::connect();
+        $result = $db->query("INSERT INTO user (Email, Password, Is_Admin) VALUES ($mail, $pass, 0);");
+        //
     }
 }
