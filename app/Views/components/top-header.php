@@ -1,6 +1,19 @@
-<?php include(APPPATH.'views/components/top-header.php'); ?>
-
-
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pepicase</title>
+        <link rel="stylesheet" href="/pepicase/public/css/header-footer.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/pepicase/public/css/fonts.css">
+        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
@@ -45,21 +58,3 @@
                 </div>
             </div>
         </header>
-        
-<div class="d-flex align-items-center justify-content-center">
-    <form action="">
-        <h2 class="text-center">Change Password</h2>
-        <hr>
-        <div class="mb-3">
-            <label for="infor" class="form-label">Enter Password</label>
-            <input type="text" class="form-control" id="infor" name="infor" placeholder="Enter the current password for verification ">
-        </div>
-        <div class="button">
-            <a href="/pepicase/changepassword2.php" class="btn btn-primary">CONFIRM</a>
-            <a href="/pepicase/resetpassword1.php" >Cancel</a>
-        </div>
-    </form>
-</div>
-
-
-<?php include(APPPATH.'views/components/bottom-footer.php'); ?>

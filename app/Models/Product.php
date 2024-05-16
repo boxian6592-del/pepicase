@@ -47,6 +47,7 @@ class Product extends Model
         [
             'name' => $this->name,
             'price'=> $this->price,
+            'path' => $this->imgPath,
         ];
         return $data_bundle;
     }
