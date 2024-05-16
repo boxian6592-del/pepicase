@@ -1,3 +1,5 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
+    <link rel="stylesheet" href="/pepicase/public/css/resetpassword3.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
         
         <div class="d-flex align-items-center justify-content-center">

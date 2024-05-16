@@ -1,3 +1,5 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
+    <link rel="stylesheet" href="/pepicase/public/css/changepassword1.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
 

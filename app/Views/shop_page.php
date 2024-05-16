@@ -1,3 +1,5 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
+  <link rel="stylesheet" href="/pepicase/public/css/shop_page.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
     <img class = "banner" src="/pepicase/public/pics/shop_banner_2.svg" alt="banner" style = "width: 100%; height:auto;">

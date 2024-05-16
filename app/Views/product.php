@@ -1,6 +1,6 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
+    <link rel="stylesheet" href="/pepicase/public/css/product.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
-
-
 
         <div class = "lexend-tera d-flex justify-content-center align-items-center" style = "height:200px;background-color:#FFFAE3; font-size:40px;">
             COLLECTION BANNER (with product-testing )
@@ -87,4 +87,3 @@
         </div>
 
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
-

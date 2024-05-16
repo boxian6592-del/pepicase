@@ -1,3 +1,4 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
         <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">ABOUT US</div>

@@ -1,5 +1,5 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
 <?php include(APPPATH.'views/components/top-header.php'); ?>
-
 
         <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;font-weight:bold">PRIVACY POLICY</div>
         <div class="d-flex justify-content-center" style = "width:100vw;">
@@ -79,6 +79,5 @@
             We will not discriminate against you for exercising any of your data subject rights. We do not charge a fee to process or respond to your Verifiable Consumer Request unless it is excessive, repetitive, or manifestly unfounded. If we determine that the request warrants a fee, we will tell you why we made that decision and provide you with a cost estimate before completing your request.
         </p>
         </div>
-        <br>
 
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

@@ -1,3 +1,4 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
         <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;font-weight:bold">PEPICASE: TERMS OF USE</div>
@@ -54,5 +55,5 @@
             These Terms constitutes the entire agreement between you and Pepicase concerning your access to and use of the Services. It supersedes all prior or contemporaneous oral or written negotiations and agreements between you and Pepicase with respect to its subject matter. You may not assign, transfer, or delegate any right or obligation under these Terms without our prior written consent. Any attempted assignment, transfer, or delegation by you in violation of this Section is null and void in each instance. We may assign or transfer these Terms to any affiliate or in connection with a merger, acquisition, or sale of substantially all of our assets without your consent. The failure of Pepicase to exercise or enforce any right or provision of these Terms will not constitute a waiver of such right or provision. If any provision of these Terms is held to be invalid or unenforceable under applicable law, then such provision will be construed, limited, modified, or, if necessary, severed to the extent necessary to eliminate its invalidity or unenforceability, without in any way affecting the remaining parts of these Terms. Any prevention of or delay in performance by Pepicase due to labor disputes, acts of god, governmental restrictions, enemy or hostile governmental action, fire or other casualty, or other causes beyond its reasonable control will excuse the performance of its obligations for a period equal to the duration of any such prevention or delay.
         </p>
         </div>
-        
+
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

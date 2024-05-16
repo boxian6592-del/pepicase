@@ -1,3 +1,4 @@
+<?php include(APPPATH.'views/components/usual-links.php'); ?>
 <?php include(APPPATH.'views/components/top-header.php'); ?>
         
         <div id ="page-body" class ="container-fluid d-flex flex-column align-items-center" style = "margin: 0; padding: 0; min-height: 60vh">
