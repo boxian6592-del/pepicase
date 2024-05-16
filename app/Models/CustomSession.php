@@ -69,6 +69,7 @@ class CustomSession
             $identifier = $this->decrypt($cookie);
             delete_cookie('id');
             $this->__construct($identifier);
+            return $identifier;
         }     
     }
     public function delete_session_cookie()

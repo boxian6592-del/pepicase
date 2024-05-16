@@ -1,13 +1,13 @@
 <?php 
     use App\Models\CustomSession;
     $curr_session = new CustomSession(null);
-    $curr_session->fetch_session_cookie();
-
     if (!$curr_session->isSessionSet())
     {
-        $id = "lmao";
+        $checker = $curr_session->fetch_session_cookie();
+        if (!$checker) $id = null;
+        else $id = $checker;
     }
-    else $id = "no";
+    else $id = $curr_session->get_id();
     ?>
     
     </head>
@@ -28,8 +28,9 @@
                         <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Londrina Solid'">pepicase</a></h2>
                         <div class="logo_right">
                             <a href="/pepicase/public/<?php if($id !== null) echo 'testing'; else echo 'login';?>" style="color:black; text-decoration:none;">
-                                <img src="/pepicase/public/pics/Vector (1).png" alt="">
-                                Welcome, <?php if($id !== null) echo 'User!'; else echo 'Guest!';?>
+                                <img style ="height: 30px; width: auto;" src="<?php if($id !== null) echo '/pepicase/public/pics/Vector (1).png'; else echo '/pepicase/public/pics/login.svg';?>" alt="">
+                                <?php if($id !== null) echo 'User!'; else echo 'Guest!';?>
+
                             </a>
                             <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/public/pics/Cart.png" alt="">
