@@ -1,17 +1,6 @@
 <?php include(APPPATH.'views/components/usual-links.php'); ?>
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
-        <div>
-            <?php
-                if($id !== null)
-                {
-                    echo "".$id."";
-                    echo "<a href='/pepicase/public/logout'>Log out here</a>";
-                }
-            ?>
-        </div>
-        
-
         <img class = "banner" src="/pepicase/public/pics/pompurin_banner.svg" alt="banner" style = "width: 100%; height:auto;">
 
         <div class="lexend-deca" style = "font-size: 40px; font-weight; margin-left: 150px; margin-top:50px;"><b>OUR LATEST ARRIVALS</b></div>

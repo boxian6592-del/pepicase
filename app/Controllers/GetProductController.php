@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 use App\Models\Product;
+use App\Models\CustomSession;
 
 class GetProductController extends BaseController
 {
     public function index(): string
-    {
+    {        
         return view('shop_page');
     }
 

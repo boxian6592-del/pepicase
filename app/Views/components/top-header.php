@@ -1,3 +1,15 @@
+<?php 
+    use App\Models\CustomSession;
+    $curr_session = new CustomSession(null);
+    $curr_session->fetch_session_cookie();
+
+    if (!$curr_session->isSessionSet())
+    {
+        $id = "lmao";
+    }
+    else $id = "no";
+    ?>
+    
     </head>
     <body>
         <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
@@ -15,8 +27,9 @@
                         </a>
                         <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Londrina Solid'">pepicase</a></h2>
                         <div class="logo_right">
-                            <a href="/pepicase/public/login" style="margin-right:20px; text-decoration: none; color:white;">
+                            <a href="/pepicase/public/<?php if($id !== null) echo 'testing'; else echo 'login';?>" style="color:black; text-decoration:none;">
                                 <img src="/pepicase/public/pics/Vector (1).png" alt="">
+                                Welcome, <?php if($id !== null) echo 'User!'; else echo 'Guest!';?>
                             </a>
                             <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
                                 <img src="/pepicase/public/pics/Cart.png" alt="">
@@ -42,3 +55,4 @@
                 </div>
             </div>
         </header>
+        
