@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
-
+use Config\Database;
 require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\PHPMailer.php';
 require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\Exception.php';
 require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\SMTP.php';
@@ -12,28 +12,25 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+use App\Models\CustomSession;
+
 class ResetPasswordController extends BaseController
 {
-    public function encrypt($data)
+    private function encrypt($data)
     {
-        $key = 'your-encryption-key'; // Replace with your encryption key
-        $cipher = 'AES-256-CBC';
-        $ivLength = openssl_cipher_iv_length($cipher);
-        $iv = openssl_random_pseudo_bytes($ivLength);
-        $encrypted = openssl_encrypt($data, $cipher, $key, OPENSSL_RAW_DATA, $iv);
-        $result = base64_encode($iv . $encrypted);
-        return $result;
+        $key = 'encryption-key'; // Replace with your encryption key
+        $iv = 'd2a1b9c0e9f7a5de';
+        $encrypted = openssl_encrypt($data, 'AES-256-CBC', $key, 0, $iv);
+        $encoded = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($encrypted));
+        return $encoded;
     }
 
-    public function decrypt($encryptedData)
+    private function decrypt($encryptedData)
     {
-        $key = 'your-encryption-key'; // Replace with your encryption key
-        $cipher = 'AES-256-CBC';
-        $ivLength = openssl_cipher_iv_length($cipher);
-        $encryptedData = base64_decode($encryptedData);
-        $iv = substr($encryptedData, 0, $ivLength);
-        $encrypted = substr($encryptedData, $ivLength);
-        $decrypted = openssl_decrypt($encrypted, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+        $iv = 'd2a1b9c0e9f7a5de';
+        $key = 'encryption-key'; // Replace with your encryption key
+        $decoded = base64_decode(str_replace(['-', '_'], ['+', '/'], $encryptedData));
+        $decrypted = openssl_decrypt($decoded, 'AES-256-CBC', $key, 0, $iv);
         return $decrypted;
     }
 
@@ -71,7 +68,7 @@ class ResetPasswordController extends BaseController
                 $auth_email->addAddress($mail, 'Recipient Name');
                 $auth_email->isHTML(true);  // Set email format to HTML
                 $auth_email->Subject = 'PEPICASE - RESET PASSWORD VERIFICATION';
-                $noidungthu ='
+                $content ='
 <html>
     <body>
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: black; max-width: 50vw; margin: auto; padding: 20px; border: 1px solid black; border-radius: 10px; background-color: white;">
@@ -85,7 +82,7 @@ class ResetPasswordController extends BaseController
 
                 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; border: 1px solid black;">
                     <div style="height: 50px;" align="center">
-                        <a style="text-decoration: none; color: black;" href="/localhost/pepicase/public/resetPassword/confirmed/'.$encrypted_email.'">
+                        <a style="text-decoration: none; color: black;" href="http://localhost/pepicase/public/resetPassword/confirmed/'.$encrypted_email.'">
                             <button style="background-color: #FFF3C0; height: 100%;">Reset password here</button>
                         </a>
                     </div>
@@ -98,7 +95,7 @@ class ResetPasswordController extends BaseController
         </div>
     </body>
 </html>';
-        $auth_email->Body = $noidungthu;
+        $auth_email->Body = $content;
                 try {
                     $auth_email->smtpConnect(
                         array(
@@ -138,14 +135,32 @@ class ResetPasswordController extends BaseController
 
     public function pending()
     {
-        //làm 1 trang front-end kêu ngta check mail / đợi
-        return view('reset-email-sent');
+        return view('email_pending');
     }
 
-    public function showResetPassword()
+    public function showResetPassword($encrypted_email)
     {
-        return view('resetPassword3');
+        $data = [
+            'encrypted_email' => $encrypted_email,
+        ];
+        return view('resetPassword3',$data);
     }
 
+    public function ResetPassword($encrypted_email)
+    {
+        $new_password = $this->request->getPost("password");
+        $decrypted_email = $this->decrypt($encrypted_email);
 
+        $db = Database::connect();
+        $updatePassword = "UPDATE user SET Password = '" . $new_password . "' WHERE Email = '" . $decrypted_email . "'";
+        $db->query($updatePassword);
+        $get_id = "SELECT ID FROM user WHERE Email = '$decrypted_email'";
+        $result = $db->query($get_id)->getResult();
+        if(count($result) == 1) {
+            $row = $result[0];
+            $new_session = new CustomSession($row->ID);
+            return redirect()->to("/login")-> with("okay", "Password reset successfully, login with new credentials.");
+        }
+        else {return redirect()->to("/login")-> with("okay", "Something went wrong.");}
+    }
 }

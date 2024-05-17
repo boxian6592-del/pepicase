@@ -7,6 +7,7 @@
                 <button class="lexend" style ="height:10vh; width:18vw; font-size:20px; background-color:inherit; border-radius:20px; margin-top: 50px;"><b>SHOP ALL</b></button>
             </div>
         </div>
-
+    <script src = '/pepicase/public/js/purchases.js'></script>
+    
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
  

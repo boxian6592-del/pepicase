@@ -18,5 +18,10 @@ class StaticPageController extends BaseController
     {
         return view('terms-of-use');
     }
+
+    public function Purchases()
+    {
+        return redirect() -> to ('/');
+    }
 }
 

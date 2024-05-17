@@ -35,6 +35,12 @@
                         echo $msg;
                         echo "</td>";
                     }
+                    if(session()->getFlashdata("okay"))
+                    {
+                        echo "<td style = 'color:green;'>";
+                        echo session()->getFlashdata("okay");
+                        echo "</td>";
+                    }
                     ?>
                     <tr >
                         <td>

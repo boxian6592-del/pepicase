@@ -39,9 +39,13 @@ $routes->get('/signup/confirm/(:string)/(:string)','SignUpController::signup/$1/
 $routes->get('/resetPassword','ResetPasswordController::index');
 $routes->post('/resetPassword','ResetPasswordController::check_and_send');
 $routes->get('/resetPassword/pending','ResetPasswordController::pending');
+$routes->get('/resetPassword/confirmed/(:any)','ResetPasswordController::showResetPassword/$1');
+$routes->post('/resetPassword/confirmed/(:any)','ResetPasswordController::ResetPassword/$1');
 //resetPassword
 
 //khu để test layout
 $routes->get('/testing','HomepageController::testing');
 //khu để test layout
+
+$routes->get('/purchases','StaticPageController::Purchases');
 

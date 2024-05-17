@@ -58,11 +58,11 @@
                 <div class="row">
                     <div class="col-sm-4"></div>
 
-                    <div class="col-sm-4">
-                        <a href="/pepicase/public/" class="name">pepicase</a>
+                    <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                        <a href="/pepicase/public/" class="name"><div class ="londrina-solid" style ="font-size: 30px;">pepicase</div></a>
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 d-flex justify-content-center align-items-center">
                         <a href="/pepicase/public/" style="color:black; text-decoration:none;">
                             <img style ="height: 30px; width: auto;" src="/pepicase/public/pics/Vector (1).png'; '/pepicase/public/pics/login.svg';" alt="">
                         </a>

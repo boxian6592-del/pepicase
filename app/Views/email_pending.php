@@ -1,5 +1,5 @@
 <?php include(APPPATH.'views/components/usual-links.php'); ?>
-<?php include(APPPATH.'views/components/top-header.php'); ?>
+<?php include(APPPATH.'views/components/top-header(no_session).php'); ?>
 
         <div class="lexend d-flex flex-column justify-content-center align-items-center" style ="height:50vh;">
             <h1 style ="font-size: 50px">A confirmation email has been sent to your email!</h1>
