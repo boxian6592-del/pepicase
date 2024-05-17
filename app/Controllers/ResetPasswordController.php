@@ -14,6 +14,29 @@ use PHPMailer\PHPMailer\Exception;
 
 class ResetPasswordController extends BaseController
 {
+    public function encrypt($data)
+    {
+        $key = 'your-encryption-key'; // Replace with your encryption key
+        $cipher = 'AES-256-CBC';
+        $ivLength = openssl_cipher_iv_length($cipher);
+        $iv = openssl_random_pseudo_bytes($ivLength);
+        $encrypted = openssl_encrypt($data, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+        $result = base64_encode($iv . $encrypted);
+        return $result;
+    }
+
+    public function decrypt($encryptedData)
+    {
+        $key = 'your-encryption-key'; // Replace with your encryption key
+        $cipher = 'AES-256-CBC';
+        $ivLength = openssl_cipher_iv_length($cipher);
+        $encryptedData = base64_decode($encryptedData);
+        $iv = substr($encryptedData, 0, $ivLength);
+        $encrypted = substr($encryptedData, $ivLength);
+        $decrypted = openssl_decrypt($encrypted, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+        return $decrypted;
+    }
+
     public function index()
     {
         return view("resetPassword1");
@@ -32,6 +55,7 @@ class ResetPasswordController extends BaseController
         if ($this->validate($rules)) {
             $curr = new User(null, null);
             if ($curr->check_email($mail)) {
+                $encrypted_email = $this->encrypt($mail);
                 $auth_email = new PHPMailer(true);
                 $auth_email->SMTPDebug = SMTP::DEBUG_SERVER;
                 $auth_email->Debugoutput = 'html'; // Set debug output format to HTML
@@ -59,9 +83,9 @@ class ResetPasswordController extends BaseController
 
                 <p>Otherwise, please click the link below to initiate a password reset.</p>
 
-                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; border: 1px solid black; width: 100%;">
+                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; border: 1px solid black;">
                     <div style="height: 50px;" align="center">
-                        <a style="text-decoration: none; color: black;" href="youtube.com">
+                        <a style="text-decoration: none; color: black;" href="/localhost/pepicase/public/resetPassword/confirmed/'.$encrypted_email.'">
                             <button style="background-color: #FFF3C0; height: 100%;">Reset password here</button>
                         </a>
                     </div>
@@ -117,4 +141,11 @@ class ResetPasswordController extends BaseController
         //làm 1 trang front-end kêu ngta check mail / đợi
         return view('reset-email-sent');
     }
+
+    public function showResetPassword()
+    {
+        return view('resetPassword3');
+    }
+
+
 }
