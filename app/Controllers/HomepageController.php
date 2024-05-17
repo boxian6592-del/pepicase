@@ -18,6 +18,6 @@ class HomepageController extends BaseController
 
     public function testing(): string
     {
-        return view('signup_new');
+        return view('index');
     }
 }

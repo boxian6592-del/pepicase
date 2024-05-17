@@ -22,6 +22,20 @@
                             <button class="login-button" type ="submit">LOGIN</button>
                         </td>
                     </tr>
+                    <?php
+                    if(isset($validation))
+                    {
+                        echo "<td style ='color: red;'>";
+                        echo $validation->listErrors();
+                        echo "</td>";
+                    }
+                    if(isset($msg))
+                    {
+                        echo "<td style = 'color:red;'>";
+                        echo $msg;
+                        echo "</td>";
+                    }
+                    ?>
                     <tr >
                         <td>
                             <a style=" color: #1F3E97" href="/pepicase/public/resetPassword">Forgot your password?</a>

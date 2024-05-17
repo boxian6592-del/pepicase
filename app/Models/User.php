@@ -20,23 +20,27 @@ class User extends Model
     protected $cleanValidationRules = true;
     
 
-    public function __construct($email, $password)
+    public function __construct($email = null, $password = null)
     {
-        $db = Database::connect();
-        $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' AND password = '$password' ")->getResult();
-        if (empty($result)) $id = null;
+        if ($email === null || $password === null) {}
         else
         {
-            $row = $result[0];
-            if($row->Password != $password)
+            $db = Database::connect();
+            $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' AND password = '$password' ")->getResult();
+            if ($result == null) $id = null;
+            else
             {
-                $id = null;
-            }
-            else{
-                $this->id = $row->ID;
-                $this->email = $row->Email;
-                $this->password = $row->Password;
-                $this->isAdmin = $row->Is_Admin;
+                $row = $result[0];
+                if($row->Password != $password)
+                {
+                    $id = null;
+                }
+                else{
+                    $this->id = $row->ID;
+                    $this->email = $row->Email;
+                    $this->password = $row->Password;
+                    $this->isAdmin = $row->Is_Admin;
+                }
             }
         }
     }
@@ -52,5 +56,12 @@ class User extends Model
         $db = Database::connect();
         $result = $db->query("INSERT INTO user (Email, Password, Is_Admin) VALUES ($mail, $pass, 0);");
         //
+    }
+
+    public function check_email($mail)
+    {
+        $db = Database::connect();
+        $result = $db->query("SELECT * FROM user WHERE Email = '$mail' ")->getResult();
+        return ($result !== []);
     }
 }

@@ -35,7 +35,9 @@ $routes->get('/signup/confirm/(:string)/(:string)','SignUpController::signup/$1/
 //thao tác đăng ký
 
 //resetPassword
-$routes->get('/resetPassword','LoginController::resetPassword');
+$routes->get('/resetPassword','ResetPasswordController::index');
+$routes->post('/resetPassword','ResetPasswordController::check_and_send');
+$routes->get('/resetPassword/pending','ResetPasswordController::pending');
 //resetPassword
 
 //khu để test layout

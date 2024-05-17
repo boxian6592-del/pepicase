@@ -28,12 +28,18 @@ class LoginController extends BaseController
                 new CustomSession($user->id);
                 return redirect() -> to('/');
             }
-            else return view('login-failed');
+            else
+            {
+                $message = [
+                    'msg' => 'Wrong email or password!',
+                ];
+                return view('login', $message);
+            } 
         }
         else 
         {
             $data['validation'] = $this->validator;
-            return view('login-failed', $data);
+            return view('login', $data);
         }
     }
 
