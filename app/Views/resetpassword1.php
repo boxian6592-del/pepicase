@@ -29,6 +29,12 @@
                         echo "This account doesn't exist!";
                         echo "</td>";
                     }
+                    if(isset($error))
+                    {
+                        echo "<td style ='color: red;'>";
+                        echo $error;
+                        echo "</td>";
+                    }
         ?>
         <div class="d-grid gap-2">
             <a class="btn btn-primary" onclick="document.getElementById('form').submit()">NEXT</a>
