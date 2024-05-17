@@ -1,7 +1,30 @@
-<?php include(APPPATH.'views/components/usual-links.php'); ?>
+<?php include(APPPATH.'views/components/usual-links.php'); ?> 
     <link rel="stylesheet" href="/pepicase/public/css/signup_new.css">
-<?php include(APPPATH.'views/components/top-header.php'); ?>
+<?php include(APPPATH.'views/components/top-header.php'); ?> 
+<style>
+    .input-group{
+        display: flex;
+        align-items: center;
+    }
+    .input-group .form-control {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+    }
 
+    .input-group .input-group-text {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-group .input-group-text img {
+        cursor: pointer;
+    }
+</style>
+    <body>
         <div class="d-flex align-items-center justify-content-center">
             <form method="post" action="/pepicase/public/signup/" onsubmit="return checkpassword()">
                 <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Londrina Solid';"><b>SIGN UP</b></h2>
