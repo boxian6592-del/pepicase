@@ -120,8 +120,11 @@
                 <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Londrina Solid';"><b>SIGN UP</b></h2>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label"><b>Email</b></label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Abc123@gmail.com" oninput="check_email()">
+                    <label for="email" class="form-label">
+                        <b>Email</b>
+                        <span class="form-required">*</span>
+                    </label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Abc123@gmail.com" oninput="check_email()" required>
                     
                     <div id="check_email">
                         <span></span>
@@ -129,12 +132,15 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="password" class="form-label"><b>Password</b></label>
+                    <label for="password" class="form-label">
+                        <b>Password</b>
+                        <span class="form-required">*</span>
+                    </label>
                     
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Abc12345" style="border-right: none;" oninput="check(); check_confirm_password()">
-                        <span style="background: white; cursor: pointer; border-left: none;" class="input-group-text">
-                            <img style="margin: 0px;" id="toggle_password" src="/pepicase/public/pics/Ellipse.svg" alt="">
+                    <div class="input-group" id="password-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Abc12345" style="border-right: none;" oninput="check(); check_confirm_password()" required>
+                        <span class="input-group-text" id="toggle_password">
+                            <img style="margin: 0px;" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
                     </div>
 
@@ -144,12 +150,15 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="confirm_password" class="form-label"><b>Confirm password</b></label>
+                    <label for="confirm_password" class="form-label">
+                        <b>Confirm password</b>
+                        <span class="form-required">*</span>
+                    </label>
                     
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;" oninput="check_confirm_password()">
-                        <span style="background: white; cursor: pointer; border-left: none;" class="input-group-text">
-                            <img style="margin: 0px;" id="toggle_confirm_password" src="/pepicase/public/pics/Ellipse.svg" alt="">
+                    <div class="input-group" id="confirm-password-group">
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;" oninput="check_confirm_password()" required>
+                        <span class="input-group-text" id="toggle_confirm_password">
+                            <img style="margin: 0px;" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
                     </div>
 
@@ -194,6 +203,7 @@
         <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
 
         <script>
+
             // nhấn vào con mắt sẽ hiện ra password
             document.getElementById('toggle_password').addEventListener('click', function() {
                 var passwordInput = document.getElementById('password');
