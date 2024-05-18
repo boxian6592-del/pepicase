@@ -8,7 +8,7 @@
         else $id = $checker;
     }
     else $id = $curr_session->get_id();
-    ?>
+?>
     
     </head>
     <body>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\User;
+use Config\Database;
 
 class SignUpController extends BaseController
 {
@@ -56,7 +57,7 @@ class SignUpController extends BaseController
                     $encryptedEmail = $this->encrypt($email);
                     $encryptedPassword = $this->encrypt($password);
                     $new_url = 'localhost/pepicase/public/signup/' . $encryptedEmail .'/'. $encryptedPassword;
-                    $this->load->library('email');
+                    
 
                     //khởi tạo và gửi mail tại đây Quỳnh!
                     //khởi tạo và gửi mail tại đây Quỳnh!
@@ -86,7 +87,7 @@ class SignUpController extends BaseController
         $user = new User($decryptedEmail, $decryptedPassword);
         if(!$user->check_if_authorized())
         {
-            $user->create($decryptedEmail, $decryptedPassword);
+            $user->create($decryptedEmail, $decryptedPassword); //chưa code hàm create!
             //tìm hiểu làm sao để biết create thành công hay không, sau đó check, nếu thành công thì về '/' nếu không thì về signup_fail
             //tìm hiểu làm sao để biết create thành công hay không, sau đó check, nếu thành công thì về '/' nếu không thì về signup_fail
             //tìm hiểu làm sao để biết create thành công hay không, sau đó check, nếu thành công thì về '/' nếu không thì về signup_fail

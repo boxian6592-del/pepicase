@@ -55,7 +55,6 @@ class User extends Model
     {
         $db = Database::connect();
         $result = $db->query("INSERT INTO user (Email, Password, Is_Admin) VALUES ($mail, $pass, 0);");
-        //
     }
 
     public function check_email($mail)

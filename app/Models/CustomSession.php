@@ -72,6 +72,7 @@ class CustomSession
             return $identifier;
         }     
     }
+    
     public function delete_session_cookie()
     {
         helper('cookie');

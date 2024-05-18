@@ -3,11 +3,11 @@ var data = JSON.parse(js_arr);
 document.addEventListener("DOMContentLoaded", function()
 {
     for(let i = 0; i < data.length; i++)
-        printLmao(data[i][0],data[i][1],data[i][2],data[i][3]);
+        print(data[i][0],data[i][1],data[i][2],data[i][3]);
 });
 
 
-function printLmao(id, name, price, pathing)
+function print(id, name, price, pathing)
 {
     var block = document.createElement("div");
     block.className = "lexend";
