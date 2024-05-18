@@ -2,7 +2,7 @@
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
         <div class="d-flex align-items-center justify-content-center">
-            <form method="post" action="/pepicase/public/signup/" onsubmit="return checkpassword()">
+            <form method="post" action="/pepicase/public/signup/" onsubmit="return checkForm()">
                 <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Londrina Solid';"><b>SIGN UP</b></h2>
 
                 <div class="mb-3">
@@ -10,7 +10,7 @@
                         <b>Email</b>
                         <span class="form-required">*</span>
                     </label>
-                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Abc123@gmail.com" oninput="check_email()" required>
+                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Abc123@gmail.com" onfocus="checkEmail()" onblur="checkEmail()" required>
                     
                     <div id="check_email">
                         <span></span>
@@ -114,15 +114,26 @@
                 var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 var checkEmailDiv = document.getElementById('check_email').querySelector('span');
 
-                if (emailPattern.test(email)) {
-                    checkEmailDiv.innerHTML = 'Email hợp lệ';
+                if (emailPattern.test(email) && emailPattern !== '') {
+                    checkEmailDiv.innerText = 'Email hợp lệ';
                     checkEmailDiv.style.color = 'green';
+                    checkEmailDiv.style.fontFamily = "Lexend";
+                    return true;
                 } else {
-                    checkEmailDiv.innerHTML = 'Email không hợp lệ';
+                    checkEmailDiv.innerText = 'Email không hợp lệ. Vui lòng nhập lại';
                     checkEmailDiv.style.color = 'red';
+                    checkEmailDiv.style.fontFamily = "Lexend";
+                    return false;
                 }
             }
-            
+            function handleFocus() {
+                var checkEmailDiv = document.getElementById('check_email').querySelector('span');
+                checkEmailDiv.innerHTML = ''; // Xóa thông báo khi phần tử nhận được focus
+            }
+
+            document.getElementById('email').addEventListener('blur', checkEmail);
+            document.getElementById('email').addEventListener('focus', handleFocus);
+
             // Kiểm tra mật khẩu
             function check() {
                 var password = document.getElementById("password").value;
@@ -130,14 +141,16 @@
                 var trigger_password = document.getElementById("check_password");
                 var trigger_confirm_password = document.getElementById("check_confirm_password");
 
-                if ((password.length >= 8) && (password.match(/[0-9]/)) && (password.match(/[A-Z]/)) && (password.match(/[a-z]/))) {
+                if ((password.length >= 8) && (password.match(/[0-9]/)) && (password.match(/[A-Z]/)) && (password.match(/[a-z]/)) && password !== '') {
                     trigger_password.style.color = "green";
                     trigger_password.style.fontFamily = "Lexend";
                     trigger_password.innerText = "Mật khẩu hợp lệ.";
+                    return true;
                 } else {
                     trigger_password.style.color = "red";
                     trigger_password.style.fontFamily = "Lexend";
                     trigger_password.innerText = "Mật khẩu không hợp lệ. Vui lòng nhập lại!";
+                    return false;
                 }
             }
 
@@ -147,41 +160,24 @@
                 var confirm_password = document.getElementById("confirm_password").value;
                 var trigger_confirm_password = document.getElementById("check_confirm_password").getElementsByTagName('span')[0];
 
-                if (confirm_password === password) {
+                if (confirm_password === password && password !== '') {
                     trigger_confirm_password.style.color = "green";
                     trigger_confirm_password.style.fontFamily = "Lexend";
                     trigger_confirm_password.innerText = "Xác nhận mật khẩu hợp lệ.";
+                    return true;
                 } else {
                     trigger_confirm_password.style.color = "red";
                     trigger_confirm_password.style.fontFamily = "Lexend";
-                    trigger_confirm_password.innerText = "Xác nhận mật khẩu không khớp. Vui lòng nhập lại!";
+                    trigger_confirm_password.innerText = "Xác nhận mật khẩu không hợp lệ.";
+                    return false;
                 }
             }
 
-            // kiểm tra password và confirm password trùng khớp chưa khi nhấn submit
-            function checkpassword() {
-                var password = document.getElementById("password").value;
-                var confirm_password = document.getElementById("confirm_password").value;
-                var trigger_confirm_password = document.getElementById("trigger_confirm_password");
-
-                if ((password.length >= 8) && (password.match(/[0-9]/)) && (password.match(/[A-Z]/)) && (password.match(/[a-z]/))) {
-                    if (confirm_password === password) {
-                        trigger_confirm_password.style.color = "green";
-                        trigger_confirm_password.style.fontFamily = "Lexend";
-                        trigger_confirm_password.innerText = "Xác nhận mật khẩu hợp lệ.";
-                        return true; // Submit form
-                    } else {
-                        trigger_confirm_password.style.color = "red";
-                        trigger_confirm_password.style.fontFamily = "Lexend";
-                        trigger_confirm_password.innerText = "Xác nhận mật khẩu không khớp. Vui lòng nhập lại!";
-                        return false; // Prevent form submission
-                    }
-                } else {
-                    trigger_confirm_password.style.color = "red";
-                    trigger_confirm_password.style.fontFamily = "Lexend";
-                    trigger_confirm_password.innerText = "Mật khẩu không hợp lệ. Vui lòng nhập lại!";
-                    return false; // Prevent form submission
-                }
+            function checkForm() {
+                var emailValid = checkEmail();
+                var passwordValid = check();
+                var confirmPasswordValid = check_confirm_password();
+                return emailValid && passwordValid && confirmPasswordValid;
             }
         </script>
     </body>
