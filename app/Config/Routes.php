@@ -32,7 +32,7 @@ $routes->get('/logout','LoginController::logout');
 $routes->get('/signup','SignUpController::index');
 $routes->post('/signup','SignUpController::send_signup_email');
 $routes->get('/signup/pending','SignUpController::pending');
-$routes->get('/signup/confirm/(:string)/(:string)','SignUpController::signup/$1/$2');
+$routes->get('/signup/confirmed/(:any)/(:any)','SignUpController::signup/$1/$2');
 //thao tác đăng ký
 
 //resetPassword

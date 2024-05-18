@@ -76,7 +76,7 @@ class ResetPasswordController extends BaseController
                 <h1>You have initiated a password reset attempt.</h1>
             </div>
             <div style="padding: 20px;">
-                <p>PEPICASE has detected your attempt to reset your password. If this is not you, <strong>ignore this message!</strong></p>
+                <p>PEPICASE has received a signup request from a user with this email. If this is not you, <strong>ignore this message!</strong></p>
 
                 <p>Otherwise, please click the link below to initiate a password reset.</p>
 

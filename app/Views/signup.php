@@ -1,6 +1,7 @@
 <?php include(APPPATH.'views/components/usual-links.php'); ?>
     <link rel="stylesheet" href="/pepicase/public/css/signup_new.css">
 <?php include(APPPATH.'views/components/top-header(no_session).php'); ?>
+
         <div class="d-flex align-items-center justify-content-center">
             <form method="post" action="/pepicase/public/signup">
                 <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Londrina Solid';"><b>SIGN UP</b></h2>

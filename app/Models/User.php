@@ -54,7 +54,13 @@ class User extends Model
     public function create($mail, $pass)
     {
         $db = Database::connect();
-        $result = $db->query("INSERT INTO user (Email, Password, Is_Admin) VALUES ($mail, $pass, 0);");
+        $result = $db->query("INSERT INTO user (Email, Password, Is_Admin) VALUES ('$mail', '$pass', 0);");
+        if ($result !== null)
+        {
+            $new_user = new User($mail, $pass);
+            return $new_user->id;
+        }
+        else return 0;
     }
 
     public function check_email($mail)
