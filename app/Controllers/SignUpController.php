@@ -4,6 +4,10 @@ namespace App\Controllers;
 use App\Models\User;
 use Config\Database;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class SignUpController extends BaseController
 {
     public function encrypt($data)
@@ -39,8 +43,13 @@ class SignUpController extends BaseController
             'validation' => '',
         ];
 
-        $email = $this->request->getPost("email");
-        $password = $this->request->getPost("password");
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+        $data = array (
+            'email' => $email,
+            'password' => $password,
+        );
+
         if($this->validate($rules))
         {
             $user = new User($email, $password);
@@ -56,17 +65,17 @@ class SignUpController extends BaseController
                 {
                     $encryptedEmail = $this->encrypt($email);
                     $encryptedPassword = $this->encrypt($password);
+                    $token = rand(0000,9999);
                     $new_url = 'localhost/pepicase/public/signup/' . $encryptedEmail .'/'. $encryptedPassword;
                     
 
                     //khởi tạo và gửi mail tại đây Quỳnh!
-                    //khởi tạo và gửi mail tại đây Quỳnh!
-                    //khởi tạo và gửi mail tại đây Quỳnh!
-                    //khởi tạo và gửi mail tại đây Quỳnh!
-                    //khởi tạo và gửi mail tại đây Quỳnh!
-                    //khởi tạo và gửi mail tại đây Quỳnh!
-                    //khởi tạo và gửi mail tại đây Quỳnh!
-
+                    $title = "[Pepicase] - Xác nhận đăng ký tài khoản";
+                    $content1 = "Xin chào ... ,";
+                    $content2 = "Bạn vui lòng kích hoạt tài khoản tại đây giúp chúng mình nhé: ".FCPATH.'?token='.$token.'&email'.$email;
+                    $content3 = "Pepicase xin cảm ơn bạn!";
+                    $to_email = $email;
+                    $this->send_signup_mail($to_email, $content1, $content2, $content3);
                 }
             };
         }
