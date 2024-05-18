@@ -55,3 +55,48 @@ img{
 table tr td a button:hover {
     background-color: #FFD54F;
 }
+
+.wrapper {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    width: 440px; /* Đặt chiều rộng cố định cho form */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.form-container .error-message {
+    color: red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px); /* Đảm bảo thông báo lỗi không tràn ra ngoài */
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.form-container img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.button{
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+}
+button[type=submit]{
+    padding: 5px 30px;
+        }

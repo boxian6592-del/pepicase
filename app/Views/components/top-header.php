@@ -1,13 +1,14 @@
 <?php 
     use App\Models\CustomSession;
     $curr_session = new CustomSession(null);
+    $user_id;
     if (!$curr_session->isSessionSet())
     {
         $checker = $curr_session->fetch_session_cookie();
-        if (!$checker) $id = null;
-        else $id = $checker;
+        if (!$checker) $user_id = null;
+        else $user_id = $checker;
     }
-    else $id = $curr_session->get_id();
+    else $user_id = $curr_session->get_id();
 ?>
     
     </head>
@@ -30,9 +31,9 @@
                     </div>
 
                     <div class="col-sm-4 d-flex justify-content-center align-items-center">
-                        <a href="/pepicase/public/<?php if($id !== null) echo 'testing'; else echo 'login';?>" style="color:black; text-decoration:none;">
-                            <img style ="height: 30px; width: auto;" src="<?php if($id !== null) echo '/pepicase/public/pics/Vector (1).png'; else echo '/pepicase/public/pics/login.svg';?>" alt="">
-                            <?php if($id !== null) echo 'User!'; else echo 'Guest!';?>
+                        <a href="/pepicase/public/<?php if($user_id !== null) echo 'testing'; else echo 'login';?>" style="color:black; text-decoration:none;">
+                            <img style ="height: 30px; width: auto;" src="<?php if($user_id !== null) echo '/pepicase/public/pics/Vector (1).png'; else echo '/pepicase/public/pics/login.svg';?>" alt="">
+                            <?php if($user_id !== null) echo 'User!'; else echo 'Guest!';?>
                         </a>
                         <a href="" style="margin-right: 20px;">
                             <img src="/pepicase/public/pics/Cart.png" alt="">
