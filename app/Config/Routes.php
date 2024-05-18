@@ -12,11 +12,11 @@ $routes->get('/policy','StaticPageController::Policy');
 $routes->get('/terms-of-use','StaticPageController::TermsOfUse');
 // web tĩnh
 
-//lấy thông tin sản phẩm
+//sản phẩm
 $routes->get('/product', 'GetProductController::index');
 $routes->get('/product/(:num)/','GetProductController::get_with_id/$1');
 $routes->get('/collections','GetProductController::get_through_collections');
-//lấy thông tin sản phẩm
+//sản phẩm
 
 
 //thao tác login
