@@ -108,13 +108,28 @@
                 }
             });
 
+            // kiểm tra email
+            function checkEmail() {
+                var email = document.getElementById('email').value;
+                var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                var checkEmailDiv = document.getElementById('check_email').querySelector('span');
+
+                if (emailPattern.test(email)) {
+                    checkEmailDiv.innerHTML = 'Email hợp lệ';
+                    checkEmailDiv.style.color = 'green';
+                } else {
+                    checkEmailDiv.innerHTML = 'Email không hợp lệ';
+                    checkEmailDiv.style.color = 'red';
+                }
+            }
+            
+            // Kiểm tra mật khẩu
             function check() {
                 var password = document.getElementById("password").value;
                 var confirm_password = document.getElementById("confirm_password").value;
                 var trigger_password = document.getElementById("check_password");
                 var trigger_confirm_password = document.getElementById("check_confirm_password");
 
-                // Kiểm tra mật khẩu
                 if ((password.length >= 8) && (password.match(/[0-9]/)) && (password.match(/[A-Z]/)) && (password.match(/[a-z]/))) {
                     trigger_password.style.color = "green";
                     trigger_password.style.fontFamily = "Lexend";
@@ -126,12 +141,12 @@
                 }
             }
 
+            // Kiểm tra xác nhận mật khẩu
             function check_confirm_password() {
                 var password = document.getElementById("password").value;
                 var confirm_password = document.getElementById("confirm_password").value;
                 var trigger_confirm_password = document.getElementById("check_confirm_password").getElementsByTagName('span')[0];
 
-                // Kiểm tra xác nhận mật khẩu
                 if (confirm_password === password) {
                     trigger_confirm_password.style.color = "green";
                     trigger_confirm_password.style.fontFamily = "Lexend";
