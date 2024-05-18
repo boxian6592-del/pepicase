@@ -40,11 +40,19 @@ class Product extends Model
         else return true;
     }
 
+    public function check_favorited($user_id)
+    {
+        $db = Database::connect();
+        $result = $db->query("SELECT * FROM wishlist where Product_ID = '$this->productID' and  User_ID = ".$user_id)->getResult();
+        if (empty($result)) return false;
+        else return true;
+    }
 
     public function getFullInfo()
     {
         $data_bundle =
         [
+            'id' => $this->productID,
             'name' => $this->name,
             'price'=> $this->price,
             'path' => $this->imgPath,

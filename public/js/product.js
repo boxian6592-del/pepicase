@@ -1,81 +1,82 @@
 var quantity = 1;
 var total;
 
-
 var current_sizing = 0, previous_sizing, finalized_size;
-document.addEventListener("DOMContentLoaded", function()
-{
+
+$(document).ready(function() {
     total = quantity * price;
-    document.getElementById("add_to_cart_button").innerText += "Add to Cart - $" + total + " USD";
-    var sizingArr = document.getElementsByClassName("sizing");
-    for(i = 0; i < sizingArr.length; i++)
-        {
-            sizingArr[i].value = sizingArr[i].innerText.toString();
+    $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
+    
+    $(".sizing").each(function() {
+        $(this).val($(this).text());
+    });
+    
+    $(".sizing").click(function() {
+        if (this === current_sizing) return;
+        
+        if (current_sizing === 0) {
+            $(this).css("background-color", "#FFE57A");
+            current_sizing = this;
+            finalized_size = $(this).val();
+        } else {
+            previous_sizing = current_sizing;
+            $(this).css("background-color", "#FFE57A");
+            current_sizing = this;
+            $(previous_sizing).css("background-color", "white");
+            finalized_size = $(this).val();
         }
-    for(i = 0; i < sizingArr.length; i++)
-        {
-            var curr = sizingArr[i];
-            sizingArr[i].addEventListener("click",function()
-            {
-                if(this === current_sizing) return;
-                if(current_sizing === 0)
-                {
-                    this.style.backgroundColor = "#FFE57A";
-                    current_sizing = this;
-                    finalized_size = this.value;
-                }
-                else
-                {
-                    previous_sizing = current_sizing;
-                    this.style.backgroundColor = "#FFE57A";
-                    current_sizing = this;
-                    previous_sizing.style.backgroundColor = "white";
-                    finalized_size = this.value;
-                }
-            })
+    });
+    
+    $("#curr_quantity").text(quantity.toString());
+    
+    $(".review_star").click(function() {
+        var index = $(this).data("value");
+        
+        for (let u = index - 1; u > -1; u--) {
+            $(starArr[u]).attr("src", "http://localhost/pepicase/public/pics/review_star_shaded.svg");
         }
-    document.getElementById("curr_quantity").innerText = quantity.toString();
+        
+        for (let u = index; u < starArr.length; u++) {
+            $(starArr[u]).attr("src", "http://localhost/pepicase/public/pics/review_star.svg");
+        }
+    });
+});
 
-var starArr = document.getElementsByClassName("review_star");
-for(i = 0; i < starArr.length; i++)
+function toggleFavorite() 
 {
-    let i_pass_on = i;
-    starArr[i].addEventListener("click", function()
-    {
-        let index = starArr[i_pass_on].dataset.value;
-        for(let u = index - 1; u > -1; u--)
-            {
-                starArr[u].src = "http://localhost/pepicase/public/pics/review_star_shaded.svg";
-            }
-        for(let u = index; u < starArr.length; u++)
-            {
-                starArr[u].src = "http://localhost/pepicase/public/pics/review_star.svg";
-            }
-    })
-}
-})
+    var fav_icon = $("#favorite");
+    if (fav_icon.attr("src") === "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg") 
+        fav_icon.attr("src", "http://localhost/pepicase/public/pics/favorite_icon.svg")
+    else fav_icon.attr("src", "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg");
 
-function favorite()
-{
-    var fav_icon = document.getElementById("favorite");      
-    if(fav_icon.src === "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg")
-        fav_icon.src = "http://localhost/pepicase/public/pics/favorite_icon.svg";
-    else
-        fav_icon.src = "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg";
-}
+    /*$.ajax({
+        url: "http://localhost/pepicase/public/product/" + id + "/toggleFavorite",
+        method: "GET",
+        data: {
+          status: "value1",
+        },
+        success: function(response) {
+          // Code to handle a successful response
+          console.log(response);
+        },
+        error: function(xhr, status, error) {
+          // Code to handle an error response
+          console.log("Error:", error);
+        }
+      });
+    */
+};
 
-function add()
-{
+function add() {
     quantity++;
-    document.getElementById("curr_quantity").innerText = quantity;
+    $("#curr_quantity").text(quantity);
     total = price * quantity;
-    document.getElementById("add_to_cart_button").innerText = "Add to Cart - $" + (price * quantity) + " USD";
+    $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
 }
 
-function minus()
-{
+function minus() {
     quantity--;
-    document.getElementById("curr_quantity").innerText = quantity;
+    $("#curr_quantity").text(quantity);
     total = price * quantity;
-    document.getElementById("add_to_cart_button").innerText = "Add to Cart - $" + (price * quantity) + " USD";
+    $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
 }

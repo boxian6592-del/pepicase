@@ -1,7 +1,6 @@
 <?php include(APPPATH.'views/components/usual-links.php'); ?>
     <link rel="stylesheet" href="/pepicase/public/css/product.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
-
         <div class = "lexend-tera d-flex justify-content-center align-items-center" style = "height:200px;background-color:#FFFAE3; font-size:40px;">
             COLLECTION BANNER (with product-testing )
         </div>
@@ -9,14 +8,17 @@
 
             <div id = "image-box" class ="shadow d-flex justify-content-center align-items-center" style = "margin-left: 145px; 
             margin-top: 55px; width:495px; height:495px; background-color:#FFFAE3; border-radius: 10px;">
-                <img src ="<?= $path ?>" style ="height: 90%; width: auto;">
+                <img src ="<?=$path?>" style ="height: 90%; width: auto;">
             </div>
 
             <div style=" margin-top:55px; margin-left:100px; height:575px; width:675px;">
 
                 <div class="d-flex" style="height:fit-content;">
                     <div id ="product_name" class="lexend" style = "line-height:44px; height:88px; width:fit-content;max-width:500px; font-size: 36px;"><?=$name?></div>
-                    <img id="favorite" onclick ="favorite()" style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;" src="/pepicase/public/pics/favorite_icon.svg" alt="favorite">
+                    <?php if($user_id == null) echo '<a href ="/pepicase/public/login">'; ?>
+                    <img id="favorite" <?php if($user_id !== null) echo 'onclick ="toggleFavorite()"'?> style="margin-top:12px;margin-left:10px;width: 28.89px;height:25.84px;" 
+                    src="<?php if ($user_id !== null && isset($favorite)) echo '/pepicase/public/pics/favorite_icon_shaded.svg'; else echo '/pepicase/public/pics/favorite_icon.svg'?>" alt="favorite">
+                    <?php if($user_id == null) echo '</a>'; ?>
                 </div>
                 
                     <div id="pricing" class="lexend-tera" style="font-size:25px;"><?=$price?>$</div>
@@ -85,5 +87,12 @@
                 <button style = "float: right; margin-top:10px; background-color:black; color:white;"><span style="font-weight:300;">Post review</span></button>
             </div>
         </div>
-
+        <script src="/pepicase/public/js/jquery.js"></script>
+        <script>
+            var user = <?php if($user_id == null) echo 'null'; else echo $user_id ?>;
+            var price = <?= $price ?>;
+            var product_id = <?= $id ?>; 
+            var isFavorited = <? if(isset($favorite)) echo 'yes'; else echo 'no';?>;
+        </script>
+        <script src="/pepicase/public/js/product.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
