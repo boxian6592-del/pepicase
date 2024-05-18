@@ -33,7 +33,7 @@
                     <div class="col-sm-4 d-flex justify-content-center align-items-center">
                         <a href="/pepicase/public/<?php if($user_id !== null) echo 'testing'; else echo 'login';?>" style="color:black; text-decoration:none;">
                             <img style ="height: 30px; width: auto;" src="<?php if($user_id !== null) echo '/pepicase/public/pics/Vector (1).png'; else echo '/pepicase/public/pics/login.svg';?>" alt="">
-                            <?php if($user_id !== null) echo 'User!'; else echo 'Guest!';?>
+                            <?php if($user_id !== null) echo $user_id; else echo 'Guest!';?>
                         </a>
                         <a href="" style="margin-right: 20px;">
                             <img src="/pepicase/public/pics/Cart.png" alt="">

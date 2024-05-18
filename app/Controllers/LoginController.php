@@ -51,25 +51,10 @@ class LoginController extends BaseController
     }
 
 
-    public function index(): string
+    public function index()
     {
-        return view('login');
+        $curr_session = new CustomSession(null);
+        if ($curr_session->isSessionSet()) return redirect() -> to('/');
+        else return view('login');
     }
-
-    public function signup():string
-    {
-        return view('signup');
-    }
-
-    public function createUser(string $email, string $password)
-    {
-        
-    }
-
-    public function resetPassword():string
-    {
-        return view('resetpassword1');
-    }
-
-
 }

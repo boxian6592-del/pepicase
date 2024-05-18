@@ -164,8 +164,10 @@ class SignUpController extends BaseController
         }
     }
 
-    public function index(): string
+    public function index()
     {
+        $curr_session = new CustomSession(null);
+        if ($curr_session->isSessionSet()) return redirect() -> to('/');
         return view ('signup');
     }
 
