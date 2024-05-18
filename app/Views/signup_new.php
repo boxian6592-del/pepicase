@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="d-grid gap-2">
-                    <input class="btn btn-primary form-control-lg" type="submit" name="signup" value="SIGN UP" onclick="checkpassword()" 
+                    <input class="btn btn-primary form-control-lg" type="submit" name="signup" value="SIGN UP" 
                     style = "width: 100%; margin-top: 20px; background-color: #FFE57A; border-color: black; transition: background-color 0.3s; color:black; font-weight:bold; font-family: 'Lexend'">
                 </div>
                 <div id="trigger_confirm_password" class="message"></div>
