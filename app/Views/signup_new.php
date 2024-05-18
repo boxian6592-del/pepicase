@@ -24,7 +24,7 @@
                     </label>
                     
                     <div class="input-group" id="password-group">
-                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Abc12345" style="border-right: none;" oninput="check(); check_confirm_password()" required>
+                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Abc12345" style="border-right: none;" onfocus="check()" onblur="check(); check_confirm_password()" required>
                         <span class="input-group-text" id="toggle_password">
                             <img style="margin: 0px;" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
@@ -42,7 +42,7 @@
                     </label>
                     
                     <div class="input-group" id="confirm-password-group">
-                        <input type="password" class="form-control form-control-lg" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;" oninput="check_confirm_password()" required>
+                        <input type="password" class="form-control form-control-lg" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;" onfocus="check_confirm_password()" onblur="check_confirm_password()" required>
                         <span class="input-group-text" id="toggle_confirm_password">
                             <img style="margin: 0px;" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
@@ -130,7 +130,6 @@
                 var checkEmailDiv = document.getElementById('check_email').querySelector('span');
                 checkEmailDiv.innerHTML = ''; // Xóa thông báo khi phần tử nhận được focus
             }
-
             document.getElementById('email').addEventListener('blur', checkEmail);
             document.getElementById('email').addEventListener('focus', handleFocus);
 
@@ -138,7 +137,7 @@
             function check() {
                 var password = document.getElementById("password").value;
                 var confirm_password = document.getElementById("confirm_password").value;
-                var trigger_password = document.getElementById("check_password");
+                var trigger_password = document.getElementById("check_password").querySelector('span');
                 var trigger_confirm_password = document.getElementById("check_confirm_password");
 
                 if ((password.length >= 8) && (password.match(/[0-9]/)) && (password.match(/[A-Z]/)) && (password.match(/[a-z]/)) && password !== '') {
@@ -153,12 +152,18 @@
                     return false;
                 }
             }
+            function handlePass() {
+                var checkpassword = document.getElementById('check_password').querySelector('span');
+                checkpassword.innerText = ''; // Xóa thông báo khi phần tử nhận được focus
+            }
+            document.getElementById('password').addEventListener('blur', check);
+            document.getElementById('password').addEventListener('focus', handlePass);
 
             // Kiểm tra xác nhận mật khẩu
             function check_confirm_password() {
                 var password = document.getElementById("password").value;
                 var confirm_password = document.getElementById("confirm_password").value;
-                var trigger_confirm_password = document.getElementById("check_confirm_password").getElementsByTagName('span')[0];
+                var trigger_confirm_password = document.getElementById("check_confirm_password").querySelector('span');
 
                 if (confirm_password === password && password !== '') {
                     trigger_confirm_password.style.color = "green";
@@ -172,7 +177,14 @@
                     return false;
                 }
             }
+            function handleConfirm() {
+                var checkconfirmpassword = document.getElementById('check_confirm_password').querySelector('span');
+                checkconfirmpassword.innerText = ''; // Xóa thông báo khi phần tử nhận được focus
+            }
+            document.getElementById('confirm_password').addEventListener('blur', check_confirm_password);
+            document.getElementById('confirm_password').addEventListener('focus', handleConfirm);
 
+            // kiểm tra form khi nhấn submit
             function checkForm() {
                 var emailValid = checkEmail();
                 var passwordValid = check();
