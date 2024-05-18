@@ -15,39 +15,11 @@
         <link rel="stylesheet" href="/pepicase/public/css/fonts.css">
         <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
 
-        <style>
-            .row{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            
-            .input-group{
-                display: flex;
-                align-items: center;
-            }
-            .input-group .form-control {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                border-right: none;
-            }
-
-            .input-group .input-group-text {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .input-group .input-group-text img {
-                cursor: pointer;
-            }
-        </style>
     </head>
 
     <body>
-        <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px;">
+        <div class = "lexend-deca sales d-flex justify-content-center align-items-center" style ="height: 50px; font-size: 15px; background-color: black;
+    color: white;">
             <div align = "center"><text>Free Shipping worldwide for<br>orders $30 or above</text></div>
             <div style="padding-left:165px; padding-right:165px;" align = "center"><text>ALL PHONE CASES: Limited-time<br>40% Off</text></div>
             <div align = "center"><text>30 days free replacements<br>for quality issues.</text></div>
@@ -59,14 +31,14 @@
                     <div class="col-sm-4"></div>
 
                     <div class="col-sm-4 d-flex justify-content-center align-items-center">
-                        <a href="/pepicase/public/" class="name"><div class ="londrina-solid" style ="font-size: 30px;">pepicase</div></a>
+                        <a style="text-decoration: none; font-weight: bold; font-size: 37px; color: black; font-family: 'Londrina Solid'; padding-bottom: 15px; padding-top: 10px" href="/pepicase/public/">pepicase</a>
                     </div>
 
                     <div class="col-sm-4 d-flex justify-content-center align-items-center">
-                        <a href="/pepicase/public/" style="color:black; text-decoration:none;">
+                        <a href="/pepicase/public/">
                             <img style ="height: 30px; width: auto;" src="/pepicase/public/pics/Vector (1).png'; '/pepicase/public/pics/login.svg';" alt="">
                         </a>
-                        <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
+                        <a href="" style="margin-right: 20px;">
                             <img src="/pepicase/public/pics/Cart.png" alt="">
                         </a>
                         <a href="">
@@ -76,44 +48,31 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4 bg-primary text-white">33.33%</div>
-                    <div class="col-sm-4 bg-dark text-white">33.33%</div>
-                    <div class="col-sm-4 bg-primary text-white">33.33%</div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+
+                    <div class="col d-flex justify-content-center align-items-center">
+                        <a style="font-family: 'Lexend'; color: black; text-decoration: none; font-size: 18px;" href="">Wishlist</a>
+                    </div>
+
+                    <div class="col d-flex justify-content-center align-items-center">
+                        <a style="font-family: 'Lexend'; color: black; text-decoration: none; font-size: 18px;" href="/pepicase/public/product/">Products</a>
+                    </div>
+
+                    <div class="col d-flex justify-content-center align-items-center">
+                        <a style="font-family: 'Lexend'; color: black; text-decoration: none; font-size: 18px;" href="/pepicase/public/collections">Collections</a>
+                    </div>
+
+                    <div class="col d-flex justify-content-center align-items-center">
+                        <a style="font-family: 'Lexend'; color: black; text-decoration: none; font-size: 18px;" href="/pepicase/public/about-us/">About Us</a>
+                    </div>
+
+                    <div class="col"></div>
+                    <div class="col"></div>
+    
                 </div>
             </div>
         </header>
-
-                <!-- <div class="top_header">
-                    <nav class="d-flex justify-content-between" >
-                        <h2 class="name"><a href="/pepicase/public/" style = "color:inherit; text-decoration:none; font-family: 'Londrina Solid'">pepicase</a></h2>
-                        <div class="logo_right">
-                            <a href="/pepicase/public/" style="color:black; text-decoration:none;">
-                                <img style ="height: 30px; width: auto;" src="/pepicase/public/pics/Vector (1).png'; '/pepicase/public/pics/login.svg';" alt="">
-
-                            </a>
-                            <a href="" style="margin-right: 20px; text-decoration: none; color:white;">
-                                <img src="/pepicase/public/pics/Cart.png" alt="">
-                            </a>
-                            <a href="">
-                                <img src="/pepicase/public/pics/Frame.png" alt="">
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="bottom_header">
-                    <nav class="container">
-                        <ul id="main_menu">
-                            <li><a style="font-family: 'Lexend';" href="">New & Featured</a></li>
-
-                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/product/">Products</a></li>
-
-                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/collections">Collections</a></li>
-
-                            <li><a style="font-family: 'Lexend';" href="/pepicase/public/about-us/">About Us</a></li>
-                        </ul>
-                    </nav>
-                </div> -->
 
         <div class="d-flex align-items-center justify-content-center">
             <form method="post" action="/pepicase/public/signup/" onsubmit="return checkpassword()">
@@ -124,7 +83,7 @@
                         <b>Email</b>
                         <span class="form-required">*</span>
                     </label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Abc123@gmail.com" oninput="check_email()" required>
+                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Abc123@gmail.com" oninput="check_email()" required>
                     
                     <div id="check_email">
                         <span></span>
@@ -138,7 +97,7 @@
                     </label>
                     
                     <div class="input-group" id="password-group">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Abc12345" style="border-right: none;" oninput="check(); check_confirm_password()" required>
+                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Abc12345" style="border-right: none;" oninput="check(); check_confirm_password()" required>
                         <span class="input-group-text" id="toggle_password">
                             <img style="margin: 0px;" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
@@ -156,7 +115,7 @@
                     </label>
                     
                     <div class="input-group" id="confirm-password-group">
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;" oninput="check_confirm_password()" required>
+                        <input type="password" class="form-control form-control-lg" id="confirm_password" name="confirm_password" placeholder="Abc12345" style="border-right: none;" oninput="check_confirm_password()" required>
                         <span class="input-group-text" id="toggle_confirm_password">
                             <img style="margin: 0px;" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
@@ -168,8 +127,8 @@
                 </div>
 
                 <div class="d-grid gap-2">
-                    <input class="btn btn-primary" type="submit" name="signup" value="SIGN UP" onclick="checkpassword()" 
-                    style = "width: 100%; margin-top: 20px; background-color: #FFE57A; border-color: black; transition: background-color 0.3s; color:black; font-family: 'Lexend'">
+                    <input class="btn btn-primary form-control-lg" type="submit" name="signup" value="SIGN UP" onclick="checkpassword()" 
+                    style = "width: 100%; margin-top: 20px; background-color: #FFE57A; border-color: black; transition: background-color 0.3s; color:black; font-weight:bold; font-family: 'Lexend'">
                 </div>
                 <div id="trigger_confirm_password" class="message"></div>
 
