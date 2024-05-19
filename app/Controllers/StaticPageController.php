@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\CustomSession;
 
 class StaticPageController extends BaseController
 {
@@ -21,7 +22,15 @@ class StaticPageController extends BaseController
 
     public function Purchases()
     {
-        return redirect() -> to ('/');
+        $curr_session = new CustomSession(null);
+        if($curr_session->isSessionSet())
+        {
+            
+        }
+        else
+        {
+            return redirect() -> to ('/login');
+        }
     }
 }
 

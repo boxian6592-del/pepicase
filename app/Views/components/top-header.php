@@ -32,14 +32,11 @@
 
                     <div class="col-sm-4 d-flex justify-content-center align-items-center">
                         <a href="/pepicase/public/<?php if($user_id !== null) echo 'testing'; else echo 'login';?>" style="color:black; text-decoration:none;">
-                            <img style ="height: 30px; width: auto;" src="<?php if($user_id !== null) echo '/pepicase/public/pics/Vector (1).png'; else echo '/pepicase/public/pics/login.svg';?>" alt="">
-                            <?php if($user_id !== null) echo $user_id; else echo 'Guest!';?>
-                        </a>
-                        <a href="" style="margin-right: 20px;">
-                            <img src="/pepicase/public/pics/Cart.png" alt="">
+                            <?php if($user_id !== null) echo '<img style ="height: 25px; width: auto; margin-right:30px;" src="/pepicase/public/pics/user.svg" alt="">';
+                            else echo '<button class="btn lexend" style="color:white; background-color:black; margin-right: 30px; border-radius:20px;">Login</button>'; ?>
                         </a>
                         <a href="">
-                            <img src="/pepicase/public/pics/Frame.png" alt="">
+                            <img src="/pepicase/public/pics/cart.svg" alt="">
                         </a>
                     </div>
                 </div>
