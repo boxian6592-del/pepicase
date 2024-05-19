@@ -4,6 +4,7 @@ namespace Config;
 
 use CodeIgniter\Database\Config;
 
+
 /**
  * Database Configuration
  */
@@ -101,16 +102,16 @@ class Database extends Config
     //    /**
     //     * Sample database connection for SQLSRV.
     //     *
-    //     * @var array<string, mixed>
+    // @var array<string, mixed>
     //     */
-    //    public array $default = [
+    //    public array $default1 = [
     //        'DSN'        => '',
     //        'hostname'   => 'localhost',
     //        'username'   => 'root',
-    //        'password'   => 'root',
-    //        'database'   => 'ci4',
+    //        'password'   => '',
+    //        'database'   => 'pepicase',
     //        'schema'     => 'dbo',
-    //        'DBDriver'   => 'SQLSRV',
+    //        'DBDriver'   => 'mysqli',
     //        'DBPrefix'   => '',
     //        'pConnect'   => false,
     //        'DBDebug'    => true,
@@ -118,14 +119,42 @@ class Database extends Config
     //        'swapPre'    => '',
     //        'encrypt'    => false,
     //        'failover'   => [],
-    //        'port'       => 1433,
+    //        'port'       => 3306,
     //        'dateFormat' => [
     //            'date'     => 'Y-m-d',
     //            'datetime' => 'Y-m-d H:i:s',
     //            'time'     => 'H:i:s',
     //        ],
     //    ];
-
+     /**
+     * The default database connection.
+     *@var array<string, mixed>
+     */
+    // public array $default = [
+    //     'DSN'          => '',
+    //     'hostname'     => '127.0.0.1',
+    //     'username'     => 'root',
+    //     'password'     => '',
+    //     'database'     => 'pepicase',
+    //     'DBDriver'     => 'MySQLi',
+    //     'DBPrefix'     => '',
+    //     'pConnect'     => false,
+    //     'DBDebug'  => (ENVIRONMENT !== 'production'),
+    //     'charset'      => 'utf8mb4',
+    //     'DBCollat'     => 'utf8mb4_general_ci',
+    //     'swapPre'      => '',
+    //     'encrypt'      => false,
+    //     'compress'     => false,
+    //     'strictOn'     => false,
+    //     'failover'     => [],
+    //     'port'         => 3306,
+    //     'numberNative' => false,
+    //     'dateFormat'   => [
+    //         'date'     => 'Y-m-d',
+    //         'datetime' => 'Y-m-d H:i:s',
+    //         'time'     => 'H:i:s',
+    //     ],
+    // ];
     //    /**
     //     * Sample database connection for OCI8.
     //     *
