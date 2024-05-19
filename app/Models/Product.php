@@ -15,6 +15,7 @@ class Product extends Model
 
     public function __construct($id = null)
     {
+        parent::__construct();
         if($id != null)
         {
             $db = Database::connect();
@@ -58,5 +59,27 @@ class Product extends Model
             'path' => $this->imgPath,
         ];
         return $data_bundle;
+    }
+    public function getProducts($limit = 6)
+    {
+        return $this->limit($limit)->find();
+    }
+    public function filterProducts($collections, $materials, $colors)
+    {
+        $db = Database::connect();
+        $builder = $db->table($this->table);
+
+        if (!empty($collections)) {
+            $builder->whereIn('Collect_ID', $collections);
+        }
+        if (!empty($materials)) {
+            // Assuming materials filtering logic goes here
+            // Example: $builder->whereIn('Material_ID', $materials);
+        }
+        if (!empty($colors)) {
+            $builder->whereIn('Color_ID', $colors);
+        }
+
+        return $builder->get()->getResultArray();
     }
 }

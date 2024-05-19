@@ -8,7 +8,9 @@ class GetProductController extends BaseController
 {
     public function index(): string
     {        
-        return view('shop_page');
+        $productModel = new Product();
+        $data['products'] = $productModel->getProducts();
+        return view('shop_page', $data);
     }
 
     public function get_with_id(int $id): string
@@ -30,5 +32,17 @@ class GetProductController extends BaseController
     public function get_through_collections(): string
     {
         return view('collections');
+    }
+    public function filterProducts()
+    {
+        $productModel = new Product();
+
+        $collections = $this->request->getPost('collections');
+        $materials = $this->request->getPost('materials');
+        $colors = $this->request->getPost('colors');
+
+        $products = $productModel->filterProducts($collections, $materials, $colors);
+        
+        return view('product_list', ['products' => $products]);
     }
 }

@@ -16,6 +16,9 @@ $routes->get('/terms-of-use','StaticPageController::TermsOfUse');
 $routes->get('/product', 'GetProductController::index');
 $routes->get('/product/(:num)/','GetProductController::get_with_id/$1');
 $routes->get('/collections','GetProductController::get_through_collections');
+$routes->get('/shop-page', 'GetProductController::index');
+$routes->post('/filter-products', 'GetProductController::filter_products');
+
 //sản phẩm
 
 
