@@ -101,7 +101,7 @@ class LoginController extends BaseController
 		if($this->request->getVar('code')){
             $currentSession = new CustomSession(null);
 			if($currentSession->get_field("access_token")){
-				$access_token = $currentSession->get_field("access_token");
+				$access_token = $currentSession->get_field("access_token"); 
 			}else{
 				$access_token = $this->fb_helper->getAccessToken();
 				$currentSession->set_field("access_token", $access_token);
@@ -151,12 +151,10 @@ class LoginController extends BaseController
                     //add more feilds if needed
                 ];
                 $this->userModel->insertUserData($userdata);
-            } }
-    
-            
+            }
             $session->set_field("LoggedUserData", $userdata);
-            //Successfull Login
-            return redirect()->to('/');
         }
+        //Successfull Login
+        return redirect()->to('/');
     }
     }

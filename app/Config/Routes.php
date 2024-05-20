@@ -26,6 +26,7 @@ $routes->post('/filter-products', 'GetProductController::filter_products');
 $routes->get('/login','LoginController::index');
 $routes->post('/login','LoginController::login');
 $routes->post('/loginWithGoogle','LoginController::loginWithGoogle');
+$routes->post('/loginWithFacebook','LoginController::loginWithFB');
 //thao tác login
 
 //thao tác logout

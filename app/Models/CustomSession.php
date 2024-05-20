@@ -89,6 +89,6 @@ class CustomSession
 public function get_field($field)
     {
     $session = \Config\Services::session();
-    $session->get($field);
+    return $session->get($field);
 }
 }
