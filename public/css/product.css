@@ -1,0 +1,12 @@
+button.sizing
+{
+    width: 150px;
+    height:50px;
+    background-color: white;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: light;
+    font-size: 13px;
+    font-style: normal;
+    margin-bottom: 15px;
+}

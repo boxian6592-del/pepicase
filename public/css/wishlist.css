@@ -1,0 +1,77 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend+Tera:wght@100..900&family=Lexend+Zetta:wght@100..900&family=Lexend:wght@100..900&family=Londrina+Solid:wght@100;300;400;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
+    font-family: var(--font-family-2);
+}
+/* Variables */
+:root {
+    --poppins-font: "Lexend", sans-serif;
+    --font-family-2: "Lexend", sans-serif;
+}
+body{
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+section {
+    padding: 3rem 0 2rem;;
+}
+.container{
+    max-width: 1512px;
+    margin: auto;
+    width: 100%;
+}
+.lexend-tera p{
+    font-family: "Lexend Zetta", sans-serif;
+    display: flex;
+    columns: flex;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+}
+.product-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,100px));
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.product-content .product-box{
+    position: relative;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.product-content img{
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    padding: 30px;
+    background: #E5E5E5;
+}
+.product-content .product-box p{
+    font-size: 20px;
+    margin: 0.5rem 0 0.5rem;
+}
+.product-info{
+    display: flex;
+    justify-content: space-around;
+}
+.product-info .heart-icon{
+    display: flex;
+    padding: 11px 60px;
+    font-size: 20px;
+}
+.product-content span{
+    font-family: "Lexend Zetta", sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+}
