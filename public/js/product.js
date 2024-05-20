@@ -1,7 +1,8 @@
 var quantity = 1;
 var total;
-
+var starArr = [];
 var current_sizing = 0, previous_sizing, finalized_size;
+var isFavoritedNow = isFavorited;
 
 $(document).ready(function() {
     total = quantity * price;
@@ -11,7 +12,8 @@ $(document).ready(function() {
         $(this).val($(this).text());
     });
     
-    $(".sizing").click(function() {
+    $(".sizing").click(function() 
+    {
         if (this === current_sizing) return;
         
         if (current_sizing === 0) {
@@ -26,18 +28,20 @@ $(document).ready(function() {
             finalized_size = $(this).val();
         }
     });
-    
-    $("#curr_quantity").text(quantity.toString());
+        
+    $("#curr_quantity").text(quantity);
+    var starArr = $(".review_star");
+    console.log(starArr);
     
     $(".review_star").click(function() {
         var index = $(this).data("value");
-        
+    
         for (let u = index - 1; u > -1; u--) {
-            $(starArr[u]).attr("src", "http://localhost/pepicase/public/pics/review_star_shaded.svg");
+            $(starArr[u]).prop("src", "http://localhost/pepicase/public/pics/review_star_shaded.svg");
         }
-        
+    
         for (let u = index; u < starArr.length; u++) {
-            $(starArr[u]).attr("src", "http://localhost/pepicase/public/pics/review_star.svg");
+            $(starArr[u]).prop("src", "http://localhost/pepicase/public/pics/review_star.svg");
         }
     });
 });
@@ -46,25 +50,15 @@ function toggleFavorite()
 {
     var fav_icon = $("#favorite");
     if (fav_icon.attr("src") === "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg") 
+    {
         fav_icon.attr("src", "http://localhost/pepicase/public/pics/favorite_icon.svg")
-    else fav_icon.attr("src", "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg");
-
-    /*$.ajax({
-        url: "http://localhost/pepicase/public/product/" + id + "/toggleFavorite",
-        method: "GET",
-        data: {
-          status: "value1",
-        },
-        success: function(response) {
-          // Code to handle a successful response
-          console.log(response);
-        },
-        error: function(xhr, status, error) {
-          // Code to handle an error response
-          console.log("Error:", error);
-        }
-      });
-    */
+        isFavoritedNow = 'no';
+    }
+    else 
+    {
+        fav_icon.attr("src", "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg");
+        isFavoritedNow = 'yes';
+    }
 };
 
 function add() {
@@ -80,3 +74,14 @@ function minus() {
     total = price * quantity;
     $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
 }
+
+$(window).on('beforeunload', function() 
+{
+    if(isFavoritedNow !== isFavorited)
+    {
+        $.post('http://localhost/pepicase/public/product/toggleFavorite', {
+            product: product_id,
+            user_id: user,
+        })
+    }
+});

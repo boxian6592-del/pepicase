@@ -17,14 +17,27 @@ class GetProductController extends BaseController
     {
         $curr_session = new CustomSession(null);
         $product = new Product($id);
+        $data = $product->getFullInfo();
         if($product->check_if_found())
         {
-            $data = $product->getFullInfo();
             if($curr_session->isSessionSet()) 
-                $data['favorite'] = $curr_session->get_id();
+            {
+                $user_id = $curr_session->get_id();
+                if ($product->check_favorited($user_id)) $data['favorite'] = 'yes';
+                else $data['favorite'] = 'no';
+                return view('product', $data);
+            }
             else
-                $data['favorite'] = 'no';
-            return view('product', $data);
+            {
+                $curr_session->fetch_session_cookie();
+                if($curr_session->isSessionSet())
+                {
+                    $user_id = $curr_session->get_id();
+                    if ($product->check_favorited($user_id)) $data['favorite'] = 'yes';
+                    else $data['favorite'] = 'no';
+                }
+                return view('product', $data);
+            }
         }
         else throw new \CodeIgniter\Exceptions\PageNotFoundException(view('errors/html/error_404'));
     }
@@ -44,5 +57,13 @@ class GetProductController extends BaseController
         $products = $productModel->filterProducts($collections, $materials, $colors);
         
         return view('product_list', ['products' => $products]);
+    }
+
+    public function toggleFavorite()
+    {
+        $product = $this->request->getPost('product');
+        $user_id = $this->request->getPost('user_id');
+        $curr_product = new Product($product);
+        $curr_product->toggleFavorite($user_id);
     }
 }

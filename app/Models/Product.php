@@ -44,9 +44,26 @@ class Product extends Model
     public function check_favorited($user_id)
     {
         $db = Database::connect();
-        $result = $db->query("SELECT * FROM wishlist where Product_ID = '$this->productID' and  User_ID = ".$user_id)->getResult();
+        $query = "SELECT * FROM wishlist WHERE Product_ID = '{$this->productID}' AND User_ID = '{$user_id}'";
+        $result = $db->query($query)->getResult();
+    
         if (empty($result)) return false;
         else return true;
+    }
+
+    public function toggleFavorite($user_id)
+    {
+        $db = Database::connect();
+        if($this->check_favorited($user_id))
+        {
+            $query = "DELETE FROM wishlist WHERE Product_ID = '{$this->productID}' AND User_ID = '{$user_id}'";
+            $db->query($query)->getResult();
+        }
+        else
+        {
+            $query = "INSERT INTO wishlist (User_ID, Product_ID) VALUES ('{$user_id}','{$this->productID}')";
+            $db->query($query)->getResult();
+        }
     }
 
     public function getFullInfo()
@@ -57,6 +74,7 @@ class Product extends Model
             'name' => $this->name,
             'price'=> $this->price,
             'path' => $this->imgPath,
+            'favorite' => '',
         ];
         return $data_bundle;
     }

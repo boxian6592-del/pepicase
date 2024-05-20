@@ -18,7 +18,7 @@ $routes->get('/product/(:num)/','GetProductController::get_with_id/$1');
 $routes->get('/collections','GetProductController::get_through_collections');
 $routes->get('/shop-page', 'GetProductController::index');
 $routes->post('/filter-products', 'GetProductController::filter_products');
-
+$routes->post('/product/toggleFavorite','GetProductController::toggleFavorite');
 //sản phẩm
 
 
