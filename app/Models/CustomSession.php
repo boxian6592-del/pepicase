@@ -86,4 +86,9 @@ class CustomSession
     $session = \Config\Services::session();
     $session->set($field, $value);
 }
+public function get_field($field)
+    {
+    $session = \Config\Services::session();
+    $session->get($field);
+}
 }
