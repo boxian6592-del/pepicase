@@ -20,6 +20,11 @@
         <div class="product-info">
             <p>Pompompurin_Amusement Park iPhone Case [111120]</p>
             <i class='bx bxs-heart heart-icon'></i>
+            <?php 
+                $count_wishlist_items = $conn->prepare("SELECT * FROM 'wishlist' WHERE user_id = ?");
+                $count_wishlist_items->execute([$user_id]);
+                $total_wishlist_items = $count_wishlist_items->rowCount();
+            ?>
         </div>
         <span>$9.99</span>
     </div>
@@ -29,6 +34,11 @@
         <div class="product-info">
             <p>Pompompurin_Amusement Park iPhone Case [111120]</p>
             <i class='bx bxs-heart heart-icon'></i>
+            <?php 
+                $count_wishlist_items = $conn->prepare("SELECT * FROM 'wishlist' WHERE user_id = ?");
+                $count_wishlist_items->execute([$user_id]);
+                $total_wishlist_items = $count_wishlist_items->rowCount();
+            ?>
         </div>
         <span>$9.99</span>
     </div>
@@ -38,6 +48,11 @@
         <div class="product-info">
             <p>Pompompurin_Amusement Park iPhone Case [111120]</p>
             <i class='bx bxs-heart heart-icon'></i>
+            <?php 
+                $count_wishlist_items = $conn->prepare("SELECT * FROM 'wishlist' WHERE user_id = ?");
+                $count_wishlist_items->execute([$user_id]);
+                $total_wishlist_items = $count_wishlist_items->rowCount();
+            ?>
         </div>
         <span>$9.99</span>
     </div>
