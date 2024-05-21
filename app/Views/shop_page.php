@@ -8,21 +8,21 @@
     <aside class="filters-container">
         <header class="filters-header">
             <h2 class="filters-title">Filters</h2>
-            <button class="clear-filters">Clear filters</button>
+            <button class="clear-filters" id="clear-filters">Clear filters</button>
         </header>
 
         <section class="collection-section">
             <h3 class="collection-title">Collection</h3>
             <div class="collection-item">
-                <input type="checkbox" class="collection-checkbox" id="1">
+                <input type="checkbox" class="collection-checkbox" id="2">
                 <label for="pompompurin" class="collection-label">Pompompurin</label>
             </div>
             <div class="collection-item">
-                <input type="checkbox" class="collection-checkbox" id="2">
+                <input type="checkbox" class="collection-checkbox" id="3">
                 <label for="my-melody" class="collection-label">My Melody</label>
             </div>
             <div class="collection-item">
-                <input type="checkbox" class="collection-checkbox" id="3">
+                <input type="checkbox" class="collection-checkbox" id="1">
                 <label for="cinnamonroll" class="collection-label">Cinnamonroll</label>
             </div>
             <div class="collection-item">
@@ -33,30 +33,12 @@
 
         <hr class="divider">
 
-        <section class="material-section">
-            <h3 class="material-title">Material</h3>
-            <div class="material-item">
-                <input type="checkbox" class="material-checkbox" id="hard-plastic">
-                <label for="hard-plastic" class="material-label">Hard plastic</label>
-            </div>
-            <div class="material-item">
-                <input type="checkbox" class="material-checkbox" id="silicone">
-                <label for="silicone" class="material-label">Silicone</label>
-            </div>
-            <div class="material-item">
-                <input type="checkbox" class="material-checkbox" id="metal">
-                <label for="metal" class="material-label">Metal</label>
-            </div>
-        </section>
-
-        <hr class="divider">
-
         <section class="color-patterns-section">
             <h3 class="color-patterns-title">Color & Patterns</h3>
             <div class="color-row">
-                <div class="color-white"></div>
-                <div class="color-clear"></div>
-                <div class="color-yellow"></div>
+                <div id="1" class="color-white"></div>
+                <div id="2" class="color-clear"></div>
+                <div id="3" class="color-yellow"></div>
             </div>
             <div class="color-label-row">
                 <span class="color-label">White</span>
@@ -64,9 +46,9 @@
                 <span class="color-label">Yellow</span>
             </div>
             <div class="color-row">
-                <div class="color-blue"></div>
-                <div class="color-pink"></div>
-                <div class="color-multicolor"></div>
+                <div id="4" class="color-blue"></div>
+                <div id="5" class="color-pink"></div>
+                <div id="6" class="color-multicolor"></div>
             </div>
             <div class="color-label-row">
                 <span class="color-label">Blue</span>
@@ -74,6 +56,7 @@
                 <span class="color-label">Multicolor</span>
             </div>
         </section>
+        <hr class="divider">
         <button class="apply-filters">Apply filters</button>
     </aside>
         <div class="product-list">
@@ -90,45 +73,99 @@
     </div>
     
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/pepicase/public/js/jquery.js"></script>
 <script>
-$(document).ready(function(){
-    $('.apply-filters').on('click', function() {
-        let collections = [];
-        let materials = [];
-        let colors = [];
+    document.addEventListener('DOMContentLoaded', function() {
 
-        // Lấy các giá trị checkbox được chọn
-        $('.collection-checkbox:checked').each(function() {
-            collections.push($(this).attr('id'));
+    // Xử lý sự kiện nhấn vào các ô màu để chọn/bỏ chọn
+    document.querySelectorAll('.color-row div[id]').forEach(function(colorDiv) {
+        colorDiv.addEventListener('click', function() {
+            colorDiv.classList.toggle('selected'); // Toggle class 'selected'
         });
-        $('.material-checkbox:checked').each(function() {
-            materials.push($(this).attr('id'));
-        });
-        $('.color-row div').each(function() {
-            if($(this).hasClass('selected')) {
-                colors.push($(this).attr('data-color-id'));
-            }
+    });
+
+    document.querySelector('.apply-filters').addEventListener('click', function() {
+        let selectedCollections = [];
+        document.querySelectorAll('.collection-checkbox:checked').forEach(function(checkbox) {
+            selectedCollections.push(checkbox.id); // Lấy id của checkbox
         });
 
-        // Gửi yêu cầu AJAX
-        $.ajax({
-            url: '<?= site_url('getProductController/filterProducts') ?>',
+        let selectedColors = [];
+        document.querySelectorAll('.color-row div[id].selected').forEach(function(colorDiv) {
+            selectedColors.push(colorDiv.id); // Lấy id của div màu
+        });
+
+        let filters = {
+            collections: selectedCollections,
+            colors: selectedColors
+        };
+
+        fetch('<?= base_url("get_filtered_products") ?>', {
             method: 'POST',
-            data: {
-                collections: collections,
-                materials: materials,
-                colors: colors
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
             },
-            success: function(response) {
-                $('.product-list').html(response);
-            }
+            body: JSON.stringify(filters)
+        })
+        .then(response => response.json())
+        .then(data => {
+            let productContainer = document.querySelector('.product-list');
+            productContainer.innerHTML = '';
+            data.products.forEach(product => {
+                let productHTML = `
+                    <article class="product-container">
+                        <figure class="image-wrapper">
+                            <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
+                        </figure>
+                        <h2 class="product-name">${product.Name}</h2>
+                        <p class="product-price">$${product.Price} USD</p>
+                    </article>`;
+                productContainer.innerHTML += productHTML;
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    // Clear filters functionality
+    document.getElementById('clear-filters').addEventListener('click', function() {
+        // Uncheck all checkboxes
+        document.querySelectorAll('.collection-checkbox').forEach(function(checkbox) {
+            checkbox.checked = false;
         });
+
+        // Remove 'selected' class from all color divs
+        document.querySelectorAll('.color-row div[id]').forEach(function(colorDiv) {
+            colorDiv.classList.remove('selected');
+        });
+
+        // Fetch and display the original product list (first 6 products)
+        fetch('<?= base_url("get_all_products") ?>', {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            let productContainer = document.querySelector('.product-list');
+            productContainer.innerHTML = '';
+            data.products.forEach(product => {
+                let productHTML = `
+                    <article class="product-container">
+                        <figure class="image-wrapper">
+                            <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
+                        </figure>
+                        <h2 class="product-name">${product.Name}</h2>
+                        <p class="product-price">$${product.Price} USD</p>
+                    </article>`;
+                productContainer.innerHTML += productHTML;
+            });
+        })
+        .catch(error => console.error('Error:', error));
     });
 
-    // Thêm class 'selected' khi click vào màu sắc
-    $('.color-row div').on('click', function() {
-        $(this).toggleClass('selected');
-    });
 });
+
+
 </script>
+

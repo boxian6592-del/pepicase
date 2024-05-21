@@ -80,7 +80,7 @@ class Product extends Model
     }
     public function getProducts($limit = 6)
     {
-        return $this->limit($limit)->find();
+        return $this->orderBy('ID', 'ASC')->limit($limit)->findAll();
     }
     public function filterProducts($collections, $materials, $colors)
     {
