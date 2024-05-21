@@ -147,14 +147,14 @@ class SignUpController extends BaseController
     {
         $email = $this->decrypt($encrypted_email);
         $password = $this->decrypt($encrypted_password);
-        $new_user = new User($email,$password);
+        $new_user = new User($email,$password,null);
         if( $new_user->check_if_authorized())
         {
             return redirect() -> to ('/');
         }
         else
         {
-            $outcome = $new_user->create($email, $password);
+            $outcome = $new_user->create($email, $password, null);
             if( $outcome )
             {
                 $new_session = new CustomSession($outcome);

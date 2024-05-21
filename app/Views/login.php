@@ -38,17 +38,24 @@
                     <hr class="flex-grow-1">
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="https://www.facebook.com/login">
+                 
+                 <?php
+              echo  '<a href="'.$fb_btn.'">
                         <button type="button" class="button">
                             <img style="width: 15px; height: 15px; margin-right: 5px; margin-bottom:0;" src="/pepicase/public/pics/Facebook_icon.svg" alt="facebook">
                         Facebook</button>                   
-                    </a>
+                    </a>'
 
-                    <a href="https://accounts.google.com/v3/signin/confirmidentifier?checkedDomains=youtube&ddm=0&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=vi-VN&ifkv=AaSxoQxF7iM5g2X5560Y9hKDGUHW_NKArdkEMVOy7FzmTEXCeEMDlN1nDxJ3wAzQcMkWNJrY6jIvBw&pstMsg=1&service=chromiumsync&dsh=S-1828235792%3A1715516019848185">
-                        <button class="button" style="text-decoration: none;width:103px;">
+                    ?>
+                    
+                <?php
+
+                  echo  '<a href="'.$googleButton.'">
+                        <button type="button" class="button" style="text-decoration: none;width:103px;">
                             <img style="width: 20px; height: 20px; margin-right: 5px" src="/pepicase/public/pics/Google_Icons-09-512.webp" alt="google">
                         Google</button>
-                    </a> 
+                    </a>'
+                    ?>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
                     <a style="color: #1F3E97; font-size:14px" href="/pepicase/public/resetPassword">Forgot your password?</a>

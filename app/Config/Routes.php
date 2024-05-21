@@ -25,8 +25,8 @@ $routes->post('/filter-products', 'GetProductController::filter_products');
 //thao tác login
 $routes->get('/login','LoginController::index');
 $routes->post('/login','LoginController::login');
-$routes->post('/loginWithGoogle','LoginController::loginWithGoogle');
-$routes->post('/loginWithFacebook','LoginController::loginWithFB');
+$routes->get('/loginWithGoogle','LoginController::loginWithGoogle');
+$routes->get('/loginWithFacebook','LoginController::loginWithFB');
 //thao tác login
 
 //thao tác logout
@@ -53,4 +53,6 @@ $routes->get('/testing','HomepageController::testing');
 //khu để test layout
 
 $routes->get('/purchases','StaticPageController::Purchases');
+
+$routes->get('/testdb','TestDBController::testdb');
 
