@@ -46,17 +46,39 @@ class GetProductController extends BaseController
     {
         return view('collections');
     }
-    public function filterProducts()
+    public function getFilteredProducts()
+    {
+        $request = service('request');
+        $filters = $request->getJSON(true);
+        
+        $collectionFilter = $filters['collections'];
+        $colorFilter = $filters['colors'];
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('product');
+    
+        if (!empty($collectionFilter)) {
+            $builder->whereIn('Collect_ID', $collectionFilter);
+        }
+    
+        if (!empty($colorFilter)) {
+            $builder->groupStart();
+            foreach ($colorFilter as $colorId) {
+                $builder->orWhere('Color_ID', $colorId);
+            }
+            $builder->groupEnd();
+        }
+    
+        $query = $builder->get();
+        $products = $query->getResultArray();
+    
+        return $this->response->setJSON(['products' => $products]);
+    }
+    public function getAllProducts()
     {
         $productModel = new Product();
-
-        $collections = $this->request->getPost('collections');
-        $materials = $this->request->getPost('materials');
-        $colors = $this->request->getPost('colors');
-
-        $products = $productModel->filterProducts($collections, $materials, $colors);
-        
-        return view('product_list', ['products' => $products]);
+        $products = $productModel->getProducts();
+        return $this->response->setJSON(['products' => $products]);
     }
 
     public function toggleFavorite()
@@ -66,4 +88,5 @@ class GetProductController extends BaseController
         $curr_product = new Product($product);
         $curr_product->toggleFavorite($user_id);
     }
+
 }
