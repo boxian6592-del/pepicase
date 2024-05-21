@@ -44,6 +44,14 @@ $(document).ready(function() {
             $(starArr[u]).prop("src", "http://localhost/pepicase/public/pics/review_star.svg");
         }
     });
+
+    $("#add_to_cart_button").click(function()
+    {
+        $.post('http://localhost/pepicase/public/product/add_to_cart', {
+            product: product_id,
+            user_id: user,
+        })
+    })
 });
 
 function toggleFavorite() 

@@ -95,7 +95,7 @@
         <script>
             var user = <?php if($user_id == null) echo 'null'; else echo $user_id ?>;
             var price = <?= $price ?>;
-            var product_id = <?= $id ?>; 
+            var product_id = <?= $id ?>;
             var isFavorited = "<?= $favorite ?>";
         </script>
         <script src="/pepicase/public/js/product.js"></script>

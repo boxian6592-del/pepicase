@@ -88,5 +88,11 @@ class GetProductController extends BaseController
         $curr_product = new Product($product);
         $curr_product->toggleFavorite($user_id);
     }
-
+    public function add_to_cart()
+    {
+        $product = $this->request->getPost('product');
+        $user_id = $this->request->getPost('user_id');
+        $curr_product = new Product($product);
+        $curr_product->addToCart($user_id);
+    }
 }
