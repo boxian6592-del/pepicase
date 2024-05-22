@@ -47,6 +47,8 @@ $routes->get('/resetPassword/confirmed/(:any)','ResetPasswordController::showRes
 $routes->post('/resetPassword/confirmed/(:any)','ResetPasswordController::ResetPassword/$1');
 //resetPassword
 
+//checkout
+$routes->get('/checkout','GetProductController::checkout');
 //khu để test layout
 $routes->get('/testing','HomepageController::testing');
 //khu để test layout

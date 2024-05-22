@@ -1,0 +1,258 @@
+/* Các định dạng hiện có */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content1 {
+    max-width: 700px; /* Giữ nguyên kích thước ban đầu */
+    flex: 1; /* Điều chỉnh kích thước để cân bằng với sidebar */
+}
+
+.top-content1, .middle-content1, .bottom-content1 {
+    padding-bottom: 20px;
+}
+
+.content-top1 {
+    text-align: center;
+    background-color: #FFFAE3;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.check-out-title1{
+    font-size: 50px;
+    margin: 0;
+    font-family: Lexend Tera;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.steps p {
+    margin: 0 15px;
+}
+
+.steps hr {
+    border: 0.5px solid #000;
+    margin: 0 10px;
+    width: 50px;
+}
+
+.wrapper-content1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper-content p {
+    margin: 0;
+}
+
+h2 {
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+td {
+    padding: 4px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.full-width {
+    width: 100%;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+a:hover {
+    background-color: #444;
+}
+
+.shipping-option {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.shipping-option input {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.shipping-option label {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.shipping-option strong {
+    font-weight: bold;
+}
+
+.shipping-option span {
+    font-size: 0.9em;
+    color: #555;
+}
+button[type="button"]{
+   
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+/* Các định dạng bổ sung cho phần aside */
+.sidebar1{
+    width: 50%; /* Đặt chiều rộng cụ thể cho sidebar */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-left: 20px; /* Khoảng cách bên trái giữa sidebar và content */
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cart-item img {
+    width: 80px; /* Kích thước nhỏ hơn để phù hợp với sidebar */
+    height: auto;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+
+.remove-btn {
+    display: block;
+    margin-top: 10px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #e60000;
+}
+
+.cart-summary {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.cart-summary input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.cart-summary p {
+    margin: 5px 0;
+}
+
+.cart-summary p strong {
+    font-size: 1.2em;
+}
+
+.buy-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.buy-btn:hover {
+    background-color: #444;
+}

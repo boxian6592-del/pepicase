@@ -85,6 +85,7 @@ class GetProductController extends BaseController
         return $this->response->setJSON(['products' => $products]);
     }
 
+
     public function toggleFavorite() // trigger khi ấn hình quả tim (có ý định favorite)
     {
         $product = $this->request->getPost('product');
@@ -101,5 +102,8 @@ class GetProductController extends BaseController
         $user_id = $this->request->getPost('user_id');
         $curr_product = new Product($product);
         $curr_product->addToCart($user_id);
+    }
+    public function checkout(){
+        return view('checkout');
     }
 }
