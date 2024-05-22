@@ -5,6 +5,7 @@ use App\Models\CustomSession;
 
 class StaticPageController extends BaseController
 {
+    // trang để trả view các trang tĩnh
     public function Policy(): string
     {
         return view('policy');
@@ -20,7 +21,7 @@ class StaticPageController extends BaseController
         return view('terms-of-use');
     }
 
-    public function Purchases()
+    public function Purchases() // purchases cũng tĩnh nhưng tĩnh ở một mức nhất định
     {
         $curr_session = new CustomSession(null);
         if($curr_session->isSessionSet())

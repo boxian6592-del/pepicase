@@ -5,7 +5,7 @@ use App\Models\CustomSession;
 
 class HomepageController extends BaseController
 {
-    public function index()
+    public function index() // hàm trang chính
     {
         $current_session = new CustomSession(null);
         $data = [ 'id' => null ];
@@ -16,7 +16,7 @@ class HomepageController extends BaseController
         return view('index', $data);
     }
 
-    public function testing(): string
+    public function testing(): string // hàm chứa nơi testing
     {
         return view('index');
     }

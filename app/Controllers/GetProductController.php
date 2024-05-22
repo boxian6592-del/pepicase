@@ -6,43 +6,47 @@ use App\Models\CustomSession;
 
 class GetProductController extends BaseController
 {
-    public function index(): string
+    public function index(): string // hàm trả về trang gồm filter
     {        
-        $productModel = new Product();
-        $data['products'] = $productModel->getProducts();
-        return view('shop_page', $data);
+        $productModel = new Product(); // khởi tạo đối tượng product
+        $data['products'] = $productModel->getProducts(); // chạy hàm lấy info sản phẩm
+        return view('shop_page', $data); // trả về trang filter bao gồm gói data
     }
 
-    public function get_with_id(int $id): string
+    public function get_with_id(int $id): string // hàm trả về trang /product/(id)
     {
-        $curr_session = new CustomSession(null);
-        $product = new Product($id);
-        $data = $product->getFullInfo();
-        if($product->check_if_found())
+        $curr_session = new CustomSession(null); // khởi tạo đối tượng session để chạy hàm
+        $product = new Product($id); // khởi tạo đối tượng product với id đc request
+        $data = $product->getFullInfo(); // lấy thông tin sản phẩm
+        if($product->check_if_found()) // nếu tìm thấy sản phẩm trong database
         {
-            if($curr_session->isSessionSet()) 
+            if($curr_session->isSessionSet()) // nếu session có người dùng rồi
             {
-                $user_id = $curr_session->get_id();
-                if ($product->check_favorited($user_id)) $data['favorite'] = 'yes';
-                else $data['favorite'] = 'no';
-                return view('product', $data);
+                // tiến hành kiểm tra người dùng đó có wishlist spham đó k
+                $user_id = $curr_session->get_id(); // lấy id người dùng từ session
+                if ($product->check_favorited($user_id)) // nếu có favorite
+                $data['favorite'] = 'yes'; // thêm vào gói data $favorite = 'yes'
+                else // nếu không thì ngược lại
+                $data['favorite'] = 'no';
+                return view('product', $data); // trả data về view để xử lý trên view đó
             }
-            else
+            else // nếu session chưa có người dùng
             {
-                $curr_session->fetch_session_cookie();
-                if($curr_session->isSessionSet())
+                $curr_session->fetch_session_cookie(); // kiểm tra cookie trên máy, và nhập lên nếu có
+                if($curr_session->isSessionSet()) // nếu sau đó có session
                 {
                     $user_id = $curr_session->get_id();
                     if ($product->check_favorited($user_id)) $data['favorite'] = 'yes';
                     else $data['favorite'] = 'no';
+                    // làm lại process trên
                 }
-                return view('product', $data);
+                return view('product', $data); // nếu không trả về view với $data rỗng
             }
         }
         else throw new \CodeIgniter\Exceptions\PageNotFoundException(view('errors/html/error_404'));
     }
 
-    public function get_through_collections(): string
+    public function get_through_collections(): string // trả về trang collections
     {
         return view('collections');
     }
@@ -81,14 +85,17 @@ class GetProductController extends BaseController
         return $this->response->setJSON(['products' => $products]);
     }
 
-    public function toggleFavorite()
+    public function toggleFavorite() // trigger khi ấn hình quả tim (có ý định favorite)
     {
         $product = $this->request->getPost('product');
         $user_id = $this->request->getPost('user_id');
+        // lấy data từ post request từ trang product
+
         $curr_product = new Product($product);
         $curr_product->toggleFavorite($user_id);
+        // gọi hàm toggleFavorite, những luận lý liên quan xảy ra trong JS trên trang
     }
-    public function add_to_cart()
+    public function add_to_cart() // đang làm
     {
         $product = $this->request->getPost('product');
         $user_id = $this->request->getPost('user_id');
