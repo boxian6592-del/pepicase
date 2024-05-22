@@ -46,14 +46,14 @@
                     <h2>Shipping Method</h2>
                     <form action="">
                         <div class="shipping-option">
-                            <input type="checkbox" id="standard-shipping" name="shipping">
+                            <input type="radio" id="standard-shipping" name="shipping" required checked>
                             <label for="standard-shipping">
                                 <strong>Standard shipping</strong><br>
                                 <span>Estimated delivery in 3-5 Business Days</span>
                             </label>
                         </div>
                         <div class="shipping-option">
-                            <input type="checkbox" id="worldwide-shipping" name="shipping">
+                            <input type="radio" id="worldwide-shipping" name="shipping">
                             <label for="worldwide-shipping">
                                 <strong>Worldwide shipping</strong><br>
                                 <span>Estimated delivery in 7-9s Business Days</span>
@@ -92,6 +92,7 @@
                 <div class="cart-item">
                     <img src="/pepicase/public/product-pics/pompompurin/1.svg" alt="Product 1">
                     <div class="item-details">
+                        <p>Name:Cinamonroll</p>
                         <p>Model: iPhone 15</p>
                         <p>Price: $999</p>
                         <div class="quantity-control">
@@ -105,6 +106,7 @@
                 <div class="cart-item">
                     <img src="/pepicase/public/product-pics/pochacco/2.svg" alt="Product 2">
                     <div class="item-details">
+                        <p>Name:Cinamonroll</p>
                         <p>Model: iPhone 15</p>
                         <p>Price: $999</p>
                         <div class="quantity-control">

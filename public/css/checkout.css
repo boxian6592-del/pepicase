@@ -196,6 +196,7 @@ button[type="button"]{
 
 .quantity-input {
     width: 40px;
+    height:3%;
     text-align: center;
     border: 1px solid #ddd;
     margin: 0 5px;
