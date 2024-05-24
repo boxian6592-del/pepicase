@@ -64,7 +64,9 @@
                     </div>
 
                     <div class="d-flex">
+                        <?php if($user_id == null) echo '<a href="/pepicase/public/login" style ="text-decoration:none;">'?>
                         <button id="add_to_cart_button" class= "lexend d-flex align-items-center justify-content-center" style = "width: 350px; height: 50px; background-color:black; color:white; border-radius:20px;"></button>
+                        <?php if($user_id == null) echo '</a>'?>
                         <div id ="quantity" class ="d-flex" style = "border: 1px solid black; width:fit-content;margin-left:10px;">
                             <button onclick="add()" id="plus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">+</button>
                             <div id="curr_quantity" style ="width: 50px;"class= "lexend d-flex align-items-center justify-content-center"></div>

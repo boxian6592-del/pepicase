@@ -45,13 +45,27 @@ $(document).ready(function() {
         }
     });
 
-    $("#add_to_cart_button").click(function()
-    {
-        $.post('http://localhost/pepicase/public/product/add_to_cart', {
-            product: product_id,
-            user_id: user,
-        })
-    })
+    $("#add_to_cart_button").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pepicase/public/product/add_to_cart",
+            data: {
+                product: product_id,
+                user_id: user,
+                size: finalized_size,
+                quantity: quantity
+            },
+            success: function(response) {
+                // Handle the successful response
+                var parsedResponse = JSON.parse(response);
+                console.log(parsedResponse.message);
+            },
+            error: function(xhr, status, error) {
+                // Handle the error response
+                console.error(error);
+            }
+        });
+    });
 });
 
 function toggleFavorite() 
@@ -77,10 +91,13 @@ function add() {
 }
 
 function minus() {
-    quantity--;
-    $("#curr_quantity").text(quantity);
-    total = price * quantity;
-    $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
+    if(quantity > 0)
+    {
+        quantity--;
+        $("#curr_quantity").text(quantity);
+        total = price * quantity;
+        $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");        
+    }
 }
 
 $(window).on('beforeunload', function() 

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\Product;
 use App\Models\CustomSession;
+use App\Models\Cart;
 
 class GetProductController extends BaseController
 {
@@ -100,9 +101,30 @@ class GetProductController extends BaseController
     {
         $product = $this->request->getPost('product');
         $user_id = $this->request->getPost('user_id');
-        $curr_product = new Product($product);
-        $curr_product->addToCart($user_id);
+        $size = $this->request->getPost('size');
+        $quantity = $this->request->getPost('quantity');
+        $cart = new Cart($user_id);
+        $result = $cart->add_item($product, $size, $quantity);
+        // Prepare the AJAX response
+        if ($result) {
+            $response = [
+                'success' => true,
+                'message' => 'Item added to cart!'
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Failed to add item to cart.'
+            ];
+        }
+
+        // Set the response format to JSON
+        $this->response->setContentType('application/json');
+
+        // Return the AJAX response
+        return $this->response->setJSON($response);
     }
+
     public function checkout(){
         return view('checkout');
     }
