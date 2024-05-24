@@ -33,5 +33,10 @@ class StaticPageController extends BaseController
             return redirect() -> to ('/login');
         }
     }
+
+    public function account()
+    {
+        return view('account');
+    }
 }
 

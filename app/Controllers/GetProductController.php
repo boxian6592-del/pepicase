@@ -108,6 +108,6 @@ class GetProductController extends BaseController
     }
 
     public function yourcart(){
-        return view('yourcart');
+        return view('emptycart');
     }
 }
