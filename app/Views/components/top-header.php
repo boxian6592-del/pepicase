@@ -1,14 +1,14 @@
 <?php 
     use App\Models\CustomSession;
-    $curr_session = new CustomSession(null);
-    $user_id;
-    if (!$curr_session->isSessionSet())
+    $curr_session = new CustomSession(null); // khởi tạo đối tượng session mới
+    $user_id; // khai biến user_id trước
+    if (!$curr_session->isSessionSet()) // nếu session chưa được set (có id)
     {
-        $checker = $curr_session->fetch_session_cookie();
-        if (!$checker) $user_id = null;
-        else $user_id = $checker;
+        $checker = $curr_session->fetch_session_cookie(); // fetch lại cookie trên máy người dùng
+        if (!$checker) $user_id = null; // nếu không có thì user_id = null
+        else $user_id = $checker; // nếu có thì user_id = id trả lại từ hàm fetch cookie
     }
-    else $user_id = $curr_session->get_id();
+    else $user_id = $curr_session->get_id(); // nếu session đã được set rồi thì lấy id bỏ vào biến $user_id
 ?>
     
     </head>
