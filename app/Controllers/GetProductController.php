@@ -106,4 +106,8 @@ class GetProductController extends BaseController
     public function checkout(){
         return view('checkout');
     }
+
+    public function yourcart(){
+        return view('yourcart');
+    }
 }

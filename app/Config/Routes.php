@@ -55,3 +55,5 @@ $routes->get('/testing','HomepageController::testing');
 
 $routes->get('/purchases','StaticPageController::Purchases');
 
+//cart
+$routes->get('/yourcart','GetProductController::yourcart');
