@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 22, 2024 lúc 11:29 AM
+-- Thời gian đã tạo: Th5 24, 2024 lúc 06:09 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -68,21 +68,21 @@ CREATE TABLE `cart_details` (
 --
 
 INSERT INTO `cart_details` (`ID`, `User_ID`, `Product_ID`, `Name`, `Size`, `Quantity`, `Price`) VALUES
-(1, 10, 1, 'Cinnamonroll', NULL, 1, 9.99),
-(2, 13, 16, 'My Melody', NULL, 1, 9.99),
-(3, 13, 23, 'Pochacco', NULL, 1, 9.99),
-(4, 10, 9, 'Pompompurin', NULL, 1, 9.99),
-(5, 16, 1, 'Cinnamonroll', NULL, 2, 9.99),
-(6, 10, 7, 'Cinnamonroll', NULL, 1, 9.99),
-(7, 15, 1, 'Cinnamonroll', NULL, 1, 9.99),
-(8, 9, 18, 'My Melody', NULL, 2, 9.99),
-(9, 13, 17, 'My-melody', NULL, 1, 9.99);
+(1, 10, 1, 'Cinnamonroll', 'iPhone 12', 1, 9.99),
+(2, 13, 16, 'My Melody', 'iPhone 11', 1, 9.99),
+(3, 13, 23, 'Pochacco', 'iPhone 13 Pro', 1, 9.99),
+(4, 10, 9, 'Pompompurin', 'iPhone 12 Pro Max', 1, 9.99),
+(5, 16, 1, 'Cinnamonroll', 'iPhone 14', 2, 9.99),
+(6, 10, 7, 'Cinnamonroll', 'iPhone 14 Pro Max', 1, 9.99),
+(7, 15, 1, 'Cinnamonroll', 'iPhone 15', 1, 9.99),
+(8, 9, 18, 'My Melody', 'iPhone 15 Pro', 2, 9.99),
+(9, 13, 17, 'My-melody', 'iPhone 11', 1, 9.99);
 
 --
 -- Bẫy `cart_details`
 --
 DELIMITER $$
-CREATE TRIGGER `after_cart_details_delete` AFTER DELETE ON `cart_details` FOR EACH ROW BEGIN
+CREATE TRIGGER after_cart_details_delete AFTER DELETE ON cart_details FOR EACH ROW BEGIN
     DECLARE total_quantity INT;
     DECLARE total_price FLOAT;
 
@@ -99,7 +99,7 @@ END
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `after_cart_details_insert` AFTER INSERT ON `cart_details` FOR EACH ROW BEGIN
+CREATE TRIGGER after_cart_details_insert AFTER INSERT ON cart_details FOR EACH ROW BEGIN
     DECLARE total_quantity INT;
     DECLARE total_price FLOAT;
 
@@ -116,7 +116,7 @@ END
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `after_cart_details_update` AFTER UPDATE ON `cart_details` FOR EACH ROW BEGIN
+CREATE TRIGGER after_cart_details_update AFTER UPDATE ON cart_details FOR EACH ROW BEGIN
     DECLARE total_quantity INT;
     DECLARE total_price FLOAT;
 
@@ -574,7 +574,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT cho bảng `cart_details`
 --
 ALTER TABLE `cart_details`
-  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `collection`

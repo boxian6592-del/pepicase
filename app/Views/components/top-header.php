@@ -46,7 +46,7 @@
                     <div class="col"></div>
 
                     <div class="col d-flex justify-content-center align-items-center">
-                        <a style="font-family: 'Lexend'; color: black; text-decoration: none; font-size: 18px;" href="">Wishlist</a>
+                        <a style="font-family: 'Lexend'; color: black; text-decoration: none; font-size: 18px;" href="/pepicase/public/">Home</a>
                     </div>
 
                     <div class="col d-flex justify-content-center align-items-center">
