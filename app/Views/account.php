@@ -11,16 +11,18 @@
                     <b style="font-size: 50px; font-family: 'Lexend';">Account</b>
                     <div class="flex-container">
                         <a style ="text-decoration:none;" href="">
-                            <img src="/pepicase/public/pics/user.svg" alt="">
+                            <img src="/pepicase/public/pics/back_heart.svg" alt="">
                         </a>
-                        <a href="" style="color: #838383; margin-left: 10px; font-size: 20px; font-family: 'Lexend';">Log out</a>
+                        <div style="color: #838383; font-size: 20px; font-family: 'Lexend';">
+                            <text>View your wishlist</text><a href="/pepicase/public/login" style="color: #838383; margin-left: 6px; font-size: 20px; font-family: 'Lexend';">here</a>
+                        </div>
                     </div>
                 </div>
 
                 <div>
                     <div style="font-size: 50px; font-family: 'Lexend';"><b>Order History</b></div>
                     <div style="color: #838383; font-size: 20px; font-family: 'Lexend';">
-                        View history <a href="#" style="color: #838383; font-size: 20px; font-family: 'Lexend';">here</a>
+                        <text>View history</text><a href="#" style="color: #838383; font-size: 20px; margin-left: 6px; font-family: 'Lexend';">here</a>
                     </div>
                 </div>
             </div>
@@ -121,7 +123,7 @@
                         </div>
 
                         <div class="form-group" style="margin-top: 20px">
-                            <label><b>Date of birth</b></label>
+                            <label><b>Address</b></label>
                             <input id="address" class="form-control" type="text" placeholder="City, District, Ward" style="font-size:20px; width: 820px; height: 50px; " />
                         </div>
 
@@ -133,7 +135,7 @@
                 </form>
 
                 <hr style="margin-top: 40px; color: #838383">
-                <div  class="form-group" style="font-size: 20px; color: #838383; text-decoration-line: underline;">Change your password</div>
+                <div class="form-group"><a href="" style="font-size: 20px; color: #838383; text-decoration-line: underline;">Change your password</a></div>
             </div>
         </div>
         <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
