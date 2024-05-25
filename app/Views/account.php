@@ -36,22 +36,22 @@
             <div class="form-group row" style="margin-bottom: 20px;">
                 <div class="col" style="margin-right: 170px">
                     <label><b style="font-family: 'Lexend';">First name</b></label>
-                    <input id="firstname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px; height: 50px; " required/>
+                    <input id="firstname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px;" required/>
                 </div>
 
                 <div class="col">
                     <label for="lastname"><b style="font-family: 'Lexend';">Last name</b></label>
-                    <input id="lastname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px; height: 50px;" required/>
+                    <input id="lastname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px;" required/>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 20px; margin-top: 20px">
                     <label><b style="font-family: 'Lexend';">Email</b></label>
-                    <input id="email" class="form-control" type="email" placeholder="Xyz456@.***" style="font-size:20px; width: 820px; height: 50px;" required/>
+                    <input id="email" class="form-control" type="email" placeholder="Xyz456@.***" style="font-size:20px; width: 820px;" required/>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 20px">
                     <label for="phone"><b style="font-family: 'Lexend';">Phone number</b></label>
-                    <input id="phone" class="form-control" type="tel" placeholder="0xxxxxxxxx" style="font-size:20px; width: 820px; height: 50px;" required/>
+                    <input id="phone" class="form-control" type="tel" placeholder="0xxxxxxxxx" style="font-size:20px; width: 820px;" required/>
                 </div>
 
                 <div class="form-group">
@@ -77,7 +77,7 @@
                 <div class="form-group row" >
                     <label class="col-sm-2 col-form-label"><b style="font-family: 'Lexend';">Date of birth</b></label>
                     <div class="col">
-                        <select class="form-control" id="day" style="font-size:20px; height: 50px;">
+                        <select class="form-control" id="day" style="font-size:20px;">
                             <?php for ($i = 1; $i <= 31; $i++) { ?>
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                             <?php } ?>
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="col">
-                        <select class="form-control" id="month" style="font-size:20px; height: 50px;">
+                        <select class="form-control" id="month" style="font-size:20px;">
                             <?php 
                             // Mảng chứa tên các tháng
                             $months = array(
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="col">
-                        <select class="form-control" id="year" style="font-size:20px; height: 50px;">
+                        <select class="form-control" id="year" style="font-size:20px;">
                             <?php 
                                 $current_year = date('Y');
                                 for ($i = $current_year; $i >= 1900; $i--) { ?>
@@ -122,7 +122,7 @@
 
                 <div class="form-group" style="margin-top: 20px">
                     <label><b style="font-family: 'Lexend';">My Address</b></label>
-                    <input id="address" class="form-control" type="text" placeholder="City, District, Ward" style="font-size:20px; width: 820px; height: 50px; " required/>
+                    <input id="address" class="form-control" type="text" placeholder="City, District, Ward" style="font-size:20px; width: 820px;" required/>
                 </div>
 
                 <div class="form-group" style="margin-top:30px;">
