@@ -112,6 +112,10 @@ CREATE TRIGGER after_cart_details_insert AFTER INSERT ON cart_details FOR EACH R
     UPDATE cart
     SET Total_Amount = total_quantity, Total_Price = total_price
     WHERE User_ID = NEW.User_ID;
+    
+    -- Cập nhật tên và giá
+
+    
 END
 $$
 DELIMITER ;

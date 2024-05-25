@@ -103,26 +103,21 @@ class GetProductController extends BaseController
         $user_id = $this->request->getPost('user_id');
         $size = $this->request->getPost('size');
         $quantity = $this->request->getPost('quantity');
+        $name = $this->request->getPost('name');
+        $price = $this->request->getPost('price');
+
         $cart = new Cart($user_id);
-        $result = $cart->add_item($product, $size, $quantity);
+        $result = $cart->add_item($product, $name , $size, $quantity, $price);
         // Prepare the AJAX response
         if ($result) {
-            $response = [
-                'success' => true,
-                'message' => 'Item added to cart!'
-            ];
+            $response = 'Item added successfully';
         } else {
-            $response = [
-                'success' => false,
-                'message' => 'Failed to add item to cart.'
-            ];
+            $response = 'Failed to add item to cart.';
         }
-
-        // Set the response format to JSON
-        $this->response->setContentType('application/json');
-
-        // Return the AJAX response
-        return $this->response->setJSON($response);
+        
+        // Set content type to application/x-www-form-urlencoded
+        $this->response->setContentType('application/x-www-form-urlencoded');
+        return $this->response->setBody($response);
     }
 
     public function checkout(){

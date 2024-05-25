@@ -28,7 +28,6 @@ $(document).ready(function() {
             finalized_size = $(this).val();
         }
     });
-        
     $("#curr_quantity").text(quantity);
     var starArr = $(".review_star");
     console.log(starArr);
@@ -46,25 +45,44 @@ $(document).ready(function() {
     });
 
     $("#add_to_cart_button").click(function() {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/pepicase/public/product/add_to_cart",
-            data: {
-                product: product_id,
-                user_id: user,
-                size: finalized_size,
-                quantity: quantity
-            },
-            success: function(response) {
-                // Handle the successful response
-                var parsedResponse = JSON.parse(response);
-                console.log(parsedResponse.message);
-            },
-            error: function(xhr, status, error) {
-                // Handle the error response
-                console.error(error);
-            }
-        });
+        console.log(product_id);
+        console.log(user);
+        console.log(finalized_size);
+        console.log(quantity);
+
+        if(finalized_size == null) $("#combotext").text("Please pick a size!");
+        else
+        {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pepicase/public/product/add",
+                data: {
+                    product: product_id,
+                    user_id: user,
+                    size: finalized_size,
+                    quantity: quantity,
+                    name: product_name,
+                    price: price,
+                },
+                success: function(response) {
+                    console.log(response);
+                    $("#combotext").css("color", "green");
+                    $("#combotext").text("You have added " + quantity + " items to your cart successfully!");
+                },
+                error: function(xhr, status, error) {
+                    // Handle the error response
+                    var errorMessage;
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        // If the server returned a JSON response with a 'message' property, use that
+                        errorMessage = xhr.responseJSON.message;
+                    } else {
+                        // Otherwise, use the status text or the error parameter
+                        errorMessage = xhr.statusText || error;
+                    }
+                    console.error("Error adding item to cart: ", errorMessage);
+                }
+            });
+        }
     });
 });
 

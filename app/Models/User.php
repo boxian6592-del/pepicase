@@ -15,7 +15,7 @@ class User extends Model
     protected $isAdmin = null;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['email', 'password', 'oauth_id'];
+    protected $allowedFields = ['email', 'password', 'Google_ID'];
 
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
@@ -27,7 +27,7 @@ class User extends Model
         if ($oauth_id !== null) 
         {
             $db = Database::connect();
-            $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '$oauth_id'")->getResult();            
+            $result = $db->query("SELECT * FROM $this->table WHERE Google_ID = '$oauth_id'")->getResult();            
             $row = $result[0];
             $this->id = $row->ID;
             $this->email = $row->Email;
@@ -44,14 +44,15 @@ class User extends Model
                 $row = $result[0];
                 if($row->Password != $password)
                 {
-                    $id = null;
+                    $this->id = null;
+                    $this->oauth_id = null;
                 }
                 else{
                     $this->id = $row->ID;
                     $this->email = $row->Email;
                     $this->password = $row->Password;
                     $this->isAdmin = $row->Is_Admin;
-                    $this->oauth_id = $row->oauth_id;
+                    $this->oauth_id = $row->Google_ID;
                 }
             }
         }
@@ -59,16 +60,15 @@ class User extends Model
 
     public function check_if_authorized()
     {
-
-        if (empty($this->id) || empty($this->oauth_id)) return false;
+        if (empty($this->id) && empty($this->oauth_id)) return false;
         else return true;
     }
 
 
-    public function create($mail, $pass, $oauth_id)
+    public function create($mail, $pass, $oauth_id = null)
     {
         $db = Database::connect();
-        $result = $db->query("INSERT INTO user (Email, Password, oauth_id, Is_Admin) VALUES ('$mail', '$pass', '$oauth_id', 0);");
+        $result = $db->query("INSERT INTO user (Email, Password, Google_ID, Is_Admin) VALUES ('$mail', '$pass', '$oauth_id', 0);");
         if ($result !== null)
         {
             $new_user = new User($mail, $pass, $oauth_id);

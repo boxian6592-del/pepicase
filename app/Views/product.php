@@ -75,6 +75,7 @@
                     </div>
 
                     <div style="font-size:15px; color:gray;">Free standard shipping</div>
+                    <div id = "combotext" class ="lexend" style="font-size:25px; font-weight:400;"></div>
             </div>
         </div>
         <div class="d-flex justify-content-center" style ="height: 500px;">
@@ -99,6 +100,7 @@
             var price = <?= $price ?>;
             var product_id = <?= $id ?>;
             var isFavorited = "<?= $favorite ?>";
+            var product_name = "<?= $name ?>"
         </script>
         <script src="/pepicase/public/js/product.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

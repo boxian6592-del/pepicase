@@ -14,12 +14,13 @@ $routes->get('/terms-of-use','StaticPageController::TermsOfUse');
 
 //sản phẩm
 $routes->get('/product', 'GetProductController::index');
-$routes->get('/product/(:num)/','GetProductController::get_with_id/$1');
+$routes->get('/product/(:num)','GetProductController::get_with_id/$1');
+
+$routes->post('/product/add','GetProductController::add_to_cart');
 $routes->get('/collections','GetProductController::get_through_collections');
 $routes->post('/product/toggleFavorite','GetProductController::toggleFavorite');
 $routes->post('/get_filtered_products', 'GetProductController::getFilteredProducts');
 $routes->get('/get_all_products', 'GetProductController::getAllProducts');
-$routes->post('product/add_to_cart','GetProductController::add_to_cart');
 //sản phẩm
 
 

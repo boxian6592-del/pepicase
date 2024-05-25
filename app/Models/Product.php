@@ -70,22 +70,6 @@ class Product extends Model
         }
     }
 
-    public function add_to_cart($user_id)
-    {
-        $db = Database::connect();
-        $query = "SELECT * FROM cart_details WHERE Product_ID = '{$this->productID}' AND User_ID = '{$user_id}'";
-        $result = $db->query($query)->getResult();
-        if (empty($result))
-        {
-            $generate_cart = 
-            $counterpart_query = "INSERT INTO Cart_Details ";  
-        }
-        else
-        {
-
-        };
-    }
-
     public function getFullInfo() // hàm trả vệ một object chứa đủ thông tin (cho user xem)
     {
         $data_bundle = // tạo 1 biến dạng object
