@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="col-sm-4 d-flex justify-content-center align-items-center">
-                        <a href="/pepicase/public/<?php if($user_id !== null) echo 'testing'; else echo 'login';?>" style="color:black; text-decoration:none;">
+                        <a href="/pepicase/public/<?php if($user_id !== null) echo 'my-account'; else echo 'login';?>" style="color:black; text-decoration:none;">
                             <?php if($user_id !== null) echo '<img style ="height: 25px; width: auto; margin-right:30px;" src="/pepicase/public/pics/user.svg" alt="">';
                             else echo '<button class="btn lexend" style="color:white; background-color:black; margin-right: 30px; border-radius:20px;">Login</button>'; ?>
                         </a>

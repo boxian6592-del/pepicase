@@ -15,7 +15,7 @@ $routes->get('/terms-of-use','StaticPageController::TermsOfUse');
 //sản phẩm
 $routes->get('/product', 'GetProductController::index');
 $routes->get('/product/(:num)','GetProductController::get_with_id/$1');
-
+$routes->get('/wishlist','GetProductController::wishlist');
 $routes->post('/product/add','GetProductController::add_to_cart');
 $routes->get('/collections','GetProductController::get_through_collections');
 $routes->post('/product/toggleFavorite','GetProductController::toggleFavorite');
@@ -56,9 +56,7 @@ $routes->get('/testing','HomepageController::testing');
 
 $routes->get('/purchases','StaticPageController::Purchases');
 
-//user
-$routes->get('/my-account','StaticPageController::account');
-//user
-
-//cart
+//quản lý tài khoản
 $routes->get('/yourcart','GetProductController::yourcart');
+$routes->get('/my-account','StaticPageController::account');
+//quản lý tài khoản

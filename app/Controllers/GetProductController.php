@@ -127,4 +127,14 @@ class GetProductController extends BaseController
     public function yourcart(){
         return view('emptycart');
     }
+
+    public function wishlist()
+    {
+        $curr_session = new CustomSession(null);
+        if(isset($curr_session))
+        {
+            return view('wishlist');
+        }
+        else return redirect() -> to ('/login') ;
+    }
 }

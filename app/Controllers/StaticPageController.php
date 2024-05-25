@@ -36,7 +36,13 @@ class StaticPageController extends BaseController
 
     public function account()
     {
-        return view('account');
+        $curr_session = new CustomSession(null);
+        $curr_session->fetch_session_cookie();
+        if($curr_session->isSessionSet())
+        {
+            return view('account');
+        }
+        else redirect() -> to ('/login');
     }
 }
 
