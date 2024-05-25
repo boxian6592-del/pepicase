@@ -128,3 +128,81 @@ $(window).on('beforeunload', function()
         })
     }
 });
+
+function createFeedback(name, rating, comment, date) {
+    const feedbackContainer = document.createElement('div');
+    feedbackContainer.classList.add('feedback');
+  
+    const nameElement = document.createElement('h3');
+    nameElement.textContent = name || 'Anonymous';
+  
+    const ratingElement = document.createElement('div');
+    ratingElement.classList.add('rating');
+    for (let i = 0; i < 5; i++) {
+      const starElement = document.createElement('i');
+      starElement.classList.add('fa', 'fa-star');
+      if (i < rating) {
+        starElement.classList.add('fa-solid');
+      } else {
+        starElement.classList.add('fa-regular');
+      }
+      ratingElement.appendChild(starElement);
+    }
+  
+    const commentElement = document.createElement('p');
+    commentElement.textContent = comment;
+  
+    const dateElement = document.createElement('span');
+    dateElement.textContent = date;
+  
+    feedbackContainer.appendChild(nameElement);
+    feedbackContainer.appendChild(ratingElement);
+    feedbackContainer.appendChild(commentElement);
+    feedbackContainer.appendChild(dateElement);
+  
+    return feedbackContainer;
+  }
+  
+  function printFeedback(name, rating, comment, date) {
+    var block = document.createElement("div");
+    block.className = "lexend";
+    block.style = "width: 80%; padding: 10px; margin: 10px auto; border: 1px solid #ccc;";
+    block.innerHTML = `
+      <div class="feedback-header">
+        <div style="font-weight: bold;">${name}</div>
+        <div style="font-size: 12px; color: #666;">${date}</div>
+      </div>
+      <div class="feedback-rating">
+        ${createStars(rating)}
+      </div>
+      <div class="feedback-comment">
+        ${comment}
+      </div>
+    `;
+    document.getElementById("feedback-container").appendChild(block);
+  }
+  
+  function createStars(rating) {
+    var stars = "";
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars += "★";
+      } else {
+        stars += "☆";
+      }
+    }
+    return stars;
+  }
+  
+  // Example usage
+  printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
+  printFeedback("Anonymous", 5, "luv it soo much!! luv it soo much!! luv it soo much!! luv it soo much!!", "Jan 1, 2024");
+  printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
+  
+    const loadMoreButton = document.createElement('button');
+    loadMoreButton.textContent = 'Load more';
+    feedbackSection.appendChild(loadMoreButton);
+  
+  window.onload = () => {
+    addFeedbacks();
+  };
