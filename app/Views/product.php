@@ -94,9 +94,6 @@
                 <button style = "float: right; margin-top:10px; background-color:black; color:white;"><span style="font-weight:300;">Post review</span></button>
             </div>
         </div>
-        <div class="cmt">
-            <iframe src="binhluan.php?idsp" frameborder="0"></iframe>
-        </div>
         <script src="/pepicase/public/js/jquery.js"></script>
         <script>
             var user = <?php if($user_id == null) echo 'null'; else echo $user_id ?>;
