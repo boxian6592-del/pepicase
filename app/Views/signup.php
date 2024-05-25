@@ -135,7 +135,7 @@
 
                 <div class="d-flex justify-content-center" id="check_account">
                     <p style="color: #A7A7A7; margin-right: 8px">Have an account?</p>
-                    <a style="color: #844700;" href="/pepicase/public/">Login</a>
+                    <a style="color: #844700;" href="/pepicase/public/login">Login</a>
                 </div>
             </form>
         </div>
