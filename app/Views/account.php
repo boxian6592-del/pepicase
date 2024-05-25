@@ -11,9 +11,9 @@
             <b style="font-size: 50px; font-family: 'Lexend';">Account</b>
             <div class="flex-container" style="margin-top: 15px;">
                 <a style ="text-decoration:none;" href="">
-                    <img src="/pepicase/public/pics/black_heart.svg" alt="">
+                    <img src="/pepicase/public/pics/user.svg" alt="">
                 </a>
-                <text style="color: #838383; font-size: 20px; font-family: 'Lexend';">View your wishlist</text><a href="/pepicase/public/wishlist" style="color: #838383; margin-left: 6px; font-size: 20px; font-family: 'Lexend';">here</a>
+                <a href="/pepicase/public/logout" style="color: #838383; margin-left: 6px; font-size: 20px; font-family: 'Lexend';">Log out</a>
             </div>
         </div>
 
@@ -133,7 +133,7 @@
         </form>
 
         <hr style="margin-top: 40px; color: #838383">
-        <div class="form-group"><a href="/pepicase/public/changepassword1" style="font-size: 20px; color: #838383; text-decoration-line: underline; font-family: 'Lexend';">Change your password</a></div>
+        <div class="form-group"><a href="" style="font-size: 20px; color: #838383; text-decoration-line: underline; font-family: 'Lexend';">Change your password</a></div>
     </div>
 </div>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
