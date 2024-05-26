@@ -18,6 +18,6 @@ class HomepageController extends BaseController
 
     public function testing(): string // hàm chứa nơi testing
     {
-        return view('index');
+        return view('wishlist');
     }
 }

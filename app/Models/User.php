@@ -84,6 +84,17 @@ class User extends Model
         return ($result !== []);
     }
 
+    public function fetch_wishlist($id)
+    {
+        $db = Database::connect();
+        $fetch_query = "SELECT Product_ID, Name, Price, Image from wishlist 
+        LEFT JOIN product on wishlist.Product_ID = product.ID WHERE User_ID = {$id};";
+        $wishlist_items = $db->query($fetch_query)->getResult();
+
+        if (empty($wishlist_items)) return [];
+        else return $wishlist_items;
+    }
+
     public function testdb() {
         $db = Database::connect();
         $sql = "SELECT * from cart";

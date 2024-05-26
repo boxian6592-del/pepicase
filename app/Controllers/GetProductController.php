@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\Product;
 use App\Models\CustomSession;
 use App\Models\Cart;
+use App\Models\User;
 
 class GetProductController extends BaseController
 {
@@ -131,9 +132,16 @@ class GetProductController extends BaseController
     public function wishlist()
     {
         $curr_session = new CustomSession(null);
-        if(isset($curr_session))
+        $result = $curr_session->isSessionSet();
+        if($result)
         {
-            return view('wishlist');
+            $empty = [
+                'empty' => 'yes',
+            ];
+            $user = new User(null, null, null);
+            $wishlist_arr = $user->fetch_wishlist($curr_session->get_id());
+            if(count($wishlist_arr) === 0) return view('wishlist', $empty);
+            else return view('wishlist', ['wishlist_array' => json_encode($wishlist_arr)]);
         }
         else return redirect() -> to ('/login') ;
     }
