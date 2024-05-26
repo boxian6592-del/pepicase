@@ -61,3 +61,7 @@ $routes->get('/purchases','StaticPageController::Purchases');
 $routes->get('/yourcart','GetProductController::yourcart');
 $routes->get('/my-account','StaticPageController::account');
 //quản lý tài khoản
+
+//cart
+$routes->get('/emptycart','GetProductController::emptycart');
+$routes->get('/mycart','GetProductController::mycart');

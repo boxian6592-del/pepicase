@@ -158,3 +158,6 @@ header
     height: fit-content; 
 }
 
+.container {
+    display: flex;
+ }

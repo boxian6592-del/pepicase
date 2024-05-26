@@ -6,7 +6,7 @@
 </div>
 
 <div class="flex-container" style="display: flex; margin-top: 50px;">
-    <div style="margin-left: 150px; width: 35%">
+    <div style="margin-left: 150px; width: 20%">
         <div style="margin-bottom: 40px;">
             <b style="font-size: 50px; font-family: 'Lexend';">Account</b>
             <div class="flex-container" style="margin-top: 15px;">
