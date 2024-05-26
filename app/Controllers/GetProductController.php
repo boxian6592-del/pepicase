@@ -86,7 +86,17 @@ class GetProductController extends BaseController
         $products = $productModel->getProducts();
         return $this->response->setJSON(['products' => $products]);
     }
+    public function getMoreProducts()
+    {
+        $page = $this->request->getGet('page'); // Lấy số trang từ yêu cầu GET
+        $limit = 6;
+        $offset = ($page - 1) * $limit;
 
+        $productModel = new Product();
+        $products = $productModel->getProductsWithOffset($limit, $offset); // Lấy sản phẩm với offset
+
+        return $this->response->setJSON(['products' => $products]);
+    }
 
     public function toggleFavorite() // trigger khi ấn hình quả tim (có ý định favorite)
     {

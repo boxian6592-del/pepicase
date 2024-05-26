@@ -87,6 +87,10 @@ class Product extends Model
     {
         return $this->limit($limit)->find();
     }
+    public function getProductsWithOffset($limit, $offset)
+    {
+        return $this->findAll($limit, $offset);
+    }
     public function filterProducts($collections, $materials, $colors)
     {
         $db = Database::connect();
@@ -94,10 +98,6 @@ class Product extends Model
 
         if (!empty($collections)) {
             $builder->whereIn('Collect_ID', $collections);
-        }
-        if (!empty($materials)) {
-            // Assuming materials filtering logic goes here
-            // Example: $builder->whereIn('Material_ID', $materials);
         }
         if (!empty($colors)) {
             $builder->whereIn('Color_ID', $colors);

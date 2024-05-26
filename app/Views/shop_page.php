@@ -1,5 +1,5 @@
 <?php include(APPPATH.'views/components/usual-links.php'); ?>
-  <link rel="stylesheet" href="/pepicase/public/css/shop_page.css">
+  <link rel="stylesheet" href="/pepicase/public/css/shoppage.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
     <img class = "banner" src="/pepicase/public/pics/shop_banner_2.svg" alt="banner" style = "width: 100%; height:auto;">
@@ -57,7 +57,7 @@
             </div>
         </section>
         <hr class="divider">
-        <button class="apply-filters">Apply filters</button>
+        <button class="apply-filters">APPLY</button>
     </aside>
         <div class="product-list">
             <?php foreach ($products as $product): ?>
@@ -71,6 +71,7 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <button id="load-more" class="load-more-btn">Load more</button>
     
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
 <script src="/pepicase/public/js/jquery.js"></script>
@@ -160,6 +161,40 @@
                     </article>`;
                 productContainer.innerHTML += productHTML;
             });
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    let currentPage = 1; // Biến để theo dõi trang hiện tại
+    const limit = 6; // Số sản phẩm cần tải mỗi lần
+
+    // Hàm xử lý khi nhấn nút "Load more"
+    document.getElementById('load-more').addEventListener('click', function() {
+        currentPage++; // Tăng số trang hiện tại lên 1
+        fetch('<?= base_url("get_more_products") ?>?page=' + currentPage, {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            let productContainer = document.querySelector('.product-list');
+            data.products.forEach(product => {
+                let productHTML = `
+                    <article class="product-container">
+                        <figure class="image-wrapper">
+                            <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
+                        </figure>
+                        <h2 class="product-name">${product.Name}</h2>
+                        <p class="product-price">$${product.Price} USD</p>
+                    </article>`;
+                productContainer.innerHTML += productHTML;
+            });
+            // Ẩn nút "Load more" nếu số sản phẩm trả về ít hơn số sản phẩm cần tải
+            if (data.products.length < limit) {
+                document.getElementById('load-more').style.display = 'none';
+            }
         })
         .catch(error => console.error('Error:', error));
     });

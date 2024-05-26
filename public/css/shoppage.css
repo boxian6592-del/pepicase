@@ -1,5 +1,6 @@
 .container {
   display: flex;
+
 }
 
 .filters-container {
@@ -7,7 +8,6 @@
     flex-direction: column;
     padding: 0 20px;
     max-width: 194px;
-    margin-left: 170px;
     margin-top: 100px;
   }
 
@@ -168,7 +168,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 10px;
-    width: 30%; /* Đảm bảo 3 sản phẩm trên một hàng */
+    width: 30%; 
 }
 .image-wrapper {
     border-radius: 10px;
@@ -178,7 +178,7 @@
     flex-direction: column;
     align-items: center;
     aspect-ratio: 1;
-    padding: 7px 60px 0;
+    padding: 7px;
 }
 .product-image {
     aspect-ratio: 0.46;
@@ -201,3 +201,21 @@
     width: 100%;
     font: 200 20px Lexend Zetta, sans-serif;
 }
+
+.load-more-btn {
+  margin-left: 800px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 41px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: -0.4px;
+  font: 500 20px/110% 'Lexend', sans-serif;
+  cursor: pointer;
+}
+
