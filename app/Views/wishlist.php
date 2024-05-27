@@ -6,7 +6,9 @@
 
 <div class = "lexend-tera container-fluid d-flex flex-column justify-content-center align-items-center" style = "height:40vh; background-color:#FFFAE3; font-size:4.5vw; font-weight: 600;">
     <p>Wishlist</p>
-    <button class="btn" style ="height: 10vh; width:18vw; font-size:20px; background-color: inherit; border-radius:20px; margin-top: 30px; border: 1px solid black"><b>SHOP ALL</b></button>
+    <a href = "/pepicase/public/">
+        <button class="btn" style ="height: 10vh; width:18vw; font-size:20px; background-color: inherit; border-radius:20px; margin-top: 30px; border: 1px solid black"><b>SHOP ALL</b></button>
+    </a>
 </div>
 
 
@@ -112,4 +114,5 @@ if(isset($wishlist_array)) echo
 
 ';
 ?>
+
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

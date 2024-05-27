@@ -63,7 +63,7 @@
             <?php foreach ($products as $product): ?>
                 <article class="product-container">
                     <figure class="image-wrapper">
-                        <img loading="lazy" src="<?php echo base_url($product['Image']); ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
+                        <img loading="lazy" src="<?php echo $product['Image']; ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
                     </figure>
                     <h2 class="product-name"><?php echo $product['Name']; ?></h2>
                     <p class="product-price">$<?php echo $product['Price']; ?> USD</p>

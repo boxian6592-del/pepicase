@@ -21,6 +21,21 @@ class StaticPageController extends BaseController
         return view('terms-of-use');
     }
 
+    public function account()
+    {
+        $curr_session = new CustomSession(null);
+        $curr_session->fetch_session_cookie();
+        // check xem người dùng đã log in chưa
+        if($curr_session->isSessionSet()) // nếu có
+        {
+            // chạy database, kiểm tra xem người dùng đó có user_info chưa
+            // nếu có thì lấy user info đó về thôi
+            // nếu chưa thì không làm
+            return view('account');
+        }
+        else return redirect() -> to ('/login');
+    }
+
     public function Purchases() // purchases cũng tĩnh nhưng tĩnh ở một mức nhất định
     {
         $curr_session = new CustomSession(null);
@@ -34,15 +49,6 @@ class StaticPageController extends BaseController
         }
     }
 
-    public function account()
-    {
-        $curr_session = new CustomSession(null);
-        $curr_session->fetch_session_cookie();
-        if($curr_session->isSessionSet())
-        {
-            return view('account');
-        }
-        else redirect() -> to ('/login');
-    }
+
 }
 

@@ -84,6 +84,10 @@ $(document).ready(function() {
             });
         }
     });
+
+    printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
+    printFeedback("Anonymous", 5, "luv it soo much!! luv it soo much!! luv it soo much!! luv it soo much!!", "Jan 1, 2024");
+    printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
 });
 
 function toggleFavorite() 
@@ -194,10 +198,6 @@ function createFeedback(name, rating, comment, date) {
     return stars;
   }
   
-  // Example usage
-  printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
-  printFeedback("Anonymous", 5, "luv it soo much!! luv it soo much!! luv it soo much!! luv it soo much!!", "Jan 1, 2024");
-  printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
   
     const loadMoreButton = document.createElement('button');
     loadMoreButton.textContent = 'Load more';

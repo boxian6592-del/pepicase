@@ -135,11 +135,11 @@ class GetProductController extends BaseController
         return view('checkout');
     }
 
-    public function emptycart(){
+    public function empty_cart(){
         return view('emptycart');
     }
 
-    public function mycart(){
+    public function my_cart(){
         return view('mycart');
     }
 
