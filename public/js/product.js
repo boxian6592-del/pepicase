@@ -53,6 +53,7 @@ $(document).ready(function() {
         if(finalized_size == null) $("#combotext").text("Please pick a size!");
         else
         {
+            var new_cart_amount = cart_amount + quantity;
             $.ajax({
                 type: "POST",
                 url: "http://localhost/pepicase/public/product/add",
@@ -65,9 +66,9 @@ $(document).ready(function() {
                     price: price,
                 },
                 success: function(response) {
-                    console.log(response);
                     $("#combotext").css("color", "green");
                     $("#combotext").text("You have added " + quantity + " items to your cart successfully!");
+                    $('#cart_amount').text(new_cart_amount);
                 },
                 error: function(xhr, status, error) {
                     // Handle the error response

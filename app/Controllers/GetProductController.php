@@ -52,6 +52,7 @@ class GetProductController extends BaseController
     {
         return view('collections');
     }
+
     public function getFilteredProducts()
     {
         $request = service('request');
@@ -80,12 +81,14 @@ class GetProductController extends BaseController
     
         return $this->response->setJSON(['products' => $products]);
     }
+
     public function getAllProducts()
     {
         $productModel = new Product();
         $products = $productModel->getProducts();
         return $this->response->setJSON(['products' => $products]);
     }
+
     public function getMoreProducts()
     {
         $page = $this->request->getGet('page'); // Lấy số trang từ yêu cầu GET
@@ -108,7 +111,8 @@ class GetProductController extends BaseController
         $curr_product->toggleFavorite($user_id);
         // gọi hàm toggleFavorite, những luận lý liên quan xảy ra trong JS trên trang
     }
-    public function add_to_cart() // đang làm
+
+    public function add_to_cart()
     {
         $product = $this->request->getPost('product');
         $user_id = $this->request->getPost('user_id');
@@ -129,18 +133,6 @@ class GetProductController extends BaseController
         // Set content type to application/x-www-form-urlencoded
         $this->response->setContentType('application/x-www-form-urlencoded');
         return $this->response->setBody($response);
-    }
-
-    public function checkout(){
-        return view('checkout');
-    }
-
-    public function empty_cart(){
-        return view('emptycart');
-    }
-
-    public function my_cart(){
-        return view('mycart');
     }
 
     public function wishlist()

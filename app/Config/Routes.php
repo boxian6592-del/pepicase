@@ -58,10 +58,7 @@ $routes->get('/testing','HomepageController::testing');
 $routes->get('/purchases','StaticPageController::Purchases');
 
 //quản lý tài khoản
-$routes->get('/yourcart','GetProductController::yourcart');
-$routes->get('/my-account','StaticPageController::account');
+$routes->get('/user/cart','CartController::index');
+$routes->post('/user/cart','CartController::process_cart_edit');
+$routes->get('/user','StaticPageController::account');
 //quản lý tài khoản
-
-//cart
-$routes->get('/empty-cart','GetProductController::empty_cart');
-$routes->get('/my-cart','GetProductController::my_cart');

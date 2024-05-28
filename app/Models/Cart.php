@@ -60,4 +60,31 @@ class Cart
         if ($affectedRows > 0) return true;
         else return false;
     }
+
+    public function get()
+    {
+        $db = Database::connect();
+        $query = "
+        SELECT cart_details.User_ID, cart_details.Product_ID, cart_details.Name, Size, Quantity, cart_details.Price, product.Image
+        FROM cart_details left join product ON cart_details.Product_ID = product.ID
+        WHERE User_ID = {$this->user_id};
+        ";
+        $result = $db->query($query)->getResult();
+        if(!empty($result)) return $result;
+        else return [];
+    }
+
+    public function get_amount()
+    {
+        $db = Database::connect();
+        $query = "SELECT sum(Quantity) as total_cart_items FROM cart_details WHERE User_ID = {$this->user_id}";
+        $result = $db->query($query)->getRow();
+        if ($result) {
+            $totalQuantity = $result->total_cart_items;
+            // Do something with the $totalQuantity
+        } else {
+            $totalQuantity = 0; // or handle the case where the result is null
+        }
+        return $totalQuantity;
+    }
 }

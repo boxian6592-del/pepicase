@@ -100,7 +100,8 @@
             var price = <?= $price ?>;
             var product_id = <?= $id ?>;
             var isFavorited = "<?= $favorite ?>";
-            var product_name = "<?= $name ?>"
+            var product_name = "<?= $name ?>";
+            var cart_amount = '<?= $cart_amount ?>';
         </script>
         <script src="/pepicase/public/js/product.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
