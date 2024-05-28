@@ -89,7 +89,7 @@
                 </div>
             </section>
             <aside class="sidebar1">
-                <h2 align="center">Your Cart</h2>
+                <h2 align="center">My Cart</h2>
                 <div id="item_div" style = "min-height: 10vh;">
             
                 </div>
@@ -107,9 +107,16 @@
 
                     <div class="d-flex" style="font-weight: 600; line-height: 40px;">
                         <div style="width: 30%;">Shipping:</div>
-                        <div id ="subTotal" class="d-flex flex-row justify-content-end" style ="width:70%;">20$</div>
+                        <div id ="shipping" class="d-flex flex-row justify-content-end" style ="width:70%;">20$</div>
                     </div>
-                    
+                    <div id="discount" style="font-weight: 600; line-height: 40px;">
+                        <div style="width: 30%;">Discount:</div>
+                        <div id ="discount_money" class="d-flex flex-row justify-content-end" style ="width:70%;">20$</div>
+                    </div>
+                    <div class="d-flex" style="font-weight: 600; line-height: 40px;">
+                        <div style="width: 30%;">Total:</div>
+                        <div id ="Total" class="d-flex flex-row justify-content-end" style ="width:70%;">20$</div>
+                    </div>
                 </div>
                 <button class="buy-btn">Buy Now</button>
             </aside>

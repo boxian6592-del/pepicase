@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var products = [
     {
-        Name: "Pochacco",
+        Name: "My Melody_Milkshake Case",
         Product_ID: "001",
         Size: "Iphone 15",
         Price: 29.99,
@@ -60,7 +60,7 @@ var products = [
         Image: "/pepicase/public/product-pics/pompompurin/1.svg"
     },
     {
-        Name:"Cinnamonrol",
+        Name:"Cinnamonrol_Milkshake Case",
         Product_ID: "002",
         Size: "Iphone 13",
         Price: 39.99,
@@ -71,7 +71,7 @@ var products = [
 function print(quantity, name, price, pathing, size) {
     var block = document.createElement("div");
     block.className = "lexend";
-    block.style = "width: 80%;height:fit-content; padding: 0; margin: 0; margin-top: 5vh;"
+    block.style = "width: 100%;height:fit-content; padding: 0; margin: 0; margin-top: 5vh;"
     // Thêm HTML cho mỗi sản phẩm trong mảng products
     block.innerHTML = `
             <div class="cart-item">
@@ -79,11 +79,12 @@ function print(quantity, name, price, pathing, size) {
                     <img src="${pathing}" alt="${size}">
                 </div>
                 <div class="item-details">
-                    <p>Name: ${name}</p>
-                    <p>Model: ${size}</p>
-                    <p>Price: $${price}</p>
-                    <p>Quantity: ${quantity}</p>
-                </div>
+                    <p style="font-family:Lexend;font-size:larger; font-weight:600;">Name: ${name}</p>
+                    <p style="font-family:Lexend">Model: ${size}</p>
+                    <p style="font-family:Lexend;">Quantity: ${quantity}</p>
+                    <p style="font-size:larger; font-weight:600;font-family:Lexend">Price: ${price}$</p>
+        </div>
+    </div>
             </div>
         `;
     document.getElementById('item_div').appendChild(block);
@@ -98,8 +99,8 @@ function calculateTotal() {
     // var shipping = parseFloat(document.getElementById('shipping').innerText);
     var total= subtotal_value + shipping.value;
     // document.getElementById('shipping').innerHTML=`${shipping.value}$`;
-    document.getElementById('subtotal').innerText = `${subtotal_value.toFixed(2)}$`;
-    document.getElementById('total').innerText = `${total.toFixed(2)}$`;
+    document.getElementById('subTotal').innerText = `${subtotal_value.toFixed(2)}$`;
+    document.getElementById('Total').innerText = `${total.toFixed(2)}$`;
 }
 document.addEventListener('DOMContentLoaded', function()
 {
@@ -114,8 +115,8 @@ var voucher = {
 };
 
 document.getElementById('apply-discount').addEventListener('click', function() {
-    var subtotal= document.getElementById('subtotal');
-    var total=document.getElementById('total');
+    var subtotal= document.getElementById('subTotal');
+    var total=document.getElementById('Total');
     var discount_alert=document.getElementById('discount-alert');
     var discountCode = document.getElementById('discount-code').value;
     if (discountCode === voucher.code) {
@@ -126,13 +127,13 @@ document.getElementById('apply-discount').addEventListener('click', function() {
         total.innerText = `${total_value.toFixed(2)}$`;
         discount_alert.innerText = `Mã giảm giá hợp lệ!`;
         discount_alert.style.color='green';
-        document.getElementById('discount_text').style.display='block';
-        document.getElementById('discount_money').style.display='block';
+        // document.getElementById('discount_text').style.display='block';
+        // document.getElementById('discount_money').style.display='block';
+        document.getElementById('discount').style.display='flex';
         document.getElementById('discount_money').innerText = `-${discountAmount.toFixed(2)}$`;
     } else {
         discount_alert.innerText = `Mã giảm giá không hợp lệ!`;
         discount_alert.style.color='red';
-        document.getElementById('discount_text').style.display='none';
-        document.getElementById('discount_money').style.display='none';
+        document.getElementById('discount').style.display='none';
     }
 });

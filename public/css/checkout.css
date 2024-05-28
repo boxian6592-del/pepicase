@@ -184,13 +184,15 @@ button.active{
 }
 .image-container {
     height: 150px;
-    width: 150px;
+    width: 120px;
     background-color: #C4C4C4;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     margin-right: 10px; /* Khoảng cách giữa hình ảnh và thông tin */
+
+
 }
 
 .image-container img {
@@ -205,7 +207,7 @@ button.active{
     display: flex;
     flex-direction: column;
 }
-#discount_text{
+#discount{
     display:none;
 }
 
