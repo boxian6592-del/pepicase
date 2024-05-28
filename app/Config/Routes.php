@@ -50,7 +50,7 @@ $routes->post('/resetPassword/confirmed/(:any)','ResetPasswordController::ResetP
 //resetPassword
 
 //checkout
-$routes->get('/checkout','GetProductController::checkout');
+$routes->get('/checkout','CartController::checkout');
 //khu để test layout
 $routes->get('/testing','HomepageController::testing');
 //khu để test layout

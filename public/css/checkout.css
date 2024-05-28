@@ -1,25 +1,27 @@
-/* Các định dạng hiện có */
-
 body {
-    font-family: Arial, sans-serif;
+    font-family:Lexend;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #FFF;
 }
 
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    padding-top:0;
 }
-
 .content1 {
-    max-width: 700px; /* Giữ nguyên kích thước ban đầu */
-    flex: 1; /* Điều chỉnh kích thước để cân bằng với sidebar */
+     max-width: 700px; 
+     flex: 1; 
 }
-
 .top-content1, .middle-content1, .bottom-content1 {
     padding-bottom: 20px;
+}
+.bottom-content1{
+        height: 400px; 
+        overflow: hidden; 
+        position: relative; 
 }
 
 .content-top1 {
@@ -72,6 +74,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    table-layout: fixed;
 }
 
 td {
@@ -85,25 +88,13 @@ input[type="text"] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+.hidden{
+    display:none;
+}
 
 .full-width {
     width: 100%;
 }
-
-a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #000;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-a:hover {
-    background-color: #444;
-}
-
 .shipping-option {
     display: flex;
     align-items: flex-start;
@@ -135,25 +126,51 @@ a:hover {
     color: #555;
 }
 button[type="button"]{
-   
-    width: 100%;
+    display:block;
+    width:100%;
+    height:100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 
+}  
+ #momo-btn{
+        background-image: url('/pepicase/public/pics/momo.png'); 
+        background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+        background-position: 10px center; /* Đặt hình ảnh ở giữa bên trái */
+        background-size: 30px 30px;
+        cursor: pointer; 
+        margin-right:20%;
+}
+#momo-btn:hover {
+    color: #B0006E;  /* Màu chữ khi hover */
+    border: 1px solid #B0006E; /* Viền màu hồng khi hover */
+    background-color: white; /* Màu nền */
+}
+#credit-card-btn:hover {
+    border:1px solid black;
+    background-color: white; /* Màu nền */
+}
+#cod-btn:hover{
+     border:1px solid black;
+     background-color: white; /* Màu nền */
+}
+button.active{
+    border: 1px solid black; /* Viền in đậm khi được chọn */
+    color: #060606;
+    background-color: white;
 }
 
 /* Các định dạng bổ sung cho phần aside */
-.sidebar1{
-    width: 50%; /* Đặt chiều rộng cụ thể cho sidebar */
+ .sidebar1{
+    width: 50%; 
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
-    margin-left: 20px; /* Khoảng cách bên trái giữa sidebar và content */
+    margin-left: 20px; 
 }
-
 .sidebar h2 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -164,58 +181,38 @@ button[type="button"]{
     align-items: center;
     margin-bottom: 15px;
 }
-
-.cart-item img {
-    width: 80px; /* Kích thước nhỏ hơn để phù hợp với sidebar */
-    height: auto;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.image-container {
+    height: 150px;
+    width: 150px;
+    background-color: #C4C4C4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 10px; /* Khoảng cách giữa hình ảnh và thông tin */
 }
 
+.image-container img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.input-discount{
+    display:flex;
+    flex-direction:row;
+}
+.left-item, .right-item {
+    display: flex;
+    flex-direction: column;
+}
+#discount_text{
+    display:none;
+}
+
+.right-item {
+    text-align: right; /* This aligns text to the right in the .right div */
+}
 .item-details {
     flex: 1;
-}
-
-.quantity-control {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.quantity-btn {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    cursor: pointer;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 4px;
-}
-
-.quantity-input {
-    width: 40px;
-    height:3%;
-    text-align: center;
-    border: 1px solid #ddd;
-    margin: 0 5px;
-    border-radius: 4px;
-}
-
-.remove-btn {
-    display: block;
-    margin-top: 10px;
-    background-color: #ff4d4d;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.remove-btn:hover {
-    background-color: #e60000;
 }
 
 .cart-summary {
@@ -231,8 +228,7 @@ button[type="button"]{
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-}
-
+} 
 .cart-summary p {
     margin: 5px 0;
 }
