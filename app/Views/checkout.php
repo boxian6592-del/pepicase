@@ -49,15 +49,15 @@
                         <div class="shipping-option">
                             <input type="radio" id="standard-shipping" name="shipping" required checked>
                             <label for="standard-shipping">
-                                <strong>Standard shipping</strong><br>
-                                <span>Estimated delivery in 3-5 Business Days</span>
+                                <strong>Express shipping</strong><br>
+                                <span>Estimated delivery in 3 - 5 Business Days</span>
                             </label>
                         </div>
                         <div class="shipping-option">
                             <input type="radio" id="worldwide-shipping" name="shipping">
                             <label for="worldwide-shipping">
-                                <strong>Worldwide shipping</strong><br>
-                                <span>Estimated delivery in 7-9s Business Days</span>
+                                <strong>Standard shipping</strong><br>
+                                <span>Estimated delivery in 7 - 9 Business Days</span>
                             </label>
                         </div>
                     </form>
@@ -99,70 +99,25 @@
                         <button class="btn btn-dark" type="button" id="apply-discount" style="width:50%">Apply</button>
                     </div>
                     <p id="discount-alert"></p>
-                    <div style="display:flex; flex-direction:row; justify-content:space-between;align-items:flex-start">
-                    <div class="left-item">
-                        <p>Subtotal</p>
-                        <p>Shipping</p>
-                        <p id="discount_text">Discount</p>
-                        <p><strong>Total</strong></p></div>
-                    <div class="right-item">
-                        <p class="subtotal" id="subtotal">199$</p>
-                        <p class="shipping" id="shipping">20$</p>
-                        <p id="discount_money"></p>
-                        <p class="total" id="total">20$</p>
+
+                    <div class="d-flex" style="font-weight: 600; line-height: 40px;">
+                        <div style="width: 30%;">Subtotal:</div>
+                        <div id ="subTotal" class="d-flex flex-row justify-content-end" style ="width:70%;">100</div>
                     </div>
+
+                    <div class="d-flex" style="font-weight: 600; line-height: 40px;">
+                        <div style="width: 30%;">Shipping:</div>
+                        <div id ="subTotal" class="d-flex flex-row justify-content-end" style ="width:70%;">20$</div>
                     </div>
-                    <button class="buy-btn">Buy Now</button>
+                    
                 </div>
+                <button class="buy-btn">Buy Now</button>
             </aside>
         </section>
     </div>
+<script src="/pepicase/public/js/jquery.js"></script>
 <script>
- document.addEventListener('DOMContentLoaded', function() {
-    const creditCardBtn = document.getElementById('credit-card-btn');
-    const codBtn = document.getElementById('cod-btn');
-    const momoBtn = document.getElementById('momo-btn');
-    const cardDetails = document.getElementById('card-details');
-    const cardNumber = document.getElementById('card-number');
-    const cardExpiryCvc = document.getElementById('card-expiry-cvc');
-    // const saveCardContainer = document.getElementById('save-card-container');
-
-    // Function to hide card details
-    function hideCardDetails() {
-        cardDetails.classList.add('hidden');
-        cardNumber.classList.add('hidden');
-        cardExpiryCvc.classList.add('hidden');
-        // saveCardContainer.classList.add('hidden');
-    }
-
-    function removeActiveClass() {
-        creditCardBtn.classList.remove('active');
-        codBtn.classList.remove('active');
-        momoBtn.classList.remove('active');
-    }
-    hideCardDetails();
-
-    creditCardBtn.addEventListener('click', function() {
-        removeActiveClass(); // Remove active class from all buttons
-        creditCardBtn.classList.add('active'); // Add active class to the clicked button
-        cardDetails.classList.remove('hidden');
-        cardNumber.classList.remove('hidden');
-        cardExpiryCvc.classList.remove('hidden');
-        // saveCardContainer.classList.remove('hidden');
-    });
-
-    codBtn.addEventListener('click', function() {
-        removeActiveClass(); // Remove active class from all buttons
-        codBtn.classList.add('active'); // Add active class to the clicked button
-        hideCardDetails();
-    });
-
-    momoBtn.addEventListener('click', function() {
-        removeActiveClass(); // Remove active class from all buttons
-        momoBtn.classList.add('active'); // Add active class to the clicked button
-        window.location.href = 'http://example.com';
-    });
-});
+ 
 </script>
 <script src="/pepicase/public/js/checkout.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

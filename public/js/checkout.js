@@ -1,3 +1,55 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const creditCardBtn = document.getElementById('credit-card-btn');
+    const codBtn = document.getElementById('cod-btn');
+    const momoBtn = document.getElementById('momo-btn');
+    const cardDetails = document.getElementById('card-details');
+    const cardNumber = document.getElementById('card-number');
+    const cardExpiryCvc = document.getElementById('card-expiry-cvc');
+    // const saveCardContainer = document.getElementById('save-card-container');
+
+    // Function to hide card details
+    function hideCardDetails() {
+        cardDetails.classList.add('hidden');
+        cardNumber.classList.add('hidden');
+        cardExpiryCvc.classList.add('hidden');
+        // saveCardContainer.classList.add('hidden');
+    }
+
+    function removeActiveClass() {
+        creditCardBtn.classList.remove('active');
+        codBtn.classList.remove('active');
+        momoBtn.classList.remove('active');
+    }
+    hideCardDetails();
+
+    creditCardBtn.addEventListener('click', function() {
+        removeActiveClass(); // Remove active class from all buttons
+        creditCardBtn.classList.add('active'); // Add active class to the clicked button
+        cardDetails.classList.remove('hidden');
+        cardNumber.classList.remove('hidden');
+        cardExpiryCvc.classList.remove('hidden');
+        // saveCardContainer.classList.remove('hidden');
+    });
+
+    codBtn.addEventListener('click', function() {
+        removeActiveClass(); // Remove active class from all buttons
+        codBtn.classList.add('active'); // Add active class to the clicked button
+        hideCardDetails();
+    });
+
+    momoBtn.addEventListener('click', function() {
+        removeActiveClass(); // Remove active class from all buttons
+        momoBtn.classList.add('active'); // Add active class to the clicked button
+        window.location.href = 'http://example.com';
+    });
+
+    products.forEach(product => {
+        print(product.Quantity, product.Name , product.Price, product.Image ,product.Size);
+    })
+});
+
+
+
 var products = [
     {
         Name: "Pochacco",
@@ -37,13 +89,6 @@ function print(quantity, name, price, pathing, size) {
     document.getElementById('item_div').appendChild(block);
 };
 
-document.addEventListener('DOMContentLoaded', function()
-{
-    products.forEach(product => {
-        print(product.Quantity, product.Name , product.Price, product.Image ,product.Size);
-    }
-    )}
-)
 var shipping={
     value:20
 }
