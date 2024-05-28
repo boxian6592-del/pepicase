@@ -82,6 +82,7 @@ document.getElementById('apply-discount').addEventListener('click', function() {
         discount_alert.innerText = `Mã giảm giá hợp lệ!`;
         discount_alert.style.color='green';
         document.getElementById('discount_text').style.display='block';
+        document.getElementById('discount_money').style.display='block';
         document.getElementById('discount_money').innerText = `-${discountAmount.toFixed(2)}$`;
     } else {
         discount_alert.innerText = `Mã giảm giá không hợp lệ!`;
