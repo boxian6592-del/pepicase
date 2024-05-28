@@ -1,8 +1,8 @@
-var quantity = 1;
 var total;
 var starArr = [];
 var current_sizing = 0, previous_sizing, finalized_size;
 var isFavoritedNow = isFavorited;
+var amount = parseInt(cart_amount);
 
 $(document).ready(function() {
     total = quantity * price;
@@ -48,12 +48,11 @@ $(document).ready(function() {
         console.log(product_id);
         console.log(user);
         console.log(finalized_size);
-        console.log(quantity);
+        console.log(quantity);        
 
         if(finalized_size == null) $("#combotext").text("Please pick a size!");
         else
         {
-            var new_cart_amount = cart_amount + quantity;
             $.ajax({
                 type: "POST",
                 url: "http://localhost/pepicase/public/product/add",
@@ -68,7 +67,8 @@ $(document).ready(function() {
                 success: function(response) {
                     $("#combotext").css("color", "green");
                     $("#combotext").text("You have added " + quantity + " items to your cart successfully!");
-                    $('#cart_amount').text(new_cart_amount);
+                    amount += parseInt(quantity);
+                    $('#cart_amount').text(amount);
                 },
                 error: function(xhr, status, error) {
                     // Handle the error response

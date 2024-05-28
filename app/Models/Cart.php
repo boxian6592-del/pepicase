@@ -87,4 +87,17 @@ class Cart
         }
         return $totalQuantity;
     }
+
+    public function get_amount_for_item($productID)
+    {
+        $db = Database::connect();
+        $query = "SELECT Sum(Quantity) as QuantitySum FROM cart_details WHERE User_ID = {$this->user_id} AND Product_ID = {$productID}";
+        $result = $db->query($query)->getRow();
+        if ($result) {
+            $indivQuantity = $result->QuantitySum;
+        } else {
+            $indivQuantity = 0; // or handle the case where the result is null
+        }
+        return $indivQuantity;
+    }
 }

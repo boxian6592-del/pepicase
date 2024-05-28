@@ -26,10 +26,17 @@ class GetProductController extends BaseController
             {
                 // tiến hành kiểm tra người dùng đó có wishlist spham đó k
                 $user_id = $curr_session->get_id(); // lấy id người dùng từ session
+
                 if ($product->check_favorited($user_id)) // nếu có favorite
                 $data['favorite'] = 'yes'; // thêm vào gói data $favorite = 'yes'
                 else // nếu không thì ngược lại
                 $data['favorite'] = 'no';
+
+                $curr_cart = new Cart($user_id);
+                $indiv_amount = $curr_cart->get_amount_for_item($id);
+
+                $data['indiv_amount'] = $indiv_amount;
+
                 return view('product', $data); // trả data về view để xử lý trên view đó
             }
             else // nếu session chưa có người dùng

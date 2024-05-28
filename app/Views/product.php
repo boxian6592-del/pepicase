@@ -69,7 +69,7 @@
                         <?php if($user_id == null) echo '</a>'?>
                         <div id ="quantity" class ="d-flex" style = "border: 1px solid black; width:fit-content;margin-left:10px;">
                             <button onclick="add()" id="plus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">+</button>
-                            <div id="curr_quantity" style ="width: 50px;"class= "lexend d-flex align-items-center justify-content-center"></div>
+                            <div id="curr_quantity" style ="width: 50px;"class= "lexend d-flex align-items-center justify-content-center"><?= $indiv_amount ?></div>
                             <button onclick="minus()" id="minus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">-</button>
                         </div>
                     </div>
@@ -102,6 +102,7 @@
             var isFavorited = "<?= $favorite ?>";
             var product_name = "<?= $name ?>";
             var cart_amount = '<?= $cart_amount ?>';
+            var quantity = <?= $indiv_amount ?>;
         </script>
         <script src="/pepicase/public/js/product.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
