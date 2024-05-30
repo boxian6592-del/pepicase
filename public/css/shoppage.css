@@ -148,10 +148,17 @@
   }
 
   .apply-filters {
-    background-color:#ffe57a; 
-    height:50px; 
-    width:150px; 
-    border-radius:5px
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 12px 24px;
+      font: 500 20px Lexend, sans-serif;
+      cursor: pointer;
+
   }
 
 
@@ -189,11 +196,15 @@
     margin-bottom: -5px;
     max-width: 100%;
 }
-.product-name {
+a {
+  text-decoration: none;
+}
+.product-name a {
     color: #000;
     margin-top: 5px;
     width: 100%;
     font: 400 20px Lexend, sans-serif;
+    text-decoration: none;
 }
 .product-price {
     color: #000;
@@ -203,7 +214,7 @@
 }
 
 .load-more-btn {
-  margin-left: 800px;
+  margin-left: 725px;
   margin-top: 30px;
   display: flex;
   justify-content: center;

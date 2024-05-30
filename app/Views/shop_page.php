@@ -57,7 +57,7 @@
             </div>
         </section>
         <hr class="divider">
-        <button class="apply-filters">APPLY</button>
+        <button class="apply-filters">Apply</button>
     </aside>
         <div class="product-list">
             <?php foreach ($products as $product): ?>
@@ -65,13 +65,17 @@
                     <figure class="image-wrapper">
                         <img loading="lazy" src="<?php echo $product['Image']; ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
                     </figure>
-                    <h2 class="product-name"><?php echo $product['Name']; ?></h2>
+                    <h2 class="product-name">
+                        <a href="<?= base_url('/product/'.$product['ID']); ?>">
+                            <?php echo $product['Name']; ?>
+                        </a>
+                    </h2>
                     <p class="product-price">$<?php echo $product['Price']; ?> USD</p>
                 </article>
             <?php endforeach; ?>
         </div>
     </div>
-    <button id="load-more" class="load-more-btn">Load more</button>
+    <button id="load-more" class="load-more-btn">Load More Products</button>
     
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
 <script src="/pepicase/public/js/jquery.js"></script>
@@ -117,10 +121,14 @@
                 let productHTML = `
                     <article class="product-container">
                         <figure class="image-wrapper">
-                            <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
+                            <img loading="lazy" src="<?php echo $product['Image']; ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
                         </figure>
-                        <h2 class="product-name">${product.Name}</h2>
-                        <p class="product-price">$${product.Price} USD</p>
+                        <h2 class="product-name">
+                            <a href="<?= base_url('/product/'.$product['ID']); ?>">
+                                <?php echo $product['Name']; ?>
+                            </a>
+                        </h2>
+                        <p class="product-price">$<?php echo $product['Price']; ?> USD</p>
                     </article>`;
                 productContainer.innerHTML += productHTML;
             });
@@ -154,10 +162,14 @@
                 let productHTML = `
                     <article class="product-container">
                         <figure class="image-wrapper">
-                            <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
+                            <img loading="lazy" src="<?php echo $product['Image']; ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
                         </figure>
-                        <h2 class="product-name">${product.Name}</h2>
-                        <p class="product-price">$${product.Price} USD</p>
+                        <h2 class="product-name">
+                            <a href="<?= base_url('/product/'.$product['ID']); ?>">
+                                <?php echo $product['Name']; ?>
+                            </a>
+                        </h2>
+                        <p class="product-price">$<?php echo $product['Price']; ?> USD</p>
                     </article>`;
                 productContainer.innerHTML += productHTML;
             });
@@ -184,10 +196,14 @@
                 let productHTML = `
                     <article class="product-container">
                         <figure class="image-wrapper">
-                            <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
+                            <img loading="lazy" src="<?php echo $product['Image']; ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
                         </figure>
-                        <h2 class="product-name">${product.Name}</h2>
-                        <p class="product-price">$${product.Price} USD</p>
+                        <h2 class="product-name">
+                            <a href="<?= base_url('/product/'.$product['ID']); ?>">
+                                <?php echo $product['Name']; ?>
+                            </a>
+                        </h2>
+                        <p class="product-price">$<?php echo $product['Price']; ?> USD</p>
                     </article>`;
                 productContainer.innerHTML += productHTML;
             });

@@ -20,6 +20,8 @@ class GetProductController extends BaseController
         $curr_session = new CustomSession(null); // khởi tạo đối tượng session để chạy hàm
         $product = new Product($id); // khởi tạo đối tượng product với id đc request
         $data = $product->getFullInfo(); // lấy thông tin sản phẩm
+        
+        
         if($product->check_if_found()) // nếu tìm thấy sản phẩm trong database
         {
             if($curr_session->isSessionSet()) // nếu session có người dùng rồi
