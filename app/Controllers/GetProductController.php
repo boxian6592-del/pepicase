@@ -35,9 +35,9 @@ class GetProductController extends BaseController
                 $data['favorite'] = 'no';
 
                 $curr_cart = new Cart($user_id);
-                $indiv_amount = $curr_cart->get_amount_for_item($id);
 
-                $data['indiv_amount'] = $indiv_amount;
+                $data['indiv_amount'] = $curr_cart->get_amount_for_item($id);
+                $data['cart_amount'] = $curr_cart->get_amount();
 
                 return view('product', $data); // trả data về view để xử lý trên view đó
             }

@@ -124,7 +124,7 @@
                             <img loading="lazy" src="<?php echo $product['Image']; ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
                         </figure>
                         <h2 class="product-name">
-                            <a href="<?= base_url('/product/'.$product['ID']); ?>">
+                            <a href="localhost/pepicase/public/product/<?= $product['ID']; ?>">
                                 <?php echo $product['Name']; ?>
                             </a>
                         </h2>

@@ -20,7 +20,7 @@
         <div>
             <b style="font-size: 50px; font-family: 'Lexend';">Order History</b>
             <div class="flex-container" style="color: #838383; font-size: 20px; font-family: 'Lexend';margin-top: 15px;">
-                <text style="margin-top: 15px;">View history</text><a href="#" style="color: #838383; font-size: 20px; margin-left: 6px; font-family: 'Lexend';">here</a>
+                <text style="margin-top: 15px;">View history</text><a href="/pepicase/public/purchases" style="color: #838383; font-size: 20px; margin-left: 6px; font-family: 'Lexend';">here</a>
             </div>
         </div>
     </div>

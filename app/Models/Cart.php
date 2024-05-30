@@ -77,15 +77,25 @@ class Cart
     public function get_amount()
     {
         $db = Database::connect();
-        $query = "SELECT sum(Quantity) as total_cart_items FROM cart_details WHERE User_ID = {$this->user_id}";
+        $query = "SELECT Total_Amount FROM cart WHERE User_ID = {$this->user_id}";
         $result = $db->query($query)->getRow();
         if ($result) {
-            $totalQuantity = $result->total_cart_items;
-            // Do something with the $totalQuantity
+            $totalQuantity = $result->Total_Amount;
         } else {
-            $totalQuantity = 0; // or handle the case where the result is null
-        }
-        return $totalQuantity;
+            $totalQuantity = 0;
+        } return $totalQuantity;
+    }
+
+    public function get_price()
+    {
+        $db = Database::connect();
+        $query = "SELECT Total_Price FROM cart WHERE User_ID = {$this->user_id}";
+        $result = $db->query($query)->getRow();
+        if ($result){
+            $total_price = $result->Total_Price;
+        } else {
+            $total_price = 0;
+        } return $total_price;
     }
 
     public function get_amount_for_item($productID)

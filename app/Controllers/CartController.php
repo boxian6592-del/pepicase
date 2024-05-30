@@ -15,7 +15,8 @@ class CartController extends BaseController
         {
             $curr_cart = new Cart($curr_session->get_id());
             $cart_items = $curr_cart->get();
-            return view('my_cart', ['cart_items' => json_encode($cart_items)]);
+            if(empty($cart_items)) return view('emptycart');
+            else return view('my_cart', ['cart_items' => json_encode($cart_items)]);
         }
         else return redirect() -> to ('/login');
     }

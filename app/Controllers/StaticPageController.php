@@ -36,7 +36,7 @@ class StaticPageController extends BaseController
         else return redirect() -> to ('/login');
     }
 
-    public function Purchases() // purchases cũng tĩnh nhưng tĩnh ở một mức nhất định
+    public function purchases() // purchases cũng tĩnh nhưng tĩnh ở một mức nhất định
     {
         $curr_session = new CustomSession(null);
         if($curr_session->isSessionSet())

@@ -69,7 +69,7 @@
                         <?php if($user_id == null) echo '</a>'?>
                         <div id ="quantity" class ="d-flex" style = "border: 1px solid black; width:fit-content;margin-left:10px;">
                             <button onclick="add()" id="plus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">+</button>
-                            <div id="curr_quantity" style ="width: 50px;"class= "lexend d-flex align-items-center justify-content-center"><?= $indiv_amount ?></div>
+                            <div id="curr_quantity" style ="width: 50px;"class= "lexend d-flex align-items-center justify-content-center"></div>
                             <button onclick="minus()" id="minus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">-</button>
                         </div>
                     </div>
@@ -97,12 +97,13 @@
         <script src="/pepicase/public/js/jquery.js"></script>
         <script>
             var user = <?php if($user_id == null) echo 'null'; else echo $user_id ?>;
-            var price = <?= $price ?>;
-            var product_id = <?= $id ?>;
-            var isFavorited = "<?= $favorite ?>";
-            var product_name = "<?= $name ?>";
-            var cart_amount = '<?= $cart_amount ?>';
-            var quantity = <?= $indiv_amount ?>;
+            var price = <?php echo $price ?>;
+            var product_id = <?php echo $id ?>;
+            var isFavorited = "<?php echo $favorite ?>";
+            var product_name = "<?php echo $name ?>";
+            var quantity = 1;
+            var cart_amount = 0;
+            <?php if(isset($cart_amount)) echo 'var cart_amount ='.$cart_amount.';'; ?>
         </script>
         <script src="/pepicase/public/js/product.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

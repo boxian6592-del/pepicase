@@ -50,12 +50,13 @@ $routes->post('/resetPassword/confirmed/(:any)','ResetPasswordController::ResetP
 //resetPassword
 
 //checkout
-$routes->get('/checkout','CartController::checkout');
+$routes->get('/checkout','CheckoutController::index');
+$routes->post('/checkout/check_discount','CheckoutController::check_discount');
 //khu để test layout
 $routes->get('/testing','HomepageController::testing');
 //khu để test layout
 
-$routes->get('/purchases','StaticPageController::Purchases');
+$routes->get('/purchases','StaticPageController::purchases');
 
 //quản lý tài khoản
 $routes->get('/user/cart','CartController::index');

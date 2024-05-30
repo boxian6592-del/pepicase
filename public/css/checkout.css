@@ -88,6 +88,7 @@ input[type="text"] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 .hidden{
     display:none;
 }
@@ -97,7 +98,7 @@ input[type="text"] {
 }
 .shipping-option {
     display: flex;
-    align-items: flex-start;
+    flex-direction: row;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -117,14 +118,6 @@ input[type="text"] {
     cursor: pointer;
 }
 
-.shipping-option strong {
-    font-weight: bold;
-}
-
-.shipping-option span {
-    font-size: 0.9em;
-    color: #555;
-}
 button[type="button"]{
     display:block;
     width:100%;

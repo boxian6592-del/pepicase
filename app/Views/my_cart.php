@@ -44,9 +44,12 @@
             <div id ="totalPrice" class="d-flex flex-row justify-content-end" style ="width:70%;"></div>
         </div>
 
-        <div class="container-fluid d-flex justify-content-center align-items-center btn btn-dark" 
-        style="font-weight: 600; height: 7vh; border-radius: 10px;">Continue to checkout</div>
-        <div style = "width:100%; font-size:13px;">You will only be able to edit your cart here, not during checkout!</div>
+        <a href = "/pepicase/public/checkout" style = "text-decoration: none;">
+            <div class="container-fluid d-flex justify-content-center align-items-center btn btn-dark" 
+            style="font-weight: 600; height: 7vh; border-radius: 10px;">Continue to checkout</div>
+        </a>
+            <div style = "width:100%; font-size:13px;">You will only be able to edit your cart here, not during checkout!</div>
+        
     </div>
 
 </div>
