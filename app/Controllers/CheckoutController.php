@@ -63,13 +63,12 @@ class CheckoutController extends BaseController
          *
         * @author CTT VNPAY
         */
-        require_once("C:\xampp\htdocs\pepicase\app\Config\Config_VNPAY.php");
+        require_once 'C:\xampp\htdocs\pepicase\app\Config\Config_VNPAY.php';
 
         $vnp_TxnRef = rand(1,10000); //Mã giao dịch thanh toán tham chiếu của merchant
-        $vnp_Amount = $_POST['amount']; // Số tiền thanh toán
-        $vnp_Locale = $_POST['language']; //Ngôn ngữ chuyển hướng thanh toán
-        $vnp_BankCode = $_POST['bankCode']; //Mã phương thức thanh toán
-        $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; //IP Khách hàng thanh toán
+        $vnp_Amount = $this->request->getPost('amount'); // Số tiền thanh toán
+        $vnp_BankCode = $this->request->getPost('bankCode'); //Mã phương thức thanh toán
+        $vnp_IpAddr = $this->request->getIPAddress(); //IP Khách hàng thanh toán
 
         $inputData = array(
             "vnp_Version" => "2.1.0",
@@ -79,8 +78,8 @@ class CheckoutController extends BaseController
             "vnp_CreateDate" => date('YmdHis'),
             "vnp_CurrCode" => "VND",
             "vnp_IpAddr" => $vnp_IpAddr,
-            "vnp_Locale" => $vnp_Locale,
-            "vnp_OrderInfo" => "Thanh toan GD:" + $vnp_TxnRef,
+            "vnp_Locale" => 'en',
+            "vnp_OrderInfo" => "Thanh toan GD:". $vnp_TxnRef,
             "vnp_OrderType" => "other",
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
@@ -111,7 +110,10 @@ class CheckoutController extends BaseController
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         header('Location: ' . $vnp_Url);
-        die();
-        
+        $response = [
+            'url' => $vnp_Url,
+        ];
+        $this->response->setContentType('application/json');
+        return $this->response->setBody(json_encode($response));
     }    
 }

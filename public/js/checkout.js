@@ -1,4 +1,4 @@
-var ship = 20;
+var ship = 0;
 var discount_ratio = 0;
 var discounted = total_price * discount_ratio;
 var total = (total_price - discounted + ship).toFixed(2);
@@ -38,7 +38,7 @@ $(document).ready(function() {
         cardDetails.removeClass('hidden');
         cardNumber.removeClass('hidden');
         cardExpiryCvc.removeClass('hidden');
-        protocol = 'CC';
+        protocol = 'VNPAY';
         console.log(protocol);
     });
 
@@ -81,7 +81,7 @@ $(document).ready(function() {
       // Event listener for the "Standard Shipping" radio button
       $('#standard-ship').on('change', function() {
         if ($(this).is(':checked')) {
-          if(ship !== 10 || ship == 0)
+            if(ship !== 10 || ship == 0)
             {
                 ship = 10;
                 ship_option = "standard";
@@ -213,19 +213,13 @@ function infoCheck()
             error = 'PLEASE ENTER YOUR TELEPHONE NUMBER';
             return error;
         }
+    return error;
 }
 
-$('.vnpay').click(function()
-{
-    var cur_text = $(this).text();
-    if(cur_text == 'QR') vnpay_protocol = 1;
-    if(cur_text == 'Thẻ nội địa') vnpay_protocol = 2;
-    if(cur_text == 'Thẻ quốc tế (VISA)') vnpay_protocol = 3;
-    console.log(vnpay_protocol);
-})
-
 $('#buy').click(function()
-{   
+{
+    $('#detail-alert').text('');
+    console.log('Current protocol: ' + protocol);
     if(infoCheck() == 'None')
     {
         if(ship_option == 0)
@@ -234,19 +228,39 @@ $('#buy').click(function()
         }
         else
         {
-            if(protocol == 0)
+            if(protocol == '0')
             {
                 $('#detail-alert').text('PLEASE CHOOSE A PAYMENT METHOD!');
             }
-            else
+            if(protocol == 'VNPAY')
             {
-                console.log("Price: " + (total_price + ship) +"$");
-                console.log("Actual price: " + total + "$ after deducting " + discounted + "$ through vouchers");
-                console.log("Payment method: " + protocol);
-                console.log("Shipping method: " + ship_option);
-                console.log("User ID: " + user);    
+                console.log("VNPAY's protocol chosen: "+ vnpay_protocol);
+                $.ajax({
+                type: "POST",
+                    url: "http://localhost/pepicase/public/checkout/vnpay",
+                    data: {
+                        amount: 10000,
+                        bankCode: '',
+                        user: user,
+                    },
+                    dataType: 'json', // Expect the response to be in JSON format
+                    success: function(response) {
+                        window.open(response.url);
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage;
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            // If the server returned a JSON response with a 'message' property, use that
+                            errorMessage = xhr.responseJSON.message;
+                        } else {
+                            // Otherwise, use the status text or the error parameter
+                            errorMessage = xhr.statusText || error;
+                        }
+                        console.error("Error checking discount: ", errorMessage);
+                    }
+                })
             }        
-        }        
+        }           
     }
     else $('#detail-alert').text(infoCheck());
 

@@ -63,3 +63,7 @@ $routes->get('/user/cart','CartController::index');
 $routes->post('/user/cart','CartController::process_cart_edit');
 $routes->get('/user','StaticPageController::account');
 //quản lý tài khoản
+
+
+//VNPay
+$routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');

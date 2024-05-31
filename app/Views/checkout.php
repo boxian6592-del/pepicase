@@ -89,12 +89,6 @@
                                 <td><button type="button" id="credit-card-btn">VNPay</button></td>
                                 <td><button type="button" id="cod-btn">Cash On Delivery</button></td>
                                 <td><button type="button" id="momo-btn">Momo</button></td>
-                            </tr>
-                            <tr id="card-details" class="hidden">
-                                <td><button type="button" class="vnpay">QR</button></td>
-                                <td><button type="button" class="vnpay">Thẻ nội địa</button></td>
-                                <td><button type="button" class="vnpay">Thẻ quốc tế (VISA)</button></td>
-                            </tr>
                         </table>
                         <!-- <p id="save-card-container" class="hidden"><input type="checkbox" id="save-card"><label for="save-card"> Save card data for future payments</label></p> -->
                 </div>
@@ -119,7 +113,7 @@
 
                     <div class="d-flex" style="font-weight: 600; line-height: 40px;">
                         <div style="width: 30%;">Shipping:</div>
-                        <div id ="shipping" class="d-flex flex-row justify-content-end" style ="width:70%;">20$</div>
+                        <div id ="shipping" class="d-flex flex-row justify-content-end" style ="width:70%;"></div>
                     </div>
 
                     <div id="discount" class ="d-flex" style="font-weight: 600; line-height: 40px; color: green;">

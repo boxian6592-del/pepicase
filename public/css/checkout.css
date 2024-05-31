@@ -128,7 +128,7 @@ button[type="button"]{
     box-sizing: border-box;
 
 }  
- #momo-btn{
+#momo-btn{
         background-image: url('/pepicase/public/pics/momo.png'); 
         background-repeat: no-repeat; /* Không lặp lại hình ảnh */
         background-position: 10px center; /* Đặt hình ảnh ở giữa bên trái */
@@ -136,6 +136,16 @@ button[type="button"]{
         cursor: pointer; 
         margin-right:20%;
 }
+
+#credit-card-btn
+{
+    background-image: url('/pepicase/public/pics/vnpay.png'); 
+    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    background-position: 10px center; /* Đặt hình ảnh ở giữa bên trái */
+    background-size: 50px 50px;
+    cursor: pointer; 
+}
+
 #momo-btn:hover {
     color: #B0006E;  /* Màu chữ khi hover */
     border: 1px solid #B0006E; /* Viền màu hồng khi hover */
@@ -150,6 +160,13 @@ button[type="button"]{
      background-color: white; /* Màu nền */
 }
 button.active{
+    border: 1px solid black; /* Viền in đậm khi được chọn */
+    color: #060606;
+    background-color: white;
+}
+
+.vnpay:hover
+{
     border: 1px solid black; /* Viền in đậm khi được chọn */
     color: #060606;
     background-color: white;
