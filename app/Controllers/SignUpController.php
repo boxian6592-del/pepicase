@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-require_once 'D:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\PHPMailer.php';
-require_once 'D:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\Exception.php';
-require_once 'D:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\SMTP.php';
+require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\PHPMailer.php';
+require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\Exception.php';
+require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\SMTP.php';
 
 use App\Models\User;
 use App\Models\CustomSession;

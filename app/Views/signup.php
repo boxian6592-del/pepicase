@@ -1,9 +1,10 @@
 <?php include(APPPATH.'views/components/usual-links.php'); ?>
 <?php include(APPPATH.'views/components/top-header.php'); ?>
+
 <style>
-            /* body */
-            :root{
-                --text-color: #1F3E97;
+    /* body */
+        :root{
+            --text-color: #1F3E97;
                 --font-input: 'Lexend';
             }
             .form-label{
@@ -51,10 +52,10 @@
                 margin-top: 30px;
             }
 
-        </style>
-        
+</style>
+
         <div class="d-flex align-items-center justify-content-center">
-            <form method="post" action="/pepicase/public/signup/" onsubmit="return checkForm()">
+            <form method="post" action="/pepicase/public/signup">
                 <h2 class="text-center" style="margin: 0px; margin-bottom: 20px; color: #1F3E97; font-family: 'Londrina Solid';"><b>SIGN UP</b></h2>
 
                 <div class="mb-3">
@@ -78,7 +79,7 @@
                     </label>
                     
                     <div id="password-group" class="input-group">
-                        <input style="width: 100%" type="password" class="form-control-lg" id="password" name="password" placeholder="Abc12345" onfocus="check()" required>
+                        <input style="width: 100%" type="password" class="form-control-lg" id="password" name="password" placeholder="Abc12345" onfocus="check()" onblur="check(); check_confirm_password()" required>
                         <span class="input-group-text" id="toggle_password">
                             <img style="margin: 0px;" src="/pepicase/public/pics/Ellipse.svg" alt="">
                         </span>
@@ -128,7 +129,7 @@
 
                     <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=398874333579-u9rrotjv4vu07ut6l3844d6mspcadqds.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fauth.w3spaces.com%2Foauth2%2Fidpresponse&scope=profile%20email%20openid&response_type=code&state=H4sIAAAAAAAAAE1R25KiMBD9lzwbBwgI-OaAgzJe0UFla8sKkBAQCNdBndp_3_iwVfvU3XUufar7B2AwBX0LCW47KF97xzw4Z_0UgxEIBeJwnuREDJEYYjlp6iKXSMH0b97dQinpmqaUBBwLmHVd1U7f3qqG0zQn4wG1EeM8b8cRLwSHCE7E45cb_d86AdNfgFekTF9b8fDiJ2Xa8XGbilqO-5Y0YxwXaQl-jwATWk8_Mq3jyuZQmCq2nr4u2e7zvqoMxBt6XgufVNCKpcI2wTudG7ZWXyT2CN3rx0V3a8S2kO2svoKWWiyyvR0JRSYUB0WbiPYm2udQbfG3r7uLkC0fhxnNZ6twRQnM8MELjPqIlrN1Vl-9pjjB8uxX_I4TR7PO6jJw7hiV1b7w_XPWfZYDtD891IVZAINrdAp2i2Gr6naW50esOZu5U89sxf2az8PtGnme2n-5O5nQ3cRNFNXUPvKL6nFTekg-ld_3lHchTzfL28ZaN2RuDReROBeJcd-x19UrHJF_Ry_AVNbliYRM2VBGoAJTivOWjEDz-oaMkBFSDKUQRVDVTQkasmlCTTMVE-lKHFEZ_PkL7gX8JSQCAAA.H4sIAAAAAAAAAAEgAN__y0vkfMF2IMR5hy_E3GPrpPO0kKOzVAaUsUBLfK0Xt29zeXyZIAAAAA.4&access_type=offline&service=lso&o2v=2&ddm=0&flowName=GeneralOAuthFlow">
                         <button class="button" style="text-decoration: none;">
-                            <img style="width: 26px; height: 26px; margin-right: 5px;" src="/pepicase/public/pics/Google_Icons-09-512.webp" alt="google">
+                            <img style="width: 26px; height: 26px; margin-right: 5px" src="/pepicase/public/pics/Google_Icons-09-512.webp" alt="google">
                         Google</button>
                     </a> 
                 </div>
@@ -139,9 +140,6 @@
                 </div>
             </form>
         </div>
-
-        <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
-
         <script>
 
             // nhấn vào con mắt sẽ hiện ra password
@@ -239,12 +237,21 @@
             document.getElementById('confirm_password').addEventListener('focus', handleConfirm);
 
             // kiểm tra form khi nhấn submit
-            function checkForm() {
+            function checkForm(event) 
+            {
+                event.preventDefault();
                 var emailValid = checkEmail();
                 var passwordValid = check();
                 var confirmPasswordValid = check_confirm_password();
-                return emailValid && passwordValid && confirmPasswordValid;
+
+                if (emailValid && passwordValid && confirmPasswordValid) {
+                    // All validation checks pass, submit the form
+                    document.getElementById("myForm").submit();
+                    return true;
+                } else {
+                    // Validation failed, prevent form submission
+                    return false;
+                }
             }
         </script>
-    </body>
-</html>
+        <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
