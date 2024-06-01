@@ -49,6 +49,9 @@ class StaticPageController extends BaseController
         }
     }
 
-
+    public function checkout_done_cash()
+    {
+        return view('checkoutDoneCash');
+    }
 }
 

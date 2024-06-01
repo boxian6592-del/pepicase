@@ -65,5 +65,9 @@ $routes->get('/user','StaticPageController::account');
 //quản lý tài khoản
 
 
-//VNPay
+//payment
 $routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
+$routes->post('/checkout/cash','CheckoutController::cash_payment');
+
+
+$routes->get('/checkout/doneCash','StaticPageController::checkout_done_cash');

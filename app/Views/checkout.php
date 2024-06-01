@@ -132,6 +132,7 @@
 <script src="/pepicase/public/js/jquery.js"></script>
 <script>
     var cart_items = JSON.parse('<?= $cart_items ?>');
+    console.log(cart_items);
     var user = <?= $user_id ?>;
     var total_price = <?= $total_price ?>;
 </script>

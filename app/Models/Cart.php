@@ -110,4 +110,13 @@ class Cart
         }
         return $indivQuantity;
     }
+
+    public function clear()
+    {
+        $db = Database::connect();
+        $query1 = "DELETE FROM cart_details WHERE User_ID = {$this->user_id}";
+        $db->query($query1);
+        $query2 = "DELETE FROM cart WHERE User_ID = {$this->user_id}";
+        $db->query($query2);
+    }
 }

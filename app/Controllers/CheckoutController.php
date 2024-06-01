@@ -6,6 +6,7 @@ use App\Models\CustomSession;
 use App\Models\Cart;
 use Config\Database;
 use App\Models\User;
+use App\Models\Invoice_Delivery;
 
 class CheckoutController extends BaseController
 {
@@ -32,7 +33,7 @@ class CheckoutController extends BaseController
     {
         $code = $this->request->getPost('voucher_code');
         $db = Database::connect();
-        $query = "SELECT Discount_Value 
+        $query = "SELECT Discount_Value, ID
                   FROM voucher 
                   WHERE Name = '{$code}' 
                     AND End_Date > CURRENT_DATE
@@ -42,12 +43,15 @@ class CheckoutController extends BaseController
     
         if (!empty($result)) {
             $discount_value = $result[0]->Discount_Value;
+            $voucher_id = $result[0]->ID;
         } else {
             $discount_value = 0;
+            $voucher_id = 0;
         }
     
         $response = [
-            'discount_value' => $discount_value
+            'discount_value' => $discount_value,
+            'voucher_id' => $voucher_id,
         ];
     
         $this->response->setContentType('application/json');
@@ -115,5 +119,19 @@ class CheckoutController extends BaseController
         ];
         $this->response->setContentType('application/json');
         return $this->response->setBody(json_encode($response));
-    }    
+    }
+    
+    function cash_payment()
+    {
+        $user = $this->request->getPost('user');
+        $total_price = $this->request->getPost('Total_Price');
+        $actual_price = $this->request->getPost('Actual_Price');
+        $voucher_id = $this->request->getPost('Voucher_ID');
+        $note = $this->request->getPost('Note');
+        $invoice = new Invoice_Delivery();
+        $invoice->generate_invoice_via_cash($user, $total_price, $actual_price, $voucher_id, $note);
+        return $this->response->setJSON([
+            'url' => 'http://localhost/pepicase/public/checkout/doneCash'
+        ]);
+    }
 }

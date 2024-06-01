@@ -129,7 +129,7 @@ button[type="button"]{
 
 }  
 #momo-btn{
-        background-image: url('/pepicase/public/pics/momo.png'); 
+        background-image: url('/pepicase/public/pics/momo.svg'); 
         background-repeat: no-repeat; /* Không lặp lại hình ảnh */
         background-position: 10px center; /* Đặt hình ảnh ở giữa bên trái */
         background-size: 30px 30px;
@@ -139,10 +139,10 @@ button[type="button"]{
 
 #credit-card-btn
 {
-    background-image: url('/pepicase/public/pics/vnpay.png'); 
+    background-image: url('/pepicase/public/pics/vnpay.webp'); 
     background-repeat: no-repeat; /* Không lặp lại hình ảnh */
     background-position: 10px center; /* Đặt hình ảnh ở giữa bên trái */
-    background-size: 50px 50px;
+    background-size: 30px 30px;
     cursor: pointer; 
 }
 

@@ -6,6 +6,7 @@ var ship_option = 0;
 var voucher_id;
 var protocol = 0;
 var vnpay_protocol = 0;
+var voucher_id = 0;
 
 $(document).ready(function() {
     var creditCardBtn = $('#credit-card-btn');
@@ -130,6 +131,8 @@ $('#apply-discount').click(function()
         dataType: 'json', // Expect the response to be in JSON format
         success: function(response) {
             var discount_ratio = (parseFloat(response.discount_value));
+            voucher_id = response.voucher_id;
+            console.log(voucher_id);
             if (discount_ratio == 0) {
                 $('#discount_alert').css('color', 'red');
                 $('#discount_alert').text('Discount code either expired or is not valid!');
@@ -218,6 +221,7 @@ function infoCheck()
 
 $('#buy').click(function()
 {
+    var note;
     $('#detail-alert').text('');
     console.log('Current protocol: ' + protocol);
     if(infoCheck() == 'None')
@@ -228,6 +232,11 @@ $('#buy').click(function()
         }
         else
         {
+            note = 'Ship: ' + ship + '$';
+            if(voucher_id !== 0) note += '. Discounted: ' + discounted + '$';
+
+            console.log(note);
+
             if(protocol == '0')
             {
                 $('#detail-alert').text('PLEASE CHOOSE A PAYMENT METHOD!');
@@ -236,7 +245,7 @@ $('#buy').click(function()
             {
                 console.log("VNPAY's protocol chosen: "+ vnpay_protocol);
                 $.ajax({
-                type: "POST",
+                    type: "POST",
                     url: "http://localhost/pepicase/public/checkout/vnpay",
                     data: {
                         amount: 10000,
@@ -259,7 +268,35 @@ $('#buy').click(function()
                         console.error("Error checking discount: ", errorMessage);
                     }
                 })
-            }        
+            }
+            if(protocol == 'Cash')
+            {
+                $.post({
+                    url: "http://localhost/pepicase/public/checkout/cash",
+                    data: {
+                        Total_Price: total_price,
+                        Actual_Price: total,
+                        Voucher_ID: voucher_id,
+                        user: user,
+                        Note: note,
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        window.location.href = response.url;
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage;
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            // If the server returned a JSON response with a 'message' property, use that
+                            errorMessage = xhr.responseJSON.message;
+                        } else {
+                            // Otherwise, use the status text or the error parameter
+                            errorMessage = xhr.statusText || error;
+                        }
+                        console.error("Error creating invoice / delivery", errorMessage);
+                    }
+                });            
+            }    
         }           
     }
     else $('#detail-alert').text(infoCheck());
