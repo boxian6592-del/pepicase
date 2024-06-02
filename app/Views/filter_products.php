@@ -1,3 +1,4 @@
+
 <?php
 // Kết nối với database
 $conn = new mysqli("localhost", "username", "password", "database_name");
