@@ -51,7 +51,18 @@ class StaticPageController extends BaseController
 
     public function checkout_done_cash()
     {
-        return view('checkoutDoneCash');
+        $curr_session = new CustomSession(null);
+        if($curr_session->isSessionSet())
+        return view('checkoutDone', ['protocol' => 'cash']);
+        else return redirect() -> to ('/');
+    }
+
+    public function await_payment()
+    {
+        $curr_session = new CustomSession(null);
+        if($curr_session->isSessionSet())
+        return view('await_payment');
+        else return redirect() -> to ('/');
     }
 }
 

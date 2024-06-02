@@ -31,9 +31,10 @@
                 </div>
                 <div class="text-center">
                     <button class="button" style="background-color:#FFE57A; color:black; margin-top:30px;" type="submit">LOGIN</button>
-                </div>
+                </div>  
                 <div class="text-center" style = "color:red">
-                    <strong><?php if(isset($msg)) echo $msg?></strong>
+                    <strong><?php if(isset($msg)) echo $msg; else if(isset($validation)) echo $validation;?></strong>
+
                 </div>
                 <div class="d-flex align-items-center mt-3">
                     <hr class="flex-grow-1">
@@ -60,6 +61,7 @@
             </form>
         </div>
     </div>
+
     <script>
     function validateEmail() {
         var email = document.getElementById('email').value;

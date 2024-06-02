@@ -36,7 +36,8 @@
                             <td><input type="text" placeholder="Zipcode"></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><input type="text" placeholder="Phone" class="full-width"></td>
+                            <td colspan="1"><input type="text" placeholder="Area Code (e.g +84)" class="full-width"></td>
+                            <td colspan="2"><input type="text" placeholder="Telephone (e.g 0932456783)" class="full-width"></td>
                         </tr>
                     </table>
                     <div class = "d-flex flex-row">

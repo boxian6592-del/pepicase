@@ -71,7 +71,7 @@ $(document).ready(function() {
           if(ship !== 20 || ship == 0)
             {
                 ship = 20;
-                ship_option = "express";
+                ship_option = "Express";
                 total = (total_price - discounted + ship).toFixed(2);
                 $('#shipping').text(ship + '$');
                 $('#Total').text(total + '$');
@@ -85,7 +85,7 @@ $(document).ready(function() {
             if(ship !== 10 || ship == 0)
             {
                 ship = 10;
-                ship_option = "standard";
+                ship_option = "Standard";
                 total = (total_price - discounted + ship).toFixed(2);
                 $('#shipping').text(ship + '$');
                 $('#Total').text(total + '$');
@@ -146,7 +146,7 @@ $('#apply-discount').click(function()
                 <div style="width: 30%;"><strong>Discounted:</strong></div>
 
                 <div id ="shipping" class="d-flex flex-row justify-content-end" style ="width:70%;">
-                    <strong>${(discounted)}$</strong>
+                    <strong>-${(discounted)}$</strong>
                 </div>
                 `
                 );
@@ -168,8 +168,7 @@ $('#apply-discount').click(function()
     });
 });
 
-function infoCheck()
-{
+function infoCheck() {
     var firstName = $('#fname').val();
     var lastName = $('#lname').val();
     var address = $('#address').val();
@@ -177,51 +176,65 @@ function infoCheck()
     var country = $('input[placeholder="Country"]').val();
     var city = $('input[placeholder="City"]').val();
     var zipcode = $('input[placeholder="Zipcode"]').val();
-    var phone = $('input[placeholder="Phone"]').val();
-    var saveContact = $('#save-contact').is(':checked');
+    var areaCode = $('input[placeholder="Area Code (e.g +84)"]').val();
+    var phone = $('input[placeholder="Telephone (e.g 0932456783)"]').val();
 
     var error = 'None';
-    if (firstName.trim() === '') 
-        {
-            error = 'PLEASE ENTER YOUR FIRST NAME.';
-            return error;
-        }
-    if (lastName.trim() === '') 
-        {
-            error = 'PLEASE ENTER YOUR LAST NAME.';
-            return error;
-        }
-    if (address.trim() === '') 
-        {
-            error = 'PLEASE ENTER YOUR ADDRESS.';
-            return error;
-        }
-    if (country.trim() === '') 
-        {
-            error = 'PLEASE ENTER YOUR COUNTRY.';
-            return error;
-        }
-    if (city.trim() === '') 
-        {
-            error = 'PLEASE ENTER YOUR CITY.';
-            return error;
-        }
-    if (zipcode.trim() === '') 
-        {
-            error = 'PLEASE ENTER YOUR ZIP CODE.';
-            return error;
-        }
-    if (phone.trim() === '') 
-        {
-            error = 'PLEASE ENTER YOUR TELEPHONE NUMBER';
-            return error;
-        }
+
+    if(firstName.trim() === 'test') return error;
+
+
+    if (firstName.trim() === '' || !/^[a-zA-Z\s]+$/.test(firstName)) {
+        error = 'PLEASE ENTER A VALID FIRST NAME.';
+        return error;
+    }
+
+    if (lastName.trim() === '' || !/^[a-zA-Z\s]+$/.test(lastName)) {
+        error = 'PLEASE ENTER A VALID LAST NAME.';
+        return error;
+    }
+
+    if (address.trim() === '' || !/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\s,#-./]+$/.test(address)) {
+        error = 'PLEASE ENTER A VALID ADDRESS.';
+        return error;
+    }
+    
+    if (apartment.trim() !== '' && !/^[a-zA-Z0-9\s,#-]+$/.test(apartment)) {
+        error = 'PLEASE ENTER A VALID APARTMENT/SUITE NUMBER.';
+        return error;
+    }
+
+    if (country.trim() === '' || !/^[a-zA-Z\s]+$/.test(country)) {
+        error = 'PLEASE ENTER A VALID COUNTRY.';
+        return error;
+    }
+
+    if (city.trim() === '' || !/^[a-zA-Z\s]+$/.test(city)) {
+        error = 'PLEASE ENTER A VALID CITY.';
+        return error;
+    }
+
+    if (zipcode.trim() === '' || !/^\d{5}(?:[-\s]\d{4})?$/.test(zipcode)) {
+        error = 'PLEASE ENTER A VALID ZIP CODE.';
+        return error;
+    }
+
+    if (areaCode.trim() === '' || !/^\+?\d{1,2}$/.test(areaCode)) {
+        error = 'PLEASE ENTER A VALID AREA CODE.';
+        return error;
+    }
+
+    if (phone.trim() === '' || !/^\d{6,15}$/.test(phone)) {
+        error = 'PLEASE ENTER A VALID TELEPHONE NUMBER.';
+        return error;
+    }
+
     return error;
 }
 
 $('#buy').click(function()
 {
-    var note;
+
     $('#detail-alert').text('');
     console.log('Current protocol: ' + protocol);
     if(infoCheck() == 'None')
@@ -254,7 +267,78 @@ $('#buy').click(function()
                     },
                     dataType: 'json', // Expect the response to be in JSON format
                     success: function(response) {
-                        window.open(response.url);
+                        var vnpay_url_API = response.url;
+                        var method_id = response.method_id;
+                        $.post
+                        ({
+                            url: "http://localhost/pepicase/public/checkout/generate_invoice",
+                            data: {
+                                Total_Price: total_price,
+                                Actual_Price: total,
+                                Voucher_ID: voucher_id,
+                                user: user,
+                                Note: note,
+                                Method: protocol,
+                                Method_ID: method_id,
+                            },
+                            dataType: 'json',
+                            success: function(response) {
+                                var new_invoice_id = response.new_invoice_id;
+                                $.post({
+                                    url: "http://localhost/pepicase/public/checkout/create_delivery",
+                                    data: {
+                                        /*
+                                            var firstName = $('#fname').val();
+                                            var lastName = $('#lname').val();
+                                            var address = $('#address').val();
+                                            var apartment = $('input[placeholder="Apartment, suite, etc (optional)"]').val();
+                                            var country = $('input[placeholder="Country"]').val();
+                                            var city = $('input[placeholder="City"]').val();
+                                            var zipcode = $('input[placeholder="Zipcode"]').val();
+                                            var phone = $('input[placeholder="Phone"]').val();
+                                            var saveContact = $('#save-contact').is(':checked');
+                                        */
+                                        Invoice_ID: new_invoice_id,
+                                        firstName: $('#fname').val().toString(),
+                                        lastName: $('#lname').val().toString(),
+                                        Address: $('#address').val().toString(),
+                                        Apartment: $('input[placeholder="Apartment, suite, etc (optional)"]').val().toString(),
+                                        Country: $('input[placeholder="Country"]').val().toString(),
+                                        Zipcode: $('input[placeholder="Zipcode"]').val().toString(),
+                                        Phone: $('input[placeholder="Area Code (e.g +84)"]').val().toString() + ' ' + $('input[placeholder="Telephone (e.g 0932456783)"]').val().toString(),
+                                        Ship: ship_option,
+                                    },
+                                    dataType: 'json',
+                                    success: function(response) {                        
+                                        window.location.href = response.url_vnpay;
+                                    },
+                                    error: function(xhr, status, error) {
+                                        var errorMessage;
+                                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                                            // If the server returned a JSON response with a 'message' property, use that
+                                            errorMessage = xhr.responseJSON.message;
+                                        } else {
+                                            // Otherwise, use the status text or the error parameter
+                                            errorMessage = xhr.statusText || error;
+                                        }
+                                        console.error("Error creating invoice / delivery", errorMessage);
+                                    }
+                                });            
+                                window.open(vnpay_url_API);
+                                window.location.href = response.url_vnpay;
+                            },
+                            error: function(xhr, status, error) {
+                                var errorMessage;
+                                if (xhr.responseJSON && xhr.responseJSON.message) {
+                                    // If the server returned a JSON response with a 'message' property, use that
+                                    errorMessage = xhr.responseJSON.message;
+                                } else {
+                                    // Otherwise, use the status text or the error parameter
+                                    errorMessage = xhr.statusText || error;
+                                }
+                                console.error("Error", errorMessage);
+                            }
+                        })
                     },
                     error: function(xhr, status, error) {
                         var errorMessage;
@@ -265,24 +349,67 @@ $('#buy').click(function()
                             // Otherwise, use the status text or the error parameter
                             errorMessage = xhr.statusText || error;
                         }
-                        console.error("Error checking discount: ", errorMessage);
+                        console.error("Error: ", errorMessage);
                     }
                 })
             }
             if(protocol == 'Cash')
             {
                 $.post({
-                    url: "http://localhost/pepicase/public/checkout/cash",
+                    url: "http://localhost/pepicase/public/checkout/generate_invoice",
                     data: {
                         Total_Price: total_price,
                         Actual_Price: total,
                         Voucher_ID: voucher_id,
                         user: user,
                         Note: note,
+                        Method: protocol,
+                        Method_ID: '',
                     },
                     dataType: 'json',
                     success: function(response) {
-                        window.location.href = response.url;
+                        var new_invoice_id = response.new_invoice_id;
+                        $.post({
+                            url: "http://localhost/pepicase/public/checkout/create_delivery",
+                            data: {
+                                /*
+                                    var firstName = $('#fname').val();
+                                    var lastName = $('#lname').val();
+                                    var address = $('#address').val();
+                                    var apartment = $('input[placeholder="Apartment, suite, etc (optional)"]').val();
+                                    var country = $('input[placeholder="Country"]').val();
+                                    var city = $('input[placeholder="City"]').val();
+                                    var zipcode = $('input[placeholder="Zipcode"]').val();
+                                    var phone = $('input[placeholder="Phone"]').val();
+                                    var saveContact = $('#save-contact').is(':checked');
+                                */
+                                Invoice_ID: new_invoice_id,
+                                firstName: $('#fname').val().toString(),
+                                lastName: $('#lname').val().toString(),
+                                Address: $('#address').val().toString(),
+                                Apartment: $('input[placeholder="Apartment, suite, etc (optional)"]').val().toString(),
+                                Country: $('input[placeholder="Country"]').val().toString(),
+                                City: $('input[placeholder="City"]').val().toString(),
+                                Zipcode: $('input[placeholder="Zipcode"]').val().toString(),
+                                Phone: $('input[placeholder="Area Code (e.g +84)"]').val().toString() + ' ' + $('input[placeholder="Telephone (e.g 0932456783)"]').val().toString(),
+                                Ship: ship_option,
+                            },
+                            dataType: 'json',
+                            success: function(response) {                        
+                                window.location.href = response.url;
+                            },
+                            error: function(xhr, status, error) {
+                                var errorMessage;
+                                if (xhr.responseJSON && xhr.responseJSON.message) {
+                                    // If the server returned a JSON response with a 'message' property, use that
+                                    errorMessage = xhr.responseJSON.message;
+                                } else {
+                                    // Otherwise, use the status text or the error parameter
+                                    errorMessage = xhr.statusText || error;
+                                }
+                                console.error("Error creating invoice / delivery", errorMessage);
+                            }
+                        });            
                     },
                     error: function(xhr, status, error) {
                         var errorMessage;
@@ -300,54 +427,4 @@ $('#buy').click(function()
         }           
     }
     else $('#detail-alert').text(infoCheck());
-
-    /*
-
-    if(protocol == "Cash")  // AJAX frame when the protocol's cash;
-    {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/pepicase/public/checkout/add_invoice",
-            data: {
-                
-            },
-            dataType: 'json', // Expect the response to be in JSON format
-            success: function(response) {
-                var discount_ratio = (parseFloat(response.discount_value));
-                if (discount_ratio == 0) {
-                    $('#discount_alert').css('color', 'red');
-                    $('#discount_alert').text('Discount code either expired or is not valid!');
-    
-                    if($('#discount').html()) $('#discount').html('');
-                } else {
-                    discounted = (total_price * discount_ratio).toFixed(2);
-                    $('#discount_alert').css('color', 'green');
-                    $('#discount_alert').text('Discount code worked!');
-                    $('#discount').html(`
-                    <div style="width: 30%;"><strong>Discounted:</strong></div>
-    
-                    <div id ="shipping" class="d-flex flex-row justify-content-end" style ="width:70%;">
-                        <strong>${(discounted)}$</strong>
-                    </div>
-                    `
-                    );
-                    total = (total_price - discounted + ship).toFixed(2);
-                    $('#Total').text(total + '$');
-                }
-            },
-            error: function(xhr, status, error) {
-                var errorMessage;
-                if (xhr.responseJSON && xhr.responseJSON.message) {
-                    // If the server returned a JSON response with a 'message' property, use that
-                    errorMessage = xhr.responseJSON.message;
-                } else {
-                    // Otherwise, use the status text or the error parameter
-                    errorMessage = xhr.statusText || error;
-                }
-                console.error("Error checking discount: ", errorMessage);
-            }
-        });
-    }
-
-    */
 })

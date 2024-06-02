@@ -67,7 +67,12 @@ $routes->get('/user','StaticPageController::account');
 
 //payment
 $routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
-$routes->post('/checkout/cash','CheckoutController::cash_payment');
+$routes->get('/checkout/pending','StaticPageController::await_payment');
+
+$routes->get('/checkout/vnpay_return','CheckoutController::vnpay_return');
+
+$routes->post('/checkout/generate_invoice','CheckoutController::generate_invoice');
+$routes->post('/checkout/create_delivery','CheckoutController::create_delivery');
 
 
-$routes->get('/checkout/doneCash','StaticPageController::checkout_done_cash');
+$routes->get('/checkout/done','StaticPageController::checkout_done_cash');

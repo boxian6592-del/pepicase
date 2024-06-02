@@ -39,6 +39,7 @@ class LoginController extends BaseController
                 return view('login', $message);
             } 
         }
+        
         else // không thỏa luật email thì sẽ báo họ phải nhập email đúng
         {
             $data['validation'] = $this->validator;

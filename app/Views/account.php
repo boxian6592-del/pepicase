@@ -44,82 +44,11 @@
                     <input id="lastname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px;" required/>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 20px; margin-top: 20px">
-                    <label><b style="font-family: 'Lexend';">Email</b></label>
-                    <input id="email" class="form-control" type="email" placeholder="Xyz456@.***" style="font-size:20px; width: 820px;" required/>
-                </div>
-
                 <div class="form-group" style="margin-bottom: 20px">
                     <label for="phone"><b style="font-family: 'Lexend';">Phone number</b></label>
                     <input id="phone" class="form-control" type="tel" placeholder="0xxxxxxxxx" style="font-size:20px; width: 820px;" required/>
                 </div>
-
-                <div class="form-group">
-                    <div>
-                        <label style ="margin-right: 80px; margin-bottom: 20px"><b>Gender</b></label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-                            <label class="form-check-label" for="male">Male</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                            <label class="form-check-label" for="female">Female</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="other" value="other">
-                            <label class="form-check-label" for="other">Other</label>
-                        </div>
-                    </div> 
-                </div>
                 
-                <div class="form-group row" >
-                    <label class="col-sm-2 col-form-label"><b style="font-family: 'Lexend';">Date of birth</b></label>
-                    <div class="col">
-                        <select class="form-control" id="day" style="font-size:20px;">
-                            <?php for ($i = 1; $i <= 31; $i++) { ?>
-                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-
-                    <div class="col">
-                        <select class="form-control" id="month" style="font-size:20px;">
-                            <?php 
-                            // Mảng chứa tên các tháng
-                            $months = array(
-                                1 => "January", 
-                                2 => "February", 
-                                3 => "March", 
-                                4 => "April", 
-                                5 => "May",
-                                6 => "June", 
-                                7 => "July", 
-                                8 => "August", 
-                                9 => "September", 
-                                10 => "October", 
-                                11 => "November", 
-                                12 => "December"
-                            );
-                            ?>
-                            <?php foreach ($months as $key => $month) { ?>
-                            <option value="<?php echo $key; ?>"><?php echo $month; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-
-                    <div class="col">
-                        <select class="form-control" id="year" style="font-size:20px;">
-                            <?php 
-                                $current_year = date('Y');
-                                for ($i = $current_year; $i >= 1900; $i--) { ?>
-                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-
                 <div class="form-group" style="margin-top: 20px">
                     <label><b style="font-family: 'Lexend';">My Address</b></label>
                     <input id="address" class="form-control" type="text" placeholder="City, District, Ward" style="font-size:20px; width: 820px;" required/>

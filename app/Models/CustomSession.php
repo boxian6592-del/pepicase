@@ -34,7 +34,7 @@ class CustomSession
         return $decrypted;
     }
 
-    public function __construct($id) // hàm khởi tạo đối tượng, có hai hướng
+    public function __construct($id = null) // hàm khởi tạo đối tượng, có hai hướng
     {
         if ($id === null) // nếu không để $id vào mà để null
         {
