@@ -133,3 +133,57 @@ $(window).on('beforeunload', function()
         })
     }
 });
+const reviews = [
+    {
+      author: "Anonymous",
+      rating: 5,
+      comment: "so cuteee luv it soo much!!",
+      date: "Jan 1, 2024"
+    },
+    {
+      author: "Anonymous",
+      rating: 5,
+      comment: "so cuteee luv it soo much!! luv it soo much!! luv it soo much!! luv it soo much!!",
+      date: "Jan 1, 2024"
+    },
+    {
+      author: "Anonymous",
+      rating: 5,
+      comment: "so cuteee luv it soo much!!",
+      date: "Jan 1, 2024"
+    }
+  ];
+  
+  const container = document.createElement("div");
+  container.classList.add("reviews-container");
+  
+  reviews.forEach(review => {
+    const reviewElement = document.createElement("div");
+    reviewElement.classList.add("review");
+  
+    const authorElement = document.createElement("h3");
+    authorElement.textContent = review.author;
+    authorElement.style.color = "#844700";
+  
+    const ratingElement = document.createElement("div");
+    ratingElement.classList.add("rating");
+    for (let i = 0; i < review.rating; i++) {
+      const starElement = document.createElement("i");
+      starElement.classList.add("fas", "fa-star");
+      ratingElement.appendChild(starElement);
+    }
+    const dateElement = document.createElement("span");
+    dateElement.textContent = review.date;
+    ratingElement.appendChild(dateElement);
+  
+    const commentElement = document.createElement("p");
+    commentElement.textContent = review.comment;
+  
+    reviewElement.appendChild(authorElement);
+    reviewElement.appendChild(ratingElement);
+    reviewElement.appendChild(commentElement);
+  
+    container.appendChild(reviewElement);
+  });
+  
+  document.body.appendChild(container);
