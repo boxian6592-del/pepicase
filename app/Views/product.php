@@ -2,9 +2,6 @@
     <link rel="stylesheet" href="/pepicase/public/css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <?php include(APPPATH.'views/components/top-header.php'); ?>
-        <div class = "lexend-tera d-flex justify-content-center align-items-center" style = "height:200px;background-color:#FFFAE3; font-size:40px;">
-            COLLECTION BANNER (with product-testing )
-        </div>
         <div class="d-flex" style ="height: 675px;">
 
             <div id = "image-box" class ="shadow d-flex justify-content-center align-items-center" style = "margin-left: 145px; 

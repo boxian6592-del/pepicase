@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/pepicase/public/css/shoppage.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
-<img class="banner" src="/pepicase/public/pics/shop_banner_2.svg" alt="banner" style="width: 100%; height:auto;">
+<img class="banner img-fluid" src="/pepicase/public/pics/shop_banner_2.svg" alt="banner" style="width: 100%; height:auto; max-height: 200px; object-fit:cover;">
 
 <div class="container">
     <aside class="filters-container">

@@ -35,7 +35,7 @@
     </div>
 </section>
 
-<aside style="margin-left: 8%; width: fit-content">
+<aside style="margin-left: 3.5%; width: fit-content">
     <div>
         <b style="font-size: 40px;">Account details</b>
         <p style="font-size:20px; margin-top:10px; color: #838383; font-family: 'Lexend';">Manage and protect your account</p>
