@@ -105,4 +105,13 @@ class Product extends Model
 
         return $builder->get()->getResultArray();
     }
+
+    public function get_comments()
+    {
+        $db = Database::connect();
+        $query = "SELECT Created_At, Comment, Star FROM feedback WHERE Product_ID = '{$this->productID}' ORDER BY Created_At DESC";
+        $result = $db->query($query)->getResult();
+        if(!empty($result)) return $result;
+        else return [];
+    }
 }

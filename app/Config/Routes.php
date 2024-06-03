@@ -21,7 +21,8 @@ $routes->get('/collections','GetProductController::get_through_collections');
 $routes->post('/product/toggleFavorite','GetProductController::toggleFavorite');
 $routes->post('/get_filtered_products', 'GetProductController::getFilteredProducts');
 $routes->get('/get_all_products', 'GetProductController::getAllProducts');
-$routes->get('get_more_products', 'GetProductController::getMoreProducts');
+$routes->get('/get_more_products', 'GetProductController::getMoreProducts');
+$routes->post('/post_comment','GetProductController::post_comment');
 //sản phẩm
 
 

@@ -121,10 +121,10 @@ class User extends Model
     return $result;
     }
 
-    function isAlreadyRegister($authid){ //check đã đăng nhập oauth_id chưa
+    public function isAlreadyRegister($authid){ //check đã đăng nhập oauth_id chưa
     return $this->where('oauth_id', $authid)->first() !== null;
 	}
-	function updateUserData($userdata, $authid){ //cập nhật thông tin
+	public function updateUserData($userdata, $authid){ //cập nhật thông tin
         $db = Database::connect();
         $this->update(['oauth_id' => $authid], $userdata);
         $result = $db->query("INSERT INTO user_info (Email, Password, oauth_id, Is_Admin) VALUES ('$mail', '$pass', '$oauth_id', 0);");
@@ -137,11 +137,11 @@ class User extends Model
 
 		//$this->db->table("user")->where(['oauth_id'=>$authid])->update($userdata);
 	}
-	function insertUserData($userdata){ //thêm thông tin
+	public function insertUserData($userdata){ //thêm thông tin
         $this->insert($userdata);
 	}
 
-    function update_info($id = null, $row = null)
+    public function update_info($id = null, $row = null)
     {
         $db = Database::connect();
         $sql = "SELECT * FROM user_info";
@@ -149,5 +149,23 @@ class User extends Model
 
         // TH1 nếu đã có user_info thì UPDATE dòng đó
         // TH2 nếu chưa có thì tạo dòng mới
+    }
+
+    public function add_comment($id ,$product_id, $comment, $stars)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('feedback')
+                ->insert([
+                    'User_ID' => $id,
+                    'Product_ID' => $product_id,
+                    'Comment' => $comment,
+                    'Star' => $stars
+                ]);
+
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

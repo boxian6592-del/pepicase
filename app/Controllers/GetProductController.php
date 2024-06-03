@@ -20,10 +20,12 @@ class GetProductController extends BaseController
         $curr_session = new CustomSession(null); // khởi tạo đối tượng session để chạy hàm
         $product = new Product($id); // khởi tạo đối tượng product với id đc request
         $data = $product->getFullInfo(); // lấy thông tin sản phẩm
-        
-        
+
         if($product->check_if_found()) // nếu tìm thấy sản phẩm trong database
         {
+            $comments = $product->get_comments();
+            $data['comments'] = json_encode($comments);
+
             if($curr_session->isSessionSet()) // nếu session có người dùng rồi
             {
                 // tiến hành kiểm tra người dùng đó có wishlist spham đó k
@@ -159,5 +161,21 @@ class GetProductController extends BaseController
             else return view('wishlist', ['wishlist_array' => json_encode($wishlist_arr)]);
         }
         else return redirect() -> to ('/login') ;
+    }
+
+    function post_comment()
+    {  
+        $user_id = $this->request->getPost('user_id');
+
+        $comment = $this->request->getPost('comment');
+        $star = $this->request->getPost('stars');
+        $product_id = $this->request->getPost('product_id');
+
+        $user = new User();
+        $user->add_comment($user_id,$product_id, $comment, $star);
+
+        $response = 'added';
+    
+        return $response;
     }
 }

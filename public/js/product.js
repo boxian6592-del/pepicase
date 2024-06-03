@@ -3,6 +3,7 @@ var starArr = [];
 var current_sizing = 0, previous_sizing, finalized_size;
 var isFavoritedNow = isFavorited;
 var amount = parseInt(cart_amount);
+var current_stars = 0;
 
 $(document).ready(function() {
     total = quantity * price;
@@ -33,15 +34,19 @@ $(document).ready(function() {
     console.log(starArr);
     
     $(".review_star").click(function() {
-        var index = $(this).data("value");
+      if(user !== null)
+      {
+        current_stars = $(this).data("value");
     
-        for (let u = index - 1; u > -1; u--) {
+        for (let u = 0; u < current_stars; u++) {
             $(starArr[u]).prop("src", "http://localhost/pepicase/public/pics/review_star_shaded.svg");
         }
     
-        for (let u = index; u < starArr.length; u++) {
+        for (let u = 5; u > current_stars - 1; u--) {
             $(starArr[u]).prop("src", "http://localhost/pepicase/public/pics/review_star.svg");
         }
+      }
+      else window.location.href = "http://localhost/pepicase/public/login";
     });
 
     $("#add_to_cart_button").click(function() {
@@ -84,15 +89,36 @@ $(document).ready(function() {
                 }
             });
         }
+        
     });
-
-    printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
-    printFeedback("Anonymous", 5, "luv it soo much!! luv it soo much!! luv it soo much!! luv it soo much!!", "Jan 1, 2024");
-    printFeedback("Anonymous", 4, "so cuteee luv it soo much!!", "Jan 1, 2024");
+    if(comments !== 'none')
+      {
+        comments.forEach(comment =>
+          {
+            printFeedback("Anonymous", comment['Star'], comment['Comment'], comment['Created_At']);
+          }
+        )    
+      }
+    else
+    {
+      $('#feedback-container').text('No one has commented on this product... Be the first!')
+    }
 });
+
+$('#favorite').click(function()
+{
+  if(user == null) window.location.href = "http://localhost/pepicase/public/login";
+});
+
+$('#review_content').click(function()
+{
+  if(user == null) window.location.href = "http://localhost/pepicase/public/login";
+})
 
 function toggleFavorite() 
 {
+  if(user !== null)
+  {
     var fav_icon = $("#favorite");
     if (fav_icon.attr("src") === "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg") 
     {
@@ -104,6 +130,7 @@ function toggleFavorite()
         fav_icon.attr("src", "http://localhost/pepicase/public/pics/favorite_icon_shaded.svg");
         isFavoritedNow = 'yes';
     }
+  }
 };
 
 function add() {
@@ -114,7 +141,7 @@ function add() {
 }
 
 function minus() {
-    if(quantity > 0)
+    if(quantity > 1)
     {
         quantity--;
         $("#curr_quantity").text(quantity);
@@ -133,57 +160,144 @@ $(window).on('beforeunload', function()
         })
     }
 });
-const reviews = [
-    {
-      author: "Anonymous",
-      rating: 5,
-      comment: "so cuteee luv it soo much!!",
-      date: "Jan 1, 2024"
-    },
-    {
-      author: "Anonymous",
-      rating: 5,
-      comment: "so cuteee luv it soo much!! luv it soo much!! luv it soo much!! luv it soo much!!",
-      date: "Jan 1, 2024"
-    },
-    {
-      author: "Anonymous",
-      rating: 5,
-      comment: "so cuteee luv it soo much!!",
-      date: "Jan 1, 2024"
+
+function printFeedback(name, rating, comment, date) {
+  var $block = $('<div>', {
+    class: 'lexend shadow',
+    css: {
+      'width': '100%',
+      'padding': '10px',
+      'margin': '10px auto',
+      'border': '1px solid #ccc'
     }
-  ];
-  
-  const container = document.createElement("div");
-  container.classList.add("reviews-container");
-  
-  reviews.forEach(review => {
-    const reviewElement = document.createElement("div");
-    reviewElement.classList.add("review");
-  
-    const authorElement = document.createElement("h3");
-    authorElement.textContent = review.author;
-    authorElement.style.color = "#844700";
-  
-    const ratingElement = document.createElement("div");
-    ratingElement.classList.add("rating");
-    for (let i = 0; i < review.rating; i++) {
-      const starElement = document.createElement("i");
-      starElement.classList.add("fas", "fa-star");
-      ratingElement.appendChild(starElement);
-    }
-    const dateElement = document.createElement("span");
-    dateElement.textContent = review.date;
-    ratingElement.appendChild(dateElement);
-  
-    const commentElement = document.createElement("p");
-    commentElement.textContent = review.comment;
-  
-    reviewElement.appendChild(authorElement);
-    reviewElement.appendChild(ratingElement);
-    reviewElement.appendChild(commentElement);
-  
-    container.appendChild(reviewElement);
   });
-  
-  document.body.appendChild(container);
+
+  var $feedbackHeader = $('<div>', {
+    class: 'feedback-header'
+  }).append(
+    $('<div>', {
+      style: 'font-weight: bold; font-size: 20px;'
+    }).text(name),
+    $('<div>', {
+      style: 'font-size: 15px; color: #666;'
+    }).text(date)
+  );
+
+  var $feedbackRating = $('<div>', {
+    class: 'feedback-rating'
+  });
+  var index = 0;
+  for (;index < rating; index++) 
+  {
+    $feedbackRating.append(
+      $('<img>', {
+        src: '/pepicase/public/pics/review_star_shaded.svg',
+        style: 'height: 20px; width:auto;'
+      })
+    );
+  }
+  for(;index < 5; index++)
+  {
+    $feedbackRating.append(
+      $('<img>', {
+        src: '/pepicase/public/pics/review_star.svg',
+        style: 'height: 20px; width:auto;'
+      })
+    );
+  }
+
+  var $feedbackComment = $('<div>', {
+    class: 'feedback-comment'
+  }).text(comment);
+
+  $block.append($feedbackHeader, $feedbackRating, $feedbackComment);
+  $('#feedback-container').append($block);
+};
+
+function printFeedback_Top(name, rating, comment, date) {
+  var $block = $('<div>', {
+    class: 'lexend shadow',
+    css: {
+      'width': '100%',
+      'padding': '10px',
+      'margin': '10px auto',
+      'border': '1px solid #ccc'
+    }
+  });
+
+  var $feedbackHeader = $('<div>', {
+    class: 'feedback-header'
+  }).append(
+    $('<div>', {
+      style: 'font-weight: bold; font-size: 20px;'
+    }).text(name),
+    $('<div>', {
+      style: 'font-size: 15px; color: #666;'
+    }).text(date)
+  );
+
+  var $feedbackRating = $('<div>', {
+    class: 'feedback-rating'
+  });
+  var index = 0;
+  for (;index < rating; index++) 
+  {
+    $feedbackRating.append(
+      $('<img>', {
+        src: '/pepicase/public/pics/review_star_shaded.svg',
+        style: 'height: 20px; width:auto;'
+      })
+    );
+  }
+  for(;index < 5; index++)
+  {
+    $feedbackRating.append(
+      $('<img>', {
+        src: '/pepicase/public/pics/review_star.svg',
+        style: 'height: 20px; width:auto;'
+      })
+    );
+  }
+
+  var $feedbackComment = $('<div>', {
+    class: 'feedback-comment'
+  }).text(comment);
+
+  $block.append($feedbackHeader, $feedbackRating, $feedbackComment);
+  $('#feedback-container').prepend($block);
+}; 
+
+
+$('#post_comment').click(function()
+  {
+    if(user !== null)
+    {
+      if(current_stars == 0) $('#comment_alert').text('Please rate the product with stars!');
+      else if($('#review_content').val().trim() == '') $('#comment_alert').text('Please give your thoughts about the product!');
+      else
+      {
+        $.ajax({
+          type: "POST",
+          url: "http://localhost/pepicase/public/post_comment",
+          data: {
+            product_id: product_id,
+            user_id: user,
+            comment: $('#review_content').val().toString(),
+            stars: current_stars,
+          },
+          success: function(response) {
+            console.log(response);
+            printFeedback_Top('Anonymous',current_stars, $('#review_content').val().toString(),'Just now');
+            current_stars = 0;
+            $('#review_content').val() = '';
+          },
+          error: function(xhr, status, error) {
+            // Handle the error response
+            console.log("can't");
+          },
+        });
+      } 
+    }
+    else window.location.href = 'http://localhost/pepicase/public/login';
+  }
+);

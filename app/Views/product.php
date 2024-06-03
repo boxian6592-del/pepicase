@@ -18,12 +18,10 @@
                 <div id="product_name" class="lexend" style="line-height: 44px; height: 88px; width: fit-content; max-width: 500px; font-size: 36px;">
                     <?=$name?>
                 </div>
-                <?php if($user_id == null) echo '<a href="/pepicase/public/login">'; ?>
                 <div class="ml-auto">
                     <img id="favorite" <?php if($user_id !== null) echo 'onclick="toggleFavorite()"'?> style="margin-top: 12px; width: 28.89px; height: 25.84px;" 
                     src="<?php if($user_id !== null && $favorite === 'yes') echo '/pepicase/public/pics/favorite_icon_shaded.svg'; else echo '/pepicase/public/pics/favorite_icon.svg'?>" alt="favorite">
                 </div>
-                <?php if($user_id == null) echo '</a>'; ?>
             </div>
                 
                     <div id="pricing" class="lexend-tera" style="font-size:25px;"><?=$price?>$</div>
@@ -66,7 +64,7 @@
 
                     <div class="d-flex">
                         <?php if($user_id == null) echo '<a href="/pepicase/public/login" style ="text-decoration:none;">'?>
-                        <button id="add_to_cart_button" class= "lexend d-flex align-items-center justify-content-center" style = "width: 350px; height: 50px; background-color:black; color:white; border-radius:20px;"></button>
+                        <button id="add_to_cart_button" class= "lexend d-flex align-items-center justify-content-center btn-dark btn" style = "width: 350px; height: 50px; border-radius:20px;"></button>
                         <?php if($user_id == null) echo '</a>'?>
                         <div id ="quantity" class ="d-flex" style = "border: 1px solid black; width:fit-content;margin-left:10px;">
                             <button onclick="add()" id="plus" class= "lexend d-flex align-items-center justify-content-center" style = "border:none; background-color:white">+</button>
@@ -79,8 +77,8 @@
                     <div id = "combotext" class ="lexend" style="font-size:25px; font-weight:400;"></div>
             </div>
         </div>
-        <div class="d-flex justify-content-center" style ="height: 500px;">
-            <div class="lexend" style = "height: fit-content; width: 1187px;">
+        <div class="d-flex align-items-center flex-column">
+            <div class="lexend" style = "height: fit-content; width: 75vw;">
                 <span style ="font-size: 25px;"><b>CUSTOMER REVIEWS</b></span> <br>
                 <span style ="font-size: 18px;">Rating</span> <br><br>
                 <img class = "review_star" data-value = 1 src="/pepicase/public/pics/review_star.svg" style ="height: 32px; width:30px;">
@@ -90,11 +88,17 @@
                 <img class = "review_star" data-value = 5 src="/pepicase/public/pics/review_star.svg" style ="height: 32px; width:30px;">
 
                 <br><br>
-                <span style ="font-size: 18px;">Your review</span> <br><br>
-                <input id="review_content" type="text" placeholder="Your thoughts about this item..." style = "margin:0; width:1186px; padding-bottom:50px; padding-left: 10px; padding-top: 5px; border:1px solid grey ;border-radius: 2px;">
-                <button style = "float: right; margin-top:10px; background-color:black; color:white;"><span style="font-weight:300;">Post review</span></button>
+                <span style ="font-size: 18px;" id = "comment_alert">Your review</span> <br><br>
+                <input id="review_content" type="text" class="form-control form-control-lg shadow" placeholder="Your thoughts about this item..." style="margin:0; width:100%; padding-bottom:50px; padding-left: 10px; padding-top: 5px; border-radius: 2px;">
+                <button class="btn btn-dark float-end mt-2" style="font-weight:300;" id="post_comment">Post comment</button>
             </div>
+
+            <div id = "feedback-container" class = "d-flex flex-column justify-content-center" style ="width: 75vw;">
+            </div>
+
         </div>
+
+
         <script src="/pepicase/public/js/jquery.js"></script>
         <script>
             var user = <?php if($user_id == null) echo 'null'; else echo $user_id ?>;
@@ -104,7 +108,9 @@
             var product_name = "<?php echo $name ?>";
             var quantity = 1;
             var cart_amount = 0;
-            <?php if(isset($cart_amount)) echo 'var cart_amount ='.$cart_amount.';'; ?>
+            <?php if(isset($cart_amount)) echo 'var cart_amount ='. $cart_amount. ';'; ?>
+            <?php if(!empty($comments)) echo 'var comments = (' . $comments .');'; else echo 'none' ?>
+            <?php if(!empty($comments)) echo 'console.log(comments);' ?>
         </script>
         <script src="/pepicase/public/js/product.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
