@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 02, 2024 lúc 07:23 AM
+-- Thời gian đã tạo: Th6 03, 2024 lúc 08:47 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+07:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -410,10 +410,12 @@ CREATE TABLE `user_info` (
   `User_ID` int(20) NOT NULL,
   `First_Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Phone_Number` varchar(20) NOT NULL,
-  `Birth` date NOT NULL,
+  `Phone` varchar(20) NOT NULL,
   `Address` varchar(100) NOT NULL,
+  `Apartment` varchar(50) DEFAULT NULL,
+  `Country` varchar(20) NOT NULL,
+  `City` varchar(50) NOT NULL,
+  `Zipcode` varchar(20) NOT NULL,
   `Updated_At` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -421,25 +423,25 @@ CREATE TABLE `user_info` (
 -- Đang đổ dữ liệu cho bảng `user_info`
 --
 
-INSERT INTO `user_info` (`ID`, `User_ID`, `First_Name`, `Last_Name`, `Email`, `Phone_Number`, `Birth`, `Address`, `Updated_At`) VALUES
-(1, 1, 'Dat', 'Nguyen', 'datnguyen27@gmail.com', '0345343343', '2000-05-10', 'TP Thủ Đức, TP HCM', '2024-05-09 07:45:25'),
-(2, 2, 'Huy', 'Nguyễn', 'huy1234@gmail.com', '0933433334', '2004-05-05', 'Tp Thủ Đức, HCM', '2024-05-09 07:45:25'),
-(3, 3, 'Hậu', 'Nguyễn', 'conghau1101@gmail.com', '0943574678', '2004-04-03', 'Bình Dương', '2024-05-09 07:45:25'),
-(4, 4, 'Quỳnh', 'Xuân', 'xuanquynh298@gmail.com', '0943756479', '2000-04-03', 'Vũng Tàu', '2024-05-09 07:45:25'),
-(5, 5, 'Bảo', 'Nguyễn', 'quocbao02@gmail.com', '0934526746', '2000-01-06', 'TP HCM', '2024-05-09 07:45:25'),
-(6, 6, 'Hà', 'Phạm', 'phamha123@gmail.com', '0945574638', '2002-04-19', 'Kiên Giang', '2024-05-09 07:45:25'),
-(7, 7, 'Khanh', 'Thục', 'thuckhanh01@gmail.com', '0946574893', '2002-05-17', 'An Giang', '2024-05-09 07:45:25'),
-(8, 8, 'Vũ', 'Tú', 'tuvu123@gmail.com', '0456473895', '2003-04-20', 'Hà Tĩnh', '2024-05-09 07:45:25'),
-(9, 9, 'Nam', 'Ngọc', 'ngocnam234@gmail.com', '094758493', '2001-02-03', 'Gia Lai', '2024-05-09 07:45:25'),
-(10, 10, 'Nữ', 'Ngọc', 'ngocnu345@gmail.com', '094758393', '2001-07-04', 'Thanh Hóa', '2024-05-09 07:45:25'),
-(11, 11, 'Luân', 'Minh', 'minhluan456@gmail.com', '0946378432', '2000-05-17', 'Tiền Giang', '2024-05-10 02:12:52'),
-(12, 12, 'Tùng', 'Dương', 'duongtung789@gmail.com', '09465376283', '2004-08-09', 'Tp HCM', '2024-05-10 02:12:52'),
-(13, 13, 'Sang', 'Minh', 'mínhang543@gmail.com', '0946736743', '2004-04-17', 'Hải Phòng', '2024-05-10 02:12:52'),
-(14, 14, 'Hạnh', 'Nguyễn', 'hanhnguyen123@gmail.com', '0564783749', '2000-12-26', 'Bình Phước', '2024-05-10 02:12:52'),
-(15, 15, 'Long', 'Hoàng', 'hoanglong456@gmail.com', '0984638821', '2003-01-09', 'An Giang', '2024-05-10 02:12:52'),
-(16, 16, 'abc', 'Kiên', 'abc789@gmail.com', '0946376472', '2002-08-04', 'Nghệ An', '2024-05-10 02:12:52'),
-(17, 17, 'Xuân', 'Minh', 'def678@gmail.com', '0946378432', '2000-05-17', 'Bình Phước', '2024-05-10 02:14:43'),
-(18, 18, 'Hoa', 'Kim', 'nhom14@gmail.com', '0946736742', '2004-08-19', 'Hà Tĩnh', '2024-05-10 02:14:43');
+INSERT INTO `user_info` (`ID`, `User_ID`, `First_Name`, `Last_Name`, `Phone`, `Address`, `Apartment`, `Country`, `City`, `Zipcode`, `Updated_At`) VALUES
+(1, 1, 'Dat', 'Nguyen', '0345343343', 'Phường 6', NULL, 'Việt Nam', 'Cần Thơ', '102345', '2024-05-09 07:45:25'),
+(2, 2, 'Huy', 'Nguyễn', '0933433334', 'Khu phố 6', NULL, 'Việt Nam', 'Đà Lạt', '344232', '2024-05-09 07:45:25'),
+(3, 3, 'Hậu', 'Nguyễn', '0943574678', 'Đường số 8', NULL, 'Việt Nam', 'Long Xuyên', '346793', '2024-05-09 07:45:25'),
+(4, 4, 'Quỳnh', 'Xuân', '0943756479', 'Khu phố 3', NULL, 'Việt Nam', 'Thủ Đức', '874523', '2024-05-09 07:45:25'),
+(5, 5, 'Bảo', 'Nguyễn', '0934526746', 'Phường Tân Lập', NULL, 'Việt Nam', 'Hồ Chí Minh', '536124', '2024-05-09 07:45:25'),
+(6, 6, 'Hà', 'Phạm', '0945574638', 'Phường An Bình', NULL, 'Việt Nam', 'Cao Lãnh', '098361', '2024-05-09 07:45:25'),
+(7, 7, 'Khanh', 'Thục', '0946574893', 'Khu phố 2', NULL, 'Việt Nam', 'Hà Nội', '432589', '2024-05-09 07:45:25'),
+(8, 8, 'Vũ', 'Tú', '0456473895', 'Phường 5', NULL, 'Việt Nam', 'Đà Nẵng', '324622', '2024-05-09 07:45:25'),
+(9, 9, 'Nam', 'Ngọc', '094758493', 'Phường 4', NULL, 'Việt Nam', 'Quảng Ninh', '243455', '2024-05-09 07:45:25'),
+(10, 10, 'Nữ', 'Ngọc', '094758393', 'Phường 10', NULL, 'Việt Nam', 'Ngã Bảy', '980634', '2024-05-09 07:45:25'),
+(11, 11, 'Luân', 'Minh', '0946378432', 'Khu phố 2', NULL, 'Việt Nam', 'Biên Hòa', '978431', '2024-05-10 02:12:52'),
+(12, 12, 'Tùng', 'Dương', '09465376283', 'Đường số 8', NULL, 'Việt Nam', 'Vũng Tàu', '324692', '2024-05-10 02:12:52'),
+(13, 13, 'Sang', 'Minh', '0946736743', 'Đường Mạc Đĩnh Chi', 'KTX khu B', 'Việt Nam', 'Thanh Hóa', '479332', '2024-05-10 02:12:52'),
+(14, 14, 'Hạnh', 'Nguyễn', '0564783749', 'Đường Đinh Tiên Hoàng', NULL, 'Việt Nam', 'Hải Dương', '541245', '2024-05-10 02:12:52'),
+(15, 15, 'Long', 'Hoàng', '0984638821', 'Khu phố 3', NULL, 'Việt Nam', 'Phan Thiết', '763423', '2024-05-10 02:12:52'),
+(16, 16, 'abc', 'Kiên', '0946376472', 'Đường Võ Nguyên Giáp', NULL, 'Việt Nam', 'Hà Tiên', '235234', '2024-05-10 02:12:52'),
+(17, 17, 'Xuân', 'Minh', '0946378432', 'Khu phố 3', NULL, 'Việt Nam', 'Châu Đốc', '375473', '2024-05-10 02:14:43'),
+(18, 18, 'Hoa', 'Kim', '0946736742', 'Khu phố 6', NULL, 'Việt Nam', 'Tây Ninh', '823346', '2024-05-10 02:14:43');
 
 -- --------------------------------------------------------
 
