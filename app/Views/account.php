@@ -88,7 +88,7 @@
     </form>
 
     <button id="save" class="btn black" style="width: 50%; font-family: 'Lexend'; font-size: 20px; background-color: black; border-radius: 10px; color: white" onclick="check_inf()">Save Changes</button>
-    <div id="inform" class ="d-flex justify-content-center align-items-center" style="font-size: 20px; font-family: 'Lexend'; margin-top: 20px"></div>
+    <div id="inform" class ="d-flex" style="font-size: 20px; font-family: 'Lexend'; margin-top: 20px"></div>
 
     <hr style="margin-top: 30px; color: #838383">
     <div class="form-group"><a href="" style="font-size: 20px; color: #838383; text-decoration-line: underline; font-family: 'Lexend';">Change your password</a></div>

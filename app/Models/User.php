@@ -140,4 +140,14 @@ class User extends Model
 	function insertUserData($userdata){ //thêm thông tin
         $this->insert($userdata);
 	}
+
+    function update_info($id = null, $row = null)
+    {
+        $db = Database::connect();
+        $sql = "SELECT * FROM user_info";
+        $query = $db->query($sql);
+
+        // TH1 nếu đã có user_info thì UPDATE dòng đó
+        // TH2 nếu chưa có thì tạo dòng mới
+    }
 }

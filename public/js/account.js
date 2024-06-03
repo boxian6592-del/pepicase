@@ -15,47 +15,47 @@ function check_inf(){
     if(fname.trim() === 'test') return error;
 
     if (fname.trim() === '' || !/^[a-zA-Z\s]+$/.test(fname)) {
-        error = 'PLEASE ENTER A VALID FIRST NAME.';
+        error = 'Please enter a valid first name.';
         return error;
     }
 
     if (lname.trim() === '' || !/^[a-zA-Z\s]+$/.test(lname)) {
-        error = 'PLEASE ENTER A VALID LAST NAME.';
+        error = 'Please enter a valid last name.';
         return error;
     }
 
     if (address.trim() === '' || !/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\s,#-./]+$/.test(address)) {
-        error = 'PLEASE ENTER A VALID ADDRESS.';
+        error = 'Please enter a valid address.';
         return error;
     }
     
     if (apartment.trim() !== '' && !/^[a-zA-Z0-9\s,#-]+$/.test(apartment)) {
-        error = 'PLEASE ENTER A VALID APARTMENT/SUITE NUMBER.';
+        error = 'Please enter a valid appartment/suite number.';
         return error;
     }
 
     if (country.trim() === '' || !/^[a-zA-Z\s]+$/.test(country)) {
-        error = 'PLEASE ENTER A VALID COUNTRY.';
+        error = 'Please enter a valid country.';
         return error;
     }
 
     if (city.trim() === '' || !/^[a-zA-Z\s]+$/.test(city)) {
-        error = 'PLEASE ENTER A VALID CITY.';
+        error = 'Please enter a valid city.';
         return error;
     }
 
     if (zipcode.trim() === '' || !/^\d{5}(?:[-\s]\d{4})?$/.test(zipcode)) {
-        error = 'PLEASE ENTER A VALID ZIP CODE.';
+        error = 'Please enter a valid zip code.';
         return error;
     }
 
     if (area_code.trim() === '' || !/^\+?\d{1,2}$/.test(area_code)) {
-        error = 'PLEASE ENTER A VALID AREA CODE.';
+        error = 'Please enter a valid area code.';
         return error;
     }
 
     if (phone.trim() === '' || !/^\d{6,15}$/.test(phone)) {
-        error = 'PLEASE ENTER A VALID TELEPHONE NUMBER.';
+        error = 'Please enter a valid telephone number.';
         return error;
     }
 
@@ -73,10 +73,6 @@ $('#save').click(function() {
             'font-size': '20px'
         }).text('Changes saved successfully.');
     } else {
-        $('#inform').css({
-            'color': 'red',
-            'font-family': 'Lexend',
-            'font-size': '20px'
-        }).text(error);
+        $('#inform').css('color','red').text(error);
     }
 })
