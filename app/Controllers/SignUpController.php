@@ -86,7 +86,7 @@ class SignUpController extends BaseController
     <body>
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: black; max-width: 50vw; margin: auto; padding: 20px; border: 1px solid black; border-radius: 10px; background-color: white;">
             <div style="background-color: #FFF3C0; color: black; padding: 10px 0; text-align: center; border-radius: 10px 10px 0 0;">
-                <h1>You have initiated a password reset attempt.</h1>
+                <h1>You have attempted to register for an account!</h1>
             </div>
             <div style="padding: 20px;">
 

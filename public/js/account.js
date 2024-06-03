@@ -1,4 +1,24 @@
-function check_inf(){
+var info_found = (info!==null).toString();
+
+$(document).ready(function() 
+{
+    if (info !== null) 
+    {
+        $('#fname').val(info[0].First_Name);
+        $('#lname').val(info[0].Last_Name);
+        $('#address').val(info[0].Address);
+        $('#apartment').val(info[0].Apartment);
+        $('#area_code').val(info[0].Area_Code);
+        $('#country').val(info[0].Country);
+        $('#city').val(info[0].City);
+        $('#zipcode').val(info[0].Zipcode);
+        $('#phone').val(info[0].Phone);
+        var test = getFormData();
+        console.log(test);    
+    }
+})
+
+function check_inf() {
     var fname = $('#fname').val();
     var lname = $('#lname').val();
     var address = $('#address').val();
@@ -9,37 +29,37 @@ function check_inf(){
     var area_code = $('#area_code').val();
     var phone = $('#phone').val();
     var button = $('#save').val();
-    
+
     var error = 'None';
 
-    if(fname.trim() === 'test') return error;
+    if (fname.trim() === 'test') return error;
 
-    if (fname.trim() === '' || !/^[a-zA-Z\s]+$/.test(fname)) {
+    if (fname.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(fname)) {
         error = 'Please enter a valid first name.';
         return error;
     }
 
-    if (lname.trim() === '' || !/^[a-zA-Z\s]+$/.test(lname)) {
+    if (lname.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(lname)) {
         error = 'Please enter a valid last name.';
         return error;
     }
 
-    if (address.trim() === '' || !/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\s,#-./]+$/.test(address)) {
+    if (address.trim() === '' || !/^(?=.*[a-zA-ZÀ-ỹ])(?=.*\d)[a-zA-ZÀ-ỹ0-9\s,#-./]+$/.test(address)) {
         error = 'Please enter a valid address.';
         return error;
     }
-    
-    if (apartment.trim() !== '' && !/^[a-zA-Z0-9\s,#-]+$/.test(apartment)) {
+
+    if (apartment.trim() !== '' && !/^[a-zA-ZÀ-ỹ0-9\s,#-]+$/.test(apartment)) {
         error = 'Please enter a valid appartment/suite number.';
         return error;
     }
 
-    if (country.trim() === '' || !/^[a-zA-Z\s]+$/.test(country)) {
+    if (country.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(country)) {
         error = 'Please enter a valid country.';
         return error;
     }
 
-    if (city.trim() === '' || !/^[a-zA-Z\s]+$/.test(city)) {
+    if (city.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(city)) {
         error = 'Please enter a valid city.';
         return error;
     }
@@ -62,17 +82,85 @@ function check_inf(){
     return error;
 }
 
+function getFormData() {
+    return {
+        firstName: $('#fname').val().toString(),
+        lastName: $('#lname').val().toString(),
+        address: $('#address').val().toString(),
+        apartment: $('#apartment').val().toString(),
+        country: $('#country').val().toString(),
+        city: $('#city').val().toString(),
+        zipCode: $('#zipcode').val().toString(),
+        areaCode: $('#area_code').val().toString(),
+        phone: $('#phone').val().toString()
+    };
+  }
+
+
+$('#save').click(function() {
+    $('#inform').text('');
+    var error = check_inf();
+    if(error == 'None')
+        {
+            var data = getFormData();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pepicase/public/user/update",
+                data: JSON.stringify({
+                    isFound: info_found,
+                    data: data
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    $('#inform').css({
+                        'color': 'green',
+                        'font-family': 'Lexend',
+                        'font-size': '20px'
+                    }).text(response.message);        
+                },
+                error: function()
+                {
+                    $('#inform').css({
+                        'color': 'red',
+                        'font-family': 'Lexend',
+                        'font-size': '20px'
+                    }).text('An error has occurred!');        
+                }
+              });
+        }
+    else $('#inform').css('color','red').text(error);
+})
+
+
+/*
 $('#save').click(function() {
     $('#inform').text('');
     var error = check_inf();
     if (error === 'None') {
-        // Save changes here
-        $('#inform').css({
-            'color': 'green',
-            'font-family': 'Lexend',
-            'font-size': '20px'
-        }).text('Changes saved successfully.');
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/pepicase/public/user/update",
+            data: {
+              product_id: product_id,
+              user_id: user,
+              comment: $('#review_content').val().toString(),
+              stars: current_stars,
+            },
+            success: function(response) {
+                $('#inform').css({
+                    'color': 'green',
+                    'font-family': 'Lexend',
+                    'font-size': '20px'
+                }).text(response);        
+            },
+            error: function(xhr, status, error) {
+              // Handle the error response
+              console.log("can't");
+            },
+          });
     } else {
         $('#inform').css('color','red').text(error);
     }
 })
+*/

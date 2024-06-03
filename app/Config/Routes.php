@@ -63,6 +63,7 @@ $routes->get('/purchases','StaticPageController::purchases');
 $routes->get('/user/cart','CartController::index');
 $routes->post('/user/cart','CartController::process_cart_edit');
 $routes->get('/user','StaticPageController::account');
+$routes->post('/user/update','StaticPageController::account_info_update');
 //quản lý tài khoản
 
 

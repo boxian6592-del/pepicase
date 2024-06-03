@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\CustomSession;
+use App\Models\User;
 
 class StaticPageController extends BaseController
 {
@@ -25,15 +26,27 @@ class StaticPageController extends BaseController
     {
         $curr_session = new CustomSession(null);
         $curr_session->fetch_session_cookie();
-        // check xem người dùng đã log in chưa
         if($curr_session->isSessionSet()) // nếu có
         {
-            // chạy database, kiểm tra xem người dùng đó có user_info chưa
-            // nếu có thì lấy user info đó về thôi
-            // nếu chưa thì không làm
-            return view('account');
+            $user = new User();
+            $info = $user->get_info($curr_session->get_id());
+            if($info == false) return view ('account');
+            else return view('account', [ 'info' => $info ]);
         }
         else return redirect() -> to ('/login');
+    }
+
+    public function account_info_update()
+    {
+        $message = $this->request->getJSON();
+        $isFound = $message->isFound;
+        $data = $message->data;
+        $curr_session = new CustomSession(null);
+        $user = new User();
+        $user->update_info($curr_session->get_id(), $isFound, $data);
+        return $this->response->setJSON([
+            'message' => 'Updated information successfully!'
+        ]);
     }
 
     public function purchases() // purchases cũng tĩnh nhưng tĩnh ở một mức nhất định

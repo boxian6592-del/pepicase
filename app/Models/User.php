@@ -141,19 +141,47 @@ class User extends Model
         $this->insert($userdata);
 	}
 
-    public function update_info($id = null, $row = null)
+    public function update_info($id, $isFound, $object)
     {
         $db = Database::connect();
-        $sql = "SELECT * FROM user_info";
-        $query = $db->query($sql);
+        $sql = "SELECT * FROM user_info WHERE User_ID = {$id}";
+        $result = $db->query($sql)->getResult();
+        if(empty($result))
+        {
+            $add = "INSERT INTO user_info (User_ID, First_Name, Last_Name, Area_Code, Phone, Address, Apartment, Country, City, Zipcode)
+                    VALUES ('{$id}','{$object->firstName}','{$object->lastName}','{$object->areaCode}','{$object->phone}','{$object->address}'
+                    ,'{$object->apartment}','{$object->country}','{$object->city}','{$object->zipCode}')";
+            $db->query($add);
+        }
+        else
+        {
+            $update = "UPDATE user_info
+                        SET First_Name = '{$object->firstName}',
+                            Last_Name = '{$object->lastName}',
+                            Area_Code = '{$object->areaCode}',
+                            Phone = '{$object->phone}',
+                            Address = '{$object->address}',
+                            Apartment = '{$object->apartment}',
+                            Country = '{$object->country}',
+                            City = '{$object->city}',
+                            Zipcode = '{$object->zipCode}'
+                        WHERE User_ID = '{$id}'";
+            $db->query($update);
+        }
+    }
 
-        // TH1 nếu đã có user_info thì UPDATE dòng đó
-        // TH2 nếu chưa có thì tạo dòng mới
+    public function get_info($id)
+    {
+        $db = Database::connect();
+        $sql = "SELECT * FROM user_info WHERE User_ID = {$id}";
+        $result = $db->query($sql)->getResult();
+        if(!empty($result)) return $result;
+        else return false;
     }
 
     public function add_comment($id ,$product_id, $comment, $stars)
     {
-        $db = \Config\Database::connect();
+        $db = Database::connect();
         $query = $db->table('feedback')
                 ->insert([
                     'User_ID' => $id,
@@ -161,7 +189,6 @@ class User extends Model
                     'Comment' => $comment,
                     'Star' => $stars
                 ]);
-
         if ($query) {
             return true;
         } else {

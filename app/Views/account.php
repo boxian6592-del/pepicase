@@ -54,7 +54,7 @@
     <div style="margin-bottom: 20px">
         <input class="form-control" type="text" id="address" placeholder="Address" class="full-width">
         <div id="check_address">
-            <span style="color: #838383; font-family: 'Lexend'">Please enter your street address, P.O. box, company name, c/o!</span>
+            <span style="color: #838383; font-family: 'Lexend'">Please enter your street address with district, P.O. box, company name, c/o!</span>
         </div>
     </div>
 
@@ -96,5 +96,9 @@
 </div>
 
 <script src="/pepicase/public/js/jquery.js"></script>
+<script>
+    var user = <?= $user_id ?>;
+    var info = <?php if(isset($info)) echo json_encode($info); else echo 'null';?>
+</script>
 <script src="/pepicase/public/js/account.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
