@@ -6,63 +6,95 @@
 </div>
 
 <div class="flex-container" style="display: flex; margin-top: 50px;">
-    <div style="margin-left: 150px; width: 20%">
-        <div style="margin-bottom: 40px;">
-            <b style="font-size: 50px; font-family: 'Lexend';">Account</b>
-            <div class="flex-container" style="margin-top: 15px;">
-                <a style ="text-decoration:none;" href="">
-                    <img src="/pepicase/public/pics/user.svg" alt="">
-                </a>
-                <a href="/pepicase/public/logout" style="color: #838383; margin-left: 6px; font-size: 20px; font-family: 'Lexend';">Log out</a>
-            </div>
-        </div>
-
-        <div>
-            <b style="font-size: 50px; font-family: 'Lexend';">Order History</b>
-            <div class="flex-container" style="color: #838383; font-size: 20px; font-family: 'Lexend';margin-top: 15px;">
-                <text style="margin-top: 15px;">View history</text><a href="/pepicase/public/purchases" style="color: #838383; font-size: 20px; margin-left: 6px; font-family: 'Lexend';">here</a>
-            </div>
+<section style="margin-left: 10%; margin-right: 5%">
+    <div style="margin-bottom: 40px;">
+        <b style="font-size: 50px; font-family: 'Lexend';">Account</b>
+        <div class="flex-container" style="margin-top: 10px;">
+            <a style ="text-decoration:none;" href="">
+                <img src="/pepicase/public/pics/user.svg" alt="">
+            </a>
+            <a href="/pepicase/public/logout" style="color: #838383; margin-left: 6px; font-size: 20px; font-family: 'Lexend';">Log out</a>
         </div>
     </div>
 
-    <div style="width: 50%">
-        <div>
-            <b style="font-size: 40px;">Account details</b>
-            <p style="font-size:20px; margin-top:10px; color: #838383; font-family: 'Lexend';">Manage and protect your account</p>
+    <div style="margin-bottom: 40px;">
+        <b style="font-size: 50px; font-family: 'Lexend';">Order History</b>
+        <div class="flex-container" style="color: #838383; font-size: 20px; font-family: 'Lexend';margin-top: 10px;">
+            <text style="margin-top: 15px;">View history</text><a href="/pepicase/public/purchases" style="color: #838383; font-size: 20px; margin-left: 6px; font-family: 'Lexend';">here</a>
         </div>
-        <hr style="color: #838383">
-        <form action="" style="font-family: 'Lexend';">
-
-            <div class="form-group row" style="margin-bottom: 20px;">
-                <div class="col" style="margin-right: 170px">
-                    <label><b style="font-family: 'Lexend';">First name</b></label>
-                    <input id="firstname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px;" required/>
-                </div>
-
-                <div class="col">
-                    <label for="lastname"><b style="font-family: 'Lexend';">Last name</b></label>
-                    <input id="lastname" class="form-control" type="text" placeholder="Abc" style="font-size:20px; width: 300px;" required/>
-                </div>
-
-                <div class="form-group" style="margin-bottom: 20px">
-                    <label for="phone"><b style="font-family: 'Lexend';">Phone number</b></label>
-                    <input id="phone" class="form-control" type="tel" placeholder="0xxxxxxxxx" style="font-size:20px; width: 820px;" required/>
-                </div>
-                
-                <div class="form-group" style="margin-top: 20px">
-                    <label><b style="font-family: 'Lexend';">My Address</b></label>
-                    <input id="address" class="form-control" type="text" placeholder="City, District, Ward" style="font-size:20px; width: 820px;" required/>
-                </div>
-
-                <div class="form-group" style="margin-top:30px;">
-                    <button class="save-button" style="background-color: black; width: 50%; height: 40px; color: white; border-radius: 15px; font-size:20px;">Save Changes</button>
-                </div>
-
-            </div>
-        </form>
-
-        <hr style="margin-top: 40px; color: #838383">
-        <div class="form-group"><a href="" style="font-size: 20px; color: #838383; text-decoration-line: underline; font-family: 'Lexend';">Change your password</a></div>
     </div>
+
+    <div>
+        <b style="font-size: 50px; font-family: 'Lexend';">Wishlist</b>
+        <div class="flex-container" style="color: #838383; font-size: 20px; font-family: 'Lexend';margin-top: 10px;">
+            <a href="" style ="text-decoration:none;">
+                <img src="/pepicase/public/pics/black_heart.svg" alt="">
+            </a>
+            <text style="margin-top: 15px;">View your wishlist</text><a href="/pepicase/public/wishlist" style="color: #838383; font-size: 20px; margin-left: 6px; font-family: 'Lexend';">here</a>
+        </div>
+    </div>
+</section>
+
+<aside style="margin-left: 8%; width: fit-content">
+    <div>
+        <b style="font-size: 40px;">Account details</b>
+        <p style="font-size:20px; margin-top:10px; color: #838383; font-family: 'Lexend';">Manage and protect your account</p>
+    </div>
+    <hr style="color: #838383; margin-bottom: 30px">
+    <form action="" style="font-family: 'Lexend';">
+    <div style="display: flex; margin-bottom: 20px">
+        <div style="margin-right: 10px; width: 35%">
+            <input class="form-control" type="text" id ="fname" placeholder="First Name">
+        </div>
+        <div style="width: 65%">
+            <input class="form-control" type="text" id="lname" placeholder="Last Name">
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px">
+        <input class="form-control" type="text" id="address" placeholder="Address" class="full-width">
+        <div id="check_address">
+            <span style="color: #838383; font-family: 'Lexend'">Please enter your street address, P.O. box, company name, c/o!</span>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px">
+        <input class="form-control" type="text" id="apartment" placeholder="Apartment, suite, etc (optional)" class="full-width">
+        <div id="check_apartment">
+            <span style="color: #838383; font-family: 'Lexend'">Please enter your apartment, suite, unit, building, floor, etc. (optional)!</span>
+        </div>
+    </div>
+
+    <div style="display: flex; margin-bottom: 20px">
+        <div style="margin-right: 10px;">
+            <input class="form-control" id="country" type="text" placeholder="Country">
+        </div>
+        <div style="margin-right: 10px;">
+            <input class="form-control" id="city" type="text" placeholder="City">
+        </div>
+        <div>
+            <input class="form-control" id="zipcode" type="text" placeholder="Zipcode">
+        </div>
+    </div>
+
+    <div style="display: flex; margin-bottom: 20px">
+        <div style="margin-right: 10px; width: 50%">
+            <input class="form-control" id="area_code" type="text" placeholder="Area Code (e.g +84)" class="full-width">
+        </div>
+        <div style="width: 50%;">
+            <input class="form-control" id="phone" type="text" placeholder="Telephone (e.g 0932456783)" class="full-width">
+        </div>
+    </div>
+    </form>
+
+    <button id="save" class="btn black" style="width: 50%; font-family: 'Lexend'; font-size: 20px; background-color: black; border-radius: 10px; color: white" onclick="check_inf()">Save Changes</button>
+    <div id="inform" class ="d-flex justify-content-center align-items-center" style="font-size: 20px; font-family: 'Lexend'; margin-top: 20px"></div>
+
+    <hr style="margin-top: 30px; color: #838383">
+    <div class="form-group"><a href="" style="font-size: 20px; color: #838383; text-decoration-line: underline; font-family: 'Lexend';">Change your password</a></div>
+</aside>
 </div>
+
+<script src="/pepicase/public/js/jquery.js"></script>
+<script src="/pepicase/public/js/account.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
