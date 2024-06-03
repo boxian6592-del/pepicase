@@ -101,11 +101,12 @@ header
     transform: rotate(90deg);
 }
 
-
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 .footer {
     margin-top: 100px;
     width: 100%;
     background-color: #FFE57A;
+    padding: 80px;
   }
   
 .footer .rows {
@@ -129,28 +130,15 @@ header
     width: 347px;
     font-size: 20px;
 }
-.title {
-    color: #844700;
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: bold;
-}
-.footer-links a {
-    color:#171717;
+.footer a {
+    color:black;
     text-decoration: none;
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
+    font-weight: 300;
 }
-.bottom-nav a
-{
-    margin-right: 75px;
-    text-decoration: none;
-    color: #844700;
-}
-
 .ship_rep_dis
 {
     padding-top: 100px;
