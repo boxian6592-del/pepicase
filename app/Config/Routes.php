@@ -53,6 +53,15 @@ $routes->post('/resetPassword/confirmed/(:any)','ResetPasswordController::ResetP
 //checkout
 $routes->get('/checkout','CheckoutController::index');
 $routes->post('/checkout/check_discount','CheckoutController::check_discount');
+
+$routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
+$routes->get('/checkout/pending','StaticPageController::await_payment');
+$routes->get('/checkout/vnpay_return','CheckoutController::vnpay_return');
+
+$routes->post('/checkout/generate_invoice','CheckoutController::generate_invoice');
+$routes->post('/checkout/create_delivery','CheckoutController::create_delivery');
+
+$routes->get('/checkout/done','StaticPageController::checkout_done_cash');
 //khu để test layout
 $routes->get('/testing','HomepageController::testing');
 //khu để test layout
@@ -64,17 +73,5 @@ $routes->get('/user/cart','CartController::index');
 $routes->post('/user/cart','CartController::process_cart_edit');
 $routes->get('/user','StaticPageController::account');
 $routes->post('/user/update','StaticPageController::account_info_update');
+$routes->get('/user/changePassword/pending','ResetPasswordController::check_and_send_user');
 //quản lý tài khoản
-
-
-//payment
-$routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
-$routes->get('/checkout/pending','StaticPageController::await_payment');
-
-$routes->get('/checkout/vnpay_return','CheckoutController::vnpay_return');
-
-$routes->post('/checkout/generate_invoice','CheckoutController::generate_invoice');
-$routes->post('/checkout/create_delivery','CheckoutController::create_delivery');
-
-
-$routes->get('/checkout/done','StaticPageController::checkout_done_cash');

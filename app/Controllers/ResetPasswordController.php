@@ -76,32 +76,30 @@ class ResetPasswordController extends BaseController
                 $auth_email->Subject = 'PEPICASE - RESET PASSWORD VERIFICATION';
                 $content ='
 <html>
-    <body>
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: black; max-width: 50vw; margin: auto; padding: 20px; border: 1px solid black; border-radius: 10px; background-color: white;">
-            <div style="background-color: #FFF3C0; color: black; padding: 10px 0; text-align: center; border-radius: 10px 10px 0 0;">
-                <h1>You have initiated a password reset attempt.</h1>
-            </div>
-            <div style="padding: 20px;">
-                <p>PEPICASE has received a signup request from a user with this email. If this is not you, <strong>ignore this message!</strong></p>
+<body>
+<div style="font-family: Arial, sans-serif; line-height: 1.6; color: black; max-width: 50vw; margin: auto; padding: 20px; border: 1px solid black; border-radius: 10px; background-color: white;">
+    <div style="background-color: #FFF3C0; color: black; padding: 10px 0; text-align: center; border-radius: 10px 10px 0 0;">
+        <h1>You have initiated a password reset attempt.</h1>
+    </div>
+    <div style="padding: 20px;">
+        <p>PEPICASE has received a reset password request from a user with this email. If this is not you, <strong>ignore this message!</strong></p>
 
-                <p>Otherwise, please click the link below to initiate a password reset.</p>
+        <p>Otherwise, please click the link below to initiate a password reset.</p>
 
-                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; border: 1px solid black;">
-                    <div style="height: 50px;" align="center">
-                        <a style="text-decoration: none; color: black;" href="http://localhost/pepicase/public/resetPassword/confirmed/'.$encrypted_email.'">
-                            <button style="background-color: #FFF3C0; height: 100%;">Reset password here</button>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+        <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+            <a style="text-decoration: none; color: black;" href="http://localhost/pepicase/public/resetPassword/confirmed/'.$encrypted_email.'">
+                <button style="background-color: #FFF3C0; height: 100%; font-size: 20px;">Reset password here!</button>
+            </a>
         </div>
-        <div class="footer" style="text-align: center; padding: 10px 0; color: #777; font-size: 12px;">
-            <p>© Pepicase</p>
-        </div>
-    </body>
+
+    </div>
+</div>
+<div class="footer" style="text-align: center; padding: 10px 0; color: #777; font-size: 12px;">
+    <p>© Pepicase</p>
+</div>
+</body>
 </html>';
-        $auth_email->Body = $content;
+                $auth_email->Body = $content;
                 try {
                     $auth_email->smtpConnect(
                         array(
@@ -189,5 +187,85 @@ class ResetPasswordController extends BaseController
         }
         else {return redirect()->to("/login")-> with("okay", "Something went wrong.");}
         // nếu không thì đã có bug, sẽ trả về Somethin went wrong. để nhận biết
+    }
+
+    public function check_and_send_user() // function kiểm tra người dùng có trên hệ thống hay không
+    {
+        $session = new CustomSession();
+        $user = new User();
+        $mail = $user->get_email($session->get_id());
+        $encrypted_email = $this->encrypt($mail); // email đã nhập sẽ được mã hóa và đính vào URL
+        $auth_email = new PHPMailer(true);
+        $auth_email->SMTPDebug = SMTP::DEBUG_SERVER; // Keep the debug level as needed
+        $auth_email->Debugoutput = function($str, $level) {
+        // Do nothing, suppress the output
+        };
+        $auth_email->isSMTP();
+        $auth_email->CharSet = "utf-8";
+        $auth_email->Host = 'smtp.gmail.com'; // gửi qua GMAIL
+        $auth_email->Port = 465;
+        $auth_email->SMTPAuth = true;
+        $auth_email->Username = 'ndat34035@gmail.com'; // đang sử dụng acc clone của Đạt
+        $auth_email->Password = 'nnvr tkbp yzlc kbny';   // đây là password do Google cung cấp cho các app
+        $auth_email->SMTPSecure = 'ssl'; 
+        $auth_email->setFrom('ndat34035@gmail.com', 'Pepicase'); 
+        $auth_email->addAddress($mail, 'Recipient Name');
+        $auth_email->isHTML(true);  // định dạng mail là HTML nên sẽ dễ design
+        $auth_email->Subject = 'PEPICASE - RESET PASSWORD VERIFICATION';
+        $content ='
+<html>
+<body>
+<div style="font-family: Arial, sans-serif; line-height: 1.6; color: black; max-width: 50vw; margin: auto; padding: 20px; border: 1px solid black; border-radius: 10px; background-color: white;">
+    <div style="background-color: #FFF3C0; color: black; padding: 10px 0; text-align: center; border-radius: 10px 10px 0 0;">
+        <h1>You have initiated a password reset attempt.</h1>
+    </div>
+    <div style="padding: 20px;">
+        <p>PEPICASE has received a reset password request from a user with this email. If this is not you, <strong>ignore this message!</strong></p>
+
+        <p>Otherwise, please click the link below to initiate a password reset.</p>
+
+        <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+            <a style="text-decoration: none; color: black;" href="http://localhost/pepicase/public/resetPassword/confirmed/'.$encrypted_email.'">
+                <button style="background-color: #FFF3C0; height: 100%; font-size: 20px;">Reset password here!</button>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="footer" style="text-align: center; padding: 10px 0; color: #777; font-size: 12px;">
+    <p>© Pepicase</p>
+</div>
+</body>
+</html>';
+        $auth_email->Body = $content;
+        try {
+            $auth_email->smtpConnect(
+                array(
+                    "ssl" => array(
+                        "verify_peer" => true,
+                        "verify_peer_name" => false,
+                        "allow_self_signed" => false
+                    )
+                )
+            );            if ($auth_email->send()) // nếu mail báo gửi thành công
+            {
+                return view('email_pending'); // trả về trang giao diện pending
+            } 
+            else // nếu mail báo gửi KHÔNG thành công
+            {
+                $error = [
+                    'error' => $auth_email->ErrorInfo,
+                ];
+                return view('email_pending', $error);
+            }
+        } 
+        catch (Exception $e) // trường hợp lỗi trước khi request đến được Google 
+        {
+            $error = 
+            [
+                'error' => $e->getMessage(),
+            ];
+            return view('email_pending', $error);
+        }
     }
 }

@@ -27,9 +27,9 @@
     <div>
         <b style="font-size: 50px; font-family: 'Lexend';">Wishlist</b>
         <div class="flex-container" style="color: #838383; font-size: 20px; font-family: 'Lexend';margin-top: 10px;">
-            <a href="" style ="text-decoration:none;">
+            
                 <img src="/pepicase/public/pics/black_heart.svg" alt="">
-            </a>
+
             <text style="margin-top: 15px;">View your wishlist</text><a href="/pepicase/public/wishlist" style="color: #838383; font-size: 20px; margin-left: 6px; font-family: 'Lexend';">here</a>
         </div>
     </div>
@@ -87,11 +87,10 @@
     </div>
     </form>
 
-    <button id="save" class="btn black" style="width: 50%; font-family: 'Lexend'; font-size: 20px; background-color: black; border-radius: 10px; color: white" onclick="check_inf()">Save Changes</button>
+    <button id="save" class="btn btn-dark" style="width: 50%; font-family: 'Lexend'; font-size: 20px;" onclick="check_inf()">Save Changes</button>
     <div id="inform" class ="d-flex" style="font-size: 20px; font-family: 'Lexend'; margin-top: 20px"></div>
-
+    <div class="form-group"><a href="http://localhost/pepicase/public/user/changePassword/pending" style="font-size: 20px; color: #838383; text-decoration-line: underline; font-family: 'Lexend';">Change your password</a></div>
     <hr style="margin-top: 30px; color: #838383">
-    <div class="form-group"><a href="" style="font-size: 20px; color: #838383; text-decoration-line: underline; font-family: 'Lexend';">Change your password</a></div>
 </aside>
 </div>
 

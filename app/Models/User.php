@@ -84,6 +84,13 @@ class User extends Model
         return ($result !== []);
     }
 
+    public function get_email($id)
+    {
+        $db = Database::connect();
+        $result = $db->query("SELECT Email FROM user WHERE ID = '{$id}' ")->getRow();
+        return $result->Email;
+    }
+
     public function fetch_wishlist($id)
     {
         $db = Database::connect();

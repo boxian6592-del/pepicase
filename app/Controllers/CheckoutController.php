@@ -20,10 +20,23 @@ class CheckoutController extends BaseController
             if (empty($cart_items)) return redirect() -> to ('/user/cart');
             else 
             {
-                return view('checkout', [
-                    'cart_items' => json_encode($cart_items),
-                    'total_price' => $curr_cart->get_price()
-                ]);
+                $user = new User();
+                $info = $user->get_info($curr_session->get_id());
+                if($info == false)
+                {
+                    return view('checkout', [
+                        'cart_items' => json_encode($cart_items),
+                        'total_price' => $curr_cart->get_price()
+                    ]);    
+                }
+                else
+                {
+                    return view('checkout', [
+                        'cart_items' => json_encode($cart_items),
+                        'total_price' => $curr_cart->get_price(),
+                        'info' => $info,
+                    ]);    
+                }
             }
         }
         else return redirect() -> to ('/login');

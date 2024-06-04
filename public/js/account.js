@@ -131,36 +131,3 @@ $('#save').click(function() {
         }
     else $('#inform').css('color','red').text(error);
 })
-
-
-/*
-$('#save').click(function() {
-    $('#inform').text('');
-    var error = check_inf();
-    if (error === 'None') {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/pepicase/public/user/update",
-            data: {
-              product_id: product_id,
-              user_id: user,
-              comment: $('#review_content').val().toString(),
-              stars: current_stars,
-            },
-            success: function(response) {
-                $('#inform').css({
-                    'color': 'green',
-                    'font-family': 'Lexend',
-                    'font-size': '20px'
-                }).text(response);        
-            },
-            error: function(xhr, status, error) {
-              // Handle the error response
-              console.log("can't");
-            },
-          });
-    } else {
-        $('#inform').css('color','red').text(error);
-    }
-})
-*/

@@ -28,16 +28,16 @@
                             <td colspan="3"><input type="text" id="address" placeholder="Address" class="full-width"></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><input type="text" placeholder="Apartment, suite, etc (optional)" class="full-width"></td>
+                            <td colspan="3"><input type="text" id="apartment" placeholder="Apartment, suite, etc (optional)" class="full-width"></td>
                         </tr>
                         <tr>
-                            <td><input type="text" placeholder="Country"></td>
-                            <td><input type="text" placeholder="City"></td>
-                            <td><input type="text" placeholder="Zipcode"></td>
+                            <td><input type="text" id="country" placeholder="Country"></td>
+                            <td><input type="text" id="city" placeholder="City"></td>
+                            <td><input type="text" id="zipcode" placeholder="Zipcode"></td>
                         </tr>
                         <tr>
-                            <td colspan="1"><input type="text" placeholder="Area Code (e.g +84)" class="full-width"></td>
-                            <td colspan="2"><input type="text" placeholder="Telephone (e.g 0932456783)" class="full-width"></td>
+                            <td colspan="1"><input type="text" id="area_code" placeholder="Area Code (e.g +84)" class="full-width"></td>
+                            <td colspan="2"><input type="text" id="phone" placeholder="Telephone (e.g 0932456783)" class="full-width"></td>
                         </tr>
                     </table>
                     <div class = "d-flex flex-row">
@@ -136,6 +136,7 @@
     console.log(cart_items);
     var user = <?= $user_id ?>;
     var total_price = <?= $total_price ?>;
+    var info = <?php if(isset($info)) echo json_encode($info); else echo 'null';?>
 </script>
 <script src="/pepicase/public/js/checkout.js"></script>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

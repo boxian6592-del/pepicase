@@ -93,14 +93,11 @@ class SignUpController extends BaseController
                 <p>PEPICASE has detected that you are signing up for an account. If this is not you, <strong>ignore this message!</strong></p>
                 <p>Otherwise, please click the link below to confirm your signup!</p>
 
-                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; border: 1px solid black;">
-                    <div style="height: 50px;" align="center">
+                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
                         <a style="text-decoration: none; color: black;" href="http://localhost/pepicase/public/signup/confirmed/'.$encrypted_email.'/'.$encrypted_password.'">
-                        <button style="background-color: #FFF3C0; height: 100%;">Sign up here!</button>
+                        <button style="background-color: #FFF3C0; height: 100%; font-size:20px">Sign up here!</button>
                         </a>
-                     </div>
                 </div>
-    
             </div>
         </div>
         <div class="footer" style="text-align: center; padding: 10px 0; color: #777; font-size: 12px;">
@@ -116,7 +113,7 @@ class SignUpController extends BaseController
                             "verify_peer" => true,
                             "verify_peer_name" => false,
                             "allow_self_signed" => false)));
-                    if ($auth_email->send()) // nếu đã gửi thành công, redirect user về pending
+                if ($auth_email->send()) // nếu đã gửi thành công, redirect user về pending
                     {
                         return redirect()->to('/signup/pending');
                     } 
@@ -125,7 +122,7 @@ class SignUpController extends BaseController
                         $error = [
                             'error' => $auth_email->ErrorInfo,
                             ];
-                        return view('signup_new', $error);
+                        return view('signup', $error);
                     }
                 } 
                 catch (Exception $e)  // nếu có lỗi trước khi gửi đc request
@@ -133,7 +130,7 @@ class SignUpController extends BaseController
                      $error = [
                         'error' => $e->getMessage(),
                     ];
-                    return view('signup_new', $error); // trả lỗi
+                    return view('signup', $error); // trả lỗi
                 }
             };
         }
@@ -142,7 +139,7 @@ class SignUpController extends BaseController
             $error = [
                 "error"=> "Please enter a valid email!",
             ];
-            return view('signup_new', $error); // trả lỗi
+            return view('signup', $error); // trả lỗi
         }
 
     }

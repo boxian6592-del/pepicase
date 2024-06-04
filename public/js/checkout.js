@@ -9,6 +9,22 @@ var vnpay_protocol = 0;
 var voucher_id = 0;
 
 $(document).ready(function() {
+
+    if (info !== null) 
+    {
+        $('#fname').val(info[0].First_Name);
+        $('#lname').val(info[0].Last_Name);
+        $('#address').val(info[0].Address);
+        $('#apartment').val(info[0].Apartment);
+        $('#area_code').val(info[0].Area_Code);
+        $('#country').val(info[0].Country);
+        $('#city').val(info[0].City);
+        $('#zipcode').val(info[0].Zipcode);
+        $('#phone').val(info[0].Phone);
+        var test = getFormData();
+        console.log(test);    
+    };
+
     var creditCardBtn = $('#credit-card-btn');
     var codBtn = $('#cod-btn');
     var momoBtn = $('#momo-btn');
@@ -428,3 +444,32 @@ $('#buy').click(function()
     }
     else $('#detail-alert').text(infoCheck());
 })
+
+function getFormData() {
+    return {
+        firstName: $('#fname').val().toString(),
+        lastName: $('#lname').val().toString(),
+        address: $('#address').val().toString(),
+        apartment: $('#apartment').val().toString(),
+        country: $('#country').val().toString(),
+        city: $('#city').val().toString(),
+        zipCode: $('#zipcode').val().toString(),
+        areaCode: $('#area_code').val().toString(),
+        phone: $('#phone').val().toString()
+    };
+  }
+
+$(window).on('beforeunload', function() {
+    if ($('#save-contact').is(':checked') && infoCheck() == 'None') {
+        var data = getFormData();
+        $.post({
+            url: "http://localhost/pepicase/public/user/update",
+            data: JSON.stringify({
+                isFound: info_found,
+                data: data
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        });
+    }
+});
