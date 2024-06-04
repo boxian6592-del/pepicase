@@ -185,63 +185,63 @@ $('#apply-discount').click(function()
 });
 
 function infoCheck() {
-    var firstName = $('#fname').val();
-    var lastName = $('#lname').val();
+    var fname = $('#fname').val();
+    var lname = $('#lname').val();
     var address = $('#address').val();
-    var apartment = $('input[placeholder="Apartment, suite, etc (optional)"]').val();
-    var country = $('input[placeholder="Country"]').val();
-    var city = $('input[placeholder="City"]').val();
-    var zipcode = $('input[placeholder="Zipcode"]').val();
-    var areaCode = $('input[placeholder="Area Code (e.g +84)"]').val();
-    var phone = $('input[placeholder="Telephone (e.g 0932456783)"]').val();
+    var apartment = $('#apartment').val();
+    var country = $('#country').val();
+    var city = $('#city').val();
+    var zipcode = $('#zipcode').val();
+    var area_code = $('#area_code').val();
+    var phone = $('#phone').val();
+    var button = $('#save').val();
 
     var error = 'None';
 
-    if(firstName.trim() === 'test') return error;
+    if (fname.trim() === 'test') return error;
 
-
-    if (firstName.trim() === '' || !/^[a-zA-Z\s]+$/.test(firstName)) {
-        error = 'PLEASE ENTER A VALID FIRST NAME.';
+    if (fname.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(fname)) {
+        error = 'Please enter a valid first name.';
         return error;
     }
 
-    if (lastName.trim() === '' || !/^[a-zA-Z\s]+$/.test(lastName)) {
-        error = 'PLEASE ENTER A VALID LAST NAME.';
+    if (lname.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(lname)) {
+        error = 'Please enter a valid last name.';
         return error;
     }
 
-    if (address.trim() === '' || !/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\s,#-./]+$/.test(address)) {
-        error = 'PLEASE ENTER A VALID ADDRESS.';
-        return error;
-    }
-    
-    if (apartment.trim() !== '' && !/^[a-zA-Z0-9\s,#-]+$/.test(apartment)) {
-        error = 'PLEASE ENTER A VALID APARTMENT/SUITE NUMBER.';
+    if (address.trim() === '' || !/^(?=.*[a-zA-ZÀ-ỹ])(?=.*\d)[a-zA-ZÀ-ỹ0-9\s,#-./]+$/.test(address)) {
+        error = 'Please enter a valid address.';
         return error;
     }
 
-    if (country.trim() === '' || !/^[a-zA-Z\s]+$/.test(country)) {
-        error = 'PLEASE ENTER A VALID COUNTRY.';
+    if (apartment.trim() !== '' && !/^[a-zA-ZÀ-ỹ0-9\s,#-]+$/.test(apartment)) {
+        error = 'Please enter a valid appartment/suite number.';
         return error;
     }
 
-    if (city.trim() === '' || !/^[a-zA-Z\s]+$/.test(city)) {
-        error = 'PLEASE ENTER A VALID CITY.';
+    if (country.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(country)) {
+        error = 'Please enter a valid country.';
+        return error;
+    }
+
+    if (city.trim() === '' || !/^[a-zA-ZÀ-ỹ\s]+$/.test(city)) {
+        error = 'Please enter a valid city.';
         return error;
     }
 
     if (zipcode.trim() === '' || !/^\d{5}(?:[-\s]\d{4})?$/.test(zipcode)) {
-        error = 'PLEASE ENTER A VALID ZIP CODE.';
+        error = 'Please enter a valid zip code.';
         return error;
     }
 
-    if (areaCode.trim() === '' || !/^\+?\d{1,2}$/.test(areaCode)) {
-        error = 'PLEASE ENTER A VALID AREA CODE.';
+    if (area_code.trim() === '' || !/^\+?\d{1,2}$/.test(area_code)) {
+        error = 'Please enter a valid area code.';
         return error;
     }
 
     if (phone.trim() === '' || !/^\d{6,15}$/.test(phone)) {
-        error = 'PLEASE ENTER A VALID TELEPHONE NUMBER.';
+        error = 'Please enter a valid telephone number.';
         return error;
     }
 
@@ -458,6 +458,9 @@ function getFormData() {
         phone: $('#phone').val().toString()
     };
   }
+
+var testData = getFormData();
+console.log(testData);
 
 $(window).on('beforeunload', function() {
     if ($('#save-contact').is(':checked') && infoCheck() == 'None') {

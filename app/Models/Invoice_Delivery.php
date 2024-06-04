@@ -31,6 +31,7 @@ class Invoice_Delivery
                                     VALUES ({$new_invoice_id}, {$item->Product_ID}, '{$item->Name}', {$item->Quantity}, {$item->Price}, '{$item->Size}')";
             $db->query($cart_details_query);
         }
+        $cart->clear();
         return $new_invoice_id;
     }
 

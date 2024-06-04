@@ -180,7 +180,7 @@ class CheckoutController extends BaseController
         $invoice = new Invoice_Delivery();
         $invoice->create_delivery($invoice_id, $firstName, $lastName, $address, $apartment, $country, $zipcode, $phone, $ship, $city);
         return $this->response->setJSON([
-            'url' => 'http://localhost/pepicase/public/checkout/doneCash',
+            'url' => 'http://localhost/pepicase/public/checkout/done',
             'url_vnpay' => 'http://localhost/pepicase/public/checkout/pending',
         ]);
     }
