@@ -36,37 +36,46 @@
         <section class="color-patterns-section">
             <h3 class="color-patterns-title">Color & Patterns</h3>
             <div class="color-row">
-                <div id="1" class="color color-white">
+                <div class="color-item">
+                    <div id="1" class="color color-white">
                     <span class="check-mark">&#10003;</span>
+                    </div>
+                    <span class="color-label">White</span>
                 </div>
-                <div id="2" class="color color-clear">
+                <div class="color-item">
+                    <div id="2" class="color color-clear">
                     <span class="check-mark">&#10003;</span>
+                    </div>
+                    <span class="color-label">Clear</span>
                 </div>
-                <div id="3" class="color color-yellow">
+                <div class="color-item">
+                    <div id="3" class="color color-yellow">
                     <span class="check-mark">&#10003;</span>
+                    </div>
+                    <span class="color-label">Yellow</span>
                 </div>
-            </div>
-            <div class="color-label-row">
-                <span class="color-label">White</span>
-                <span class="color-label">Clear</span>
-                <span class="color-label">Yellow</span>
-            </div>
-            <div class="color-row">
-                <div id="4" class="color color-blue">
+                </div>
+                <div class="color-row">
+                <div class="color-item">
+                    <div id="4" class="color color-blue">
                     <span class="check-mark">&#10003;</span>
+                    </div>
+                    <span class="color-label">Blue</span>
                 </div>
-                <div id="5" class="color color-pink">
+                <div class="color-item">
+                    <div id="5" class="color color-pink">
                     <span class="check-mark">&#10003;</span>
+                    </div>
+                    <span class="color-label">Pink</span>
                 </div>
-                <div id="6" class="color color-multicolor">
+                <div class="color-item">
+                    <div id="6" class="color color-multicolor">
                     <span class="check-mark">&#10003;</span>
+                    </div>
+                    <span class="color-label">Multicolor</span>
                 </div>
-            </div>
-            <div class="color-label-row">
-                <span class="color-label">Blue</span>
-                <span class="color-label">Pink</span>
-                <span class="color-label">Multicolor</span>
-            </div>
+                </div>
+
         </section>
         <hr class="divider">
         <button class="apply-filters">APPLY</button>
@@ -75,17 +84,24 @@
         <?php foreach ($products as $product): ?>
             <article class="product-container">
                 <figure class="image-wrapper">
-                    <img loading="lazy" src="<?php echo ($product['Image']); ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
+                    <a href="<?= base_url('/product/'.$product['ID']); ?>">
+                        <img loading="lazy" src="<?php echo ($product['Image']); ?>" class="product-image" alt="<?php echo $product['Name']; ?>" />
+                    </a>
                 </figure>
                 <h2 class="product-name">
                     <a href="<?= base_url('/product/'.$product['ID']); ?>">
                         <?php echo $product['Name']; ?>
                     </a>
                 </h2>
-                <p class="product-price">$<?php echo $product['Price']; ?> USD</p>
+                <p class="product-price">
+                    <a href="<?= base_url('/product/'.$product['ID']); ?>">
+                        $<?php echo $product['Price']; ?> USD
+                    </a>
+                </p>
             </article>
         <?php endforeach; ?>
     </div>
+
 </div>
 <button id="load-more" class="load-more-btn">Load More Products</button>
 
@@ -130,15 +146,20 @@
                 productContainer.innerHTML = '';
                 data.products.forEach(product => {
                     let productHTML = `
-                        <article class="product-container">
-                            <figure class="image-wrapper">
+                    <article class="product-container">
+                        <figure class="image-wrapper">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">
                                 <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
-                            </figure>
-                            <h2 class="product-name">
-                                <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
-                            </h2>
-                            <p class="product-price">$${product.Price} USD</p>
-                        </article>`;
+                            </a>
+                        </figure>
+                        <h2 class="product-name">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
+                        </h2>
+                        <p class="product-price">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">$${product.Price} USD</a>
+                        </p>
+                    </article>`;
+
                     productContainer.innerHTML += productHTML;
                 });
             })
@@ -170,15 +191,19 @@
                 productContainer.innerHTML = '';
                 data.products.forEach(product => {
                     let productHTML = `
-                        <article class="product-container">
-                            <figure class="image-wrapper">
+                    <article class="product-container">
+                        <figure class="image-wrapper">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">
                                 <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
-                            </figure>
-                            <h2 class="product-name">
-                                <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
-                            </h2>
-                            <p class="product-price">$${product.Price} USD</p>
-                        </article>`;
+                            </a>
+                        </figure>
+                        <h2 class="product-name">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
+                        </h2>
+                        <p class="product-price">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">$${product.Price} USD</a>
+                        </p>
+                    </article>`;
                     productContainer.innerHTML += productHTML;
                 });
             })
@@ -202,15 +227,19 @@
                 let productContainer = document.querySelector('.product-list');
                 data.products.forEach(product => {
                     let productHTML = `
-                        <article class="product-container">
-                            <figure class="image-wrapper">
+                    <article class="product-container">
+                        <figure class="image-wrapper">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">
                                 <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
-                            </figure>
-                            <h2 class="product-name">
-                                <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
-                            </h2>
-                            <p class="product-price">$${product.Price} USD</p>
-                        </article>`;
+                            </a>
+                        </figure>
+                        <h2 class="product-name">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
+                        </h2>
+                        <p class="product-price">
+                            <a href="<?= base_url('/product/') ?>${product.ID}">$${product.Price} USD</a>
+                        </p>
+                    </article>`;
                     productContainer.innerHTML += productHTML;
                 });
                 // Ẩn nút "Load more" nếu số sản phẩm trả về ít hơn số sản phẩm cần tải
