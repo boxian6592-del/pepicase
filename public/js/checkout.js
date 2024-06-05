@@ -6,6 +6,7 @@ var ship_option = 0;
 var voucher_id;
 var protocol = 0;
 var vnpay_protocol = 0;
+var momo_protocol = 2;
 var voucher_id = 0;
 
 $(document).ready(function() {
@@ -369,7 +370,82 @@ $('#buy').click(function()
                     }
                 })
             }
-            if(protocol == 'Cash')
+            if (protocol == 'Momo') {
+                var usd_to_vnd = total*25400;
+                $.post({
+                    url: "http://localhost/pepicase/public/checkout/momo",
+                    data: {
+                        amount: 10000,
+                    },
+                    dataType: 'json',
+                    success: function(response, status, xhr) {
+                        // Lấy giá trị của trường Location từ phản hồi
+                        if (response.payUrl) {
+                            console.log("day la payURL", response.payUrl); }
+                        var momo_url_api = response.payUrl
+                        console.log("day la location", momo_url_api);
+                       
+                        // thêm
+                        $.post({
+                            url: "http://localhost/pepicase/public/checkout/generate_invoice",
+                            data: {
+                                Total_Price: total_price,
+                                Actual_Price: total,
+                                Voucher_ID: voucher_id,
+                                user: user,
+                                Note: note,
+                                Method: protocol,
+                                Method_ID: 1,
+                            },
+                            dataType: 'json',
+                            success: function(response) {
+                                var new_invoice_id = response.new_invoice_id;
+            
+                                $.post({
+                                    url: "http://localhost/pepicase/public/checkout/create_delivery",
+                                    data: {
+                                        Invoice_ID: new_invoice_id,
+                                        firstName: $('#fname').val().toString(),
+                                        lastName: $('#lname').val().toString(),
+                                        Address: $('#address').val().toString(),
+                                        Apartment: $('input[placeholder="Apartment, suite, etc (optional)"]').val().toString(),
+                                        Country: $('input[placeholder="Country"]').val().toString(),
+                                        Zipcode: $('input[placeholder="Zipcode"]').val().toString(),
+                                        Phone: $('input[placeholder="Area Code (e.g +84)"]').val().toString() + ' ' + $('input[placeholder="Telephone (e.g 0932456783)"]').val().toString(),
+                                        Ship: ship_option,
+                                    },
+                                    dataType: 'json',
+                                    success: function(response) {
+                                        window.location.href = momo_url_api;
+                                    },
+                                    error: function(xhr, status, error) {
+                                        var errorMessage;
+                                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                                            errorMessage = xhr.responseJSON.message;
+                                        } else {
+                                            errorMessage = xhr.statusText || error;
+                                        }
+                                        console.error("Error creating invoice / delivery", errorMessage);
+                                    }
+                                });
+                            },
+                            error: function(xhr, status, error) {
+                                var errorMessage;
+                                if (xhr.responseJSON && xhr.responseJSON.message) {
+                                    errorMessage = xhr.responseJSON.message;
+                                } else {
+                                    errorMessage = xhr.statusText || error;
+                                }
+                                console.error("Error", errorMessage);
+                            }
+                        });
+                    }
+                    
+                });
+            }
+            
+
+    if(protocol == 'Cash')
             {
                 $.post({
                     url: "http://localhost/pepicase/public/checkout/generate_invoice",
