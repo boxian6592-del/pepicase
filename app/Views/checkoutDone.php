@@ -15,7 +15,7 @@
         </h1>
         <h2 style ="font-size: 50px">
             <?php 
-                if($protocol == 'cash') echo 'A consultant will call you to further confirm the delivery information!'; 
+                if($protocol == 'cash') echo 'A consultant will call you to further <br> confirm the delivery information!'; 
                 if($protocol == 'vnpay' && isset($result)) 
                 {
                     if($result !== 0) echo 'Please try checking out again.';

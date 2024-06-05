@@ -287,7 +287,7 @@ $('#post_comment').click(function()
           },
           success: function(response) {
             console.log(response);
-            printFeedback_Top('Anonymous',current_stars, $('#review_content').val().toString(),'Just now');
+            printFeedback_Top('You!',current_stars, $('#review_content').val().toString(),'Just now');
             current_stars = 0;
             $('#review_content').val() = '';
           },
