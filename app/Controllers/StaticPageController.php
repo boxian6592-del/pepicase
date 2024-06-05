@@ -6,6 +6,7 @@ use App\Models\User;
 
 class StaticPageController extends BaseController
 {
+
     public function Policy(): string
     {
         return view('policy');
@@ -25,13 +26,32 @@ class StaticPageController extends BaseController
     {
         $curr_session = new CustomSession(null);
         if ($curr_session->isSessionSet()) {
-            $userModel = new User(); //Chưa thấy hàm lấy Id của Current User theo session_id
-            $purchases = $userModel->getPurchases($userModel->id);
-            return view('purchases', $purchases);
+            $userModel = new User();
+            $purchases = $userModel->getPurchases($curr_session->get_id());
+            if ($purchases == null) {
+                $purchases = [];
+                return view('purchases', ['purchases' => $purchases]);
+            }
+            return view('purchases', ['purchases' => $purchases]);
         }
         else {
             return view('login');
         }
     }
+
+    public function DeletePurchase($invoiceId) {
+        $curr_session = new CustomSession(null);
+        if ($curr_session->isSessionSet()) {
+            $userModel = new User();
+            $userModel->deletePurchase($invoiceId);
+                $purchases = $userModel->getPurchases($curr_session->get_id());
+            if ($purchases == null) {
+                $purchases = [];
+            }
+            
+            return view('purchases', ['purchases' => $purchases]);
+        }
+    }
+    
 }
 

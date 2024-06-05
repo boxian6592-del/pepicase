@@ -6,7 +6,7 @@ use App\Models\CustomSession;
 use App\Models\User;
 use Google\Service\Oauth2 as Google_Service_Oauth2;
 use Facebook\Facebook as Facebook;
-
+ 
 class LoginController extends BaseController
 {
     private $userModel = null;
@@ -15,7 +15,6 @@ class LoginController extends BaseController
     private $googleClient = null;
     function __construct()
     {
-
         if ($this->facebook === null) {
             require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
             $this->facebook = new \Facebook\Facebook([
@@ -68,13 +67,13 @@ class LoginController extends BaseController
             return view('login', $data);
         }
     }
-/*
+
     public function logout()
     {
         $currentSession = new CustomSession(null);
         $currentSession->delete_session_cookie();
         return redirect()->to('/');
-    } */
+    }  
 
 
     public function index()
@@ -121,7 +120,6 @@ class LoginController extends BaseController
 	{
 		if($this->request->getVar('state')){
 			$this->fb_helper->getPersistentDataHandler()->set('state', $this->request->getVar('state'));
-
 		}
 
 		if($this->request->getVar('code')){
@@ -151,6 +149,7 @@ class LoginController extends BaseController
 		}
 		return redirect()->to(base_url().'/profile');
 	}
+    /*
 
     public function logout()
 	{
@@ -162,7 +161,7 @@ class LoginController extends BaseController
 			session()->setFlashData('error', 'Failed to Logout, Please Try again...');
 			return redirect()->to(base_url());
 		}
-	}
+	} */
 
     public function loginWithGoogle()
     {

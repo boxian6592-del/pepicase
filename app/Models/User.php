@@ -99,13 +99,15 @@ class User extends Model
     public function getPurchases($id) {
         $db = Database::connect();
         $sql = "
-        SELECT order_date, invoice.id, product_id, name_product, price, quantity
+        SELECT order_date, invoice.id, product_id, name_product, invoice_details.price, image, quantity
         FROM invoice_details
         INNER JOIN invoice ON invoice_details.invoice_id = invoice.id
-        WHERE User_ID = ?
+        INNER JOIN product ON product.id = invoice_details.product_id
+        WHERE user_id = ?
     ";
     $result = $db->query($sql, [$id])->getResultArray();
-    if (empty($result)) return false;
+    //echo print_r($result);
+    if (empty($result)) return null;
     return $result;
     }
 
@@ -115,17 +117,18 @@ class User extends Model
 	function updateUserData($userdata, $authid){ //cập nhật thông tin
         $db = Database::connect();
         $this->update(['oauth_id' => $authid], $userdata);
-        $result = $db->query("INSERT INTO user_info (Email, Password, oauth_id, Is_Admin) VALUES ('$mail', '$pass', '$oauth_id', 0);");
-        if ($result !== null)
-        {
-            $new_user = new User($mail, $pass, $oauth_id);
-            return $new_user->id;
-        }
-        else return 0;
-
 		//$this->db->table("user")->where(['oauth_id'=>$authid])->update($userdata);
 	}
 	function insertUserData($userdata){ //thêm thông tin
         $this->insert($userdata);
 	}
+
+    function deletePurchases($invoiceId) {
+        echo print_r($invoiceId); die;
+        $db = Database::connect();
+        $sql = "DELETE FROM invoice_details WHERE invoice_id = ?";
+        $db->query($sql, [$invoiceId]);
+        $sql = "DELETE FROM invoice WHERE id = ?";
+        $db->query($sql, [$invoiceId]);
+    }
 }
