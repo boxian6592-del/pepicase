@@ -14,6 +14,8 @@
                 <img src="/pepicase/public/pics/user.svg" alt="">
             </a>
             <a href="/pepicase/public/logout" style="color: #838383; margin-left: 6px; font-size: 20px; font-family: 'Lexend';">Log out</a>
+            <div id="delete" onclick="delete_account()" style="text-decoration: underline;color: #838383; margin-left: 6px; margin-top: 10px; font-size: 20px; font-family: 'Lexend';">Delete account</div>
+            <div id="delete_alert" style="color: red; margin-left: 6px; font-size: 20px; font-family: 'Lexend';"></div>
         </div>
     </div>
 

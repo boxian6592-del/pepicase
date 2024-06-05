@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\CustomSession;
 use App\Models\User;
+use App\Models\Cart;
 
 class StaticPageController extends BaseController
 {
@@ -76,6 +77,18 @@ class StaticPageController extends BaseController
         if($curr_session->isSessionSet())
         return view('await_payment');
         else return redirect() -> to ('/');
+    }
+
+    public function delete_user()
+    {
+        $id = $this->request->getPost('user_id');
+        $cart = new Cart($id);
+        $cart->clear();
+        $user = new User();
+        $user->clear($id);
+        $curr_session = new CustomSession();
+        $curr_session->delete_session_cookie();
+        return 'http://localhost/pepicase/public';
     }
 }
 

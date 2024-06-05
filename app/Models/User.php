@@ -202,4 +202,13 @@ class User extends Model
             return false;
         }
     }
+
+    public function clear($id)
+    {
+        $db = Database::connect();
+        $clear_info = "DELETE FROM user_info WHERE User_ID = '{$id}'";
+        $db->query($clear_info);
+        $clear_user = "DELETE FROM user WHERE ID = '{$id}'";
+        $db->query($clear_user);
+    }
 }

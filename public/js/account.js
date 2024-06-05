@@ -1,4 +1,6 @@
 var info_found = (info!==null).toString();
+var delete_count = 0;
+
 
 $(document).ready(function() 
 {
@@ -131,3 +133,31 @@ $('#save').click(function() {
         }
     else $('#inform').css('color','red').text(error);
 })
+
+function delete_account()
+{
+    if(delete_count == 0)
+        {
+            delete_count++;
+            $('#delete_alert').text('Are you sure? No going back...');
+            $('#delete').text('Yes...')
+        }
+    else if(delete_count == 1)
+        {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/pepicase/public/user/delete_account",
+                data: {
+                    user_id: user,
+                },
+                success: function(response) {
+                    window.location.href = response;       
+                },
+                error: function()
+                {
+                    $('#delete_alert').text('An error has occurred.');
+                }
+              });
+
+        }
+}

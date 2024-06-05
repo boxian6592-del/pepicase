@@ -74,4 +74,5 @@ $routes->post('/user/cart','CartController::process_cart_edit');
 $routes->get('/user','StaticPageController::account');
 $routes->post('/user/update','StaticPageController::account_info_update');
 $routes->get('/user/changePassword/pending','ResetPasswordController::check_and_send_user');
+$routes->post('/user/delete_account','StaticPageController::delete_user');
 //quản lý tài khoản
