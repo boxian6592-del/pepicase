@@ -97,4 +97,17 @@ class CustomSession
         $session = \Config\Services::session();
         return $session->get($field);
     }
+
+    public function set_previous_url($redirectUrl)
+    {
+        $session = \Config\Services::session();
+        $session->set('redirect_url', $redirectUrl);
+    }
+
+    public function get_previous_url()
+    {
+        $session = \Config\Services::session();
+        $url = $session->get('redirect_url');
+        return $url;
+    }
 }

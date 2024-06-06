@@ -18,7 +18,12 @@ class CartController extends BaseController
             if(empty($cart_items)) return view('emptycart');
             else return view('my_cart', ['cart_items' => json_encode($cart_items)]);
         }
-        else return redirect() -> to ('/login');
+        else
+        {
+            $returnUrl = 'http://localhost/pepicase/public/user/cart';
+            $curr_session->set_previous_url((string)$returnUrl);
+            return redirect() -> to ('/login');
+        } 
     }
 
     public function checkout(){

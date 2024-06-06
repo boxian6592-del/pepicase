@@ -1,7 +1,11 @@
-<?php include(APPPATH.'views/components/usual-links.php'); ?>
+<?php include(APPPATH.'views/components/usual-links.php'); 
+use App\Models\CustomSession;?>
 <link rel="stylesheet" href="/pepicase/public/css/login.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
+<?php 
+    $curr_session = new CustomSession();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +67,7 @@
     </div>
 
     <script>
+    var url = 'lmao';
     function validateEmail() {
         var email = document.getElementById('email').value;
         var emailError = document.getElementById('emailError');

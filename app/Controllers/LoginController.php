@@ -28,8 +28,10 @@ class LoginController extends BaseController
         if($this->validate($rules)) // nếu thỏa luật thì qua chốt 1
         {
             if ($user->id != null) { // nếu sau khởi tạo user->id khác null thì đích thị là user đó
-                new CustomSession($user->id);
-                return redirect() -> to('/');
+                $new_session = new CustomSession($user->id);
+                $result = $new_session->get_previous_url();
+                if($result == null) return redirect() -> to('/');
+                else return redirect() -> to ($result);
             }
             else // nếu không thì không phải, return view login với data tạm là họ đã sai 
             {
@@ -59,6 +61,12 @@ class LoginController extends BaseController
     {
         $curr_session = new CustomSession(null); // khởi tạo new CustomSession để chỉ chạy các function
         if ($curr_session->isSessionSet()) return redirect() -> to('/'); // nếu đã có session (tương đương đã login) thì redirect về trang chủ
-        else return view('login'); // nếu session chưa có => user chưa đăng nhập => cho vào trang
+        else 
+        {
+            $previousUrl = $this->request->getServer('HTTP_REFERER');
+            if (strpos($previousUrl, '/pepicase/public/product/') === 0)
+                $curr_session->set_previous_url((string)$previousUrl);
+            return view('login'); // nếu session chưa có => user chưa đăng nhập => cho vào trang
+        }
     }
 }
