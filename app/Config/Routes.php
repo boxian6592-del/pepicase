@@ -57,8 +57,11 @@ $routes->get('/checkout','CheckoutController::index');
 $routes->post('/checkout/check_discount','CheckoutController::check_discount');
 
 $routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
+$routes->post('/checkout/momo','CheckoutController::momo_generate');
+//$routes->get('checkout/momo_return', 'CheckoutController::momo_return');
 $routes->get('/checkout/pending','StaticPageController::await_payment');
 $routes->get('/checkout/vnpay_return','CheckoutController::vnpay_return');
+$routes->get('/checkout/momo_return','CheckoutController::momo_return');
 
 $routes->post('/checkout/generate_invoice','CheckoutController::generate_invoice');
 $routes->post('/checkout/create_delivery','CheckoutController::create_delivery');

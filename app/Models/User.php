@@ -143,14 +143,6 @@ class User extends Model
         $db->query($sql1);
 	}
 
-    function deletePurchases($invoiceId) {
-        $db = Database::connect();
-        $sql = "DELETE FROM invoice_details WHERE invoice_id = ?";
-        $db->query($sql, [$invoiceId]);
-        $sql = "DELETE FROM invoice WHERE id = ?";
-        $db->query($sql, [$invoiceId]);
-    }
-
 
     public function get_email($id)
     {
@@ -168,33 +160,16 @@ class User extends Model
         else return $wishlist_items;
     }
 
-
-    public function get_email($id)
-    {
+    function deletePurchases($invoiceId) {
         $db = Database::connect();
-        $result = $db->query("SELECT Email FROM user WHERE ID = '{$id}' ")->getRow();
-        return $result->Email;
-    }
-
-    public function fetch_wishlist($id)
-    {
-        $db = Database::connect();
-        $fetch_query = "SELECT Product_ID, Name, Price, Image from wishlist 
-        LEFT JOIN product on wishlist.Product_ID = product.ID WHERE User_ID = {$id};";
-        $wishlist_items = $db->query($fetch_query)->getResult();
-
-        if (empty($wishlist_items)) return [];
-        else return $wishlist_items;
-    }
+        $sql = "DELETE FROM invoice_details WHERE invoice_id = ?";
+        $db->query($sql, [$invoiceId]);
+        $sql = "DELETE FROM invoice WHERE id = ?";
+        $db->query($sql, [$invoiceId]);
+}
 
 
-function deletePurchases($invoiceId) {
-            $db = Database::connect();
-            $sql = "DELETE FROM invoice_details WHERE invoice_id = ?";
-            $db->query($sql, [$invoiceId]);
-            $sql = "DELETE FROM invoice WHERE id = ?";
-            $db->query($sql, [$invoiceId]);
-        }
+
 
 public function add_comment($id ,$product_id, $comment, $stars)
     {
@@ -228,6 +203,15 @@ public function clear($id)
         $db->query($clear_info);
         $clear_user = "DELETE FROM user WHERE ID = '{$id}'";
         $db->query($clear_user);
+    }
+
+    public function get_info($id)
+    {
+        $db = Database::connect();
+        $sql = "SELECT * FROM user_info WHERE User_ID = {$id}";
+        $result = $db->query($sql)->getResult();
+        if(!empty($result)) return $result;
+        else return false;
     }
 
 

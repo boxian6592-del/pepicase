@@ -35,6 +35,8 @@ class Invoice_Delivery
         return $new_invoice_id;
     }
 
+
+
     function create_delivery($invoice_id, $firstName, $lastName, $address, $apartment, $country, $zipcode, $phone, $ship, $city)
     {
         $db = Database::connect();
@@ -75,4 +77,46 @@ class Invoice_Delivery
         if(!empty($result)) return true;
         else return false;
     }
+
+    function check_api_payment_momo($method_id)
+    {
+        $curr_session  = new CustomSession(null);
+        $user_id = $curr_session->get_id();
+        $db = Database::connect();
+        $query = "SELECT * FROM invoice WHERE Method_ID = '{$method_id}' and User_ID = '{$user_id}'";
+        $result = $db->query($query);
+        if(!empty($result)) return true;
+        else return false;
+    }
+
+    function confirm_api_payment_momo($method_id)
+    {
+        $curr_session  = new CustomSession(null);
+        $user_id = $curr_session->get_id();
+        $db = Database::connect(); //lấy user id
+        $query1 = "UPDATE invoice SET Method_ID = {$method_id} WHERE Method_ID = '1' and User_ID = '{$user_id}' ";
+        $db->query($query1);
+        $query2 = "UPDATE invoice SET Status = 1 WHERE Method_ID = '{$method_id}'";
+        $db->query($query2);
+    }
+
+    function cancel_api_payment_momo($method_id)
+    {
+        $curr_session  = new CustomSession(null);
+        $user_id = $curr_session->get_id();
+        $db = Database::connect();
+        $query = "SELECT ID, Voucher_ID FROM invoice WHERE Method_ID = '{$method_id}' and User_ID = '{$user_id}'";
+        $row = $db->query($query)->getResult();
+        $invoice_id = $row[0]->ID;
+        $voucher_id = $row[0]->Voucher_ID;
+        $delivery_deletion = "DELETE FROM delivery WHERE Invoice_ID = '{$invoice_id}'";
+        $db->query($delivery_deletion);
+        $invoice_details_deletion = "DELETE FROM invoice_details WHERE Invoice_ID = '{$invoice_id}'";
+        $db->query($invoice_details_deletion);
+        $invoice_deletion = "DELETE FROM invoice WHERE ID = '{$invoice_id}'";
+        $db->query($invoice_deletion);
+        $voucher_restoration = "UPDATE voucher SET Current_Usage = Current_Usage - 1 WHERE ID = '{$voucher_id}'";
+        $db->query($voucher_restoration);
+    }
+
 }

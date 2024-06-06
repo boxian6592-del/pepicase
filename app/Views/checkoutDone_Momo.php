@@ -17,23 +17,19 @@
                     else if($result == 1) echo 'Transaction via Momo interrupted!';
                     else echo 'An error has occured to the Momo transaction!';
                 }
+                
+
                 ;
             ?>
         </h1>
         <h2 style ="font-size: 50px">
             <?php 
-                if($protocol == 'cash') echo 'A consultant will call you to further <br> confirm the delivery information!'; 
+                if($protocol == 'cash') echo 'A consultant will call you to further confirm the delivery information!'; 
                 if($protocol == 'vnpay' && isset($result)) 
                 {
                     if($result !== 0) echo 'Please try checking out again.';
                     else echo 'A consultant will call you to further <br> confirm the deliver information!';
-                }
-                if($protocol == 'momo')
-                {
-                    if($result == 0) echo 'A consultant will call you to further <br> confirm the deliver information!';
-                    else echo 'Please try checking out again.';
-                }
-                ;
+                };
             ?>
         </h2>
         <div class="lexend d-flex flex-row justify-content-center align-items-center">
