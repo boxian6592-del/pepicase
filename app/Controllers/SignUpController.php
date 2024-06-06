@@ -60,7 +60,7 @@ class SignUpController extends BaseController
                 $message = [
                     "error"=> "User already exist!",
                 ];
-                return view('signup_new', $message); // chạy message "Đã tồn tại user"
+                return view('signup', $message); // chạy message "Đã tồn tại user"
             }
             else // nếu user chưa tồn tại, thỏa các đkiện và chạy mail xác nhận
             {
