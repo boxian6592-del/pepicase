@@ -73,7 +73,9 @@ $(document).ready(function() {
                     $("#combotext").css("color", "green");
                     $("#combotext").text("You have added " + quantity + " items to your cart successfully!");
                     amount += parseInt(quantity);
+                    indiv_amount += parseInt(quantity);
                     $('#cart_amount').text(amount);
+                    $('#indiv_amount').text('Currently in cart: ' + indiv_amount);
                 },
                 error: function(xhr, status, error) {
                     // Handle the error response
