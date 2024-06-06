@@ -153,10 +153,10 @@
                         <img src="/pepicase/public/product-pics/pochacco/1.svg" style = "width: 150px; height: 300px;">
                     </div>
                     <div align="center" style ="font-size:20px; font-weight: 400;">
-                        Pompompurin_Pudding iPhone Case [111111]
+                        Pochacco_Banana <br> iPhone Case 
                     </div>
                     <div align="center" style ="font-size:20px; font-weight: 200;">
-                        $9.99 USD
+                        $11.99 USD
                     </div>
                 </a>
             </div>
@@ -167,10 +167,10 @@
                         <img src="/pepicase/public/product-pics/pochacco/2.svg" style = "width: 150px; height: 300px;">
                     </div>
                     <div align="center" style ="font-size:20px; font-weight: 400;">
-                        Pompompurin_Pudding iPhone Case [111111]
+                        Pochacco_Carrot <br> iPhone Case
                     </div>
                     <div align="center" style ="font-size:20px; font-weight: 200;">
-                        $9.99 USD
+                        $6.99 USD
                     </div>
                 </a>
             </div>
@@ -181,10 +181,10 @@
                         <img src="/pepicase/public/product-pics/pochacco/3.svg" style = "width: 150px; height: 300px;">
                     </div>
                     <div align="center" style ="font-size:20px; font-weight: 400;">
-                        Pompompurin_Pudding iPhone Case [111111]
+                        Pochacco_Cat <br> iPhone Case
                     </div>
                     <div align="center" style ="font-size:20px; font-weight: 200;">
-                        $9.99 USD
+                        $5.99 USD
                     </div>
                 </a>
             </div>
