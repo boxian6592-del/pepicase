@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
+<<<<<<< HEAD
 -- Thời gian đã tạo: Th5 18, 2024 lúc 05:07 PM
+=======
+-- Thời gian đã tạo: Th6 05, 2024 lúc 09:53 AM
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -41,11 +45,19 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`ID`, `User_ID`, `Total_Amount`, `Total_Price`) VALUES
+<<<<<<< HEAD
 (1, 13, 2, 19.98),
 (2, 9, 1, 9.99),
 (3, 10, 3, 29.97),
 (4, 16, 1, 9.99),
 (5, 9, 1, 9.99);
+=======
+(1, 13, 3, 29.97),
+(2, 9, 2, 19.98),
+(3, 10, 3, 29.97),
+(4, 16, 2, 19.98),
+(5, 15, 1, 9.99);
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 -- --------------------------------------------------------
 
@@ -55,11 +67,19 @@ INSERT INTO `cart` (`ID`, `User_ID`, `Total_Amount`, `Total_Price`) VALUES
 
 CREATE TABLE `cart_details` (
   `ID` int(20) NOT NULL,
+<<<<<<< HEAD
   `Cart_ID` int(20) NOT NULL,
   `Product_ID` int(20) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Note` text DEFAULT NULL,
   `Quantiy` int(5) NOT NULL,
+=======
+  `User_ID` int(20) NOT NULL,
+  `Product_ID` int(20) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Size` text DEFAULT NULL,
+  `Quantity` int(5) NOT NULL,
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
   `Price` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -67,6 +87,7 @@ CREATE TABLE `cart_details` (
 -- Đang đổ dữ liệu cho bảng `cart_details`
 --
 
+<<<<<<< HEAD
 INSERT INTO `cart_details` (`ID`, `Cart_ID`, `Product_ID`, `Name`, `Note`, `Quantiy`, `Price`) VALUES
 (1, 1, 1, 'Cinnamonroll', NULL, 1, 9.99),
 (2, 1, 16, 'My Melody', NULL, 1, 9.99),
@@ -76,6 +97,77 @@ INSERT INTO `cart_details` (`ID`, `Cart_ID`, `Product_ID`, `Name`, `Note`, `Quan
 (6, 3, 7, 'Cinnamonroll', NULL, 1, 9.99),
 (7, 4, 1, 'Cinnamonroll', NULL, 1, 9.99),
 (8, 5, 18, 'My Melody', NULL, 1, 9.99);
+=======
+INSERT INTO `cart_details` (`ID`, `User_ID`, `Product_ID`, `Name`, `Size`, `Quantity`, `Price`) VALUES
+(1, 10, 1, 'Cinnamonroll', 'iPhone 12', 1, 9.99),
+(2, 13, 16, 'My Melody', 'iPhone 11', 1, 9.99),
+(3, 13, 23, 'Pochacco', 'iPhone 13 Pro', 1, 9.99),
+(4, 10, 9, 'Pompompurin', 'iPhone 12 Pro Max', 1, 9.99),
+(5, 16, 1, 'Cinnamonroll', 'iPhone 14', 2, 9.99),
+(6, 10, 7, 'Cinnamonroll', 'iPhone 14 Pro Max', 1, 9.99),
+(7, 15, 1, 'Cinnamonroll', 'iPhone 15', 1, 9.99),
+(8, 9, 18, 'My Melody', 'iPhone 15 Pro', 2, 9.99),
+(9, 13, 17, 'My-melody', 'iPhone 11', 1, 9.99);
+
+--
+-- Bẫy `cart_details`
+--
+DELIMITER $$
+CREATE TRIGGER `after_cart_details_delete` AFTER DELETE ON `cart_details` FOR EACH ROW BEGIN
+    DECLARE total_quantity INT;
+    DECLARE total_price FLOAT;
+
+    -- Tính tổng số lượng và tổng giá trị cho người dùng
+    SELECT SUM(Quantity), SUM(Quantity * Price) INTO total_quantity, total_price
+    FROM cart_details
+    WHERE User_ID = OLD.User_ID;
+
+    -- Cập nhật bảng cart
+    UPDATE cart
+    SET Total_Amount = total_quantity, Total_Price = total_price
+    WHERE User_ID = OLD.User_ID;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_cart_details_insert` AFTER INSERT ON `cart_details` FOR EACH ROW BEGIN
+    DECLARE total_quantity INT;
+    DECLARE total_price FLOAT;
+
+    -- Tính tổng số lượng và tổng giá trị cho người dùng
+    SELECT SUM(Quantity), SUM(Quantity * Price) INTO total_quantity, total_price
+    FROM cart_details
+    WHERE User_ID = NEW.User_ID;
+
+    -- Cập nhật bảng cart
+    UPDATE cart
+    SET Total_Amount = total_quantity, Total_Price = total_price
+    WHERE User_ID = NEW.User_ID;
+    
+    -- Cập nhật tên và giá
+
+    
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_cart_details_update` AFTER UPDATE ON `cart_details` FOR EACH ROW BEGIN
+    DECLARE total_quantity INT;
+    DECLARE total_price FLOAT;
+
+    -- Tính tổng số lượng và tổng giá trị cho người dùng
+    SELECT SUM(Quantity), SUM(Quantity * Price) INTO total_quantity, total_price
+    FROM cart_details
+    WHERE User_ID = NEW.User_ID;
+
+    -- Cập nhật bảng cart
+    UPDATE cart
+    SET Total_Amount = total_quantity, Total_Price = total_price
+    WHERE User_ID = NEW.User_ID;
+END
+$$
+DELIMITER ;
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 -- --------------------------------------------------------
 
@@ -125,6 +217,40 @@ INSERT INTO `color` (`ID`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+-- Cấu trúc bảng cho bảng `delivery`
+--
+
+CREATE TABLE `delivery` (
+  `Invoice_ID` int(11) NOT NULL,
+  `First_Name` varchar(50) NOT NULL,
+  `Last_Name` varchar(50) NOT NULL,
+  `Address` varchar(50) NOT NULL,
+  `Apartment` varchar(50) DEFAULT NULL,
+  `Country` varchar(50) NOT NULL,
+  `City` varchar(50) NOT NULL,
+  `Zipcode` text DEFAULT NULL,
+  `Phone` text NOT NULL,
+  `Shipping_Method` varchar(50) NOT NULL,
+  `Status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `delivery`
+--
+
+INSERT INTO `delivery` (`Invoice_ID`, `First_Name`, `Last_Name`, `Address`, `Apartment`, `Country`, `City`, `Zipcode`, `Phone`, `Shipping_Method`, `Status`) VALUES
+(1, 'Ngọc ', 'Nam', 'Khu phố 6', NULL, 'Việt Nam', 'TP Pleiku, Gia Lai', '600000', '0954673824', 'Express', 1),
+(2, 'Ngọc', 'Nữ', 'Khu phố 5', NULL, 'Việt Nam', 'Thanh Hóa', '440000', '0946374633', 'Standard', 0),
+(3, 'Minh ', 'Sang', '105 đường Tân Lập', NULL, 'Việt Nam', 'Nghệ An', '460000', '0947382913', 'Standard', 1),
+(4, 'Hạnh', 'Nguyễn', '123 đường Võ Nguyên Giáp', NULL, 'Việt Nam', 'Kon Tum', '580000', '0943849302', 'Express', 2),
+(5, 'Quang', 'Đạt', 'Khu phố 6, phường Linh Trung', 'KTX khu B', 'Việt Nam', 'TP HCM', '700000', '0934591749', 'Express', 1);
+
+-- --------------------------------------------------------
+
+--
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 -- Cấu trúc bảng cho bảng `feedback`
 --
 
@@ -163,6 +289,7 @@ CREATE TABLE `invoice` (
   `ID` int(20) NOT NULL,
   `User_ID` int(20) NOT NULL,
   `Voucher_ID` int(20) DEFAULT NULL,
+<<<<<<< HEAD
   `First_Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
   `Order_date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -174,6 +301,14 @@ CREATE TABLE `invoice` (
   `Total_Price` float(10,2) NOT NULL,
   `Actual_Price` float(10,2) NOT NULL,
   `Created_At` timestamp NOT NULL DEFAULT current_timestamp(),
+=======
+  `Method` varchar(20) NOT NULL,
+  `Method_ID` int(11) DEFAULT NULL,
+  `Order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Note` varchar(100) DEFAULT NULL,
+  `Total_Price` float(10,2) NOT NULL,
+  `Actual_Price` float(10,2) NOT NULL,
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
   `Status` tinyint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -181,12 +316,22 @@ CREATE TABLE `invoice` (
 -- Đang đổ dữ liệu cho bảng `invoice`
 --
 
+<<<<<<< HEAD
 INSERT INTO `invoice` (`ID`, `User_ID`, `Voucher_ID`, `First_Name`, `Last_Name`, `Order_date`, `Phone`, `Email`, `Ship_address`, `Payment_method`, `Note`, `Total_Price`, `Actual_Price`, `Created_At`, `Status`) VALUES
 (1, 9, 1, 'Ngọc', 'Nam', '2024-05-09 17:03:36', '0954673824', 'ngocnam234@gmail.com', 'Gia Lai', 'Momo', NULL, 9.99, 7.99, '2024-05-09 17:03:36', 0),
 (2, 10, NULL, 'Ngọc', 'Nữ', '2024-05-09 17:03:36', '0946374633', 'ngocnu345@gmail.com', 'Thanh Hóa', 'Banking', NULL, 19.98, 19.98, '2024-05-09 17:03:36', 0),
 (3, 13, 2, 'Minh ', 'Sang', '2024-05-09 17:03:36', '0946374632', 'mínhang543@gmail.com', 'Nghệ An', 'Momo', NULL, 19.98, 17.98, '2024-05-09 17:03:36', 0),
 (4, 14, 3, 'Hạnh', 'Nguyễn', '2024-05-09 17:03:36', '0946736272', 'hanhnguyen123@gmail.com', 'Kon Tum', 'Ship cod', NULL, 29.97, 29.07, '2024-05-09 17:03:36', 0),
 (5, 16, 2, 'abc', 'abc', '2024-05-09 17:03:36', '09467362734', 'abc789@gmail.com', 'Hà Nội', 'Momo', NULL, 9.99, 8.99, '2024-05-09 17:03:36', 0);
+=======
+INSERT INTO `invoice` (`ID`, `User_ID`, `Voucher_ID`, `Method`, `Method_ID`, `Order_date`, `Note`, `Total_Price`, `Actual_Price`, `Status`) VALUES
+(1, 9, 1, 'Cash', NULL, '2024-05-09 17:03:36', NULL, 9.99, 7.99, 1),
+(2, 10, NULL, 'Cash', NULL, '2024-05-09 17:03:36', NULL, 19.98, 19.98, 0),
+(3, 13, 2, 'Cash', NULL, '2024-05-09 17:03:36', NULL, 19.98, 17.98, 1),
+(4, 14, 3, 'Cash', NULL, '2024-05-09 17:03:36', NULL, 29.97, 29.07, 0),
+(5, 16, 2, 'Cash', NULL, '2024-05-09 17:03:36', NULL, 9.99, 8.99, 1),
+(6, 12, 2, 'Cash', NULL, '2024-06-02 03:09:40', NULL, 120.00, 100.00, 1);
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 -- --------------------------------------------------------
 
@@ -199,6 +344,10 @@ CREATE TABLE `invoice_details` (
   `Invoice_ID` int(20) NOT NULL,
   `Product_ID` int(20) NOT NULL,
   `Name_Product` varchar(50) DEFAULT NULL,
+<<<<<<< HEAD
+=======
+  `Size` varchar(20) NOT NULL,
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
   `Quantity` int(5) NOT NULL,
   `Price` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -207,6 +356,7 @@ CREATE TABLE `invoice_details` (
 -- Đang đổ dữ liệu cho bảng `invoice_details`
 --
 
+<<<<<<< HEAD
 INSERT INTO `invoice_details` (`ID`, `Invoice_ID`, `Product_ID`, `Name_Product`, `Quantity`, `Price`) VALUES
 (1, 1, 6, 'Cinnamonroll', 1, 9.99),
 (2, 2, 16, 'My Melody', 1, 9.99),
@@ -217,6 +367,18 @@ INSERT INTO `invoice_details` (`ID`, `Invoice_ID`, `Product_ID`, `Name_Product`,
 (7, 4, 18, 'My Melody', 1, 9.99),
 (8, 4, 24, 'Pochacco_Cat', 1, 9.99),
 (10, 5, 25, 'Chick Iphone', 1, 9.99);
+=======
+INSERT INTO `invoice_details` (`ID`, `Invoice_ID`, `Product_ID`, `Name_Product`, `Size`, `Quantity`, `Price`) VALUES
+(1, 1, 6, 'Cinnamonroll', 'iPhone 11', 1, 9.99),
+(2, 2, 16, 'My Melody', 'iPhone 12', 1, 9.99),
+(3, 2, 26, 'Pochaco', 'iPhone 12 Pro Max', 1, 9.99),
+(4, 3, 2, 'Cinnamoroll', 'iPhone 11 Pro', 1, 9.99),
+(5, 3, 15, 'My Melody', 'iPhone 13', 1, 9.99),
+(6, 4, 3, 'Sandra Iphone', 'iPhone 14 Pro Max', 1, 9.99),
+(7, 4, 18, 'My Melody', 'iPhone 12 Mini', 1, 9.99),
+(8, 4, 24, 'Pochacco_Cat', 'iPhone 15 Pro', 1, 9.99),
+(10, 5, 25, 'Chick Iphone', 'iPhone 15 Pro Max', 1, 9.99);
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 -- --------------------------------------------------------
 
@@ -247,7 +409,11 @@ INSERT INTO `product` (`ID`, `Name`, `Price`, `Description`, `Image`, `QuantityI
 (1, 'Cinnamonroll_Ice cream Kawaii Iphone Case', 7.99, 'Đây là ốp lưng từ pepicase', '/pepicase/public/product-pics/cinnamonroll/1.svg', 1000, 1, 0, '2024-05-13 21:05:19', '2024-05-13 14:05:19', 6, 1),
 (2, 'Cinnamonroll_Kawaii Iphone Case', 9.99, 'Đây là ốp lưng từ pepicase', '/pepicase/public/product-pics/cinnamonroll/2.svg', 800, 1, 0, '2024-05-13 21:05:19', '2024-05-13 14:05:19', 4, 1),
 (3, 'Cinnamonroll_Sandra Iphone Case', 8.99, 'Đây là ốp lưng từ pepicase', '/pepicase/public/product-pics/cinnamonroll/3.svg', 1000, 1, 0, '2024-05-13 21:05:19', '2024-05-13 14:05:19', 6, 1),
+<<<<<<< HEAD
 (4, 'Cinnamonroll_Yummy Iphone Case', 6.99, 'Đây là ốp lưng từ pepicase', 'pepicase/public/product-pics/cinnamonroll/4.svg', 800, 1, 0, '2024-05-13 21:22:01', '2024-05-13 14:22:01', 2, 1),
+=======
+(4, 'Cinnamonroll_Yummy Iphone Case', 6.99, 'Đây là ốp lưng từ pepicase', '/pepicase/public/product-pics/cinnamonroll/4.svg', 800, 1, 0, '2024-05-31 17:45:04', '2024-05-31 10:45:04', 2, 1),
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 (5, 'Cinnamonroll_Biubiu case Iphone Case', 9.99, 'Đây là ốp lưng từ pepicase', '/pepicase/public/product-pics/cinnamonroll/5.svg', 800, 1, 0, '2024-05-13 21:22:01', '2024-05-13 14:22:01', 2, 1),
 (6, 'Cinnamonroll_Bubble Tea Iphone Case', 7.99, 'Đây là ốp lưng từ pepicase', '/pepicase/public/product-pics/cinnamonroll/6.svg', 750, 1, 0, '2024-05-13 21:22:01', '2024-05-13 14:22:01', 2, 1),
 (7, 'Cinnamonroll_Clear Case Iphone Case', 8.99, 'Đây là ốp lưng từ pepicase', '/pepicase/public/product-pics/cinnamonroll/7.svg', 980, 1, 0, '2024-05-13 21:22:01', '2024-05-13 14:22:01', 2, 1),
@@ -280,16 +446,27 @@ INSERT INTO `product` (`ID`, `Name`, `Price`, `Description`, `Image`, `QuantityI
 
 CREATE TABLE `user` (
   `ID` int(20) NOT NULL,
+<<<<<<< HEAD
   `Email` varchar(35) NOT NULL,
   `Password` varchar(20) NOT NULL,
   `Is_Admin` tinyint(1) NOT NULL,
   `Created_At` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+=======
+  `User_Name` varchar(50) DEFAULT NULL,
+  `Email` varchar(35) NOT NULL,
+  `Password` varchar(20) NOT NULL,
+  `Is_Admin` tinyint(1) NOT NULL,
+  `Created_At` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Google_ID` varchar(20) DEFAULT NULL,
+  `Facebook_ID` varchar(50) DEFAULT NULL
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
+<<<<<<< HEAD
 INSERT INTO `user` (`ID`, `Email`, `Password`, `Is_Admin`, `Created_At`) VALUES
 (1, 'datnguyen27@gmail.com', 'Aa123456789', 1, '2024-05-09 07:18:53'),
 (2, 'huy1234@gmail.com', 'Anh123456789', 1, '2024-05-10 03:37:48'),
@@ -309,6 +486,27 @@ INSERT INTO `user` (`ID`, `Email`, `Password`, `Is_Admin`, `Created_At`) VALUES
 (16, 'abc789@gmail.com', 'Abc123456789', 0, '2024-05-07 07:47:00'),
 (17, 'def678@gmail.com', 'Def123456', 0, '2024-05-07 07:47:00'),
 (18, 'nhom14@gmail.com', 'Nhom12345', 0, '2024-05-07 07:47:00');
+=======
+INSERT INTO `user` (`ID`, `User_Name`, `Email`, `Password`, `Is_Admin`, `Created_At`, `Google_ID`, `Facebook_ID`) VALUES
+(1, NULL, 'datnguyen27@gmail.com', 'Aa123456789', 1, '2024-05-09 07:18:53', NULL, NULL),
+(2, NULL, 'huy1234@gmail.com', 'Anh123456789', 1, '2024-05-10 03:37:48', NULL, NULL),
+(3, NULL, 'conghau1101@gmail.com', 'Hau123456789', 1, '2024-05-09 07:19:01', NULL, NULL),
+(4, NULL, 'xuanquynh298@gmail.com', 'Quynh12345', 1, '2024-05-09 07:19:04', NULL, NULL),
+(5, NULL, 'quocbao02@gmail.com', 'Baone12345', 1, '2024-05-10 03:36:11', NULL, NULL),
+(6, NULL, 'phamha123@gmail.com', 'Ha123456789', 1, '2024-05-10 03:36:16', NULL, NULL),
+(7, NULL, 'thuckhanh01@gmail.com', 'Khanh1234567', 1, '2024-05-10 03:36:30', NULL, NULL),
+(8, NULL, 'tuvu123@gmail.com', 'Tu0567890', 0, '2024-05-07 07:47:00', NULL, NULL),
+(9, NULL, 'ngocnam234@gmail.com', 'Nam78912345', 0, '2024-05-07 07:47:00', NULL, NULL),
+(10, NULL, 'ngocnu345@gmail.com', 'Nu2345678', 0, '2024-05-07 07:47:00', NULL, NULL),
+(11, NULL, 'minhluan456@gmail.com', 'Luan78912', 0, '2024-05-07 07:47:00', NULL, NULL),
+(12, NULL, 'duongtung789@gmail.com', 'Tung567890', 0, '2024-05-07 07:47:00', NULL, NULL),
+(13, NULL, 'minhsang543@gmail.com', 'Sang17890', 0, '2024-05-07 07:47:00', NULL, NULL),
+(14, NULL, 'hanhnguyen123@gmail.com', 'Hanh123456', 0, '2024-05-07 07:47:00', NULL, NULL),
+(15, NULL, 'hoanglong456@gmail.com', 'Long123456789', 0, '2024-05-07 07:47:00', NULL, NULL),
+(16, NULL, 'abc789@gmail.com', 'Abc123456789', 0, '2024-05-07 07:47:00', NULL, NULL),
+(17, NULL, 'def678@gmail.com', 'Def123456', 0, '2024-05-07 07:47:00', NULL, NULL),
+(18, NULL, 'nhom14@gmail.com', 'Nhom12345', 0, '2024-05-07 07:47:00', NULL, NULL);
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 -- --------------------------------------------------------
 
@@ -321,10 +519,20 @@ CREATE TABLE `user_info` (
   `User_ID` int(20) NOT NULL,
   `First_Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
+<<<<<<< HEAD
   `Email` varchar(50) NOT NULL,
   `Phone_Number` varchar(20) NOT NULL,
   `Birth` date NOT NULL,
   `Address` varchar(100) NOT NULL,
+=======
+  `Area_Code` varchar(5) NOT NULL,
+  `Phone` varchar(20) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Apartment` varchar(50) DEFAULT NULL,
+  `Country` varchar(20) NOT NULL,
+  `City` varchar(50) NOT NULL,
+  `Zipcode` varchar(20) NOT NULL,
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
   `Updated_At` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -332,6 +540,7 @@ CREATE TABLE `user_info` (
 -- Đang đổ dữ liệu cho bảng `user_info`
 --
 
+<<<<<<< HEAD
 INSERT INTO `user_info` (`ID`, `User_ID`, `First_Name`, `Last_Name`, `Email`, `Phone_Number`, `Birth`, `Address`, `Updated_At`) VALUES
 (1, 1, 'Dat', 'Nguyen', 'datnguyen27@gmail.com', '0345343343', '2000-05-10', 'TP Thủ Đức, TP HCM', '2024-05-09 07:45:25'),
 (2, 2, 'Huy', 'Nguyễn', 'huy1234@gmail.com', '0933433334', '2004-05-05', 'Tp Thủ Đức, HCM', '2024-05-09 07:45:25'),
@@ -351,6 +560,27 @@ INSERT INTO `user_info` (`ID`, `User_ID`, `First_Name`, `Last_Name`, `Email`, `P
 (16, 16, 'abc', 'Kiên', 'abc789@gmail.com', '0946376472', '2002-08-04', 'Nghệ An', '2024-05-10 02:12:52'),
 (17, 17, 'Xuân', 'Minh', 'def678@gmail.com', '0946378432', '2000-05-17', 'Bình Phước', '2024-05-10 02:14:43'),
 (18, 18, 'Hoa', 'Kim', 'nhom14@gmail.com', '0946736742', '2004-08-19', 'Hà Tĩnh', '2024-05-10 02:14:43');
+=======
+INSERT INTO `user_info` (`ID`, `User_ID`, `First_Name`, `Last_Name`, `Area_Code`, `Phone`, `Address`, `Apartment`, `Country`, `City`, `Zipcode`, `Updated_At`) VALUES
+(1, 1, 'Dat', 'Nguyen', '+84', '0345343343', 'đường Mạc Đĩnh Chi,phường 6', NULL, 'Việt Nam', 'Cần Thơ', '102345', '2024-05-09 07:45:25'),
+(2, 2, 'Huy', 'Nguyễn', '+84', '0933433334', 'đường số 8, phường Long Mỹ', NULL, 'Việt Nam', 'Đà Lạt', '344232', '2024-05-09 07:45:25'),
+(3, 3, 'Hậu', 'Nguyễn', '+84', '0943574678', 'đường số 10, phường Hà Tiên', NULL, 'Việt Nam', 'Long Xuyên', '346793', '2024-05-09 07:45:25'),
+(4, 4, 'Quỳnh', 'Xuân', '+84', '0943756479', 'đường Chu Văn An, phường Linh Trung', NULL, 'Việt Nam', 'Thủ Đức', '874523', '2024-05-09 07:45:25'),
+(5, 5, 'Bảo', 'Nguyễn', '+84', '0934526746', 'đường Lương Thế Vinh, phường Tân Lập', NULL, 'Việt Nam', 'Hồ Chí Minh', '536124', '2024-05-09 07:45:25'),
+(6, 6, 'Hà', 'Phạm', '+84', '0945574638', 'đường số 2, phường An Bình', NULL, 'Việt Nam', 'Cao Lãnh', '098361', '2024-05-09 07:45:25'),
+(7, 7, 'Khanh', 'Thục', '+84', '0946574893', 'đường Lê Duẩn,phường 11', NULL, 'Việt Nam', 'Hà Nội', '432589', '2024-05-09 07:45:25'),
+(8, 8, 'Vũ', 'Tú', '+84', '0456473895', 'đường Lê Thái Tổ, phường 5', NULL, 'Việt Nam', 'Đà Nẵng', '324622', '2024-05-09 07:45:25'),
+(9, 9, 'Nam', 'Ngọc', '+84', '094758493', 'đường Phạm Ngũ Lão, phường Linh Tây', NULL, 'Việt Nam', 'Quảng Ninh', '243455', '2024-05-09 07:45:25'),
+(10, 10, 'Nữ', 'Ngọc', '+84', '094758393', 'đường Điện Biên Phủ, phường 10', NULL, 'Việt Nam', 'Ngã Bảy', '980634', '2024-05-09 07:45:25'),
+(11, 11, 'Luân', 'Minh', '+84', '0946378432', 'Khu phố 2, phường Tân Hòa', NULL, 'Việt Nam', 'Biên Hòa', '978431', '2024-05-10 02:12:52'),
+(12, 12, 'Tùng', 'Dương', '+84', '09465376283', 'Đường số 8, phường Mĩ Thạnh', NULL, 'Việt Nam', 'Vũng Tàu', '324692', '2024-05-10 02:12:52'),
+(13, 13, 'Sang', 'Minh', '+84', '0946736743', 'Đường Mạc Đĩnh Chi, khu phố Tân Hòa', 'KTX khu B', 'Việt Nam', 'Thanh Hóa', '479332', '2024-05-10 02:12:52'),
+(14, 14, 'Hạnh', 'Nguyễn', '+84', '0564783749', 'Đường Đinh Tiên Hoàng, phường 5', NULL, 'Việt Nam', 'Hải Dương', '541245', '2024-05-10 02:12:52'),
+(15, 15, 'Long', 'Hoàng', '+84', '0984638821', 'Khu phố 3', NULL, 'Việt Nam', 'Phan Thiết', '763423', '2024-05-10 02:12:52'),
+(16, 16, 'abc', 'Kiên', '+84', '0946376472', 'Đường Võ Nguyên Giáp, phường Hà Nam', NULL, 'Việt Nam', 'Hà Tiên', '235234', '2024-05-10 02:12:52'),
+(17, 17, 'Xuân', 'Minh', '+84', '0946378432', 'Khu phố 3, phường 11', NULL, 'Việt Nam', 'Châu Đốc', '375473', '2024-05-10 02:14:43'),
+(18, 18, 'Hoa', 'Kim', '+84', '0946736742', 'Khu phố 6, phường 1', NULL, 'Việt Nam', 'Tây Ninh', '823346', '2024-05-10 02:14:43');
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 -- --------------------------------------------------------
 
@@ -377,11 +607,19 @@ CREATE TABLE `voucher` (
 --
 
 INSERT INTO `voucher` (`ID`, `Name`, `Discount_Type`, `Discount_Value`, `Max_Usage`, `Current_Usage`, `Start_Date`, `End_Date`, `Create_At`, `Updated_At`, `Deleted_At`) VALUES
+<<<<<<< HEAD
 (1, 'Voucher 20%', NULL, 0.20, 100, 4, '2024-05-09 16:26:30', '2024-06-13 21:26:30', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-14 21:26:30'),
 (2, 'Voucher 10%', NULL, 0.10, 200, 12, '2024-05-09 16:26:30', '2024-06-21 21:26:30', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-21 21:26:30'),
 (3, 'Voucher 5%', NULL, 0.05, 250, 10, '2024-05-09 16:26:30', '2024-06-13 21:28:13', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-14 21:28:13'),
 (4, 'Voucher 3%', NULL, 0.03, 300, 21, '2024-05-09 16:26:30', '2024-06-26 21:28:13', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-27 21:28:13'),
 (5, 'Voucher 8%', NULL, 0.08, 250, 10, '2024-05-09 16:26:30', '2024-05-31 21:28:13', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-02 21:28:13');
+=======
+(1, 'PEPI20', NULL, 0.20, 100, 4, '2024-05-09 16:26:30', '2024-06-13 21:26:30', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-14 21:26:30'),
+(2, 'PEPI10', NULL, 0.10, 200, 12, '2024-05-09 16:26:30', '2024-06-21 21:26:30', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-21 21:26:30'),
+(3, 'PEPI05', NULL, 0.05, 250, 10, '2024-05-09 16:26:30', '2024-06-13 21:28:13', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-14 21:28:13'),
+(4, 'PEPI03', NULL, 0.03, 300, 21, '2024-05-09 16:26:30', '2024-06-26 21:28:13', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-27 21:28:13'),
+(5, 'PEPI08', NULL, 0.08, 250, 10, '2024-05-09 16:26:30', '2024-05-31 21:28:13', '2024-05-09 21:31:57', '2024-05-09 14:31:57', '2024-06-02 21:28:13');
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 -- --------------------------------------------------------
 
@@ -429,8 +667,13 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `cart_details`
   ADD PRIMARY KEY (`ID`),
+<<<<<<< HEAD
   ADD KEY `Cart_ID` (`Cart_ID`),
   ADD KEY `Product_ID` (`Product_ID`);
+=======
+  ADD KEY `Product_ID` (`Product_ID`),
+  ADD KEY `User_ID` (`User_ID`);
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 --
 -- Chỉ mục cho bảng `collection`
@@ -445,6 +688,15 @@ ALTER TABLE `color`
   ADD PRIMARY KEY (`ID`);
 
 --
+<<<<<<< HEAD
+=======
+-- Chỉ mục cho bảng `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`Invoice_ID`);
+
+--
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 -- Chỉ mục cho bảng `feedback`
 --
 ALTER TABLE `feedback`
@@ -517,7 +769,11 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT cho bảng `cart_details`
 --
 ALTER TABLE `cart_details`
+<<<<<<< HEAD
   MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+=======
+  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 --
 -- AUTO_INCREMENT cho bảng `collection`
@@ -532,6 +788,15 @@ ALTER TABLE `color`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+<<<<<<< HEAD
+=======
+-- AUTO_INCREMENT cho bảng `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `Invoice_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 -- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
@@ -541,7 +806,11 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT cho bảng `invoice`
 --
 ALTER TABLE `invoice`
+<<<<<<< HEAD
   MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 --
 -- AUTO_INCREMENT cho bảng `invoice_details`
@@ -593,8 +862,19 @@ ALTER TABLE `cart`
 -- Các ràng buộc cho bảng `cart_details`
 --
 ALTER TABLE `cart_details`
+<<<<<<< HEAD
   ADD CONSTRAINT `cart_details_ibfk_1` FOREIGN KEY (`Cart_ID`) REFERENCES `cart` (`ID`),
   ADD CONSTRAINT `cart_details_ibfk_2` FOREIGN KEY (`Product_ID`) REFERENCES `product` (`ID`);
+=======
+  ADD CONSTRAINT `cart_details_ibfk_2` FOREIGN KEY (`Product_ID`) REFERENCES `product` (`ID`),
+  ADD CONSTRAINT `cart_details_ibfk_3` FOREIGN KEY (`User_ID`) REFERENCES `cart` (`User_ID`);
+
+--
+-- Các ràng buộc cho bảng `delivery`
+--
+ALTER TABLE `delivery`
+  ADD CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`Invoice_ID`) REFERENCES `invoice` (`ID`);
+>>>>>>> 9b4439963942d38f2a96159837b0f50ac9f56068
 
 --
 -- Các ràng buộc cho bảng `feedback`

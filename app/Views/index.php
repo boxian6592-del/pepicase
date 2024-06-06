@@ -7,7 +7,7 @@
         <div class = "lexend d-flex justify-content-center align-items-center" style = "height:525px;">
 
             <div class="d-flex flex-column" style ="width: 300px; height: 463px">
-                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
+                <div class= "d-flex align-items-center justify-content-center" style ="height: 90%; width: auto; background-color:#FFF3C0; border-radius:10px;">
                       <img src="/pepicase/public/pics/testing.svg" style = "width: 149px; height: 300px;">
                 </div>
                 <div align="center" style ="font-size:20px; font-weight: 200;">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="d-flex flex-column" style ="width: 300px; height: 463px; margin-left:135px; margin-right:135px;">
-                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
+                <div class= "d-flex align-items-center justify-content-center" style ="height: 90%; width: auto; background-color:#FFF3C0; border-radius:10px;">
                       <img src="/pepicase/public/pics/testing.svg" style = "width: 149px; height: 300px;">
                 </div>
                 <div align="center" style ="font-size:20px; font-weight: 200;">
@@ -37,7 +37,7 @@
             </div>
 
             <div class="d-flex flex-column" style ="width: 300px; height: 463px">
-                <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
+                <div class= "d-flex align-items-center justify-content-center" style ="height: 90%; width: auto; background-color:#FFF3C0; border-radius:10px;">
                       <img src="/pepicase/public/pics/testing.svg" style = "width: 149px; height: 300px;">
                 </div>
                 <div align="center" style ="font-size:20px; font-weight: 200;">
@@ -104,7 +104,7 @@
 
             <div class="d-flex flex-column" style ="width: 300px; margin-top:150px;">
                 <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#CFE0FC; border-radius:10px;">
-                      <img src="/pepicase/public/pics/testing.svg" style = "width: 149px; height: 300px;">
+                      <img src="/pepicase/public/product-pics/cinnamonroll/1.svg" style = "height: 90%; width: auto;">
                 </div>
                 <div align="center" style ="font-size:25px; font-weight: 300;">
                     <b>Cinamonroll</b>
@@ -113,7 +113,7 @@
 
             <div class="d-flex flex-column" style ="width: 300px; margin-left:135px; margin-right:135px;">
                 <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FFF3C0; border-radius:10px;">
-                      <img src="/pepicase/public/pics/testing.svg" style = "width: 149px; height: 300px;">
+                      <img src="/pepicase/public/product-pics/pompompurin/1.svg" style = "height: 90%; width: auto;">
                 </div>
                 <div align="center" style ="font-size:25px; font-weight: 300;">
                     <strong>Pompompurin</strong><br>
@@ -123,7 +123,7 @@
 
             <div class="d-flex flex-column" style ="width: 300px; margin-top:150px;">
                 <div class= "d-flex align-items-center justify-content-center" style ="width: 300px; height: 340px; background-color:#FACAD3; border-radius:10px;">
-                      <img src="/pepicase/public/pics/testing.svg" style = "width: 149px; height: 300px;">
+                      <img src="/pepicase/public/pics/testing.svg" style = "height: 90%; width: auto;">
                 </div>
                 <div align="center" style ="font-size:25px; font-weight: 300;">
                     <b>My Melody</b>

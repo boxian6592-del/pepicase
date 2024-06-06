@@ -151,4 +151,72 @@ class User extends Model
         $sql = "DELETE FROM invoice WHERE id = ?";
         $db->query($sql, [$invoiceId]);
     }
+
+
+
+
+    public function update_info($id, $isFound, $object)
+    {
+        $db = Database::connect();
+        $sql = "SELECT * FROM user_info WHERE User_ID = {$id}";
+        $result = $db->query($sql)->getResult();
+        if(empty($result))
+        {
+            $add = "INSERT INTO user_info (User_ID, First_Name, Last_Name, Area_Code, Phone, Address, Apartment, Country, City, Zipcode)
+                    VALUES ('{$id}','{$object->firstName}','{$object->lastName}','{$object->areaCode}','{$object->phone}','{$object->address}'
+                    ,'{$object->apartment}','{$object->country}','{$object->city}','{$object->zipCode}')";
+            $db->query($add);
+        }
+        else
+        {
+            $update = "UPDATE user_info
+                        SET First_Name = '{$object->firstName}',
+                            Last_Name = '{$object->lastName}',
+                            Area_Code = '{$object->areaCode}',
+                            Phone = '{$object->phone}',
+                            Address = '{$object->address}',
+                            Apartment = '{$object->apartment}',
+                            Country = '{$object->country}',
+                            City = '{$object->city}',
+                            Zipcode = '{$object->zipCode}'
+                        WHERE User_ID = '{$id}'";
+            $db->query($update);
+        }
+    }
+
+    public function get_info($id)
+    {
+        $db = Database::connect();
+        $sql = "SELECT * FROM user_info WHERE User_ID = {$id}";
+        $result = $db->query($sql)->getResult();
+        if(!empty($result)) return $result;
+        else return false;
+    }
+
+    public function add_comment($id ,$product_id, $comment, $stars)
+    {
+        $db = Database::connect();
+        $query = $db->table('feedback')
+                ->insert([
+                    'User_ID' => $id,
+                    'Product_ID' => $product_id,
+                    'Comment' => $comment,
+                    'Star' => $stars
+                ]);
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function clear($id)
+    {
+        $db = Database::connect();
+        $clear_info = "DELETE FROM user_info WHERE User_ID = '{$id}'";
+        $db->query($clear_info);
+        $clear_user = "DELETE FROM user WHERE ID = '{$id}'";
+        $db->query($clear_user);
+    }
+
 }

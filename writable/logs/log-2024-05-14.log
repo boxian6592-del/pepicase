@@ -1,0 +1,114 @@
+ERROR - 2024-05-14 01:46:50 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known.  in C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\Users\\LENOVO...', 186)
+#1 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('LAPTOP-R604O2UQ', 'baodang', Object(SensitiveParameterValue), 'pepicase', 3306, '', 0)
+#2 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#5 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@...', 'ffff')
+#6 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#7 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#8 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known.  in C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('LAPTOP-R604O2UQ', 'baodang', Object(SensitiveParameterValue), 'pepicase', 3306, '', 0)
+#1 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@...', 'ffff')
+#5 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known.  in C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#3 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@...', 'ffff')
+#4 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#5 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#6 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#8 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2024-05-14 01:46:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known. 
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 457.
+ 1 SYSTEMPATH\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email =\'datnguyendt273@gmail.com\' ')
+ 3 APPPATH\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@gmail.com', 'ffff')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-05-14 01:47:00 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known.  in C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\Users\\LENOVO...', 186)
+#1 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('LAPTOP-R604O2UQ', 'baodang', Object(SensitiveParameterValue), 'pepicase', 3306, '', 0)
+#2 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#5 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@...', 'ffff')
+#6 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#7 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#8 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known.  in C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('LAPTOP-R604O2UQ', 'baodang', Object(SensitiveParameterValue), 'pepicase', 3306, '', 0)
+#1 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@...', 'ffff')
+#5 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#6 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known.  in C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#3 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\app\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@...', 'ffff')
+#4 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(933): App\Controllers\LoginController->login()
+#5 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#6 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#8 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Users\LENOVO\OneDrive\Desktop\Xampp\htdocs\pepicase\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2024-05-14 01:47:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for LAPTOP-R604O2UQ failed: No such host is known. 
+[Method: POST, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 457.
+ 1 SYSTEMPATH\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\User.php(26): CodeIgniter\Database\BaseConnection->query('SELECT * FROM user WHERE email =\'datnguyendt273@gmail.com\' ')
+ 3 APPPATH\Controllers\LoginController.php(21): App\Models\User->__construct('datnguyendt273@gmail.com', 'ffff')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -101,56 +101,33 @@ header
     transform: rotate(90deg);
 }
 
-
-.footer {
-    margin-top: 100px;
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+.footer{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 80px;
     background-color: #FFE57A;
+    font-family: 'lexend';
+  }
+  .footer-box{
+    display: flex;
+    flex-direction: column;
+  }
+  .left{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    justify-content: space-between;
+    gap: 1rem;
+    margin-left: 171px;
+  }
+  .footer-box a{
+    color: var(--main-color);
+    margin-bottom: 10px;
+    text-decoration: none;
   }
   
-.footer .rows {
-    display: flex;
-}
-.footer .column:nth-child(1) {
-    margin-top: 76px;
-    margin-left: 162px;
-    width: 328px;
-    font-size: 20px;
-}
-.footer .column:nth-child(2) {
-    margin-top: 76px;
-    margin-left: 61px;
-    width: 218px;
-    font-size: 20px;
-}
-.footer .column:nth-child(3) {
-    margin-top: 76px;
-    margin-left: 184px;
-    width: 347px;
-    font-size: 20px;
-}
-.title {
-    color: #844700;
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: bold;
-}
-.footer-links a {
-    color: #171717;
-    text-decoration: none;
-    font-family: "Lexend", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-}
-.bottom-nav a
-{
-    margin-right: 75px;
-    text-decoration: none;
-    color: white;
-}
-
 .ship_rep_dis
 {
     padding-top: 100px;
@@ -158,3 +135,6 @@ header
     height: fit-content; 
 }
 
+.container {
+    display: flex;
+ }

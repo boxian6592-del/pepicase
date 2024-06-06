@@ -27,6 +27,7 @@
     border: none; /* Xóa viền của con mắt */
     padding:0;
     padding-right:17px;
+    margin-top: 5px;
 }
 .form-group {
     margin-bottom: 7px;
@@ -42,13 +43,6 @@
     left: 10px;
     width: calc(100% - 20px); /* Đảm bảo thông báo lỗi không tràn ra ngoài */
 }
-.button{
-    padding: 0.25rem 0.5rem;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.875rem;
-}
 button[type=submit]{
     padding: 5px 30px;
 }
@@ -56,3 +50,14 @@ input[type="password"]::-ms-reveal,
         input[type="password"]::-ms-clear {
             display: none;
         }
+
+.button 
+{
+    display: inline-flex;
+    border:1px solid black;
+    padding: 5px 20px;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-family: 'Lexend';
+}

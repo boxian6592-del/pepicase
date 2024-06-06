@@ -27,10 +27,10 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '123',
-        'database'     => 'mypepicase',
+        'hostname'     => 'LAPTOP-R604O2UQ',
+        'username'     => 'baodang',
+        'password'     => 'lmao',
+        'database'     => 'pepicase',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

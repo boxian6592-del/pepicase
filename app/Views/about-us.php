@@ -21,8 +21,12 @@
          </p>
         </div>
         <br>
-        <div class="lexend d-flex justify-content-center align-items-center" style="font-size: 35px;">
-        <a href=""><button style = "background-color:yellow; border-radius: 10px;">HAVE A LOOK AT OUR PRODUCTS</button></a>
+        <div class="lexend d-flex justify-content-center align-items-center">
+            <div class="lexend d-flex justify-content-center align-items-center btn btn-dark" style="font-size: 35px; margin-bottom: 50px; width: 50%;">
+                <a href="/pepicase/public/" style = "color:white; text-decoration:none;">
+                    HAVE A LOOK AT OUR PRODUCTS
+                </a>        
+            </div>
         </div>
 
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

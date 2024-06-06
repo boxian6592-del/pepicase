@@ -15,7 +15,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class SignUpController extends BaseController
 {
-    private function encrypt($data)
+    private function encrypt($data) // hàm encrypt custom
     {
         $key = 'encryption-key'; // Replace with your encryption key
         $iv = 'd2a1b9c0e9f7a5de';
@@ -24,7 +24,7 @@ class SignUpController extends BaseController
         return $encoded;
     }
 
-    private function decrypt($encryptedData)
+    private function decrypt($encryptedData) // hàm decrypt custom
     {
         $iv = 'd2a1b9c0e9f7a5de';
         $key = 'encryption-key'; // Replace with your encryption key
@@ -33,12 +33,15 @@ class SignUpController extends BaseController
         return $decrypted;
     }
 
-    public function send_signup_email()
+    public function send_signup_email() // hàm gửi mail signup
     {
+        // lấy data từ post
         $mail = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $confirm_password = $this->request->getPost('confirm_password');
+        // lấy data từ post
 
+        // luật (FE lẫn BE)
         $rules = [
             'email' => 'valid_email',
         ];
@@ -46,19 +49,20 @@ class SignUpController extends BaseController
         $data = [
             'validation' => '',
         ];
-        // setting rules
+        // luật (FE lẫn BE)
 
-        if($this->validate($rules)) //rule check argument
+        if($this->validate($rules)) //nếu thỏa luật, tiếp tục
         {
-            $user = new User($mail, $password);
-            if ($user->check_if_authorized()) //account existant argument
+            $user = new User($mail, $password); // chạy hàm khởi tạo để kiểm tra user đã tồn tại chưa
+
+            if ($user->check_if_authorized()) //nếu user đã tồn tại
             {
                 $message = [
                     "error"=> "User already exist!",
                 ];
-                return view('signup_new', $message);
+                return view('signup', $message); // chạy message "Đã tồn tại user"
             }
-            else //if the credentials pass the rule check and does not exist in the database then we start sending the mail
+            else // nếu user chưa tồn tại, thỏa các đkiện và chạy mail xác nhận
             {
                 $encrypted_password = $this->encrypt($password);
                 $encrypted_email = $this->encrypt($mail);
@@ -82,21 +86,18 @@ class SignUpController extends BaseController
     <body>
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: black; max-width: 50vw; margin: auto; padding: 20px; border: 1px solid black; border-radius: 10px; background-color: white;">
             <div style="background-color: #FFF3C0; color: black; padding: 10px 0; text-align: center; border-radius: 10px 10px 0 0;">
-                <h1>You have initiated a password reset attempt.</h1>
+                <h1>You have attempted to register for an account!</h1>
             </div>
             <div style="padding: 20px;">
 
                 <p>PEPICASE has detected that you are signing up for an account. If this is not you, <strong>ignore this message!</strong></p>
                 <p>Otherwise, please click the link below to confirm your signup!</p>
 
-                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; border: 1px solid black;">
-                    <div style="height: 50px;" align="center">
+                <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
                         <a style="text-decoration: none; color: black;" href="http://localhost/pepicase/public/signup/confirmed/'.$encrypted_email.'/'.$encrypted_password.'">
-                        <button style="background-color: #FFF3C0; height: 100%;">Sign up here!</button>
+                        <button style="background-color: #FFF3C0; height: 100%; font-size:20px">Sign up here!</button>
                         </a>
-                     </div>
                 </div>
-    
             </div>
         </div>
         <div class="footer" style="text-align: center; padding: 10px 0; color: #777; font-size: 12px;">
@@ -112,66 +113,74 @@ class SignUpController extends BaseController
                             "verify_peer" => true,
                             "verify_peer_name" => false,
                             "allow_self_signed" => false)));
-                    if ($auth_email->send()) //if its sent then it'll redirect the user to pending
+                if ($auth_email->send()) // nếu đã gửi thành công, redirect user về pending
                     {
                         return redirect()->to('/signup/pending');
                     } 
-                    else //if not it'll return an error
+                    else //nếu đã gửi KHÔNG thành công, trả lỗi tại signup new để debug
                     {
                         $error = [
                             'error' => $auth_email->ErrorInfo,
                             ];
-                        return view('signup_new', $error);
+                        return view('signup', $error);
                     }
                 } 
-                catch (Exception $e) 
+                catch (Exception $e)  // nếu có lỗi trước khi gửi đc request
                 {
                      $error = [
-                        'error' => $e->getMessage(), // Get the exception error message
+                        'error' => $e->getMessage(),
                     ];
-                    return view('signup_new', $error);
+                    return view('signup', $error); // trả lỗi
                 }
             };
         }
-        else //if mess up the validation check
+        else // nếu không thỏa mail
         {
             $error = [
                 "error"=> "Please enter a valid email!",
             ];
-            return view('signup_new', $error);
+            return view('signup', $error); // trả lỗi
         }
 
     }
 
-    public function signup($encrypted_email, $encrypted_password)
+    public function signup($encrypted_email, $encrypted_password) // hàm kích hoạt sau khi ấn vào link xác nhận
     {
+        // mở gói mail đã mã hóa và pass đã mã hóa
         $email = $this->decrypt($encrypted_email);
         $password = $this->decrypt($encrypted_password);
-        $new_user = new User($email,$password,null);
-        if( $new_user->check_if_authorized())
+        // mở gói mail đã mã hóa và pass đã mã hóa
+
+        $new_user = new User($email,$password); // khởi tạo user với hai thứ trên
+        if( $new_user->check_if_authorized()) // nếu user đã tồn tại
         {
-            return redirect() -> to ('/');
+            return redirect() -> to ('/'); // redirect về trang chủ
         }
-        else
+        else // nếu user chưa tồn tại 
         {
-            $outcome = $new_user->create($email, $password, null);
-            if( $outcome )
+            $outcome = $new_user->create($email, $password, null); // gọi hàm khởi tạo
+            if( $outcome ) // nếu outcome không rỗng
             {
-                $new_session = new CustomSession($outcome);
+                $new_session = new CustomSession($outcome); 
                 return redirect() -> to ('/');
+                // khởi tạo session mới cho người dùng (gồm session + cookie), rồi
+                // chuyển hướng về trang chủ
             }
             else return redirect()->to('/signup');
+            // nếu đã rỗng, tức không thành công, trả lỗi
         }
     }
 
-    public function index()
+    public function index() // hàm trả về giao diện signup
     {
-        $curr_session = new CustomSession(null);
+        $curr_session = new CustomSession(null); // khởi tạo đổi tượng session rỗng để sử dụng hàm con
         if ($curr_session->isSessionSet()) return redirect() -> to('/');
+        // nếu session đã có, người dùng đã sign in rồi, thì về trang chủ
         return view ('signup');
+        // nếu không, sẽ trả về trang signup như bth
     }
 
-    public function pending()
+    public function pending() // hàm trả qua trang pending
     {
         return view('email_pending');
     }

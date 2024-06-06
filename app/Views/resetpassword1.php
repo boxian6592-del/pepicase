@@ -1,14 +1,10 @@
-<?php 
-
-?>
-
 <?php include(APPPATH.'views/components/usual-links.php'); ?>
     <link rel="stylesheet" href="/pepicase/public/css/resetpassword1.css">
 <?php include(APPPATH.'views/components/top-header.php'); ?>
 
 
-        
-<div class="lexend d-flex align-items-center justify-content-center">
+
+<div class="lexend d-flex justify-content-center" style ="min-height: 60vh;">
     <form id ="form" method="post" action="/pepicase/public/resetPassword">
         <h2 class="text-center">Reset Password</h2>
         <hr>
