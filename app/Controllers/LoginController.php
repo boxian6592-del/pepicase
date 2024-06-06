@@ -5,9 +5,39 @@ use App\Models\CustomSession;
 use App\Models\User;
 use App\Models\Session;
 use CodeIgniter\Services;
-
+use Google\Service\Oauth2 as Google_Service_Oauth2;
+use Facebook\Facebook as Facebook;
+ 
 class LoginController extends BaseController
 {
+    private $userModel = null;
+    private $facebook = null;
+    private $fb_helper = null;
+    private $googleClient = null;
+    function __construct()
+    {
+        if ($this->facebook === null) {
+            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            $this->facebook = new \Facebook\Facebook([
+                'app_id' => '774527684780044', //for example, 774527684780044
+                'app_secret' => '5653abdd091dd9ca04afa8a7dbb16f0d', //for example, 85b5b8bc72a01831f09e35984826a215
+                'default_graph_version' => 'v5.1'
+            ]);
+            $this->fb_helper = $this->facebook->getRedirectLoginHelper();
+        }
+
+        $this->userModel = new User();
+        if ($this->googleClient === null) {
+            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            $this->googleClient = new \Google_Client();
+            $this->googleClient->setClientId('940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com'); //for example, 940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com
+            $this->googleClient->setClientSecret('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'); //for example, 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
+            $this->googleClient->setRedirectUri('http://localhost/pepicase/public/loginWithGoogle'); //for example, https://localhost/pepicase/loginWithGoogle
+            $this->googleClient->addScope("email");
+            $this->googleClient->addScope("profile");
+        }
+    }
+    
     public function login() // hàm chạy khi người dùng ấn "Login"
     {
         // lấy thông tin từ 2 thanh mail vs pass từ login
@@ -65,18 +95,14 @@ class LoginController extends BaseController
         {
             $previousUrl = $this->request->getServer('HTTP_REFERER');
             if (strpos($previousUrl, '/pepicase/public/product/') === 0)
-                $curr_session->set_previous_url((string)$previousUrl);
-            return view('login');
-            /*
+            $curr_session->set_previous_url((string)$previousUrl);
             $fb_permission = ['email'];
-            $data['fb_btn'] = $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
-            $data['googleButton'] = $this->googleClient->createAuthUrl();
+            $data['fb_btn'] = (string)$this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
+            $data['googleButton'] = (string)$this->googleClient->createAuthUrl();
             return view('login', $data);
-            */
         }
     }
 
-    /*
     public function loginWithFB()
 	{
 		if($this->request->getVar('state')){
@@ -103,14 +129,12 @@ class LoginController extends BaseController
 				
 				session()->set('LoggedUser', $fbdata);
 			}
-		} else{
+		}else{
 			session()->setFlashData('error', 'Something Wrong');
 			return redirect()->to(base_url());
 		}
 		return redirect()->to(base_url().'/');
 	}
-
-    
 
     public function loginWithGoogle()
     {
@@ -150,5 +174,4 @@ class LoginController extends BaseController
             return redirect()->to('/login');
         }
     }
-    */
 }

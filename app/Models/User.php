@@ -4,6 +4,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 use Config\Database;
 
+
 class User extends Model
 {
     protected $table = 'user';
@@ -71,10 +72,9 @@ class User extends Model
         FROM invoice_details
         INNER JOIN invoice ON invoice_details.invoice_id = invoice.id
         INNER JOIN product ON product.id = invoice_details.product_id
-        WHERE user_id = ?
+        WHERE user_id = ? ORDER BY order_date DESC
     ";
     $result = $db->query($sql, [$id])->getResultArray();
-    //echo print_r($result);
     if (empty($result)) return null;
     return $result;
     }

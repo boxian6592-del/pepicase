@@ -53,10 +53,11 @@
 
         </div>
 
-        <div class="d-flex align-items-center justify-content-center lexend" style = "margin-bottom:50px;">
-            <button style ="width: 150px; height: 50px; border-radius:20px; color:white; background-color:black;">VIEW ALL</button>
-        </div>
-
+        <a href="/pepicase/public/product" style = "text-decoration:none; color:white;">
+            <div class="d-flex align-items-center justify-content-center lexend" style = "margin-bottom:50px;">
+                <button class="btn btn-dark" style ="width: 150px; height: 50px; border-radius:20px;">VIEW ALL</button>
+            </div>
+        </a>
         
 
         <div class = "lexend-deca d-flex justify-content-center" style ="height: 300px; font-size: 20px; background-color:#FEF3D8">
@@ -132,8 +133,10 @@
 
         </div>
 
-        <div class="d-flex align-items-center justify-content-center lexend" style = "margin-bottom:50px;">
-            <button style ="width: 150px; height: 50px; border-radius:20px; color:white; background-color:black;">VIEW ALL</button>
-        </div>
+        <a href="/pepicase/public/product" style = "text-decoration:none; color:white;">
+            <div class="d-flex align-items-center justify-content-center lexend" style = "margin-bottom:50px;">
+                <button class="btn btn-dark" style ="width: 150px; height: 50px; border-radius:20px;">VIEW ALL</button>
+            </div>
+        </a>
 
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>
