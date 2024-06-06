@@ -2,3 +2,4 @@
 *.log
 writable/
 vendor/
+app/Libraries/

@@ -227,6 +227,12 @@ class User extends Model
     public function clear($id)
     {
         $db = Database::connect();
+        $clear_comments = "DELETE FROM feedback WHERE User_ID = {$id}";
+        $db->query($clear_comments);
+        $clear_invoice_details = "DELETE FROM invoice_details WHERE Invoice_ID IN (SELECT ID FROM invoice WHERE User_ID = {$id})";
+        $db->query($clear_invoice_details);
+        $clear_invoice = "DELETE FROM invoice WHERE User_ID = {$id}";
+        $db->query($clear_invoice);
         $clear_info = "DELETE FROM user_info WHERE User_ID = '{$id}'";
         $db->query($clear_info);
         $clear_user = "DELETE FROM user WHERE ID = '{$id}'";
