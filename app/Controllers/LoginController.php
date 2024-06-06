@@ -36,8 +36,6 @@ class LoginController extends BaseController
             $this->googleClient->addScope("profile");
         }
     }
-
-
     public function login()
     {
         $email = $this->request->getPost("email");
@@ -121,16 +119,15 @@ class LoginController extends BaseController
 		if($this->request->getVar('state')){
 			$this->fb_helper->getPersistentDataHandler()->set('state', $this->request->getVar('state'));
 		}
-
 		if($this->request->getVar('code')){
 			if(session()->get("access_token")){
 				$access_token = session()->get('access_token');
 			}else{
-                $access_token = "EAALAbceFIAwBO8sa1cdjis2Pgo3xIjhmEL0dK57b1IenFFFY8jq8ZC8NSiYYTMm5y6MazUQ0VJUp73W4MF01XNt3t65OzjBenAJAFsIAsv4ZCasQINPa5wgTsZBqht39QlFJ6rZAGh1ZAR7hxfzB2GQ9oYahGs9ydLRneiZA2djraqun2bWX0EyJBD4g1aJe3yGBZCOKJvwIqTkZBPggPYu1ZCZB2jPAZCmxVpBCsrFv1eExNlTGP2kCJiBgbTnyVwb7AZDZD";
+                $access_token = $this->fb_helper->getAccessToken();
 				session()->set("access_token", $access_token);
 				$this->facebook->setDefaultAccessToken(session()->get('access_token'));
 			}
-			$graph_response = $this->facebook->get('/me?fields=name,email', $access_token);
+			$graph_response = $this->facebook->get('/me?fields=name,email', 'EAALAbceFIAwBOx6DlP5P45ykxQZArletHnPbM9h2BcTvH8i1DgyMFukdXS9BZAuF5XIZAMUjDujE8BNNkTMQy5GTMtmi33Tb3YU2CIOuHhTIXSzbbaw0nQQ0I1ek27zPuDzbtRT19szFVD8M5fgCkmyOc16ZCqDup28R8gELUga2h7G5kXJ3MBKWNemPeGyZA6uzLNDyWZAH6CW2kivv8ajcMtPe3qiBTqAhRdmxXg9CuKQx1rRLDR9CqL8ejPsgZDZD');
 			$fb_user_info = $graph_response->getGraphUser();
 			if(!empty($fb_user_info)){
 				$fbdata = array(
@@ -147,7 +144,7 @@ class LoginController extends BaseController
 			session()->setFlashData('error', 'Something Wrong');
 			return redirect()->to(base_url());
 		}
-		return redirect()->to(base_url().'/profile');
+		return redirect()->to(base_url().'/');
 	}
     /*
 
@@ -164,41 +161,43 @@ class LoginController extends BaseController
 	} */
 
     public function loginWithGoogle()
-    {
-        $token = $this->googleClient->fetchAccessTokenWithAuthCode($this->request->getVar('code'));
-        if (!isset($token['error'])) {
-            $this->googleClient->setAccessToken($token['access_token']);
-            session()->set("AccessToken", $token['access_token']);
-            $googleService = new \Google\Service\Oauth2($this->googleClient);
-            $data = $googleService->userinfo->get();
-            $userdata = array();
-            $userModel = new User($data['id']);
-            if ($userModel->check_if_authorized()) {
-                $userdata = [
-                    'First_Name' => $data['givenName'],
-                    'Last_Name' => $data['familyName'],
-                    'email' => $data['email'],
-                ];
-                $userModel->updateUserData($userdata, $data['id']);
-                new CustomSession($userModel->id);
-                //session()->set("LoggedUserData", $userdata);
-                return redirect()->to('/');
-            } else {
-                //new User want to Login
-                $userdata = [
-                    'oauth_id' => $data['id'],
-                    'First_Name' => $data['givenName'],
-                    'Last_Name' => $data['familyName'],
-                    'email' => $data['email'],
-                ];
-                $userModel->create($data['email'], 'password', $data['id']);
-                $userModel = new User($data['id']);
-                //session()->set("LoggedUserData", $userdata);
-                return redirect()->to('/');
-            }
-        } else {
-            session()->setFlashData("Error", "Something went Wrong");
-            return redirect()->to('/login');
-        }
+{
+    $token = $this->googleClient->fetchAccessTokenWithAuthCode($this->request->getVar('code'));
+    if (!isset($token['error'])) {
+        $this->googleClient->setAccessToken($token['access_token']);
+        
+        // Sử dụng CustomSession để lưu AccessToken
+        //$customSession = new CustomSession(null);
+        //$customSession->set_field("AccessToken", $token['access_token']);
+        
+        $googleService = new \Google\Service\Oauth2($this->googleClient);
+        $data = $googleService->userinfo->get();
+        //print_r($data); die;
+        $userdata = array();
+        $userModel = new User($data['email'], null, $data['id']);
+        $userId = $userModel->id;
+        
+        //$userModel = new User($data['id']);
+        //print_r($userId); die; //vượt qua
+
+        if ($userModel->check_if_authorized()) {
+            $userdata = [
+                'userid' => $userModel->id,
+                'First_Name' => $data['givenName'],
+                'Last_Name' => $data['familyName'],
+                'email' => $data['email'],
+            ];
+            $userModel->updateUserData($userdata);
+            $customSession = new CustomSession($userId);
+            //print_r($customSession->isSessionSet()); die;
+            $customSession->set_field("LoggedUserData", $userdata);
+            return redirect()->to('/');
+        } 
+    } else {
+        session()->setFlashData("Error", "Something went wrong");
+        return redirect()->to('/login');
     }
+}
+
+
 }

@@ -23,38 +23,40 @@ class User extends Model
     
     public function __construct($email = null, $password = null, $oauth_id = null )
     {
-        if (!($email && $password && $oauth_id)) {}
+        $db = Database::connect();
         if ($oauth_id !== null) {
-            $db = Database::connect();
             $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '$oauth_id'")->getResult();            
-            $row = $result[0];
-            $this->id = $row->ID;
-            $this->email = $row->Email;
-            $this->password = $row->Password;
-            $this->isAdmin = $row->Is_Admin;           
-        }
-        else
-        {
-            $db = Database::connect();
-            $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' AND password = '$password' ")->getResult();
-            if ($result == null) $id = null;
-            else
-            {
+            if (empty($result)) {
+                $this->create($email, 'matkhau', $oauth_id);
+                $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '$oauth_id'")->getResult();            
                 $row = $result[0];
-                if($row->Password != $password)
-                {
-                    $id = null;
-                }
-                else{
-                    $this->id = $row->ID;
-                    $this->email = $row->Email;
-                    $this->password = $row->Password;
-                    $this->isAdmin = $row->Is_Admin;
-                    $this->oauth_id = $row->oauth_id;
-                }
+                $this->id = $row->ID;
+                $this->email = $row->Email;
+                $this->password = $row->Password;
+                $this->oauth_id  = $row->oauth_id;
+                $this->isAdmin = $row->Is_Admin; 
+            } else {
+                $row = $result[0];
+                $this->id = $row->ID;
+                $this->email = $row->Email;
+                $this->password = $row->Password;
+                $this->oauth_id  = $row->oauth_id;
+                $this->isAdmin = $row->Is_Admin; 
+            }
+        } else {
+            $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' AND password = '$password' ")->getResult();
+            if (empty($result)) {
+                
+            } else {
+                $row = $result[0];
+                $this->id = $row->ID;
+                $this->email = $row->Email;
+                $this->password = $row->Password;
+                $this->isAdmin = $row->Is_Admin;
+                $this->oauth_id = $row->oauth_id;
             }
         }
-    } 
+    }
 
     public function check_if_authorized()
     {
@@ -114,17 +116,35 @@ class User extends Model
     function isAlreadyRegister($authid){ //check đã đăng nhập oauth_id chưa
     return $this->where('oauth_id', $authid)->first() !== null;
 	}
-	function updateUserData($userdata, $authid){ //cập nhật thông tin
+	function updateUserData($userdata){ 
         $db = Database::connect();
-        $this->update(['oauth_id' => $authid], $userdata);
-		//$this->db->table("user")->where(['oauth_id'=>$authid])->update($userdata);
-	}
+        $sql1 = "SELECT * FROM user_info WHERE User_ID = ?";
+        $result = $db->query($sql1, [$userdata['userid']])->getResult();
+        
+        if (empty($result)) {
+            $sql1 = "INSERT INTO user_info (User_ID, First_Name, Last_Name) VALUES (?, ?, ?)";
+            $db->query($sql1, [
+                $userdata['userid'],
+                $userdata['First_Name'],
+                $userdata['Last_Name'],
+            ]);
+        } else {
+            $sql1 = "UPDATE user_info SET First_Name = ?, Last_Name = ? WHERE User_ID = ?";
+            $db->query($sql1, [
+                $userdata['First_Name'],
+                $userdata['Last_Name'],
+                $userdata['userid']
+            ]);
+        }
+    }
+    
 	function insertUserData($userdata){ //thêm thông tin
-        $this->insert($userdata);
+        $db = Database::connect();
+        $sql1 = "INSERT INTO user_info(User_ID, First_Name, Last_Name) Values ($userdata->userid, $userdata->First_Name, $userdata->Last_Name)";
+        $db->query($sql1);
 	}
 
     function deletePurchases($invoiceId) {
-        echo print_r($invoiceId); die;
         $db = Database::connect();
         $sql = "DELETE FROM invoice_details WHERE invoice_id = ?";
         $db->query($sql, [$invoiceId]);

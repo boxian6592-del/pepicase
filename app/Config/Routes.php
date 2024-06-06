@@ -53,8 +53,6 @@ $routes->get('/testing','HomepageController::testing');
 //khu để test layout
 
 $routes->get('/purchases','StaticPageController::Purchases');
-$routes->post('/purchases/deleteOrder','StaticPageController::DeletePurchase');
-
+$routes->post('/purchases/deleteOrder','StaticPageController::deletePurchase');
 
 $routes->get('/testdb','TestDBController::testdb');
-

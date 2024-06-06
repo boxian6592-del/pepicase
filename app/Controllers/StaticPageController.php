@@ -39,19 +39,37 @@ class StaticPageController extends BaseController
         }
     }
 
-    public function DeletePurchase($invoiceId) {
+    public function deletePurchase() {
         $curr_session = new CustomSession(null);
-        if ($curr_session->isSessionSet()) {
-            $userModel = new User();
-            $userModel->deletePurchase($invoiceId);
-                $purchases = $userModel->getPurchases($curr_session->get_id());
-            if ($purchases == null) {
-                $purchases = [];
+        if (isset($_POST['invoice_id'])) {
+            $invoiceId = $_POST['invoice_id'];
+            if ($curr_session->isSessionSet()) {
+                $userModel = new User();
+                $result = $userModel->deletePurchase($invoiceId);
+                if ($result) {
+                    return $this->response->setJSON([
+                        'success' => true,
+                    ]);
+                } else {
+                    return $this->response->setJSON([
+                        'success' => false,
+                        'error' => 'Could not delete purchase'
+                    ]);
+                }
+            } else {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'error' => 'Session not set'
+                ]);
             }
-            
-            return view('purchases', ['purchases' => $purchases]);
+        } else {
+            return $this->response->setJSON([
+                'success' => false,
+                'error' => 'Missing invoice_id'
+            ]);
         }
     }
+    
     
 }
 

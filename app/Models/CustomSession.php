@@ -91,4 +91,12 @@ public function get_field($field)
     $session = \Config\Services::session();
     return $session->get($field);
 }
+
+public function isFieldSet($field)
+{
+    $session = \Config\Services::session();
+    return ($session->get($field) !== null);
+}
+
+
 }
