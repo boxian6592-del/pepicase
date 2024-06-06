@@ -24,40 +24,40 @@ class User extends Model
     
     public function __construct($email = null, $password = null, $oauth_id = null )
     {
-        if (!($email && $password && $oauth_id)) {}
-        if ($oauth_id !== null) 
-        {
-            $db = Database::connect();
-            $result = $db->query("SELECT * FROM $this->table WHERE Google_ID = '$oauth_id'")->getResult();            
-            $row = $result[0];
-            $this->id = $row->ID;
-            $this->email = $row->Email;
-            $this->password = $row->Password;
-            $this->isAdmin = $row->Is_Admin;           
-        }
-        else
-        {
-            $db = Database::connect();
-            $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' AND password = '$password' ")->getResult();
-            if ($result == null) $id = null;
-            else
-            {
+        $db = Database::connect();
+        if ($oauth_id !== null) {
+            $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '{$oauth_id}'")->getResult();            
+            if (empty($result)) {
+                $this->create($email, 'matkhau', $oauth_id);
+                $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '{$oauth_id}'")->getResult();            
                 $row = $result[0];
-                if($row->Password != $password)
-                {
-                    $this->id = null;
-                    $this->oauth_id = null;
-                }
-                else{
-                    $this->id = $row->ID;
-                    $this->email = $row->Email;
-                    $this->password = $row->Password;
-                    $this->isAdmin = $row->Is_Admin;
-                    $this->oauth_id = $row->Google_ID;
-                }
+                $this->id = $row->ID;
+                $this->email = $row->Email;
+                $this->password = $row->Password;
+                $this->oauth_id  = $row->oauth_id;
+                $this->isAdmin = $row->Is_Admin; 
+            } else {
+                $row = $result[0];
+                $this->id = $row->ID;
+                $this->email = $row->Email;
+                $this->password = $row->Password;
+                $this->oauth_id  = $row->oauth_id;
+                $this->isAdmin = $row->Is_Admin; 
+            }
+        } else {
+            $result = $db->query("SELECT * FROM $this->table WHERE email ='{$email}' AND password = '{$password}' ")->getResult();
+            if (empty($result)) {
+                
+            } else {
+                $row = $result[0];
+                $this->id = $row->ID;
+                $this->email = $row->Email;
+                $this->password = $row->Password;
+                $this->isAdmin = $row->Is_Admin;
+                $this->oauth_id = $row->oauth_id;
             }
         }
-    } 
+    }
 
     public function check_if_authorized()
     {
@@ -80,10 +80,10 @@ class User extends Model
     }
 
 
-    public function create($mail, $pass, $oauth_id = null)
+    public function create($mail, $pass = null, $oauth_id = null)
     {
         $db = Database::connect();
-        $result = $db->query("INSERT INTO user (Email, Password, Google_ID, Is_Admin) VALUES ('$mail', '$pass', '$oauth_id', 0);");
+        $result = $db->query("INSERT INTO user (Email, Password, oauth_id, Is_Admin) VALUES ('{$mail}', '{$pass}', '{$oauth_id}', 0);");
         if ($result !== null)
         {
             $new_user = new User($mail, $pass, $oauth_id);

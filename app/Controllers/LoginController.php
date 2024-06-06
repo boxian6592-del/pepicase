@@ -97,7 +97,7 @@ class LoginController extends BaseController
             if (strpos($previousUrl, '/pepicase/public/product/') === 0)
             $curr_session->set_previous_url((string)$previousUrl);
             $fb_permission = ['email'];
-            $data['fb_btn'] = (string)$this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
+            $data['fb_btn'] = $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
             $data['googleButton'] = (string)$this->googleClient->createAuthUrl();
             return view('login', $data);
         }
@@ -150,7 +150,8 @@ class LoginController extends BaseController
             $data = $googleService->userinfo->get();
             //print_r($data); die;
             $userdata = array();
-            $userModel = new User($data['email'], null, $data['id']);
+            $userModel = new User();
+            $userModel->create($data['email'], null, $data['id']);
             $userId = $userModel->id;
             
             //$userModel = new User($data['id']);
