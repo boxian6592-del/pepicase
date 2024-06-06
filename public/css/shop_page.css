@@ -174,7 +174,8 @@
   display: flex;
   flex-direction: column;
   padding: 0 10px;
-  width: 30%;
+  width: calc((100% / 3) - 20px);
+  box-sizing: border-box;
 }
 
 .image-wrapper {
@@ -184,7 +185,6 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
-  aspect-ratio: 1;
   padding: 7px;
 }
 
@@ -192,12 +192,16 @@
   aspect-ratio: 0.46;
   object-fit: cover;
   object-position: center;
-  width: 135px;
+  width: 100%;
   z-index: 10;
   margin-bottom: -5px;
-  max-width: 100%;
+  max-width: 135px;
 }
 
+.product-container:only-child {
+  width: 100%; /* Ensure the only product takes full width */
+  max-width: 300px; /* Set a reasonable max-width for the container */
+}
 a {
   color: #000;
   text-decoration: none;

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             colors: selectedColors
         };
 
-        fetch('<?= base_url("get_filtered_products") ?>', {
+        fetch('http://localhost/pepicase/public/get_filtered_products', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,15 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 let productHTML = `
                 <article class="product-container">
                     <figure class="image-wrapper">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">
                             <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
                         </a>
                     </figure>
                     <h2 class="product-name">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">${product.Name}</a>
                     </h2>
                     <p class="product-price">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">$${product.Price} USD</a>
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">$${product.Price} USD</a>
                     </p>
                 </article>`;
 
@@ -83,15 +83,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 let productHTML = `
                 <article class="product-container">
                     <figure class="image-wrapper">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">
                             <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
                         </a>
                     </figure>
                     <h2 class="product-name">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">${product.Name}</a>
                     </h2>
                     <p class="product-price">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">$${product.Price} USD</a>
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">$${product.Price} USD</a>
                     </p>
                 </article>`;
                 productContainer.innerHTML += productHTML;
@@ -119,15 +119,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 let productHTML = `
                 <article class="product-container">
                     <figure class="image-wrapper">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">
                             <img loading="lazy" src="${product.Image}" class="product-image" alt="${product.Name}" />
                         </a>
                     </figure>
                     <h2 class="product-name">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">${product.Name}</a>
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">${product.Name}</a>
                     </h2>
                     <p class="product-price">
-                        <a href="<?= base_url('/product/') ?>${product.ID}">$${product.Price} USD</a>
+                        <a href="http://localhost/pepicase/public/product/${product.ID}">$${product.Price} USD</a>
                     </p>
                 </article>`;
                 productContainer.innerHTML += productHTML;
