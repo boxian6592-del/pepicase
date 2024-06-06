@@ -103,11 +103,11 @@ header
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 .footer{
+    padding: 3vh;
     display: grid;
     grid-template-columns: repeat(2,auto);
     justify-content: space-between;
     gap: 1rem;
-    padding: 80px;
     background-color: #FFE57A;
     font-family: 'lexend';
   }
@@ -127,13 +127,6 @@ header
     margin-bottom: 10px;
     text-decoration: none;
   }
-  
-.ship_rep_dis
-{
-    padding-top: 100px;
-    width: fit-content;
-    height: fit-content; 
-}
 
 .container {
     display: flex;
