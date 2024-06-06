@@ -66,7 +66,89 @@ class LoginController extends BaseController
             $previousUrl = $this->request->getServer('HTTP_REFERER');
             if (strpos($previousUrl, '/pepicase/public/product/') === 0)
                 $curr_session->set_previous_url((string)$previousUrl);
-            return view('login'); // nếu session chưa có => user chưa đăng nhập => cho vào trang
+            return view('login');
+            /*
+            $fb_permission = ['email'];
+            $data['fb_btn'] = $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
+            $data['googleButton'] = $this->googleClient->createAuthUrl();
+            return view('login', $data);
+            */
         }
     }
+
+    /*
+    public function loginWithFB()
+	{
+		if($this->request->getVar('state')){
+			$this->fb_helper->getPersistentDataHandler()->set('state', $this->request->getVar('state'));
+		}
+		if($this->request->getVar('code')){
+			if(session()->get("access_token")){
+				$access_token = session()->get('access_token');
+			}else{
+                $access_token = $this->fb_helper->getAccessToken();
+				session()->set("access_token", $access_token);
+				$this->facebook->setDefaultAccessToken(session()->get('access_token'));
+			}
+			$graph_response = $this->facebook->get('/me?fields=name,email', 'EAALAbceFIAwBOx6DlP5P45ykxQZArletHnPbM9h2BcTvH8i1DgyMFukdXS9BZAuF5XIZAMUjDujE8BNNkTMQy5GTMtmi33Tb3YU2CIOuHhTIXSzbbaw0nQQ0I1ek27zPuDzbtRT19szFVD8M5fgCkmyOc16ZCqDup28R8gELUga2h7G5kXJ3MBKWNemPeGyZA6uzLNDyWZAH6CW2kivv8ajcMtPe3qiBTqAhRdmxXg9CuKQx1rRLDR9CqL8ejPsgZDZD');
+			$fb_user_info = $graph_response->getGraphUser();
+			if(!empty($fb_user_info)){
+				$fbdata = array(
+					'authid'=>$fb_user_info['id'],
+					'profile_pic' => 'http://graph.facebook.com/'.$fb_user_info['id'].'/picture',
+					'user_name' => $fb_user_info['name']
+				);
+
+				//here you can insert user data in database
+				
+				session()->set('LoggedUser', $fbdata);
+			}
+		} else{
+			session()->setFlashData('error', 'Something Wrong');
+			return redirect()->to(base_url());
+		}
+		return redirect()->to(base_url().'/');
+	}
+
+    
+
+    public function loginWithGoogle()
+    {
+        $token = $this->googleClient->fetchAccessTokenWithAuthCode($this->request->getVar('code'));
+        if (!isset($token['error'])) {
+            $this->googleClient->setAccessToken($token['access_token']);
+            
+            // Sử dụng CustomSession để lưu AccessToken
+            //$customSession = new CustomSession(null);
+            //$customSession->set_field("AccessToken", $token['access_token']);
+            
+            $googleService = new \Google\Service\Oauth2($this->googleClient);
+            $data = $googleService->userinfo->get();
+            //print_r($data); die;
+            $userdata = array();
+            $userModel = new User($data['email'], null, $data['id']);
+            $userId = $userModel->id;
+            
+            //$userModel = new User($data['id']);
+            //print_r($userId); die; //vượt qua
+
+            if ($userModel->check_if_authorized()) {
+                $userdata = [
+                    'userid' => $userModel->id,
+                    'First_Name' => $data['givenName'],
+                    'Last_Name' => $data['familyName'],
+                    'email' => $data['email'],
+                ];
+                $userModel->updateUserData($userdata);
+                $customSession = new CustomSession($userId);
+                //print_r($customSession->isSessionSet()); die;
+                $customSession->set_field("LoggedUserData", $userdata);
+                return redirect()->to('/');
+            } 
+        } else {
+            session()->setFlashData("Error", "Something went wrong");
+            return redirect()->to('/login');
+        }
+    }
+    */
 }
