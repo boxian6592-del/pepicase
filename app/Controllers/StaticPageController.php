@@ -50,18 +50,6 @@ class StaticPageController extends BaseController
         ]);
     }
 
-    public function purchases() // purchases cũng tĩnh nhưng tĩnh ở một mức nhất định
-    {
-        $curr_session = new CustomSession(null);
-        if($curr_session->isSessionSet())
-        {
-            
-        }
-        else
-        {
-            return redirect() -> to ('/login');
-        }
-    }
 
     public function checkout_done_cash()
     {
@@ -89,6 +77,54 @@ class StaticPageController extends BaseController
         $curr_session = new CustomSession();
         $curr_session->delete_session_cookie();
         return 'http://localhost/pepicase/public';
+    }
+
+    public function purchases()
+    {
+        $curr_session = new CustomSession(null);
+        if ($curr_session->isSessionSet()) {
+            $userModel = new User();
+            $purchases = $userModel->getPurchases($curr_session->get_id());
+            if ($purchases == null) {
+                $purchases = [];
+                return view('purchases', ['purchases' => $purchases]);
+            }
+            return view('purchases', ['purchases' => $purchases]);
+        }
+        else {
+            return redirect() -> to ('/login');
+        }
+    }
+
+    public function deletePurchase() {
+        $curr_session = new CustomSession(null);
+        if (isset($_POST['invoice_id'])) {
+            $invoiceId = $_POST['invoice_id'];
+            if ($curr_session->isSessionSet()) {
+                $userModel = new User();
+                $result = $userModel->deletePurchase($invoiceId);
+                if ($result) {
+                    return $this->response->setJSON([
+                        'success' => true,
+                    ]);
+                } else {
+                    return $this->response->setJSON([
+                        'success' => false,
+                        'error' => 'Could not delete purchase'
+                    ]);
+                }
+            } else {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'error' => 'Session not set'
+                ]);
+            }
+        } else {
+            return $this->response->setJSON([
+                'success' => false,
+                'error' => 'Missing invoice_id'
+            ]);
+        }
     }
 }
 

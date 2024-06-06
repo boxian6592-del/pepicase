@@ -29,6 +29,8 @@ $routes->post('/post_comment','GetProductController::post_comment');
 //thao tác login
 $routes->get('/login','LoginController::index');
 $routes->post('/login','LoginController::login');
+$routes->get('/loginWithGoogle','LoginController::loginWithGoogle');
+$routes->get('/loginWithFacebook','LoginController::loginWithFB');
 //thao tác login
 
 //thao tác logout
@@ -76,3 +78,6 @@ $routes->post('/user/update','StaticPageController::account_info_update');
 $routes->get('/user/changePassword/pending','ResetPasswordController::check_and_send_user');
 $routes->post('/user/delete_account','StaticPageController::delete_user');
 //quản lý tài khoản
+
+$routes->get('/purchases','StaticPageController::Purchases');
+$routes->post('/purchases/deleteOrder','StaticPageController::deletePurchase');

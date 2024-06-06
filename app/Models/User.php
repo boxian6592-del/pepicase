@@ -15,7 +15,7 @@ class User extends Model
     protected $isAdmin = null;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['email', 'password', 'Google_ID'];
+    protected $allowedFields = ['email', 'password', 'oauth_id'];
 
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
@@ -62,6 +62,21 @@ class User extends Model
     {
         if (empty($this->id) && empty($this->oauth_id)) return false;
         else return true;
+    }
+
+    public function getPurchases($id) {
+        $db = Database::connect();
+        $sql = "
+        SELECT order_date, invoice.id, product_id, name_product, invoice_details.price, invoice_details.size, image, quantity
+        FROM invoice_details
+        INNER JOIN invoice ON invoice_details.invoice_id = invoice.id
+        INNER JOIN product ON product.id = invoice_details.product_id
+        WHERE user_id = ?
+    ";
+    $result = $db->query($sql, [$id])->getResultArray();
+    //echo print_r($result);
+    if (empty($result)) return null;
+    return $result;
     }
 
 
@@ -115,38 +130,44 @@ class User extends Model
         return $result;
     }
 
-    public function getPurchases($id) {
-        $db = Database::connect();
-        $sql = "
-        SELECT order_date, invoice.id, product_id, name_product, price, quantity
-        FROM invoice_details
-        INNER JOIN invoice ON invoice_details.invoice_id = invoice.id
-        WHERE User_ID = ?
-    ";
-    $result = $db->query($sql, [$id])->getResultArray();
-    if (empty($result)) return false;
-    return $result;
-    }
-
-    public function isAlreadyRegister($authid){ //check đã đăng nhập oauth_id chưa
-    return $this->where('oauth_id', $authid)->first() !== null;
-	}
-	public function updateUserData($userdata, $authid){ //cập nhật thông tin
-        $db = Database::connect();
-        $this->update(['oauth_id' => $authid], $userdata);
-        $result = $db->query("INSERT INTO user_info (Email, Password, oauth_id, Is_Admin) VALUES ('$mail', '$pass', '$oauth_id', 0);");
-        if ($result !== null)
-        {
-            $new_user = new User($mail, $pass, $oauth_id);
-            return $new_user->id;
+    function isAlreadyRegister($authid){ //check đã đăng nhập oauth_id chưa
+        return $this->where('oauth_id', $authid)->first() !== null;
         }
-        else return 0;
-
-		//$this->db->table("user")->where(['oauth_id'=>$authid])->update($userdata);
-	}
-	public function insertUserData($userdata){ //thêm thông tin
-        $this->insert($userdata);
-	}
+        function updateUserData($userdata){ 
+            $db = Database::connect();
+            $sql1 = "SELECT * FROM user_info WHERE User_ID = ?";
+            $result = $db->query($sql1, [$userdata['userid']])->getResult();
+            
+            if (empty($result)) {
+                $sql1 = "INSERT INTO user_info (User_ID, First_Name, Last_Name) VALUES (?, ?, ?)";
+                $db->query($sql1, [
+                    $userdata['userid'],
+                    $userdata['First_Name'],
+                    $userdata['Last_Name'],
+                ]);
+            } else {
+                $sql1 = "UPDATE user_info SET First_Name = ?, Last_Name = ? WHERE User_ID = ?";
+                $db->query($sql1, [
+                    $userdata['First_Name'],
+                    $userdata['Last_Name'],
+                    $userdata['userid']
+                ]);
+            }
+        }
+        
+        function insertUserData($userdata){ //thêm thông tin
+            $db = Database::connect();
+            $sql1 = "INSERT INTO user_info(User_ID, First_Name, Last_Name) Values ($userdata->userid, $userdata->First_Name, $userdata->Last_Name)";
+            $db->query($sql1);
+        }
+    
+        function deletePurchases($invoiceId) {
+            $db = Database::connect();
+            $sql = "DELETE FROM invoice_details WHERE invoice_id = ?";
+            $db->query($sql, [$invoiceId]);
+            $sql = "DELETE FROM invoice WHERE id = ?";
+            $db->query($sql, [$invoiceId]);
+        }
 
     public function update_info($id, $isFound, $object)
     {
