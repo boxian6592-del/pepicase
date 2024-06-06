@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div id="body" class="d-flex justify-content-center flex-row" style = "min-height: 60vh;">
+<div id="body" class="d-flex justify-content-center flex-row" style = "min-height: 80vh;">
 
     <div id="cart-items" class="d-flex flex-column align-items-center lexend" style = "width: 40vw;">
     </div>

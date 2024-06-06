@@ -103,12 +103,10 @@
     </div>
 
 </div>
-<button id="load-more" class="load-more-btn">Load More Products</button>
-
-<?php include(APPPATH.'views/components/bottom-footer.php'); ?>
+<button id="load-more" class="load-more-btn" style = "margin-bottom: 5vh;">Load More Products</button>
 <script src="/pepicase/public/js/jquery.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
         // Xử lý sự kiện nhấn vào các ô màu để chọn/bỏ chọn
         document.querySelectorAll('.color-row div[id]').forEach(function(colorDiv) {
             colorDiv.addEventListener('click', function() {
@@ -252,3 +250,5 @@
 
     });
 </script>
+<?php include(APPPATH.'views/components/bottom-footer.php'); ?>
+

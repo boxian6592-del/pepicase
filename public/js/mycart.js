@@ -46,7 +46,7 @@ function print(id, name, price, pathing, quantity, model)
     var product_div = $('<div>').addClass('d-flex product-item')
     .css({
       'width': '100%',
-      'height': '20vh',
+      'height': '25vh',
       'text-align': 'left',
       'margin-top': '3vh'
     });
@@ -89,7 +89,7 @@ function print(id, name, price, pathing, quantity, model)
   
     var model = $('<div>').addClass('product-model')
     .css('font-size', '15px')
-    .html(`Model: <strong>${model}</strong> |||| Price of each: <strong>${price}$</strong>`);
+    .html(`Model: <strong>${model}</strong> <> Price of each: <strong>${price}$</strong>`);
   
     var quantityDiv = $('<div>').addClass('product-quantity d-flex flex-row')
     .css('font-size', '15px');
