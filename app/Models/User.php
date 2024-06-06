@@ -229,6 +229,8 @@ class User extends Model
         $db = Database::connect();
         $clear_comments = "DELETE FROM feedback WHERE User_ID = {$id}";
         $db->query($clear_comments);
+        $clear_delivery = "DELETE FROM delivery WHERE Invoice_ID IN (SELECT ID FROM invoice WHERE User_ID = {$id})";
+        $db->query($clear_delivery);
         $clear_invoice_details = "DELETE FROM invoice_details WHERE Invoice_ID IN (SELECT ID FROM invoice WHERE User_ID = {$id})";
         $db->query($clear_invoice_details);
         $clear_invoice = "DELETE FROM invoice WHERE User_ID = {$id}";
