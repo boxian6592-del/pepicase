@@ -44,7 +44,7 @@ class User extends Model
                 $this->isAdmin = $row->Is_Admin; 
             }
         } else {
-            $result = $db->query("SELECT * FROM $this->table WHERE email ='$email' AND password = '$password' ")->getResult();
+            $result = $db->query("SELECT * FROM $this->table WHERE Email ='$email' AND Password = '$password' ")->getResult();
             if (empty($result)) {
                 
             } else {
@@ -60,8 +60,7 @@ class User extends Model
 
     public function check_if_authorized()
     {
-
-        if (empty($this->id) || empty($this->oauth_id)) return false;
+        if ($this->id == null || $this->oauth_id == null) return false;
         else return true;
     }
 

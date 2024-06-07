@@ -152,7 +152,7 @@ class SignUpController extends BaseController
         // mở gói mail đã mã hóa và pass đã mã hóa
 
         $new_user = new User($email,$password); // khởi tạo user với hai thứ trên
-        if( $new_user->check_if_authorized()) // nếu user đã tồn tại
+        if( !$new_user->check_if_authorized() ) // nếu user đã tồn tại
         {
             return redirect() -> to ('/'); // redirect về trang chủ
         }

@@ -56,7 +56,7 @@
                 } else {
                     trigger_password.style.color = "red";
                     trigger_password.style.fontFamily = "Lexend";
-                    trigger_password.innerText = "Invalid password. Please enter again!";
+                    trigger_password.innerText = "Password is too weak. Please enter again!";
                     return false;
                 }
             }
@@ -72,17 +72,19 @@
                 var password = document.getElementById("password").value;
                 var confirm_password = document.getElementById("confirm_password").value;
                 var trigger_confirm_password = document.getElementById("check_confirm_password").querySelector('span');
-
-                if (confirm_password === password && password !== '') {
-                    trigger_confirm_password.style.color = "green";
-                    trigger_confirm_password.style.fontFamily = "Lexend";
-                    trigger_confirm_password.innerText = "Valid password reconfirmation.";
-                    return true;
-                } else {
-                    trigger_confirm_password.style.color = "red";
-                    trigger_confirm_password.style.fontFamily = "Lexend";
-                    trigger_confirm_password.innerText = "Invalid password reconfirmation!";
-                    return false;
+                if(password.value !== '')
+                {
+                    if (confirm_password === password && password !== '') {
+                        trigger_confirm_password.style.color = "green";
+                        trigger_confirm_password.style.fontFamily = "Lexend";
+                        trigger_confirm_password.innerText = "Valid password reconfirmation.";
+                        return true;
+                    } else {
+                        trigger_confirm_password.style.color = "red";
+                        trigger_confirm_password.style.fontFamily = "Lexend";
+                        trigger_confirm_password.innerText = "Invalid password reconfirmation!";
+                        return false;
+                    }    
                 }
             }
             function handleConfirm() {

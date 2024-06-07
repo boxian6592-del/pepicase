@@ -32,7 +32,7 @@ use App\Models\CustomSession;?>
                     </span>
                 </div>
                 <div class="text-center">
-                    <input class="btn btn-primary form-control" type="submit" name="signup" value="SIGN UP" 
+                    <input class="btn btn-primary form-control" type="submit" name="signup" value="LOG IN" 
                         style = "width: 100%; margin-top: 10px; background-color: #FFE57A; border-color: black; transition: background-color 0.3s; color:black; font-weight:bold; font-family: 'Lexend'">
                 </div>  
                 <div class="text-center" style = "color:red">

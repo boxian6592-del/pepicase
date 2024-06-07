@@ -42,6 +42,7 @@ class LoginController extends BaseController
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");
 
+
         $rules = [
             'email' => 'valid_email',
         ];
