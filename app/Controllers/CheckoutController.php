@@ -180,7 +180,7 @@ function momo_return()
     
     $invoice = new Invoice_Delivery();
 
-    if($invoice->check_api_payment_momo(1))
+    if($invoice->check_api_payment($orderId))
     {
         if($result == 0) 
         {

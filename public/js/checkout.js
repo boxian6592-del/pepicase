@@ -264,6 +264,7 @@ $('#buy').click(function()
         {
             note = 'Ship: ' + ship + '$';
             if(voucher_id !== 0) note += '. Discounted: ' + discounted + '$';
+            var usd_to_vnd = total*25400;
 
             console.log(note);
 
@@ -278,7 +279,7 @@ $('#buy').click(function()
                     type: "POST",
                     url: "http://localhost/pepicase/public/checkout/vnpay",
                     data: {
-                        amount: 10000,
+                        amount: usd_to_vnd,
                         bankCode: '',
                         user: user,
                     },
@@ -327,7 +328,7 @@ $('#buy').click(function()
                                     },
                                     dataType: 'json',
                                     success: function(response) {                        
-                                        window.location.href = response.url_vnpay;
+                                        window.location.href = vnpay_url_API;
                                     },
                                     error: function(xhr, status, error) {
                                         var errorMessage;
@@ -341,8 +342,6 @@ $('#buy').click(function()
                                         console.error("Error creating invoice / delivery", errorMessage);
                                     }
                                 });            
-                                window.open(vnpay_url_API);
-                                window.location.href = response.url_vnpay;
                             },
                             error: function(xhr, status, error) {
                                 var errorMessage;
@@ -371,11 +370,10 @@ $('#buy').click(function()
                 })
             }
             if (protocol == 'Momo') {
-                var usd_to_vnd = total*25400;
                 $.post({
                     url: "http://localhost/pepicase/public/checkout/momo",
                     data: {
-                        amount: 10000,
+                        amount: usd_to_vnd,
                     },
                     dataType: 'json',
                     success: function(response, status, xhr) {

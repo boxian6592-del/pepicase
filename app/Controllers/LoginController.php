@@ -38,6 +38,7 @@ class LoginController extends BaseController
     }
     public function login()
     {
+        $fb_permission = ['email'];
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");
 
@@ -57,11 +58,15 @@ class LoginController extends BaseController
             } else {
                 $message = [
                     'msg' => 'Wrong email or password!',
+                    'fb_btn' => $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission),
+                    'googleButton' => $this->googleClient->createAuthUrl(),
                 ];
                 return view('login', $message);
             }
         } else {
             $data['validation'] = $this->validator;
+            $data['fb_btn'] = $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
+            $data['googleButton'] = $this->googleClient->createAuthUrl();    
             return view('login', $data);
         }
     }

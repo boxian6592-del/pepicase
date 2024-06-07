@@ -85,11 +85,13 @@ use App\Models\CustomSession;?>
                 }
             }); 
 
-    document.getElementById('facebook-button').addEventListener('click', function() {
+    document.getElementById('facebook-button').addEventListener('click', function(event) {
+        event.preventDefault();
         window.location.href = url;
     })
 
-    document.getElementById('google-button').addEventListener('click', function() {
+    document.getElementById('google-button').addEventListener('click', function(event) {
+        event.preventDefault();
         window.location.href = url2;
     })
 
