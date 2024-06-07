@@ -74,18 +74,18 @@ class CheckoutController extends BaseController
     
    public function momo_generate() {
 
-        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+    $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
 
-$partnerCode = 'MOMOBKUN20180529';
-$accessKey = 'klm05TvNBzhg7h7j';
-$secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-$orderInfo = "Thanh toán qua MoMo";
-$amount = "10000";
-$orderId = time() ."";
-$redirectUrl = "http://localhost/pepicase/public/checkout/momo_return";
-$ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
-$extraData =  '';
+    $partnerCode = 'MOMOBKUN20180529';
+    $accessKey = 'klm05TvNBzhg7h7j';
+    $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+    $orderInfo = "Thanh toán qua MoMo";
+    $amount = "10000";
+    $orderId = time() ."";
+    $redirectUrl = "http://localhost/pepicase/public/checkout/momo_return";
+    $ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+    $extraData =  '';
     $partnerCode = $partnerCode;
     $accessKey = $accessKey;
     $serectkey = $secretKey;
@@ -116,12 +116,12 @@ $extraData =  '';
         'requestType' => $requestType,
         'signature' => $signature);
 
-    $result = $this->execPostRequest($endpoint, json_encode($data));
+        $result = $this->execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true);  // decode json
 
         if (isset($jsonResult['payUrl'])) {
             // Trả về URL thanh toán cho client
-            echo json_encode(['payUrl' => $jsonResult['payUrl']]);
+            echo json_encode(['payUrl' => $jsonResult['payUrl'], 'Method_ID' => $orderId]);
         } else {
             // Xử lý lỗi nếu cần
             echo json_encode(['error' => 'Không thể tạo URL thanh toán.']);
@@ -150,25 +150,32 @@ $extraData =  '';
 
 function momo_return() 
 {
-    $scheme = $_SERVER['REQUEST_SCHEME'];
+    $request = \Config\Services::request();
+
+    /*$scheme = $_SERVER['REQUEST_SCHEME'];
 
 // Lấy tên host
-$host = $_SERVER['HTTP_HOST'];
+    $host = $_SERVER['HTTP_HOST'];
 
-// Lấy đường dẫn của trang
-$path = $_SERVER['REQUEST_URI'];
+    // Lấy đường dẫn của trang
+    $path = $_SERVER['REQUEST_URI'];
 
 // Tạo URL đầy đủ
-$url = $scheme . '://' . $host . $path;
+    $url = $scheme . '://' . $host . $path;
 
 // Phân tích URL
-$parsed_url = parse_url($url);
+    $parsed_url = parse_url($url);
 
 // Phân tích chuỗi truy vấn
-parse_str($parsed_url['query'], $query_array);
+    parse_str($parsed_url['query'], $query_array);
 
-$result  = $query_array['resultCode'];
+    $result  = $query_array['resultCode'];
     $transaction_id  = $query_array['transId'];
+    */
+
+    
+    $result = $request->getGet('resultCode');
+    $orderId = $request->getGet('orderId');
 
     
     $invoice = new Invoice_Delivery();
@@ -177,7 +184,7 @@ $result  = $query_array['resultCode'];
     {
         if($result == 0) 
         {
-            $invoice->confirm_api_payment_momo($transaction_id);
+            $invoice->confirm_api_payment($orderId);
             $curr_session = new CustomSession();
             $cart = new Cart($curr_session->get_id());
             $cart->clear();
@@ -185,7 +192,7 @@ $result  = $query_array['resultCode'];
         else
         {
             $result != 0;
-            $invoice->cancel_api_payment_momo(1);
+            $invoice->cancel_api_payment($orderId);
         }
 
         return view('checkoutDone', [

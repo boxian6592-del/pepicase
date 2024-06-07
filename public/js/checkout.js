@@ -395,7 +395,7 @@ $('#buy').click(function()
                                 user: user,
                                 Note: note,
                                 Method: protocol,
-                                Method_ID: 1,
+                                Method_ID: response.Method_ID,
                             },
                             dataType: 'json',
                             success: function(response) {
