@@ -87,7 +87,7 @@
                         </div>
 
                         <div id="check_password">
-                            <span style="color: #1F3E97; font-family: 'Lexend'">Tối thiểu 8 ký tự và bao gồm chữ in hoa, thường và số</span>
+                            <span style="color: #1F3E97; font-family: 'Lexend'">Minimum 8 characters, including capitalzed letters and numbers.</span>
                         </div>
                     </div>
 
