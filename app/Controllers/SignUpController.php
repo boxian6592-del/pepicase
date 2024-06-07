@@ -13,8 +13,38 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+use Google\Service\Oauth2 as Google_Service_Oauth2;
+use Facebook\Facebook as Facebook;
+
 class SignUpController extends BaseController
 {
+    private $userModel = null;
+    private $facebook = null;
+    private $fb_helper = null;
+    private $googleClient = null;
+    function __construct()
+    {
+        if ($this->facebook === null) {
+            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            $this->facebook = new \Facebook\Facebook([
+                'app_id' => '774527684780044', //for example, 774527684780044
+                'app_secret' => '5653abdd091dd9ca04afa8a7dbb16f0d', //for example, 85b5b8bc72a01831f09e35984826a215
+                'default_graph_version' => 'v5.1'
+            ]);
+            $this->fb_helper = $this->facebook->getRedirectLoginHelper();
+        }
+
+        $this->userModel = new User();
+        if ($this->googleClient === null) {
+            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            $this->googleClient = new \Google_Client();
+            $this->googleClient->setClientId('940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com'); //for example, 940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com
+            $this->googleClient->setClientSecret('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'); //for example, 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
+            $this->googleClient->setRedirectUri('http://localhost/pepicase/public/loginWithGoogle'); //for example, https://localhost/pepicase/loginWithGoogle
+            $this->googleClient->addScope("email");
+            $this->googleClient->addScope("profile");
+        }
+    }
     private function encrypt($data) // hàm encrypt custom
     {
         $key = 'encryption-key'; // Replace with your encryption key
@@ -40,7 +70,7 @@ class SignUpController extends BaseController
         $password = $this->request->getPost('password');
         $confirm_password = $this->request->getPost('confirm_password');
         // lấy data từ post
-
+        $fb_permission = ['email'];
         // luật (FE lẫn BE)
         $rules = [
             'email' => 'valid_email',
@@ -59,6 +89,8 @@ class SignUpController extends BaseController
             {
                 $message = [
                     "error"=> "User already exist!",
+                    "fb_btn" => $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission),
+                    "googleButton" => $this->googleClient->createAuthUrl(),
                 ];
                 return view('signup', $message); // chạy message "Đã tồn tại user"
             }
@@ -121,6 +153,8 @@ class SignUpController extends BaseController
                     {
                         $error = [
                             'error' => $auth_email->ErrorInfo,
+                            "fb_btn" => $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission),
+                            "googleButton" => $this->googleClient->createAuthUrl(),
                             ];
                         return view('signup', $error);
                     }
@@ -138,6 +172,8 @@ class SignUpController extends BaseController
         {
             $error = [
                 "error"=> "Please enter a valid email!",
+                "fb_btn" => $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission),
+                "googleButton" => $this->googleClient->createAuthUrl(),
             ];
             return view('signup', $error); // trả lỗi
         }
@@ -176,7 +212,11 @@ class SignUpController extends BaseController
         $curr_session = new CustomSession(null); // khởi tạo đổi tượng session rỗng để sử dụng hàm con
         if ($curr_session->isSessionSet()) return redirect() -> to('/');
         // nếu session đã có, người dùng đã sign in rồi, thì về trang chủ
-        return view ('signup');
+
+        $fb_permission = ['email'];
+        $data['fb_btn'] = $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
+        $data['googleButton'] = $this->googleClient->createAuthUrl();
+        return view('signup', $data);
         // nếu không, sẽ trả về trang signup như bth
     }
 
