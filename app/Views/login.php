@@ -62,7 +62,8 @@ use App\Models\CustomSession;?>
     </div>
 
     <script>
-    var url = 'lmao';
+    var url = '<?= $fb_btn ?>';
+    var url2 = '<?= $googleButton ?>';
     function validateEmail() {
         var email = document.getElementById('email').value;
         var emailError = document.getElementById('emailError');
@@ -85,11 +86,11 @@ use App\Models\CustomSession;?>
             }); 
 
     document.getElementById('facebook-button').addEventListener('click', function() {
-        window.location.href = '<?= $fb_btn ?>';
+        window.location.href = url;
     })
 
     document.getElementById('google-button').addEventListener('click', function() {
-        window.location.href = '<?= $googleButton ?>';
+        window.location.href = url2;
     })
 
     </script>
