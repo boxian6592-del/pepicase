@@ -25,10 +25,10 @@ class User extends Model
     {
         $db = Database::connect();
         if ($oauth_id !== null) {
-            $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '$oauth_id'")->getResult();            
+            $result = $db->query("SELECT * FROM $this->table WHERE EMail = '{$email}'")->getResult();            
             if (empty($result)) {
                 $this->create($email, 'matkhau', $oauth_id);
-                $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '$oauth_id'")->getResult();            
+                $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '{$oauth_id}'")->getResult();            
                 $row = $result[0];
                 $this->id = $row->ID;
                 $this->email = $row->Email;
@@ -37,14 +37,16 @@ class User extends Model
                 $this->isAdmin = $row->Is_Admin; 
             } else {
                 $row = $result[0];
+                $query = "UPDATE $this->table SET oauth_id = '{$oauth_id}' WHERE Email = '{$row->Email}'";
+                $db->query($query);
                 $this->id = $row->ID;
                 $this->email = $row->Email;
                 $this->password = $row->Password;
-                $this->oauth_id  = $row->oauth_id;
+                $this->oauth_id  = $oauth_id;
                 $this->isAdmin = $row->Is_Admin; 
             }
         } else {
-            $result = $db->query("SELECT * FROM $this->table WHERE Email ='$email' AND Password = '$password' ")->getResult();
+            $result = $db->query("SELECT * FROM $this->table WHERE Email ='{$email}' AND Password = '{$password}' ")->getResult();
             if (empty($result)) {
                 
             } else {
@@ -60,7 +62,7 @@ class User extends Model
 
     public function check_if_authorized()
     {
-        if ($this->id == null || $this->oauth_id == null) return false;
+        if ($this->id == null && $this->oauth_id == null) return false;
         else return true;
     }
 
@@ -68,13 +70,9 @@ class User extends Model
     public function create($mail, $pass, $oauth_id)
     {
         $db = Database::connect();
-        $result = $db->query("INSERT INTO user (Email, Password, oauth_id, Is_Admin) VALUES ('$mail', '$pass', '$oauth_id', 0);");
-        if ($result !== null)
-        {
-            $new_user = new User($mail, $pass, $oauth_id);
-            return $new_user->id;
-        }
-        else return 0;
+        $db->query("INSERT INTO user (Email, Password, oauth_id, Is_Admin) VALUES ('{$mail}', '{$pass}', '{$oauth_id}', 0);");
+        $outcome = $db->query("SELECT ID FROM user WHERE Email = '{$mail}'")->getResult();
+        return $outcome[0]->ID;
     } 
 
     public function check_email($mail)
@@ -216,7 +214,7 @@ public function clear($id)
     }
 
 
-public function update_info($id, $isFound, $object)
+    public function update_info($id, $isFound, $object)
     {
         $db = Database::connect();
         $sql = "SELECT * FROM user_info WHERE User_ID = {$id}";
