@@ -16,7 +16,8 @@ class LoginController extends BaseController
     function __construct()
     {
         if ($this->facebook === null) {
-            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            require APPPATH.'Libraries\vendor\autoload.php';
+            // require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
             $this->facebook = new \Facebook\Facebook([
                 'app_id' => '774527684780044', //for example, 774527684780044
                 'app_secret' => '5653abdd091dd9ca04afa8a7dbb16f0d', //for example, 85b5b8bc72a01831f09e35984826a215
@@ -27,7 +28,8 @@ class LoginController extends BaseController
 
         $this->userModel = new User();
         if ($this->googleClient === null) {
-            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            require APPPATH.'Libraries\vendor\autoload.php';
+            // require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
             $this->googleClient = new \Google_Client();
             $this->googleClient->setClientId('940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com'); //for example, 940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com
             $this->googleClient->setClientSecret('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'); //for example, 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
@@ -186,7 +188,7 @@ class LoginController extends BaseController
         //$userModel = new User($data['id']);
         //print_r($userId); die; //vượt qua
 
-        if ($userModel->check_email($data['email'])) {
+        if ($userModel->check_if_authorized()) {
             $userdata = [
                 'userid' => $userModel->id,
                 'First_Name' => $data['givenName'],
