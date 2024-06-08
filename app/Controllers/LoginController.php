@@ -56,8 +56,10 @@ class LoginController extends BaseController
         $user = new User($email, $password);
         if ($this->validate($rules)) {
             if ($user->id != null) {
-                new CustomSession($user->id);
-                return redirect()->to('/');
+                $new_session = new CustomSession($user->id);
+                $result = $new_session->get_previous_url();
+                if($result == null) return redirect() -> to('/');
+                else return redirect() -> to ($result);
             } else {
                 $message = [
                     'msg' => 'Wrong email or password!',
@@ -86,6 +88,9 @@ class LoginController extends BaseController
     {
         $curr_session = new CustomSession(null);
         if ($curr_session->isSessionSet()) return redirect() -> to('/');
+
+        $previousUrl = $this->request->getServer('HTTP_REFERER');
+        if (strpos($previousUrl, 'http://localhost/pepicase/public/product/') === 0) $curr_session->set_previous_url((string)$previousUrl);
 
         $fb_permission = ['email'];
         $data['fb_btn'] = $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);
@@ -197,9 +202,13 @@ class LoginController extends BaseController
             ];
             $userModel->updateUserData($userdata);
             $customSession = new CustomSession($userId);
+
             //print_r($customSession->isSessionSet()); die;
             $customSession->set_field("LoggedUserData", $userdata);
-            return redirect()->to('/');
+
+            $result = $customSession->get_previous_url();
+            if($result == null) return redirect() -> to('/');
+            else return redirect() -> to ($result);
         } 
     } else {
         session()->setFlashData("Error", "Something went wrong");

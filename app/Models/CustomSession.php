@@ -108,6 +108,6 @@ class CustomSession
     {
         $session = \Config\Services::session();
         $url = $session->get('redirect_url');
-        return $url;
+        return (string) $url;
     }
 }

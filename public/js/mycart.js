@@ -133,21 +133,30 @@ function print(id, name, price, pathing, quantity, model)
     item_count += quantity_value;
     remove_link.click(function()
     {
-        item_count -= quantity_value;
-        $('#cart_amount').text(item_count);
-
-        product_div.remove();
-        totalPrice -= price_value * quantity_value;
-
-        var protocol = 'delete';
-        initiate_post_request(protocol, id, model_value, quantity_value);
-
-        $('#subTotal').text(totalPrice.toFixed(2) + "$");
-        $('#totalPrice').text(totalPrice.toFixed(2) + "$");
-        if(item_count == 0){
-          $('#cart-items').html(`<h1 style = "margin-top: 10vh;">Your cart has been emptied!</h1>`);
+        if(remove_link.text() == 'Remove')
+        {
+            remove_link.text() = 'You sure?';
+            remove_link.css.color = 'red';
         }
-    })
+        else
+        {
+            item_count -= quantity_value;
+            $('#cart_amount').text(item_count);
+    
+            product_div.remove();
+            totalPrice -= price_value * quantity_value;
+    
+            var protocol = 'delete';
+            initiate_post_request(protocol, id, model_value, quantity_value);
+    
+            $('#subTotal').text(totalPrice.toFixed(2) + "$");
+            $('#totalPrice').text(totalPrice.toFixed(2) + "$");
+            if(item_count == 0){
+              $('#cart-items').html(`<h1 style = "margin-top: 10vh;">Your cart has been emptied!</h1>`);
+            }
+        }
+    }
+  )
 
     increaseBtn.click(function()
     {
