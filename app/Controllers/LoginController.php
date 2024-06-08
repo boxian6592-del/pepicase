@@ -186,7 +186,7 @@ class LoginController extends BaseController
         //$userModel = new User($data['id']);
         //print_r($userId); die; //vượt qua
 
-        if ($userModel->check_if_authorized()) {
+        if ($userModel->check_email($data['email'])) {
             $userdata = [
                 'userid' => $userModel->id,
                 'First_Name' => $data['givenName'],
