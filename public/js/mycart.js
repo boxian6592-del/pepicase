@@ -135,8 +135,12 @@ function print(id, name, price, pathing, quantity, model)
     {
         if(remove_link.text() == 'Remove')
         {
-            remove_link.text() = 'You sure?';
-            remove_link.css.color = 'red';
+            remove_link.text('Click here again to remove');
+            remove_link.css('color', 'red');
+            setTimeout(function() {
+              remove_link.text('Remove');
+              remove_link.css('color', 'black');
+          }, 1500);
         }
         else
         {
