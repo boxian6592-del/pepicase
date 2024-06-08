@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\PHPMailer.php';
-require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\Exception.php';
-require_once 'C:\xampp\htdocs\pepicase\app\Libraries\PHPMailer\src\SMTP.php';
+require_once 'D:\XAMPP\htdocs\pepicase\app\Libraries\PHPMailer\src\PHPMailer.php';
+require_once 'D:\XAMPP\htdocs\pepicase\app\Libraries\PHPMailer\src\Exception.php';
+require_once 'D:\XAMPP\htdocs\pepicase\app\Libraries\PHPMailer\src\SMTP.php';
 
 use App\Models\User;
 use App\Models\CustomSession;
@@ -25,7 +25,7 @@ class SignUpController extends BaseController
     function __construct()
     {
         if ($this->facebook === null) {
-            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            require 'D:\XAMPP\htdocs\pepicase\app\Libraries\vendor\autoload.php';
             $this->facebook = new \Facebook\Facebook([
                 'app_id' => '774527684780044', //for example, 774527684780044
                 'app_secret' => '5653abdd091dd9ca04afa8a7dbb16f0d', //for example, 85b5b8bc72a01831f09e35984826a215
@@ -36,7 +36,7 @@ class SignUpController extends BaseController
 
         $this->userModel = new User();
         if ($this->googleClient === null) {
-            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            require 'D:\XAMPP\htdocs\pepicase\app\Libraries\vendor\autoload.php';
             $this->googleClient = new \Google_Client();
             $this->googleClient->setClientId('940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com'); //for example, 940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com
             $this->googleClient->setClientSecret('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'); //for example, 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
