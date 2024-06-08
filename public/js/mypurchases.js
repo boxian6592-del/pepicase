@@ -18,7 +18,7 @@ $(document).ready(function() {
     } else {
         let block = document.createElement("div");
         block.innerHTML = `
-            <div style="font-size: 20px;">There are no purchases... Go and shop now!</div>
+            <div class="lexend" style="font-size: 50px;">There are no purchases... Go and <a href="/pepicase/public/product" style="color:blue;">shop now!</a></div>
         `;
         document.getElementById("page-body").appendChild(block);
     }

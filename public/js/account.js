@@ -109,7 +109,7 @@ $('#save').click(function() {
                 type: "POST",
                 url: "http://localhost/pepicase/public/user/update",
                 data: JSON.stringify({
-                    isFound: info_found,
+                    isFound: 1,
                     data: data
                 }),
                 contentType: "application/json; charset=utf-8",

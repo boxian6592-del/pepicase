@@ -272,6 +272,23 @@ $('#buy').click(function()
             {
                 $('#detail-alert').text('PLEASE CHOOSE A PAYMENT METHOD!');
             }
+
+            if ($('#save-contact').is(':checked') && infoCheck() == 'None') {
+                var data = getFormData();
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/pepicase/public/user/update",
+                    data: JSON.stringify({
+                        isFound: 1,
+                        data: data
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response) 
+                    {},
+                  });
+            }
+
             if(protocol == 'VNPAY')
             {
                 console.log("VNPAY's protocol chosen: "+ vnpay_protocol);
@@ -535,18 +552,3 @@ function getFormData() {
 
 var testData = getFormData();
 console.log(testData);
-
-$(window).on('beforeunload', function() {
-    if ($('#save-contact').is(':checked') && infoCheck() == 'None') {
-        var data = getFormData();
-        $.post({
-            url: "http://localhost/pepicase/public/user/update",
-            data: JSON.stringify({
-                isFound: info_found,
-                data: data
-            }),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-        });
-    }
-});
