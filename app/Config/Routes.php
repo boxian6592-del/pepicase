@@ -52,24 +52,33 @@ $routes->get('/resetPassword/confirmed/(:any)','ResetPasswordController::showRes
 $routes->post('/resetPassword/confirmed/(:any)','ResetPasswordController::ResetPassword/$1');
 //resetPassword
 
+
 //checkout
+//////checkout cơ bản
 $routes->get('/checkout','CheckoutController::index');
 $routes->post('/checkout/check_discount','CheckoutController::check_discount');
-
-$routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
-$routes->post('/checkout/momo','CheckoutController::momo_generate');
-//$routes->get('checkout/momo_return', 'CheckoutController::momo_return');
-$routes->get('/checkout/pending','StaticPageController::await_payment');
-$routes->get('/checkout/vnpay_return','CheckoutController::vnpay_return');
-$routes->get('/checkout/momo_return','CheckoutController::momo_return');
-
+$routes->get('/checkout/done','StaticPageController::checkout_done_cash');
 $routes->post('/checkout/generate_invoice','CheckoutController::generate_invoice');
 $routes->post('/checkout/create_delivery','CheckoutController::create_delivery');
+$routes->get('/checkout/pending','StaticPageController::await_payment');
+//////checkout cơ bản
 
-$routes->get('/checkout/done','StaticPageController::checkout_done_cash');
-//khu để test layout
+//////checkout momo
+$routes->post('/checkout/momo','CheckoutController::momo_generate');
+$routes->get('/checkout/momo_return','CheckoutController::momo_return');
+//////checkout momo
+
+
+//////checkout vnpay
+$routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
+$routes->get('/checkout/vnpay_return','CheckoutController::vnpay_return');
+//////checkout vnpay
+//checkout
+
+
+//khu test layout
 $routes->get('/testing','HomepageController::testing');
-//khu để test layout
+//khu test layout
 
 $routes->get('/purchases','StaticPageController::purchases');
 
@@ -80,7 +89,20 @@ $routes->get('/user','StaticPageController::account');
 $routes->post('/user/update','StaticPageController::account_info_update');
 $routes->get('/user/changePassword/pending','ResetPasswordController::check_and_send_user');
 $routes->post('/user/delete_account','StaticPageController::delete_user');
-//quản lý tài khoản
-
 $routes->get('/purchases','StaticPageController::Purchases');
 $routes->post('/purchases/deleteOrder','StaticPageController::deletePurchase');
+//quản lý tài khoản
+
+
+
+//Admin side
+$routes->get('/redirect','AdminController::redirect');
+$routes->post('/redirect/check_secret','AdminController::check_secret');
+
+
+
+
+
+
+
+//Admin side

@@ -95,7 +95,7 @@ class User extends Model
         return $result;
     }
 
-        public function getPurchases($id) {
+    public function getPurchases($id) {
         $db = Database::connect();
         $sql = "
         SELECT order_date, invoice.id, product_id, name_product, invoice_details.price, invoice_details.size, image, quantity

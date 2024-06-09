@@ -38,9 +38,11 @@ function createItemBlock(id, name, price, pathing, quantity, size) {
     block.className = "item";
     block.innerHTML = 
     `<div class="d-flex lexend" style="width: 100%; height:25vh; margin-bottom: 3vh;">
-        <div class="d-flex align-items-center justify-content-center" style="height: 100%; width: 150px; background-color: #C4C4C4; border-radius: 10px;">
-            <img src="http://localhost/${pathing}" style="height: 90%; width:auto;">
-        </div>
+        <a href="http://localhost/pepicase/public/product/${id}" style="color: black; text-decoration:none;">
+            <div class="d-flex align-items-center justify-content-center" style="height: 100%; width: 150px; background-color: #C4C4C4; border-radius: 10px;">
+                <img src="http://localhost/${pathing}" style="height: 90%; width:auto;">
+            </div>
+        </a>
         <div style="padding-left: 20px;">
             <a href="http://localhost/pepicase/public/product/${id}" style="color: black; text-decoration:none;">
                 <div style="font-size: 25px;"><b>${name}</b></div>
