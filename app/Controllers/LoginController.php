@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CustomSession;
 use App\Models\User;
+use App\Models\Admin;
 use Google\Service\Oauth2 as Google_Service_Oauth2;
 use Facebook\Facebook as Facebook;
  
@@ -53,10 +54,14 @@ class LoginController extends BaseController
             'validation' => '',
         ];
 
-        $user = new User($email, $password);
         if ($this->validate($rules)) {
+            $user = new User($email, $password);
             if ($user->id != null) {
                 $new_session = new CustomSession($user->id);
+                if($user->isAdmin == '1')
+                {
+                    return redirect() -> to ('/redirect');
+                }
                 $result = $new_session->get_previous_url();
                 if($result == null) return redirect() -> to('/');
                 else return redirect() -> to ($result);
@@ -90,7 +95,8 @@ class LoginController extends BaseController
         if ($curr_session->isSessionSet()) return redirect() -> to('/');
 
         $previousUrl = $this->request->getServer('HTTP_REFERER');
-        if (strpos($previousUrl, 'http://localhost/pepicase/public/product/') === 0) $curr_session->set_previous_url((string)$previousUrl);
+        if (strpos($previousUrl, 'http://localhost/pepicase/public/product/') === 0 || strpos($previousUrl, 'http://localhost/pepicase/public/user/cart') === 0) 
+            $curr_session->set_previous_url((string)$previousUrl);
 
         $fb_permission = ['email'];
         $data['fb_btn'] = $this->fb_helper->getLoginUrl('http://localhost/pepicase/public/loginWithFacebook?', $fb_permission);

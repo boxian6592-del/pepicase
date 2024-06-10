@@ -50,6 +50,7 @@ class CustomSession
         }
     }
 
+
     public function isSessionSet() // hàm bool để xem trang đã có phiên chưa
     {
         $session = \Config\Services::session();
