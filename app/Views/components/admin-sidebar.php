@@ -33,7 +33,7 @@
                     </li>
                 </ul>
 
-                <div class="d-flex flex-column" style="margin-right: 5%; margin-left: 5%; margin-top: 100%;">
+                <div class="d-flex flex-column" style="margin-right: 5%; margin-left: 5%; margin-top: 90%;">
                     <hr class = "sidebar-hr">
                     <div style="padding-bottom: 10%; text-align: center;">
                         <b class="title">pepicase</b>
@@ -47,4 +47,3 @@
                 <button type="button" class="btn btn-warning">Log out</button>
             </div>
         </div>
-    

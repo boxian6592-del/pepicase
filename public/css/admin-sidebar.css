@@ -6,7 +6,7 @@ body
 .card {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 98vh;
   display: flex;
   flex-direction: column;
   background-color: #FFFAE3;
@@ -35,7 +35,6 @@ body
   /* ul li */
 .card-body{
   padding: 0px;
-  overflow-y: auto;
 }
 
 .nav-item:hover{
