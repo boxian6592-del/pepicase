@@ -99,5 +99,6 @@ $routes->post('/purchases/deleteOrder','StaticPageController::deletePurchase');
 $routes->get('/redirect','AdminController::redirect');
 $routes->post('/redirect/check/','AdminController::check_secret');
 $routes->get('/admin/dashboard/','AdminController::show_dashboard');
-
+$routes->get('/admin/get_delivery','AdminController::get_delivery');
+$routes->get('/admin/set_delivery_status','AdminController:set_delivery_status');
 //Admin side

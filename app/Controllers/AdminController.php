@@ -36,7 +36,8 @@ class AdminController extends BaseController
     function check_secret()
     {
         $secret = $this->request->getPost('secret');
-        if($secret == 'banana') return redirect() -> to ('/admin/dashboard');
+        $secret_check = new Admin();
+        if($secret_check->check_secret($secret)) return redirect() -> to ('/admin/dashboard');
         else
         {
             $curr_session = new CustomSession();
@@ -57,5 +58,20 @@ class AdminController extends BaseController
             $curr_session->delete_session_cookie();
             return redirect() -> to ('/login');
         }
+    }
+
+    function get_product_page()
+    {
+
+    }
+
+    function get_delivery()
+    {
+        
+    }
+
+    function set_delivery_status()
+    {
+
     }
 }

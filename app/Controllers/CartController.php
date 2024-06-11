@@ -44,7 +44,7 @@ class CartController extends BaseController
         else
         {
             $new_quantity = $this->request->getPost('quantity');
-            $cart->updateCartItem($product_id,$model,$new_quantity);
+            $cart->updateCartItem($product_id, $model, $new_quantity);
         }
     }
 }
