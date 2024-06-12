@@ -42,6 +42,11 @@ body
   background-color: #FFE57A;
 }
 
+.nav_active
+{
+  background-color: #FFE57A;
+}
+
 .nav-item
 {
   border-radius: 20px;
@@ -80,3 +85,40 @@ body
   background-color: #FFEC9C;
   border-radius: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+/* CSS CHO PRODUCT */
+.image-container {
+  height: 70px;
+  width: 60px;
+  background-color: #C4C4C4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-right: 1px;
+}
+th {
+  text-align: center;
+}
+table thead {
+  border-radius: 20px;
+}
+
+.modal-dialog.custom-top{
+  position: relative;
+  top: 20%;
+}
+.modal-dialog.custom-width {
+  max-width: 60%;
+}
+
+/* CSS CHO PRODUCT */

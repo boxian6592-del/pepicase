@@ -60,9 +60,14 @@ class AdminController extends BaseController
         }
     }
 
-    function get_product_page()
+    function get_products()
     {
-
+        $previousUrl = $this->request->getServer('HTTP_REFERER');
+        if (strpos($previousUrl, 'http://localhost/pepicase/public/admin/dashboard') === 0)
+        {
+            $admin = new Admin();
+            return json_encode($admin->get_all_products());
+        }
     }
 
     function get_delivery()

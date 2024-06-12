@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/pepicase/public/css/admin-sidebar.css">
+    <link rel="stylesheet" href="/pepicase/public/css/fonts.css">
 </head>
 <body>
     <div class = "d-flex flex-row justify-content-center">
@@ -19,7 +20,7 @@
 
             <div class="card-body">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item nav_active">
                         <img src="/product-icon.svg" alt="">
                         <b class="title">Product</b>
                     </li>

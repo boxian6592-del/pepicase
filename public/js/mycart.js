@@ -6,7 +6,6 @@ $(document).ready(function() {
       print(item.Product_ID, item.Name, item.Price, item.Image, item.Quantity,item.Size);
     }
   )
-
   console.log(user);
 });
 
