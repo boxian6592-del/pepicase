@@ -229,6 +229,7 @@ table thead {
 
 .status-pending {
   background-color: #fdf1e8;
+  color: #e46a11;
 }
 
 .status-shipping {

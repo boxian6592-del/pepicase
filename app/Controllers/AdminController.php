@@ -104,4 +104,26 @@ class AdminController extends BaseController
             return $this->response->setJSON(['success' => $result]);
         }
     }
+
+    function get_delivery_status()
+    {
+        $previousUrl = $this->request->getServer('HTTP_REFERER');
+        if (strpos($previousUrl, 'http://localhost/pepicase/public/admin/dashboard') === 0)
+        {
+            $invoice_id = $this->request->getPost('invoice_id');
+            $admin = new Admin();
+            return $admin->get_delivery_status($invoice_id);
+        }
+    }
+
+    function get_invoice_details()
+    {
+        $previousUrl = $this->request->getServer('HTTP_REFERER');
+        if (strpos($previousUrl, 'http://localhost/pepicase/public/admin/dashboard') === 0)
+        {
+            $invoice_id = $this->request->getPost('invoice_id');
+            $admin = new Admin();
+            return json_encode($admin->get_invoice_details($invoice_id));
+        }
+    }
 }

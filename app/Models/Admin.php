@@ -92,7 +92,9 @@ class Admin extends User
     {
         $db = Database::connect();
         $builder = $db->table('delivery');
-        $builder->select('delivery.Invoice_ID, CONCAT(delivery.First_Name, " ", delivery.Last_Name) as Customer, user.Email, delivery.Shipping_Method as Method, invoice.Order_date as Date, invoice.Total_Price as Total, invoice.Method as Payment, delivery.Status');
+        $builder->select('delivery.Invoice_ID, CONCAT(delivery.First_Name, " ", delivery.Last_Name) as Customer, user.Email, 
+        delivery.Shipping_Method as Method, invoice.Order_date as Date, invoice.Total_Price as Total, 
+        invoice.Method as Payment, delivery.Status, delivery.Phone, delivery.Country, CONCAT(delivery.Address, ", ",delivery.City) as Address');
         $builder->join('invoice', 'delivery.Invoice_ID = invoice.ID');
         $builder->join('user', 'invoice.User_ID = user.ID');
         $builder->whereNotIn('delivery.Status', [2, -1]);
@@ -115,10 +117,25 @@ class Admin extends User
     {
         $db = Database::connect();
         $db->query("UPDATE product SET IsDeleted = 1 WHERE ID = '{$product_id}'");
+        $db->query("DELETE FROM cart_details WHERE Product_ID = '{$product_id}'");
     }
     //product space
 
+    function get_invoice_details($invoice_id)
+    {
+        $db = Database::connect();
+        $query = "SELECT invoice_details.Name_Product as Name, invoice_details.Size as Size, product.ID as ID,
+        invoice_details.Quantity as Quantity, product.Price as Price, product.Image as Image
+        FROM invoice_details INNER JOIN product ON invoice_details.Product_ID = product.ID WHERE Invoice_ID = '{$invoice_id}';";
+        $result = $db->query($query)->getResult();
+        return $result;
+    }
 
-
+    function get_delivery_status($invoice_id)
+    {
+        $db = Database::connect();
+        $result = $db->query("SELECT Status FROM delivery WHERE Invoice_ID = '{$invoice_id}'")->getResult();
+        return $result[0]->Status;
+    }
 }
 

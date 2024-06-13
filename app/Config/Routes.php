@@ -103,6 +103,8 @@ $routes->get('/admin/dashboard/','AdminController::show_dashboard');
 
 $routes->get('/admin/get_delivery','AdminController::get_delivery');
 $routes->post('/admin/set_delivery_status', 'AdminController::set_delivery_status');
+$routes->post('/admin/get_delivery_status', 'AdminController::get_delivery_status');
+$routes->post('/admin/get_invoice_details', 'AdminController::get_invoice_details');
 
 
 $routes->get('/admin/get_products','AdminController::get_products');

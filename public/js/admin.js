@@ -56,6 +56,18 @@ function initiate_order_page()
             </tbody>
         </table>
     </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document" style="max-width: 80vw; margin-top: 9vh; max-height: 150vh;">
+        <div class="modal-content">
+          <div class="modal-body">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     `
     );
 
@@ -64,7 +76,8 @@ function initiate_order_page()
         console.log(delivery_data);
         delivery_data.forEach(delivery => 
             {
-                order_print(delivery.Invoice_ID, delivery.Customer, delivery.Email, delivery.Method, delivery.Date, delivery.Total, delivery.Payment, delivery.Status);
+                order_print(delivery.Invoice_ID, delivery.Customer, delivery.Email, delivery.Method, delivery.Date, 
+                delivery.Total, delivery.Payment, delivery.Status, delivery.Phone, delivery.Country, delivery.Address, delivery.Customer);
             }
         )
       })
@@ -72,9 +85,8 @@ function initiate_order_page()
         console.log('Something went wrong with the product data from the GET API');
     });
 
-    function order_print(invoice_id, customer, email, shipping_method, date, total, payment_method, status) {
+    function order_print(invoice_id, customer, email, shipping_method, date, total, payment_method, status, phone, country, address, customer) {
         var row = $('<tr>');
-
         $('<td>').text(invoice_id).appendTo(row);
         $('<td>').text(customer).appendTo(row);
         $('<td>').text(email).appendTo(row);
@@ -115,6 +127,7 @@ function initiate_order_page()
                 success: function(response) {
                     if (response.success) {
                         alert('Status updated successfully');
+                        curr_status = newStatus;
                     } else {
                         alert('Failed to update status');
                     }
@@ -125,24 +138,205 @@ function initiate_order_page()
             });
         })
 
+
+        var curr_status;
         eyeIcon.on('click', function() {
+            $.ajax({
+              url: '/pepicase/public/admin/get_delivery_status',
+              type: 'POST',
+              data: {
+                  invoice_id: invoice_id,
+              },
+              success: function(response) {
+                curr_status = parseInt(response);
+                var modalBody = $('.modal-body');
+    
+                var status_string, popupStatusClass;
+                if(curr_status == 0) 
+                {
+                    status_string = 'Pending';
+                    popupStatusClass = 'status-pending';
+                }
+                if(curr_status == 1)
+                {
+                    status_string = 'Shipping';
+                    popupStatusClass = 'status-shipping';
+                }
+                if(curr_status == 2)
+                {
+                    status_string = 'Delivered';
+                    popupStatusClass = 'status-delivered';
+                }
+                if(curr_status == -1)
+                {
+                    status_string = 'Cancelled';
+                    popupStatusClass = 'status-cancelled'
+                }
+                // Add content to the modal
+                modalBody.html
+                (
+                `
+          <div style="margin-top: 1%;">
+            <div class="row" style="display: flex; margin-left: 2%; width: fit-content;">
+              <div style="width: 28vw; margin-top: 20px;">
+                <div class="rounded border border-3">
+                  <div style="display: flex; margin-left: 15px; margin-top: 10px;">
+                    <b style="font-family: 'Lexend'; font-size: 22px;">Order #${invoice_id}</b>
+                    <div class = "${popupStatusClass}" style="border-radius: 10px; border: 1px; margin-left: 5px; padding-left: 10px; padding-right: 10px; padding-top: 3px;"><b>${status_string}</b></div>
+                  </div>
+    
+                  <ul class="nav flex-column">
+                    <li class="nav-item" style="display: flex; padding-left: 0px; width: auto; margin-top: 10px;">
+                      <div class="rounded-circle">
+                        <img style="width: 23px; height: 30px; margin-top: 3px;" src="/pepicase/public/pics/time.svg" alt="">
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Added</b>
+                      <text style="margin-left: 120px; font-family: 'Lexend'; margin-right: 10px;">${date}</text>
+                    </li>
+      
+                    <li class="nav-item" style="display: flex; padding-left: 0px; width: auto; margin-top: 8px;">
+                      <div class="rounded-circle">
+                        <img style="width: 23px; height: 33px; margin-top: 3px;" src="/pepicase/public/pics/payment.svg" alt="">
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Payment Method</b>
+                      <text style="margin-left: 35px; font-family: Lexend;">${payment_method}</text>
+                    </li>
+      
+                    <li class="nav-item" style="display: flex; padding-left: 0px; width: auto; margin-top: 8px;">
+                      <div class="rounded-circle">
+                        <img style="width: 23px; height: 33px; margin-left: 3px; margin-top: 3px;" src="/pepicase/public/pics/delivery.svg" alt="">  
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Shipping Method</b>
+                      <text style="margin-left: 35px; font-family: Lexend; margin-right: 15px;">${shipping_method}</text>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+              <div style="width: 25vw; margin-top: 20px;">
+                <div class="rounded border border-3">
+                  <b style="font-family: 'Lexend'; font-size: 22px; display: flex; margin-left: 15px; margin-top: 10px;">Customer</b>
+    
+                  <ul class="nav flex-column">
+                    <li class="nav-item" style="display: flex; padding-left: 0px; width: auto; margin-top: 10px;">
+                      <div class="rounded-circle">
+                        <img style="width: 22px; height: 30px; margin-top: 3px;" src="/pepicase/public/pics/customer.svg" alt="">
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Customer</b>
+                      <text style="margin-left: 25px; font-family: 'Lexend'; margin-right: 10px;">${customer}</text>
+                    </li>
+      
+                    <li class="nav-item" style="display: flex; padding-left: 0px; width: auto; margin-top: 8px;">
+                      <div class="rounded-circle">
+                        <img style="width: 26px; height: 36px;" src="/pepicase/public/pics/mail.svg" alt="">
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Email</b>
+                      <text style="margin-left: 40px; font-family: Lexend; margin-right: 18px;">${email}</text>
+                    </li>
+      
+                    <li class="nav-item" style="display: flex; padding-left: 0px; width: auto; margin-top: 8px;">
+                      <div class="rounded-circle">
+                        <img style="width: 26px; height: 25px; margin-left: 0.5px; margin-top: 7px;" src="/pepicase/public/pics/phone.svg" alt="">  
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Phone</b>
+                      <text style="margin-left: 55px; font-family: Lexend;">${phone}</text>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+              <div class="col" style="width: 27vw; margin-top: 20px;">
+                <div class="rounded border border-3">
+                  <b style="font-family: 'Lexend'; font-size: 22px; display: flex; margin-left: 15px; margin-top: 10px;">Address</b>
+    
+                  <ul class="nav flex-column" style="margin-bottom: 1.5%;">
+                    <li class="nav-item" style="display: flex; padding-left: 0px; margin-top: 10px;">
+                      <div class="rounded-circle" style="height:fit-content;">
+                        <img style="width: 26px; height: 36px;" src="/pepicase/public/pics/address.svg" alt="">
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Billing</b>
+                      <text style="margin-left: 3%; font-family: 'Lexend';">${address}</text>
+                    </li>
+      
+                    <li class="nav-item" style="display: flex; padding-left: 0px; margin-top: 8px;">
+                      <div class="rounded-circle">
+                        <img style="width: 26px; height: 36px;" src="/pepicase/public/pics/address.svg" alt="">
+                      </div>
+                      <b style="margin-left: 15px; font-family: 'Lexend';">Shipping</b>
+                      <text style="margin-left: 3%; font-family: Lexend;">${country}</text>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+    
+            <div style="margin-left: 3%; margin-top: 4%; display: flex; justify-content: start; width: auto;">
+              <div class="rounded border border-3" style="margin-top: 20px; width: 90%; display: block; justify-content: center; height: fit-content;">
+                <div style="display: flex; margin-left: 15px; margin-top: 10px;">
+                  <b style="font-family: 'Lexend'; font-size: 22px;">Order List</b>
+                  <div style="border-radius: 10px; border: 1px; background-color: rgb(224, 252, 191); margin-left: 5px; padding-left: 13px; padding-right: 13px; padding-top: 2px;"><b style="color: rgba(73, 131, 2, 0.752);">2 Products</b></div>
+                </div>
+    
+                <table class="table" style="background-color: white; margin-top: 3%; margin-bottom: 0%;">
+                  <thead class="table-light">
+                    <tr>
+                      <th style="width: 100px;">Product</th>
+                      <th>ID</th>
+                      <th>Size</th>
+                      <th>QTY</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id = "order-popup">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+                `
+                );
+                $.ajax({
+                  url: 'http://localhost/pepicase/public/admin/get_invoice_details',
+                  type: 'POST',
+                  data: {
+                      invoice_id: invoice_id,
+                  },
+                  success: function(response) {
+                      var invoice_details = JSON.parse(response);
+                      invoice_details.forEach(detail =>{
+                        var new_row = $('<tr>');
+                        new_row.html(
+                          `
+                          <td style = "text-align: center;">
+                            <div style="display: flex;">
+                              <div class="rounded" style="background-color: #b0adad; width: 40px; height: 40px; display: flex; justify-content: center;">
+                                <img src="${detail.Image}" alt="">
+                              </div>
+                              <text style="margin-left: 2%; margin-top: 2%;">${detail.Name}</text>
+                            </div>
+                          </td>
+                          <td style="color: blue; text-align: center;">302011</th>
+                          <td style="color: #667085; text-align: center;">${detail.Size}</th>
+                          <td style="color: #667085; text-align: center;">${detail.Quantity}</th>
+                          <td style="color: #667085; text-align: center;">${detail.Price}$</th>
+                          <td style="color: #667085; text-align: center;">${parseInt(detail.Quantity) * parseFloat(detail.Price)}$</th>
+                          `)
+                        $('#order-popup').append(new_row);
+                      })
+                      var modal = $('.modal');
+                      modal.modal('show');
+                  },
+                  error: function(xhr, status, error) {
+                      alert('An error occurred while updating the status: ' + xhr.responseText);
+                  }
+                });
+              },
+              error: function(xhr, status, error) {
+                console.log(error);
+              }
+            });
             // Create the modal element
-            var modal = $('<div class="modal fade" tabindex="-1" role="dialog">');
-            var modalDialog = $('<div class="modal-dialog" role="document">');
-            var modalContent = $('<div class="modal-content">');
-            var modalBody = $('<div class="modal-body">');
-            
-            // Add content to the modal
-            modalBody.html('<p>This is the popup content</p>');
-            modalContent.append(modalBody);
-            modalDialog.append(modalContent);
-            modal.append(modalDialog);
-            
-            // Append the modal to the document body
-            $('body').append(modal);
-            
-            // Show the modal
-            modal.modal('show');
         });
     
     }
