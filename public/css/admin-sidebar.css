@@ -118,7 +118,62 @@ table thead {
   top: 20%;
 }
 .modal-dialog.custom-width {
-  max-width: 60%;
+  max-width: 50%;
+}
+
+.modal-header {
+  background-color: #FFEC9C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.modal-header-delete{
+  background-color: #FFEC9C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height:7vh;
+}
+.modal-title{
+  font-size:30px;
+  text-align: center;
+  flex: 1;
+}
+.modal-title-delete{
+  text-align:center;
+  flex: 1;
+}
+#button-save{
+  background-color: #FFEC9C;
+  Color:black;
+}
+#button-add{
+  background-color: #FFEC9C;
+  Color:black;
+}
+.image-border{
+  border: 2px solid #FFEC9C;
+  padding: 10px;
+  border-radius: 20px;
+  height:76%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:0.9vh;
+}
+.image-border img{
+  max-height:100%;
+}
+.file-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.file-input-container input {
+  width: 100%;
+  margin-top:2.3vh;
 }
 
 /* CSS CHO PRODUCT */

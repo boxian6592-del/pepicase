@@ -181,7 +181,6 @@ function initiate_product_page()
     `
             <h3 style="margin-top:30px; font-family:'Lexend'">PRODUCT</h3>
             <hr>
-            <div style = "font-size: 25px;" id = "product_alert_div"></div>
             <!-- <button type="button" class="btn btn-warning">+ Add new product</button> -->
             <button type="button" class="btn btn-warning" id="addProductBtn" data-bs-toggle="modal">+ Add new product</button>
             <br><br>
@@ -206,16 +205,18 @@ function initiate_product_page()
     <div class="modal-dialog custom-width">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
-                <button type="button" class="btn-close" id="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title"  id="editProductModalLabel">Edit Product</h5>
+                <button type="button" class="btn-close" id="btn-close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <!-- Phần bên trái hiển thị hình ảnh và input file -->
                     <div class="col-md-4 text-center">
-                        <div class="mb-3">
-                            <img id="productImage" alt="Product Image" class="img-fluid mb-3" style="width: 100%; max-width: 150px;">
-                            <input type="file" id="file-input" accept=".svg" class="form-control">
+                        <div class="image-border mb-3">
+                                <img id="productImage" alt="Product Image" class="img-fluid" style="width: 100%;">
+                        </div>
+                        <div class="file-input-container mb-3">
+                                <input type="file" id="file-input" accept=".svg" class="form-control">
                         </div>
                     </div>
                     <!-- Phần bên phải là form nhập liệu -->
@@ -246,7 +247,7 @@ function initiate_product_page()
                                 <input type="text" class="form-control" id="price">
                             </div>
                             <div class="text-end">
-                              <button type="submit" class="btn btn-primary">Save</button>
+                              <button type="submit" class="btn btn-primary" id="button-save">Save</button>
                             </div>
                         </form>
                     </div>
@@ -266,8 +267,10 @@ function initiate_product_page()
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4 text-center">
-                        <div class="mb-3">
+                        <div class="image-border mb-3">
                             <img id="newProductImage" alt="Product Image" class="img-fluid mb-3" style="width: 100%; max-width: 150px;">
+                        </div>
+                        <div class="file-input-container mb-3">
                             <input type="file" id="new-file-input" accept=".svg" class="form-control">
                         </div>
                     </div>
@@ -298,7 +301,7 @@ function initiate_product_page()
                                 <input type="text" class="form-control" id="newPrice">
                             </div>
                             <div class="text-end">
-                              <button type="submit" class="btn btn-primary">Add</button>
+                              <button type="submit" class="btn btn-primary" id="button-add">Add</button>
                             </div>
                         </form>
                     </div>
@@ -313,7 +316,7 @@ function initiate_product_page()
         <div class="modal-dialog custom-top">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteProductModalLabel">Delete Product?</h5>
+                    <h5 class="modal-title-delete" id="deleteProductModalLabel">Delete Product?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -406,8 +409,9 @@ function initiate_product_page()
         var addModal = new bootstrap.Modal(document.getElementById('addProductModal'));
         addModal.show();
     
-    });     
-
+    });
+    
+    var editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
     // Khi nhấn vào chỉnh sửa
     document.getElementById('table-body').addEventListener('click', function(e) {
     if (e.target.classList.contains('edit-icon')) {
