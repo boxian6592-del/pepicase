@@ -65,7 +65,7 @@ class Cart
     {
         $db = Database::connect();
         $query = "
-        SELECT cart_details.User_ID, cart_details.Product_ID, cart_details.Name, Size, Quantity, cart_details.Price, product.Image
+        SELECT cart_details.User_ID, cart_details.Product_ID, cart_details.Name, Size, Quantity, cart_details.Price, product.Image, product.IsDeleted
         FROM cart_details left join product ON cart_details.Product_ID = product.ID
         WHERE User_ID = {$this->user_id};
         ";
@@ -77,7 +77,7 @@ class Cart
     public function get_amount()
     {
         $db = Database::connect();
-        $query = "SELECT Total_Amount FROM cart WHERE User_ID = {$this->user_id}";
+        $query = "SELECT Total_Amount FROM cart WHERE User_ID = {$this->user_id} ";
         $result = $db->query($query)->getRow();
         if ($result) {
             $totalQuantity = $result->Total_Amount;
@@ -101,7 +101,8 @@ class Cart
     public function get_amount_for_item($productID)
     {
         $db = Database::connect();
-        $query = "SELECT Sum(Quantity) as QuantitySum FROM cart_details WHERE User_ID = {$this->user_id} AND Product_ID = {$productID}";
+        $query = "SELECT Sum(Quantity) as QuantitySum FROM cart_details INNER JOIN product ON cart_details.Product_ID = product.ID 
+        WHERE User_ID = {$this->user_id} AND cart_details.Product_ID = {$productID} AND IsDeleted NOT IN (1)";
         $result = $db->query($query)->getRow();
         if ($result) {
             $indivQuantity = $result->QuantitySum;

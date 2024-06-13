@@ -7,7 +7,8 @@ var current_stars = 0;
 
 $(document).ready(function() {
     total = quantity * price;
-    $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
+    if(is_deleted !== null) $("#add_to_cart_button").text("Unavailable");
+    else $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
     
     $(".sizing").each(function() {
         $(this).val($(this).text());
@@ -29,7 +30,10 @@ $(document).ready(function() {
             finalized_size = $(this).val();
         }
     });
-    $("#curr_quantity").text(quantity);
+    if(is_deleted == null)
+      {
+        $("#curr_quantity").text(quantity);
+      }
     var starArr = $(".review_star");
     console.log(starArr);
     
@@ -49,50 +53,53 @@ $(document).ready(function() {
       else window.location.href = "http://localhost/pepicase/public/login";
     });
 
-    $("#add_to_cart_button").click(function() {
-        console.log(product_id);
-        console.log(user);
-        console.log(finalized_size);
-        console.log(quantity);        
+    if(is_deleted == null)
+      {
+        $("#add_to_cart_button").click(function() {
+          console.log(product_id);
+          console.log(user);
+          console.log(finalized_size);
+          console.log(quantity);        
+  
+          if(finalized_size == null) $("#combotext").text("Please pick a size!");
+          else
+          {
+              $.ajax({
+                  type: "POST",
+                  url: "http://localhost/pepicase/public/product/add",
+                  data: {
+                      product: product_id,
+                      user_id: user,
+                      size: finalized_size,
+                      quantity: quantity,
+                      name: product_name,
+                      price: price,
+                  },
+                  success: function(response) {
+                      $("#combotext").css("color", "green");
+                      $("#combotext").text("You have added " + quantity + " items to your cart successfully!");
+                      amount += parseInt(quantity);
+                      indiv_amount += parseInt(quantity);
+                      $('#cart_amount').text(amount);
+                      $('#indiv_amount').text('Currently in cart: ' + indiv_amount);
+                  },
+                  error: function(xhr, status, error) {
+                      // Handle the error response
+                      var errorMessage;
+                      if (xhr.responseJSON && xhr.responseJSON.message) {
+                          // If the server returned a JSON response with a 'message' property, use that
+                          errorMessage = xhr.responseJSON.message;
+                      } else {
+                          // Otherwise, use the status text or the error parameter
+                          errorMessage = xhr.statusText || error;
+                      }
+                      console.error("Error adding item to cart: ", errorMessage);
+                  }
+              });
+          } 
+      });
+      }
 
-        if(finalized_size == null) $("#combotext").text("Please pick a size!");
-        else
-        {
-            $.ajax({
-                type: "POST",
-                url: "http://localhost/pepicase/public/product/add",
-                data: {
-                    product: product_id,
-                    user_id: user,
-                    size: finalized_size,
-                    quantity: quantity,
-                    name: product_name,
-                    price: price,
-                },
-                success: function(response) {
-                    $("#combotext").css("color", "green");
-                    $("#combotext").text("You have added " + quantity + " items to your cart successfully!");
-                    amount += parseInt(quantity);
-                    indiv_amount += parseInt(quantity);
-                    $('#cart_amount').text(amount);
-                    $('#indiv_amount').text('Currently in cart: ' + indiv_amount);
-                },
-                error: function(xhr, status, error) {
-                    // Handle the error response
-                    var errorMessage;
-                    if (xhr.responseJSON && xhr.responseJSON.message) {
-                        // If the server returned a JSON response with a 'message' property, use that
-                        errorMessage = xhr.responseJSON.message;
-                    } else {
-                        // Otherwise, use the status text or the error parameter
-                        errorMessage = xhr.statusText || error;
-                    }
-                    console.error("Error adding item to cart: ", errorMessage);
-                }
-            });
-        }
-        
-    });
     if(comments !== 'none')
       {
         comments.forEach(comment =>
@@ -135,12 +142,14 @@ function toggleFavorite()
   }
 };
 
-function add() {
+if(is_deleted == null)
+{
+  function add() {
     quantity++;
     $("#curr_quantity").text(quantity);
     total = price * quantity;
     $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");
-}
+  }
 
 function minus() {
     if(quantity > 1)
@@ -150,6 +159,7 @@ function minus() {
         total = price * quantity;
         $("#add_to_cart_button").text("Add to Cart - $" + total + " USD");        
     }
+  }
 }
 
 $(window).on('beforeunload', function() 
@@ -269,7 +279,7 @@ function printFeedback_Top(name, rating, comment, date) {
   $('#feedback-container').prepend($block);
 }; 
 
-
+if(is_deleted == null)
 $('#post_comment').click(function()
   {
     if(user !== null)

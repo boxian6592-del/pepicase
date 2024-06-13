@@ -62,13 +62,22 @@ class Admin extends User
     //delivery space
     function set_delivery_status($invoice_id, $status)
     {
-        //-1 là cancelled, 0 là pending, 1 là shipping, 2 là delivered
-        $db = Database::connect();
-        $db->query("UPDATE delivery SET Status = {$status} WHERE Invoice_ID = '{$invoice_id}'");
-        if($status == 2) $db->query("UPDATE invoice SET Status = 1 WHERE ID = '{$invoice_id}'");
-        $result = $db->query("SELECT * FROM delivery WHERE Invoice_ID = '{$invoice_id}' AND Status = {$status}")->getResult();
-        if(!empty($result)) return true;
-        else return false;
+        $db = \Config\Database::connect();
+        $builder = $db->table('delivery');
+        $builder->set('Status', $status);
+        $builder->where('Invoice_ID', $invoice_id);
+        $builder->update();
+        $affectedRows = $db->affectedRows();
+
+        if($status == 2) {
+            $builder = $db->table('invoice');
+            $builder->set('Status', 1);
+            $builder->where('ID', $invoice_id);
+            $builder->update();
+            $affectedRows += $db->affectedRows();
+        }
+
+        return $affectedRows > 0;
     }
 
     function get_deliveries()
@@ -78,7 +87,21 @@ class Admin extends User
         if(empty($result)) return [];
         else return $result;
     }
+
+    function get_all_invoices()
+    {
+        $db = Database::connect();
+        $builder = $db->table('delivery');
+        $builder->select('delivery.Invoice_ID, CONCAT(delivery.First_Name, " ", delivery.Last_Name) as Customer, user.Email, delivery.Shipping_Method as Method, invoice.Order_date as Date, invoice.Total_Price as Total, invoice.Method as Payment, delivery.Status');
+        $builder->join('invoice', 'delivery.Invoice_ID = invoice.ID');
+        $builder->join('user', 'invoice.User_ID = user.ID');
+        $builder->whereNotIn('delivery.Status', [2, -1]);
+        $query = $builder->get();
+        return $query->getResult();
+    }
     //delivery space
+
+
 
     //product space
     function get_all_products()
@@ -88,12 +111,14 @@ class Admin extends User
         return $result;
     }
 
-    function remove_product($product_id)
+    function delete_product($product_id)
     {
         $db = Database::connect();
-        $db->query("DELETE FROM product WHERE ID = '{$product_id}'")->getResult();
-
+        $db->query("UPDATE product SET IsDeleted = 1 WHERE ID = '{$product_id}'");
     }
     //product space
+
+
+
 }
 

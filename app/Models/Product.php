@@ -14,6 +14,7 @@ class Product extends Model
     protected $price = null; // giá
     protected $productID = null; // ID sản phẩm
     protected $imgPath = null; // dường dẫn đến ảnh
+    protected $isDeleted = null; // product đã bị xóa hay chưa
 
     public function __construct($id = null) // hàm khởi tạo đối tượng
     {
@@ -34,6 +35,7 @@ class Product extends Model
                 $this->price = $row->Price;
                 $this->name = $row->Name;
                 $this->imgPath = $row->Image;
+                $this->isDeleted = $row->IsDeleted;
             }
         }
         // còn nếu id = null thì sẽ không làm gì cả, chỉ khởi tạo đối tượng
@@ -72,6 +74,17 @@ class Product extends Model
 
     public function getFullInfo() // hàm trả vệ một object chứa đủ thông tin (cho user xem)
     {
+        if($this->isDeleted == 1)
+        $data_bundle = // tạo 1 biến dạng object
+        [
+            'id' => $this->productID,
+            'name' => $this->name,
+            'price'=> $this->price,
+            'path' => $this->imgPath,
+            'favorite' => '',
+            'isDeleted' => '',
+        ];
+        else
         $data_bundle = // tạo 1 biến dạng object
         [
             'id' => $this->productID,
