@@ -274,7 +274,7 @@ function initiate_order_page()
               <div class="rounded border border-3" style="margin-top: 20px; width: 90%; display: block; justify-content: center; height: fit-content;">
                 <div style="display: flex; margin-left: 15px; margin-top: 10px;">
                   <b style="font-family: 'Lexend'; font-size: 22px;">Order List</b>
-                  <div style="border-radius: 10px; border: 1px; background-color: rgb(224, 252, 191); margin-left: 5px; padding-left: 13px; padding-right: 13px; padding-top: 2px;"><b style="color: rgba(73, 131, 2, 0.752);">2 Products</b></div>
+                  <div id = "total_num" style="border-radius: 10px; border: 1px; background-color: rgb(224, 252, 191); margin-left: 5px; padding-left: 13px; padding-right: 13px; padding-top: 2px;"><b style="color: rgba(73, 131, 2, 0.752);">2 Products</div>
                 </div>
     
                 <table class="table" style="background-color: white; margin-top: 3%; margin-bottom: 0%;">

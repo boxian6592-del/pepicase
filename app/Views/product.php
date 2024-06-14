@@ -21,7 +21,7 @@
                 </div>
             </div>
                 
-                    <div id="pricing" class="lexend-tera" style="font-size:25px;"><?php if(isset($isDeleted)) echo 'Unavailable...'; else echo $price?></div>
+                    <div id="pricing" class="lexend-tera" style="font-size:25px;"><?php if(isset($isDeleted)) echo 'Unavailable...'; else echo $price . '$'?></div>
                     <div id="indiv_amount"><?php if(isset($indiv_amount)) echo 'Currently in cart: '. $indiv_amount?></div>
                     <div style="font-size:18px; color:gray;">Model</div>
 
@@ -107,7 +107,7 @@
             var product_name = "<?php echo $name ?>";
             var quantity = 1;
             var cart_amount = 0;
-            var is_deleted = '<?php if(isset($isDeleted)) echo 'delete'; else echo 'null'; ?>';
+            var is_deleted = <?php if(isset($isDeleted)) echo "'delete'"; else echo 'null'; ?>;
             var indiv_amount = <?php if(isset($indiv_amount)) echo $indiv_amount; else echo 0?>;
             <?php if(isset($cart_amount)) echo 'var cart_amount ='. $cart_amount. ';'; else echo 'var cart_amount = 0;'; ?>
             <?php if(!empty($comments)) echo 'var comments = (' . $comments .');'; else echo 'none' ?>

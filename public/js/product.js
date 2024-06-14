@@ -98,7 +98,7 @@ $(document).ready(function() {
               });
           } 
       });
-      }
+    }
 
     if(comments !== 'none')
       {

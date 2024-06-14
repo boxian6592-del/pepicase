@@ -125,7 +125,7 @@ class Admin extends User
     {
         $db = Database::connect();
         $query = "SELECT invoice_details.Name_Product as Name, invoice_details.Size as Size, product.ID as ID,
-        invoice_details.Quantity as Quantity, product.Price as Price, product.Image as Image
+        invoice_details.Quantity as Quantity, invoice_details.Price as Price, product.Image as Image
         FROM invoice_details INNER JOIN product ON invoice_details.Product_ID = product.ID WHERE Invoice_ID = '{$invoice_id}';";
         $result = $db->query($query)->getResult();
         return $result;
@@ -136,6 +136,21 @@ class Admin extends User
         $db = Database::connect();
         $result = $db->query("SELECT Status FROM delivery WHERE Invoice_ID = '{$invoice_id}'")->getResult();
         return $result[0]->Status;
+    }
+
+    function add_product_to_database($name, $price, $quantity, $path, $color, $collection)
+    {
+        $db = Database::connect();
+        $db->query("INSERT INTO product(Name, Price, Description, Image, QuantityInStock, IsInStock, IsDeleted, Color_ID, Collect_ID)
+                VALUES ('{$name}', $price, 'Added after', '$path', '{$quantity}', 1, 0, {$color}, {$collection})");
+        $affectedRows = $db->affectedRows();
+        if ($affectedRows > 0) {
+            // The product was added successfully
+            return true;
+        } else {
+            // There was an error adding the product
+            return false;
+        }
     }
 }
 
