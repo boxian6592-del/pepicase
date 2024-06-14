@@ -97,7 +97,8 @@ class Admin extends User
         invoice.Method as Payment, delivery.Status, delivery.Phone, delivery.Country, CONCAT(delivery.Address, ", ",delivery.City) as Address');
         $builder->join('invoice', 'delivery.Invoice_ID = invoice.ID');
         $builder->join('user', 'invoice.User_ID = user.ID');
-        $builder->whereNotIn('delivery.Status', [2, -1]);
+        $builder->whereNotIn('delivery.Status', [-1]);
+        $builder->orderBy('delivery.Status', 'ASC');
         $query = $builder->get();
         return $query->getResult();
     }
@@ -157,9 +158,22 @@ class Admin extends User
         else return 'Item name is duplicated!';
     }
 
-    function add_product_to_root($file)
+    function edit_product_on_database($id, $name, $price, $quantity, $path, $color, $collection)
     {
-        
+        $db = Database::connect();
+        $check_duplication = $db->query("SELECT * FROM product WHERE Name = '{$name}' AND ID NOT IN ({$id})")->getResult();
+        if(empty($check_duplication))
+        {
+            $db->query(
+            "UPDATE product SET Name = '{$name}', Price = {$price}, QuantityInStock = {$quantity}, 
+            Color_ID = {$color}, Collect_ID = {$collection}, Image = '{$path}'
+            WHERE ID = '{$id}'
+            ");
+            $affectedRows = $db->affectedRows();
+            if ($affectedRows > 0) return 'Changes saved to product ID: ' . $id;
+            else return 'Something went wrong...';
+        }
+        else return 'This name matches with another product!';
     }
     //////////product space
 }

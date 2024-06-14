@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Models\CustomSession;
 use App\Models\Admin;
+use App\Models\Product;
+
 
 class AdminController extends BaseController
 {
@@ -124,7 +126,48 @@ class AdminController extends BaseController
         $previousUrl = $this->request->getServer('HTTP_REFERER');
         if (strpos($previousUrl, 'http://localhost/pepicase/public/admin/dashboard') === 0)
         {
-            
+            $request = $this->request;
+            if ($request->getMethod() == 'POST') 
+            {
+                $name = $request->getPost('name');        
+                $sku = $request->getPost('sku');
+                $color = $request->getPost('color');
+                $collection = $request->getPost('collection');
+                $id = $request->getPost('id');
+                $price = $request->getPost('price');
+                $file = $request->getFile('file');
+                $product = new Product($id);
+                $old_path = $product->imgPath;
+                if($file)
+                {
+                    if ($file->isValid() && !$file->hasMoved())
+                    {
+                        $remove_path_component = str_replace('/pepicase/public/', '', $old_path);
+                        $remove_path = FCPATH . $remove_path_component;
+                        unlink($remove_path);
+                        if($collection == 1) $extra = 'cinnamonroll/';
+                        if($collection == 2) $extra = 'mymelody/';
+                        if($collection == 3) $extra = 'pochacco/';
+                        if($collection == 4) $extra = 'pompompurin/';
+                        $new_path = '/pepicase/public/product-pics/' . $extra . $name . '.svg';
+                        $admin = new Admin();
+                        $var = $admin->edit_product_on_database($id, $name, $price, $sku, $new_path, $color, $collection);
+                        if($var == ('Changes saved to product ID: ' . $id))
+                        {
+                            $file->move(FCPATH . 'product-pics/'. $extra, $name.'.svg');
+                            return $var;
+                        }
+                        else return $var;
+                    }
+                    else return 'File invalid or something I dunno';
+                }
+                else
+                {
+                    $admin = new Admin();
+                    $var = $admin->edit_product_on_database($id, $name, $price, $sku, $old_path, $color, $collection);
+                    return $var;
+                }
+            }
         }
     }
     ///////////////PRODUCT

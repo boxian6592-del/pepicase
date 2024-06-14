@@ -374,7 +374,7 @@ function initiate_product_page()
             <hr>
             <!-- <button type="button" class="btn btn-warning">+ Add new product</button> -->
             <button type="button" class="btn btn-warning" id="addProductBtn" data-bs-toggle="modal">+ Add new product</button>
-            <div id = "product_alert_div"></div>
+            <div id = "product_alert_div" style = "font-size: 25px;"></div>
             <br><br>
             <table class="table">
                 <thead class="table-dark">
@@ -614,7 +614,6 @@ function initiate_product_page()
                 $('#add-alert').html('<strong>No file inputted!</strong>').css('color', 'red');
                 return;
                 }
-
                 const formData = new FormData();
                 formData.append('name', productName);
                 formData.append('sku', sku);
@@ -676,17 +675,51 @@ function initiate_product_page()
             $('#editProductForm').on('submit', function(e) {
                 e.preventDefault();
                 $('#edit-alert').text('');
+                const productID = $('#productId').val();
                 const productName = $('#productName').val();
-                const productId = $('#productId').val();
                 const sku = $('#sku').val();
                 const color = $('#color').val();
                 const collection = $('#collection').val();
                 const price = $('#price').val();
-                var check = validate_form(productName, sku, color, collection, price)
+                const fileInput = $('#file-input');
+                const check = validate_form(productName, sku, color, collection, price);
                 if(check == 'none')
                 {
+                    const formData = new FormData();
+                    formData.append('id', productID);
+                    formData.append('name', productName);
+                    formData.append('sku', sku);
+                    formData.append('color', color);
+                    formData.append('collection', collection);
+                    formData.append('price', price);
+                        
+                    const file = fileInput[0].files[0];
+                    if (file) formData.append('file', file);
 
-                    $('#edit-alert').html('<strong>Saved successfully!</strong>').css('color','green');
+                    $.ajax({
+                        url: 'http://localhost/pepicase/public/admin/edit_product',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) 
+                        {
+                            if(response == 'Something went wrong...' || response == 'Product name is taken already!' || response == 'This name matches with another product!')
+                            {
+                                $('#edit-alert').html('<strong>' + response + '</strong>').css('color', 'red');
+                            }
+                            else
+                            {
+                                editModal.hide();
+                                clearContent();
+                                initiate_product_page();
+                                $('#product_alert_div').html('<strong>' + response + '</strong>').css('color','green');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            $('#edit-alert').html('<strong>Something went wrong...</strong>').css('color', 'red');
+                        }
+                        });
                 }
                 else $('#edit-alert').html('<strong>'+check+'</strong>').css('color','red');
                 
