@@ -17,9 +17,6 @@ $('.nav-item').click(function() {
         if ($('.nav-item.nav_active .title').text() === 'Orders') {
             initiate_order_page();
         }
-        if ($('.nav-item.nav_active .title').text() === 'Users') {
-            //initiate_product_page();
-        }
     }
 });
 
@@ -377,6 +374,7 @@ function initiate_product_page()
             <hr>
             <!-- <button type="button" class="btn btn-warning">+ Add new product</button> -->
             <button type="button" class="btn btn-warning" id="addProductBtn" data-bs-toggle="modal">+ Add new product</button>
+            <div id = "product_alert_div"></div>
             <br><br>
             <table class="table">
                 <thead class="table-dark">
@@ -396,60 +394,61 @@ function initiate_product_page()
     </div>
     <!-- form edit product -->
     <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog custom-width">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"  id="editProductModalLabel">Edit Product</h5>
-                <button type="button" class="btn-close" id="btn-close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <!-- Phần bên trái hiển thị hình ảnh và input file -->
-                    <div class="col-md-4 text-center">
-                        <div class="image-border mb-3">
+        <div class="modal-dialog custom-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"  id="editProductModalLabel">Edit Product</h5>
+                    <button type="button" class="btn-close" id="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Phần bên trái hiển thị hình ảnh và input file -->
+                        <div class="col-md-4 text-center">
+                            <div class="image-border mb-3">
                                 <img id="productImage" alt="Product Image" class="img-fluid" style="width: 100%;">
+                            </div>
+                            <div class="file-input-container mb-3">
+                                    <input type="file" id="file-input" accept=".svg" class="form-control">
+                            </div>
                         </div>
-                        <div class="file-input-container mb-3">
-                                <input type="file" id="file-input" accept=".svg" class="form-control">
+                        <!-- Phần bên phải là form nhập liệu -->
+                        <div class="col-md-8">
+                            <form id="editProductForm">
+                                <div class="mb-3">
+                                    <label for="productName" class="form-label">Product Name</label>
+                                    <input type="text" class="form-control" id="productName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productId" class="form-label">Product ID</label>
+                                    <input type="text" class="form-control" id="productId" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sku" class="form-label">SKU</label>
+                                    <input type="text" class="form-control" id="sku">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="color" class="form-label">Color ID</label>
+                                    <input type="text" class="form-control" id="color">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="collection" class="form-label">Collection ID</label>
+                                    <input type="text" class="form-control" id="collection">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">Price</label>
+                                    <input type="text" class="form-control" id="price">
+                                </div>
+                                <div class ="mb-3" id = "edit-alert"></div>
+                                <div class="text-end">
+                                  <button type="submit" class="btn btn-primary" id="button-save">Save</button>
+                                </div>
+                            </form>
                         </div>
-                    </div>
-                    <!-- Phần bên phải là form nhập liệu -->
-                    <div class="col-md-8">
-                        <form id="editProductForm">
-                            <div class="mb-3">
-                                <label for="productName" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="productName">
-                            </div>
-                            <div class="mb-3">
-                                <label for="productId" class="form-label">Product ID</label>
-                                <input type="text" class="form-control" id="productId">
-                            </div>
-                            <div class="mb-3">
-                                <label for="sku" class="form-label">SKU</label>
-                                <input type="text" class="form-control" id="sku">
-                            </div>
-                            <div class="mb-3">
-                                <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control" id="color">
-                            </div>
-                            <div class="mb-3">
-                                <label for="collection" class="form-label">Collection</label>
-                                <input type="text" class="form-control" id="collection">
-                            </div>
-                            <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price">
-                            </div>
-                            <div class="text-end">
-                              <button type="submit" class="btn btn-primary" id="button-save">Save</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <!-- form add new product -->
     <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog custom-width">
@@ -465,7 +464,7 @@ function initiate_product_page()
                             <img id="newProductImage" alt="Product Image" class="img-fluid mb-3" style="width: 100%; max-width: 150px;">
                         </div>
                         <div class="file-input-container mb-3">
-                            <input type="file" id="new-file-input" accept=".svg" class="form-control">
+                            <input type="file" name = "new_add_file" id="new-file-input" accept=".svg" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -475,25 +474,22 @@ function initiate_product_page()
                                 <input type="text" class="form-control" id="newProductName">
                             </div>
                             <div class="mb-3">
-                                <label for="newProductId" class="form-label">Product ID</label>
-                                <input type="text" class="form-control" id="newProductId">
-                            </div>
-                            <div class="mb-3">
                                 <label for="newSku" class="form-label">SKU</label>
                                 <input type="text" class="form-control" id="newSku">
                             </div>
                             <div class="mb-3">
-                                <label for="newColor" class="form-label">Color</label>
+                                <label for="newColor" class="form-label">Color ID</label>
                                 <input type="text" class="form-control" id="newColor">
                             </div>
                             <div class="mb-3">
-                                <label for="newCollection" class="form-label">Collection</label>
+                                <label for="newCollection" class="form-label">Collection ID</label>
                                 <input type="text" class="form-control" id="newCollection">
                             </div>
                             <div class="mb-3">
                                 <label for="newPrice" class="form-label">Price</label>
                                 <input type="text" class="form-control" id="newPrice">
                             </div>
+                            <div class ="mb-3" id = "add-alert"></div>
                             <div class="text-end">
                               <button type="submit" class="btn btn-primary" id="button-add">Add</button>
                             </div>
@@ -580,7 +576,6 @@ function initiate_product_page()
                     clearContent();
                     initiate_product_page();
                     if (response == 'success') {
-                        
                         $('#product_alert_div').html('<strong>Successfully removed product of ID: ' + product.product_id + '</strong>').css('color','green');
                     } else {
                         alert('An error has occurred.');
@@ -602,47 +597,143 @@ function initiate_product_page()
        // Hiển thị modal "Add new Product"
         var addModal = new bootstrap.Modal(document.getElementById('addProductModal'));
         addModal.show();
-    
+        $('#addProductForm').on('submit', function(e) {
+            e.preventDefault();
+            $('#add-alert').text('');
+            const productName = $('#newProductName').val();
+            const sku = $('#newSku').val();
+            const color = $('#newColor').val();
+            const collection = $('#newCollection').val();
+            const price = $('#newPrice').val();
+            const fileInput = $('#new-file-input');
+            const check = validate_form(productName, sku, color, collection, price);
+            
+            if (check === 'none') {
+                const file = fileInput[0].files[0];
+                if (!file) {
+                $('#add-alert').html('<strong>No file inputted!</strong>').css('color', 'red');
+                return;
+                }
+
+                const formData = new FormData();
+                formData.append('name', productName);
+                formData.append('sku', sku);
+                formData.append('color', color);
+                formData.append('collection', collection);
+                formData.append('price', price);
+                formData.append('file', file);
+
+                $.ajax({
+                url: 'http://localhost/pepicase/public/admin/add_product',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) 
+                {
+                    if(response == 'Insertion failure!' || response == 'Item name is duplicated!' || response == 'File is invalid!')
+                    {
+                        $('#add-alert').html('<strong>' + response + '</strong>').css('color', 'red');
+                    }
+                    else
+                    {
+                        addModal.hide();
+                        clearContent();
+                        initiate_product_page();
+                        $('#product_alert_div').html('<strong>' + response + '</strong>').css('color','green');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#add-alert').html('<strong>Something went wrong...</strong>').css('color', 'red');
+                }
+                });
+            } 
+            else 
+            {
+                $('#add-alert').html('<strong>' + check + '</strong>').css('color', 'red');
+            }
+        });
     });
     
     var editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
     // Khi nhấn vào chỉnh sửa
-    document.getElementById('table-body').addEventListener('click', function(e) {
-    if (e.target.classList.contains('edit-icon')) {
-    const product = JSON.parse(e.target.getAttribute('data-product'));
-    document.getElementById('productImage').src=product.src;
-    document.getElementById('productName').value = product.name;
-    document.getElementById('productId').value = product.product_id;
-    document.getElementById('sku').value = product.sku;
-    document.getElementById('color').value = product.color;
-    document.getElementById('collection').value = product.collection;
-    document.getElementById('price').value = product.price;
-    // Hiển thị modal "Edit Product"
-    //var editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
-    editModal.show();
-    }
+    $('#table-body').on('click', function(e)
+    {
+        if (e.target.classList.contains('edit-icon')) 
+        {
+            const product = JSON.parse(e.target.getAttribute('data-product'));
+            $('#edit-alert').text('');
+            $('#productImage').attr('src', product.src);
+            $('#productName').val(product.name);
+            $('#productId').val(product.product_id);
+            $('#sku').val(product.sku);
+            $('#color').val(product.color);
+            $('#collection').val(product.collection);
+            $('#price').val(product.price);
+            // Hiển thị modal "Edit Product"
+            //var editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
+            editModal.show();
+            $('#editProductForm').on('submit', function(e) {
+                e.preventDefault();
+                $('#edit-alert').text('');
+                const productName = $('#productName').val();
+                const productId = $('#productId').val();
+                const sku = $('#sku').val();
+                const color = $('#color').val();
+                const collection = $('#collection').val();
+                const price = $('#price').val();
+                var check = validate_form(productName, sku, color, collection, price)
+                if(check == 'none')
+                {
+
+                    $('#edit-alert').html('<strong>Saved successfully!</strong>').css('color','green');
+                }
+                else $('#edit-alert').html('<strong>'+check+'</strong>').css('color','red');
+                
+                var modalElement = document.getElementById('editProductModal');
+                var modal = bootstrap.Modal.getInstance(modalElement);
+            });
+        }
     });
 
     document.getElementById('btn-close').addEventListener('click', function() {
         editModal.hide();
     });
 
-    //khi nhấn save or add
-    document.getElementById('editProductForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        console.log("Product saved!");
-        var modalElement = document.getElementById('editProductModal');
-        var modal = bootstrap.Modal.getInstance(modalElement);
-        modal.hide();
-    });
+    function validate_form(form_name, form_sku, form_color, form_collection, form_price) 
+    {
+        let check = 'none';
+        if (form_name.trim() === '') {
+            check = "Name can't be empty!";
+            return check;
+        }
+        const skuRegex = /^\d+$/;
+        if (form_sku.trim() === '' || !skuRegex.test(form_sku)) {
+          check = "SKU can only contain numbers and cannot be zero!";
+          return check;
+        }
+      
+        // Validate color
+        const colorRegex = /^[1-6]$/;
+        if (form_color.trim() === '' || !colorRegex.test(form_color)) {
+            check = 'Color ID must be a number SINGLE from 1 to 6!';
+            return check;
+        }
 
-    document.getElementById('addProductForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        console.log("New product added!");
-        var modalElement = document.getElementById('addProductModal');
-        var modal = bootstrap.Modal.getInstance(modalElement);
-        modal.hide();
-    });
+        // Validate collection
+        const collectionRegex = /^[1-4]$/;
+        if (form_collection.trim() === '' || !collectionRegex.test(form_collection)) {
+            check = 'Collection ID must be a SINGLE number from 1 to 4!';
+            return check;
+        }
+        
+        if (form_price.trim() === '' || isNaN(parseFloat(form_price))) {
+            check = 'Price must be a number or float!';
+        }
+        return check;
+    }
+
+    //khi nhấn save or add
 
     function product_print(name, product_id, sku, pathing, color, collection, pathing_pen, pathing_trash, price, isDeleted) {
         var block = document.createElement("tr");

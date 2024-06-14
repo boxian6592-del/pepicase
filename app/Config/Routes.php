@@ -109,4 +109,6 @@ $routes->post('/admin/get_invoice_details', 'AdminController::get_invoice_detail
 
 $routes->get('/admin/get_products','AdminController::get_products');
 $routes->post('/admin/delete_product','AdminController::delete_product');
+$routes->post('/admin/add_product','AdminController::add_product');
+$routes->post('/admin/edit_product','AdminController::edit_product');
 //Admin side

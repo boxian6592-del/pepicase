@@ -60,6 +60,7 @@ class AdminController extends BaseController
         }
     }
 
+    ///////////////PRODUCT
     function get_products()
     {
         $previousUrl = $this->request->getServer('HTTP_REFERER');
@@ -82,6 +83,58 @@ class AdminController extends BaseController
         }
     }
 
+    function add_product()
+    {
+        $previousUrl = $this->request->getServer('HTTP_REFERER');
+        if (strpos($previousUrl, 'http://localhost/pepicase/public/admin/dashboard') === 0)
+        {
+            $request = $this->request;
+            if ($request->getMethod() == 'POST') {
+                $file = $request->getFile('file');
+        
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $name = $request->getPost('name');        
+                    $productName = $request->getPost('name');
+                    $sku = $request->getPost('sku');
+                    $color = $request->getPost('color');
+                    $collection = $request->getPost('collection');
+                    if($collection == 1) $extra = 'cinnamonroll/';
+                    if($collection == 2) $extra = 'mymelody/';
+                    if($collection == 3) $extra = 'pochacco/';
+                    if($collection == 4) $extra = 'pompompurin/';
+                    $price = $request->getPost('price');
+                    $path = '/pepicase/public/product-pics/' . $extra . $name . '.svg';
+                    $admin = new Admin();
+                    $var = $admin->add_product_to_database($name, $price, $sku, $path, $color, $collection);
+                    if($var == 'Insertion failure!' || $var == 'Item name is duplicated!') return $var;
+                    else 
+                    {
+                        $file->move(FCPATH . 'product-pics/'. $extra, $name.'.svg');
+                        return "Added successfuly! New product's ID: " . $var;
+                    }
+                } else {
+                    return "File is invalid!";
+                }            
+            }
+        }
+    }
+
+    function edit_product()
+    {
+        $previousUrl = $this->request->getServer('HTTP_REFERER');
+        if (strpos($previousUrl, 'http://localhost/pepicase/public/admin/dashboard') === 0)
+        {
+            
+        }
+    }
+    ///////////////PRODUCT
+
+
+
+
+
+
+    ///////////////DELIVERY
     function get_delivery()
     {
         $previousUrl = $this->request->getServer('HTTP_REFERER');
@@ -126,4 +179,5 @@ class AdminController extends BaseController
             return json_encode($admin->get_invoice_details($invoice_id));
         }
     }
+    ///////////////DELIVERY
 }

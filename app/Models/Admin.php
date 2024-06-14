@@ -59,7 +59,7 @@ class Admin extends User
     //admin space
 
 
-    //delivery space
+    //////////delivery space
     function set_delivery_status($invoice_id, $status)
     {
         $db = \Config\Database::connect();
@@ -101,25 +101,6 @@ class Admin extends User
         $query = $builder->get();
         return $query->getResult();
     }
-    //delivery space
-
-
-
-    //product space
-    function get_all_products()
-    {
-        $db = Database::connect();
-        $result = $db->query("SELECT * FROM product")->getResult();
-        return $result;
-    }
-
-    function delete_product($product_id)
-    {
-        $db = Database::connect();
-        $db->query("UPDATE product SET IsDeleted = 1 WHERE ID = '{$product_id}'");
-        $db->query("DELETE FROM cart_details WHERE Product_ID = '{$product_id}'");
-    }
-    //product space
 
     function get_invoice_details($invoice_id)
     {
@@ -137,20 +118,49 @@ class Admin extends User
         $result = $db->query("SELECT Status FROM delivery WHERE Invoice_ID = '{$invoice_id}'")->getResult();
         return $result[0]->Status;
     }
+    //////////delivery space
+
+
+
+    //////////product space
+    function get_all_products()
+    {
+        $db = Database::connect();
+        $result = $db->query("SELECT * FROM product")->getResult();
+        return $result;
+    }
+
+    function delete_product($product_id)
+    {
+        $db = Database::connect();
+        $db->query("UPDATE product SET IsDeleted = 1 WHERE ID = '{$product_id}'");
+        $db->query("DELETE FROM cart_details WHERE Product_ID = '{$product_id}'");
+    }
 
     function add_product_to_database($name, $price, $quantity, $path, $color, $collection)
     {
         $db = Database::connect();
-        $db->query("INSERT INTO product(Name, Price, Description, Image, QuantityInStock, IsInStock, IsDeleted, Color_ID, Collect_ID)
-                VALUES ('{$name}', $price, 'Added after', '$path', '{$quantity}', 1, 0, {$color}, {$collection})");
-        $affectedRows = $db->affectedRows();
-        if ($affectedRows > 0) {
-            // The product was added successfully
-            return true;
-        } else {
-            // There was an error adding the product
-            return false;
+        $duplication_check = $db->query("SELECT * FROM product WHERE Name = '{$name}'")->getResult();
+        if(empty($duplication_check))
+        {
+            $db->query("INSERT INTO product(Name, Price, Description, Image, QuantityInStock, IsInStock, IsDeleted, Color_ID, Collect_ID)
+            VALUES ('{$name}', $price, 'Added for testing', '$path', '{$quantity}', 1, 0, {$color}, {$collection})");
+            $affectedRows = $db->affectedRows();
+            if ($affectedRows > 0) {
+                $id = $db->query("SELECT ID FROM product WHERE Name = '{$name}'")->getResult();
+                return $id[0]->ID;
+            } else {
+                // There was an error adding the product
+                return 'Insertion failure!';
+            }
         }
+        else return 'Item name is duplicated!';
     }
+
+    function add_product_to_root($file)
+    {
+        
+    }
+    //////////product space
 }
 

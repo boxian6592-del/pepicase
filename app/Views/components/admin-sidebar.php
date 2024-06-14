@@ -21,16 +21,12 @@
             <div class="card-body">
                 <ul class="nav flex-column">
                     <li class="nav-item nav_active">
-                        <img src="/product-icon.svg" alt="">
+                        <img src="/pepicase/public/pics/product-icon.svg" alt="">
                         <b class="title">Product</b>
                     </li>
                     <li class="nav-item">
-                        <img src="/order-icon.svg" alt="">
+                        <img src="/pepicase/public/pics/order-icon.svg" alt="">
                         <b class="title">Orders</b>
-                    </li>
-                    <li class="nav-item">
-                        <img src="/image_8.svg" alt="">
-                        <b class="title">Users</b>
                     </li>
                 </ul>
 
