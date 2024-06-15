@@ -47,4 +47,5 @@
             </a>
         </div>
     </div>
+<?php echo '<script>var message = '.$message.'; </script>' ?>
 <?php include(APPPATH.'views/components/bottom-footer.php'); ?>

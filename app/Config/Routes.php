@@ -65,12 +65,14 @@ $routes->get('/checkout/pending','StaticPageController::await_payment');
 
 //////checkout momo
 $routes->post('/checkout/momo','CheckoutController::momo_generate');
+$routes->post('/checkout/momo/ipn','CheckoutController::momo_ipn_handle');
 $routes->get('/checkout/momo_return','CheckoutController::momo_return');
 //////checkout momo
 
 
 //////checkout vnpay
 $routes->post('/checkout/vnpay','CheckoutController::vnpay_generate');
+$routes->get('/IPN','CheckoutController::vnpay_ipn_handle');
 $routes->get('/checkout/vnpay_return','CheckoutController::vnpay_return');
 //////checkout vnpay
 //checkout
