@@ -310,7 +310,7 @@ function initiate_order_page()
                               <div class="rounded" style="background-color: #b0adad; width: 40px; height: 40px; display: flex; justify-content: center;">
                                 <img src="${detail.Image}" alt="">
                               </div>
-                              <text style="margin-left: 2%; margin-top: 2%;">${detail.Name}</text>
+                              <div style="margin-left: 2%; margin-top: 2%; width: 15vw;">${detail.Name}</div>
                             </div>
                           </td>
                           <td style="color: blue; text-align: center;">302011</th>
