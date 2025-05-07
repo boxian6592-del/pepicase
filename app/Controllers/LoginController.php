@@ -17,10 +17,10 @@ class LoginController extends BaseController
     function __construct()
     {
         if ($this->facebook === null) {
-            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
+            require ROOTPATH . 'vendor/autoload.php';
             $this->facebook = new \Facebook\Facebook([
-                'app_id' => '774527684780044', //for example, 774527684780044
-                'app_secret' => '5653abdd091dd9ca04afa8a7dbb16f0d', //for example, 85b5b8bc72a01831f09e35984826a215
+                'app_id' => getenv('FB_APP_ID'),
+                'app_secret' => getenv('FB_APP_SECRET'),
                 'default_graph_version' => 'v5.1'
             ]);
             $this->fb_helper = $this->facebook->getRedirectLoginHelper();
@@ -28,10 +28,9 @@ class LoginController extends BaseController
 
         $this->userModel = new User();
         if ($this->googleClient === null) {
-            require 'C:\xampp\htdocs\pepicase\app\Libraries\vendor\autoload.php';
             $this->googleClient = new \Google_Client();
-            $this->googleClient->setClientId('940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com'); //for example, 940988695510-20vnmeqjd2hrqg717q0clbpmsd0nsq8l.apps.googleusercontent.com
-            $this->googleClient->setClientSecret('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'); //for example, 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
+            $this->googleClient->setClientId(getenv('GOOGLE_CLIENT_ID'));
+            $this->googleClient->setClientSecret(getenv('GOOGLE_CLIENT_SECRET')); //for example, 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
             $this->googleClient->setRedirectUri('http://localhost/pepicase/public/loginWithGoogle'); //for example, https://localhost/pepicase/loginWithGoogle
             $this->googleClient->addScope("email");
             $this->googleClient->addScope("profile");

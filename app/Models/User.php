@@ -26,7 +26,7 @@ class User extends Model
     {
         $db = Database::connect();
         if ($oauth_id !== null) {
-            $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '{$oauth_id}'")->getResult();            
+            $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = ?", [$oauth_id])->getResult();            
             if (empty($result)) {
                 $this->create($email, 'matkhau', $oauth_id);
                 $result = $db->query("SELECT * FROM $this->table WHERE oauth_id = '{$oauth_id}'")->getResult();            
@@ -45,7 +45,7 @@ class User extends Model
                 $this->isAdmin = $row->Is_Admin; 
             }
         } else {
-            $result = $db->query("SELECT * FROM $this->table WHERE email ='{$email}' AND password = '{$password}' ")->getResult();
+            $result = $db->query("SELECT * FROM $this->table WHERE email = ? AND password = ?", [$email, $password])->getResult();
             if (empty($result)) {
                 
             } else {
@@ -83,7 +83,7 @@ class User extends Model
     public function create($mail, $pass = null, $oauth_id = null)
     {
         $db = Database::connect();
-        $result = $db->query("INSERT INTO user (Email, Password, oauth_id, Is_Admin) VALUES ('{$mail}', '{$pass}', '{$oauth_id}', 0);");
+        $result = $db->query("INSERT INTO user (Email, Password, oauth_id, Is_Admin) VALUES (?, ?, ?, 0);", [$mail, $pass, $oauth_id]);
         if ($result !== null)
         {
             $new_user = new User($mail, $pass, $oauth_id);
@@ -95,23 +95,25 @@ class User extends Model
     public function check_email($mail)
     {
         $db = Database::connect();
-        $result = $db->query("SELECT * FROM user WHERE Email = '$mail' ")->getResult();
+        $result = $db->query("SELECT * FROM user WHERE Email = ?", [$mail])->getResult();
         return ($result !== []);
     }
 
     public function get_email($id)
     {
         $db = Database::connect();
-        $result = $db->query("SELECT Email FROM user WHERE ID = '{$id}' ")->getRow();
+        $result = $db->query("SELECT Email FROM user WHERE ID = ?", [$id])->getRow();
         return $result->Email;
     }
 
     public function fetch_wishlist($id)
     {
         $db = Database::connect();
-        $fetch_query = "SELECT Product_ID, Name, Price, Image from wishlist 
-        LEFT JOIN product on wishlist.Product_ID = product.ID WHERE User_ID = {$id};";
-        $wishlist_items = $db->query($fetch_query)->getResult();
+        $sql = "SELECT Product_ID, Name, Price, Image FROM wishlist 
+        LEFT JOIN product ON wishlist.Product_ID = product.ID 
+        WHERE User_ID = ?";
+        $wishlist_items = $db->query($sql, [$id])->getResult();
+
 
         if (empty($wishlist_items)) return [];
         else return $wishlist_items;
@@ -157,8 +159,8 @@ class User extends Model
         
         function insertUserData($userdata){ //thêm thông tin
             $db = Database::connect();
-            $sql1 = "INSERT INTO user_info(User_ID, First_Name, Last_Name) Values ($userdata->userid, $userdata->First_Name, $userdata->Last_Name)";
-            $db->query($sql1);
+            $sql1 = "INSERT INTO user_info(User_ID, First_Name, Last_Name) VALUES (?, ?, ?)";
+            $db->query($sql1, [$userdata->userid, $userdata->First_Name, $userdata->Last_Name]);
         }
     
         function deletePurchases($invoiceId) {
@@ -176,26 +178,39 @@ class User extends Model
         $result = $db->query($sql)->getResult();
         if(empty($result))
         {
-            $add = "INSERT INTO user_info (User_ID, First_Name, Last_Name, Area_Code, Phone, Address, Apartment, Country, City, Zipcode)
-                    VALUES ('{$id}','{$object->firstName}','{$object->lastName}','{$object->areaCode}','{$object->phone}','{$object->address}'
-                    ,'{$object->apartment}','{$object->country}','{$object->city}','{$object->zipCode}')";
-            $db->query($add);
-        }
-        else
-        {
-            $update = "UPDATE user_info
-                        SET First_Name = '{$object->firstName}',
-                            Last_Name = '{$object->lastName}',
-                            Area_Code = '{$object->areaCode}',
-                            Phone = '{$object->phone}',
-                            Address = '{$object->address}',
-                            Apartment = '{$object->apartment}',
-                            Country = '{$object->country}',
-                            City = '{$object->city}',
-                            Zipcode = '{$object->zipCode}'
-                        WHERE User_ID = '{$id}'";
-            $db->query($update);
-        }
+            $add = "INSERT INTO user_info 
+        (User_ID, First_Name, Last_Name, Area_Code, Phone, Address, Apartment, Country, City, Zipcode)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $db->query($add, [
+    $id,
+    $object->firstName,
+    $object->lastName,
+    $object->areaCode,
+    $object->phone,
+    $object->address,
+    $object->apartment,
+    $object->country,
+    $object->city,
+    $object->zipCode
+]);
+  $update = "UPDATE user_info SET 
+            First_Name = ?, Last_Name = ?, Area_Code = ?, Phone = ?, 
+            Address = ?, Apartment = ?, Country = ?, City = ?, Zipcode = ? 
+            WHERE User_ID = ?";
+            $db->query($update, [
+    $object->firstName,
+    $object->lastName,
+    $object->areaCode,
+    $object->phone,
+    $object->address,
+    $object->apartment,
+    $object->country,
+    $object->city,
+    $object->zipCode,
+    $id
+]);
+
+}
     }
 
     public function get_info($id)
